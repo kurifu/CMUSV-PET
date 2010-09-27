@@ -20,6 +20,7 @@ end
 group :test do
   gem 'rake'
   gem 'sqlite3-ruby'
+  gem 'mysql',    '2.8.1'
   gem 'mongrel'
   gem 'ruby-debug-base' #'0.10.3'
   gem 'ruby-debug-ide' #'0.4.9'
