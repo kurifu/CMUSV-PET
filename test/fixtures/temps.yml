@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: rbaxi@gmail.com
+  first_name: r
+  last_name: b
+
+two:
+  email: rb@gmail.com
+  first_name: rr
+  last_name: rb

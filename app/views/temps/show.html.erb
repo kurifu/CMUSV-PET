@@ -1,0 +1,18 @@
+<p>
+  <b>Email:</b>
+  <%=h @temp.email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%=h @temp.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @temp.last_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_temp_path(@temp) %> |
+<%= link_to 'Back', temps_path %>
