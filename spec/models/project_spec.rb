@@ -15,11 +15,11 @@ describe Project do
 
   it "should have no errors" do
     project = Factory.build(:project)
-    project.should have(:no).errors_on(:attribute)
+    project.should have(:no).errors_on(:name)
   end
 
   it "should have one error on name" do
-    project = Factory.build(:project, :name=>'')
-    project.should have(:no).errors_on(:name)
+    projectwithoutname = Factory.build(:testproject)
+    projectwithoutname.should have(1).error_on(:name)
   end
 end
