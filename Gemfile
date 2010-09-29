@@ -27,4 +27,5 @@ group :test do
   gem 'rcov'
   gem 'rdoc'
   gem 'rspec'
+  gem 'factory_girl'
 end
