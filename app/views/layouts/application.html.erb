@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>PET v1.3 Create Project</title>
+    <%= stylesheet_link_tag "styles" %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="top">
+        Currently logged in as: Cliff Chen
+      </div>
+
+      <div id="left">
+        <ul>
+          <li>My Projects
+            <ul>
+              <li>Project MobileTraffic</li>
+              <li>Project AdSense</li>
+            </ul>
+          </li>
+
+          <li>My Teams
+            <ul>
+              <li>RailBlazers</li>
+              <li>Hi5 (metrics)</li>
+              <li>Hi5 (failures)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <p style="color: green"><%= notice %></p>
+      
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
+</html>

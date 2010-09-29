@@ -1,0 +1,117 @@
+body {
+	font-family: Arial;
+}
+
+h2, h4 {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+
+div#container {
+	width: 962px;
+	margin: 0 auto;
+}
+
+div#top {
+	font-size: 10pt;
+	width: 950px;
+	height: 90px;
+	border: 1px solid black;
+	margin: 0 auto;
+	background-image: url('banner.png');
+	background-repeat: no-repeat;
+	padding: 5px 5px 5px 7px;
+	line-height: 160px;
+}
+
+div#left {
+	width: 190px;
+	height: 590px;
+	float: left;
+	border: 1px solid black;
+	margin: 10px 10px 0px 0px;
+}
+
+div#left ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ div#left ul li {
+	border-top: 1px solid black;
+	padding: 2px 2px 2px 15px;
+}
+
+div#left ul li:first-child, div#left ul li ul li {
+	border-top: none;
+}
+
+div#main {
+	border: 1px solid black;
+	width: 730px;
+	float: right;
+	margin-top: 10px;
+	overflow: auto;
+	text-align: center;
+	padding: 10px 10px 10px 10px;
+}
+div#main ul {
+	width: 240px;
+	margin: 0 auto;
+	list-style-type: circle;
+}
+div#main ul li ul {
+	list-style-type: square;
+}
+div#main_buttons {
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+div#main select, div#main select option {
+	text-align: center;
+}
+
+table#overview {
+	width: 500px;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+table#overview td {
+	border: 1px solid black;
+	padding: 2px 2px 2px 2px;
+}
+
+table#overview tr:first-child {
+	text-align: center;
+}
+
+span.status_active {
+	color: green;
+}
+
+span.status_inactive {
+	color: red;
+}
+
+td.centered {
+	text-align: center;
+}
+
+td.heading {
+	background: #cccccc;
+}
+
+table.phase {
+	width: 500px;
+	margin: 0 auto;
+	padding: 2px 2px 2px 2px;
+}
+
+table.phase td {
+	text-align: center;
+}
