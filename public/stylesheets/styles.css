@@ -2,12 +2,17 @@ body {
 	font-family: Arial;
 }
 
+h1 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
 h2, h4 {
 	text-align: center;
 	margin-top: 0px;
 	margin-bottom: 5px;
 }
-
 
 div#container {
 	width: 962px;
@@ -20,6 +25,7 @@ div#top {
 	height: 90px;
 	border: 1px solid black;
 	margin: 0 auto;
+        
 	background-image: url('banner.png');
 	background-repeat: no-repeat;
 	padding: 5px 5px 5px 7px;
@@ -53,7 +59,9 @@ div#main {
 	border: 1px solid black;
 	width: 730px;
 	float: right;
-	margin-top: 10px;
+
+        /* TODO:  15 pixels off! */
+	margin-top: -5px;
 	overflow: auto;
 	text-align: center;
 	padding: 10px 10px 10px 10px;
@@ -114,4 +122,39 @@ table.phase {
 
 table.phase td {
 	text-align: center;
+}
+
+div.content {
+    width: 500px;
+    
+    margin: 0 auto;
+    padding: 2px 2px 2px 2px;
+    overflow: auto;
+}
+
+div.content input, div.content textarea, div.content select {
+    width: 300px;
+    float: right;
+    margin: 2px 2px 2px 2px;
+}
+
+/* Create Button on Create a Project Page*/
+input {
+    margin-bottom: 5px;
+}
+
+div.content select {
+    width: 200px;
+    margin-right: 50px;
+}
+
+label {
+    float: left;
+    padding: 2px 2px 2px 2px;
+    clear: both;
+}
+
+/* Figure this otu later */
+div.content textarea {
+    width: 304px;
 }

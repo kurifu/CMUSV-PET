@@ -1,23 +1,31 @@
-<h1>New project</h1>
+<h1>Create a Project</h1>
 
-<% form_for(@project) do |f| %>
-  <%= f.error_messages %>
+<div class="content">
+  <% form_for(@project) do |f| %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :lifecycle %><br />
-    <%= f.text_field :lifecycle %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
 
-<%= link_to 'Back', projects_path %>
+    <br/>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <br/>
+
+    <%= f.label :lifecycle %>
+    <%= collection_select(:project, :lifecycle_id, Project.find(:all, :order => :name), :name, :id) %>
+
+
+
+</div>
+
+  <br/>
+    <%= f.submit 'Create' %>
+    <br/>
+  <% end %>
+
+  <%= link_to 'Back to Project Home', projects_path %>
+
+
