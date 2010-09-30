@@ -106,7 +106,7 @@ div#main {
 	float: right;
 
         /* TODO:  15 pixels off! */
-	margin-top: -5px;
+	margin-top: 10px;
 	overflow: auto;
 	text-align: center;
 	padding: 10px 10px 10px 10px;

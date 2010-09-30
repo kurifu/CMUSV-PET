@@ -1,0 +1,11 @@
+waterfall:
+  name: Waterfall
+
+spiral:
+  name: Spiral
+
+agile_scrum:
+  name: Agile (Scrum)
+
+agile_xp:
+  name: Agile (XP)

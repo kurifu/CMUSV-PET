@@ -15,7 +15,7 @@
     <br/>
 
     <%= f.label :lifecycle %>
-    <%= collection_select(:project, :lifecycle_id, Project.find(:all, :order => :name), :name, :id) %>
+    <%= collection_select(:project, :lifecycle_id, Lifecycle.find(:all, :order => :name), :id, :name) %>
 
 
 
