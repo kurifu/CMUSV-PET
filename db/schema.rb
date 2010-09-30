@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100930201453) do
+ActiveRecord::Schema.define(:version => 20100930203940) do
 
   create_table "lifecycles", :force => true do |t|
     t.string "name", :null => false
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(:version => 20100930201453) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "lifecycle"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lifecycle_id", :default => -1, :null => false
+    t.integer  "lifecycle_id", :default => -1,        :null => false
+    t.string   "status",       :default => "Unknown", :null => false
   end
 
   create_table "temps", :force => true do |t|

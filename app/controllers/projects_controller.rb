@@ -41,6 +41,8 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
+    @project.lifecycle = Lifecycle.find_by_id(@project.lifecycle_id)
+    
 
     respond_to do |format|
       if @project.save
