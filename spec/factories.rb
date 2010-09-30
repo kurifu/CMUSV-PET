@@ -1,3 +1,4 @@
+# Project Table Tests
 Factory.define :testproject, :class=>'Project' do |t|
   t.name nil
   t.description 'NDSS project'
@@ -22,4 +23,16 @@ Factory.define :pet_project, :class=>'Project' do |t|
   t.lifecycle_id nil
 end
 
+# Deliverable Table Tests
+Factory.define :deliverable, :class=>'Deliverable' do |d|
+  d.deliverable_type_id 1
+  d.project_id 1
+  d.name 'user requirement document'
+  d.deliverable_url '/deliverables/'
+  d.complexity 'high'
+  d.unit_measurement 'pages'
+  d.estimated_size 23.4
+  d.estimated_effort 43.4
+  d.production_rate 32.3
+end
 

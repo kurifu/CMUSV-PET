@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100930203940) do
+ActiveRecord::Schema.define(:version => 20100930222045) do
+
+  create_table "deliverables", :force => true do |t|
+    t.integer "deliverable_type_id", :default => -1, :null => false
+    t.integer "project_id",          :default => -1, :null => false
+    t.string  "name",                :default => "", :null => false
+    t.string  "deliverable_url",     :default => "", :null => false
+    t.string  "complexity",          :default => "", :null => false
+    t.string  "unit_measurement",    :default => "", :null => false
+    t.float   "estimated_size"
+    t.float   "estimated_effort"
+    t.float   "production_rate"
+  end
 
   create_table "lifecycles", :force => true do |t|
     t.string "name", :null => false
