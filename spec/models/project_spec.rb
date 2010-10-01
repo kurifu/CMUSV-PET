@@ -4,8 +4,8 @@ describe Project do
   before(:each) do
     @valid_attributes = {
       :name=>'PET',
-      :description=>'test',
-      :lifecycle=>'XP'
+      :description =>'test',
+      :lifecycle_id =>'414197129'
     }
   end
 
