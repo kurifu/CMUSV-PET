@@ -14,11 +14,11 @@ describe Deliverable do
 #    Deliverable.create!(@valid_attributes)
 #  end
 
-  it "should have a non-nil deliverable_type_id" do
-    deliverable = Factory.build(:deliverable, :deliverable_type_id=>nil)
+  it "should have a non-nil deliverable_type" do
+    deliverable = Factory.build(:deliverable, :deliverable_type=>nil)
     assert deliverable.invalid?
-    deliverable.should have(2).error_on(:deliverable_type_id)
-    assert deliverable.errors.invalid?(:deliverable_type_id)
+    deliverable.should have(1).error_on(:deliverable_type)
+    assert deliverable.errors.invalid?(:deliverable_type)
   end
 
   it "should have a non-nil project_id" do
