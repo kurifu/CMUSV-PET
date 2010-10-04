@@ -16,7 +16,6 @@ group :development do
   gem 'rcov'
   gem 'rdoc'
   gem 'rspec-rails'
-  gem 'darkfish-rdoc'
 end
 
 group :test do
@@ -30,5 +29,4 @@ group :test do
   gem 'rdoc'
   gem 'rspec'
   gem 'factory_girl'
-  gem 'darkfish-rdoc'
 end
