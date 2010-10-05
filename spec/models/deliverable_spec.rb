@@ -13,6 +13,12 @@ describe Deliverable do
 #  it "should create a new instance given valid attributes" do
 #    Deliverable.create!(@valid_attributes)
 #  end
+  it "should have a non-nil phase" do
+    deliverable = Factory.build(:deliverable, :phase=>nil)
+    assert deliverable.invalid?
+    deliverable.should have(1).error_on(:phase)
+    assert deliverable.errors.invalid?(:phase)
+  end
 
   it "should have a non-nil deliverable_type" do
     deliverable = Factory.build(:deliverable, :deliverable_type=>nil)

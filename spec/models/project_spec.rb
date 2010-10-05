@@ -26,7 +26,7 @@ describe Project do
     
   end
 
-  it "should have lifecycle" do
+  it "should have non-nil lifecycle" do
     project = Factory.build(:pet_project)
     assert !project.valid?
     assert project.errors.invalid?(:lifecycle)
