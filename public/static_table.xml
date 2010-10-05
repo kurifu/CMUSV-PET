@@ -1,0 +1,42 @@
+<root>
+   <lifecycle model="Simplified WaterFall">
+        <phase>Requirements Gathering And Analysis, System Design, Implementation, Testing, Deployment, Maintenance</phase>
+   </lifecycle>
+  <lifecycle model="Spiral">
+	<phase>Plannig, Risk Analysis, Engineering, Evaluation</phase>
+  </lifecycle>
+
+  <lifecycle model="Incremental">
+        <phase>Requirements, System Design, Implementation And Unit Testing, Integration And System Testing, Operation</phase>
+   </lifecycle>
+
+   <deliverable_type id="1">
+        <name>xyz, abc </name>
+        <unit>dummy1, dummy2, dummy3</unit>
+   </deliverable_type>
+
+   <deliverable_type id="2">
+        <name>name1, name2 </name>
+        <unit>dummy11, dummy22, dummy33</unit>
+   </deliverable_type>
+
+   <deliverable_type id="3">
+        <name>xyz1, abc1 </name>
+        <unit>dummy111, dummy222, dummy333</unit>
+   </deliverable_type>
+
+   <deliverable_type id="4">
+        <name>xyz11, abc22 </name>
+        <unit>dummy1111, dummy2222, dummy3333</unit>
+   </deliverable_type>
+
+   <deliverable_type id="5">
+        <name>xyz111, abc222 </name>
+        <unit>dummy11111, dummy22222, dummy33333</unit>
+   </deliverable_type>
+
+   <complexity>Low, Medium, High </complexity>
+
+</root>
+
+

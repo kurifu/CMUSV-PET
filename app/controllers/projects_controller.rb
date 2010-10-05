@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
+
   def index
     @projects = Project.all
 
@@ -25,7 +26,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-
+    @lifecycle_array = Project.get_lifecycle
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
@@ -41,18 +43,24 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-    @project.lifecycle = Lifecycle.find_by_id(@project.lifecycle_id)
     
-
+    #@project.lifecycle = Lifecycle.find_by_id(@project.lifecycle_id)
+    
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
+        # needed to render new
+        @lifecycle_array = Project.get_lifecycle
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end
+    rescue ActiveRecord::StatementInvalid
+      logger.error("Inable to reach table, invalid statement")
+      flash[:notice]= "Invalid Statement"
+      redirect_to action => 'new'
   end
 
   # PUT /projects/1

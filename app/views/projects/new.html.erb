@@ -1,6 +1,7 @@
 <h1>Create a Project</h1>
 
 <div class="content">
+  
   <% form_for(@project) do |f| %>
     <%= f.error_messages %>
 
@@ -15,9 +16,8 @@
     <br/>
 
     <%= f.label :lifecycle %>
-    <%= collection_select(:project, :lifecycle_id, Lifecycle.find(:all, :order => :name), :id, :name) %>
 
-
+    <%= select(:project, :lifecycle, @lifecycle_array) %>
 
 </div>
 
@@ -27,5 +27,3 @@
   <% end %>
 
   <%= link_to 'Back to Project Home', projects_path %>
-
-
