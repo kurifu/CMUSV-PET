@@ -7,7 +7,7 @@ require 'spec_helper'
 describe Deliverable do
   before(:each) do
     deliverable = Factory.build(:deliverable)
-    assert deliverable.valid?
+    deliverable.valid?.should == true
   end
 
 #  it "should create a new instance given valid attributes" do
@@ -15,30 +15,30 @@ describe Deliverable do
 #  end
   it "should have a non-nil phase" do
     deliverable = Factory.build(:deliverable, :phase=>nil)
-    assert deliverable.invalid?
+    deliverable.invalid?.should == true
     deliverable.should have(1).error_on(:phase)
-    assert deliverable.errors.invalid?(:phase)
+    deliverable.errors.invalid?(:phase).should == true
   end
 
   it "should have a non-nil deliverable_type" do
     deliverable = Factory.build(:deliverable, :deliverable_type=>nil)
-    assert deliverable.invalid?
+    deliverable.invalid?.should == true
     deliverable.should have(1).error_on(:deliverable_type)
-    assert deliverable.errors.invalid?(:deliverable_type)
+    deliverable.errors.invalid?(:deliverable_type).should == true
   end
 
   it "should have a non-nil project_id" do
     deliverable = Factory.build(:deliverable, :project_id=>nil)
     deliverable.save
-    deliverable.should have(2).error_on(:project_id)
-    assert deliverable.errors.invalid?(:project_id)
+    deliverable.should have(2).errors_on(:project_id)
+    deliverable.errors.invalid?(:project_id).should == true
   end
 
   it "should have a non-nil name" do
     deliverable = Factory.build(:deliverable, :name=>nil)
-    assert deliverable.invalid?
+    deliverable.invalid?.should == true
     deliverable.should have(1).error_on(:name)
-    assert deliverable.errors.invalid?(:name)
+    deliverable.errors.invalid?(:name).should == true
   end
 
 #  it "should have a non-nil deliverable_url" do
@@ -52,14 +52,14 @@ describe Deliverable do
     deliverable = Factory.build(:deliverable, :complexity=>nil)
     deliverable.save
     deliverable.should have(1).error_on(:complexity)
-    assert deliverable.errors.invalid?(:complexity)
+    deliverable.errors.invalid?(:complexity).should == true
   end
 
   it "should have a non-nil unit of measurement" do
     deliverable = Factory.build(:deliverable, :unit_measurement=>nil)
     deliverable.save
     deliverable.should have(1).error_on(:unit_measurement)
-    assert deliverable.errors.invalid?(:unit_measurement)
+    deliverable.errors.invalid?(:unit_measurement).should == true
   end
   
   it "should have a numeric estimated size" do
