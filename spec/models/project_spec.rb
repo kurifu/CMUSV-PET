@@ -15,20 +15,22 @@ describe Project do
   it "should have a non-nil name" do
     projectwithoutname = Factory.build(:testproject)
     projectwithoutname.should have(1).error_on(:name)
-    projectwithoutname.errors.invalid?(:name).should == true
+    # same as projectwithoutname.errors.invalid?(:name).should == true
+    projectwithoutname.errors.should be_invalid :name
   end
 
   it "should have unique name" do
     Factory.create(:project_existed)
     project = Factory.build(:project, :name=>'rails project')
-    project.save.should == false
+    # same as project.save.should == false
+    project.save.should be_false
     project.errors.on(:name).should == "has already been taken"
     
   end
 
   it "should have non-nil lifecycle" do
     project = Factory.build(:pet_project)
-    project.valid?.should == false
+    project.valid?.should be_false
     project.errors.invalid?(:lifecycle).should == true
   end
 end
