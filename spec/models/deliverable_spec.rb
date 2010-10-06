@@ -41,12 +41,12 @@ describe Deliverable do
     assert deliverable.errors.invalid?(:name)
   end
 
-  it "should have a non-nil deliverable_url" do
-    deliverable = Factory.build(:deliverable, :deliverable_url=>nil)
-    assert deliverable.invalid?
-    deliverable.should have(2).error_on(:deliverable_url)
-    assert deliverable.errors.invalid?(:deliverable_url)
-  end
+#  it "should have a non-nil deliverable_url" do
+#    deliverable = Factory.build(:deliverable, :deliverable_url=>nil)
+#    assert deliverable.invalid?
+#    deliverable.should have(2).error_on(:deliverable_url)
+#    assert deliverable.errors.invalid?(:deliverable_url)
+#  end
 
   it "should have a non-nil complexity" do
     deliverable = Factory.build(:deliverable, :complexity=>nil)
@@ -75,7 +75,7 @@ describe Deliverable do
   end
 
   it "should have a numeric estimated size" do
-    deliverable = Factory.build(:deliverable, :production_rate=>"")
+    deliverable = Factory.build(:deliverable, :production_rate=>nil)
     deliverable.save
     deliverable.should have(1).error_on(:production_rate)
   end

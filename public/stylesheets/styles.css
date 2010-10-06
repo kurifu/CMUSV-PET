@@ -181,6 +181,7 @@ div.content input, div.content textarea, div.content select {
     width: 300px;
     float: right;
     margin: 2px 2px 2px 2px;
+    
 }
 
 /* Create Button on Create a Project Page*/
@@ -203,3 +204,4 @@ label {
 div.content textarea {
     width: 304px;
 }
+

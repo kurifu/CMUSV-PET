@@ -1,0 +1,45 @@
+<table class="phase">
+        <tr>
+                <td>Phase:</td>
+                <td colspan="3" class="centered heading"><%= select(:deliverable, :phase, @phases,
+                      {:prompt   => "Select a phase"},
+                      {:onchange => "#{remote_function(:url  => {:action => "update_deliverable_partial"},
+                      :with => "'phase='+value")}"}) %></td>
+        </tr>
+        <tr>
+                <td class="centered heading">Deliverable</td>
+                <td class="centered heading">Uploaded Status</td>
+                <td class="centered heading">Action</td>
+        </tr>
+        <tr id="phase_partial">
+          <%= render :partial=>"deliverable_partial", :object=>@deliverables_of_phase %>
+        </tr>
+        <tr>
+                <td>&nbsp;</td>
+        </tr>
+        <tr>
+                <td>Select Deliverable Type To Add</td>
+                <td>
+                        <select name="phase">
+                                        <option value="Delvierable1">Deliverable 1</option>
+                                        <option value="Delvierable2">Deliverable 2</option>
+                                        <option value="Delvierable3">Deliverable 3</option>
+                                        <option value="Delvierable4">Deliverable 4</option>
+                                        <option value="new_type">New Type</option>
+                        </select>
+                </td>
+        </tr>
+        <div id="tt">
+          test
+        </div>
+        <%= link_to_remote "test",:url=>{:action => "update_deliverable_partial"},:before =>visual_effect(:highlight, 'tt') %>
+        <tr>
+                <td colspan="3"><input type="Submit" value="Submit" name="new_type"></td>
+        </tr>
+        <tr>
+                <td colspan="3"><a href="#">Next Phase</a></td>
+        </tr>
+        <tr>
+                <td colspan="3"><a href="#">Over View</a></td>
+        </tr>
+</table>

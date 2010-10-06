@@ -1,0 +1,15 @@
+
+<td><%= @test %></td>
+<% for deliverable in @deliverables_of_phase %>
+  <td>
+    <%= deliverable.name %>
+  </td>
+    <td>
+    <%= deliverable.complexity %>
+  </td>
+  <td>
+    <a href="#">Modify</a>
+    <a href="#">Delete</a>
+  </td>
+<% end %>
+

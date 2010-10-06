@@ -65,21 +65,22 @@ class Project < ActiveRecord::Base
     return unit
   end
 
-  def self.get_complexity
-    complexity = Array.new
+  def self.get_common_values
+    common_values = Array.new
     temp_complexity =
       @root.elements["complexity"].text
-    complexity = temp_complexity.split(%r{,\s*})
-    return complexity
+    common_values = temp_complexity.split(%r{,\s*})
+    return common_values
   end
 
-  def self.get_effort_size(effort)
-    effort_size = case effort
+  # Fine for card 8, need to change this to accept 2 out of 3 values for card 10
+  def self.get_estimated_size(effort)
+    estimated_size = case effort
       when "Low" then @LOW
       when "Medium" then @MEDIUM
       when "High" then @HIGH
     end
-    return effort_size
+    return estimated_size
   end
 
 end

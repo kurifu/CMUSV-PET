@@ -48,7 +48,12 @@ class ProjectsController < ApplicationController
     
     respond_to do |format|
       if @project.save
-        format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
+        # TODO:  save project_id if we edit existing project
+        #       phase + overview + project home
+        session[:project_id] = @project.id
+        
+        #format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
+        format.html { redirect_to("/deliverables/index") }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         # needed to render new
@@ -60,7 +65,7 @@ class ProjectsController < ApplicationController
     rescue ActiveRecord::StatementInvalid
       logger.error("Inable to reach table, invalid statement")
       flash[:notice]= "Invalid Statement"
-      redirect_to action => 'new'
+      redirect_to :action => 'new'
   end
 
   # PUT /projects/1
