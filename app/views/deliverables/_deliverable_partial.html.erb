@@ -1,6 +1,11 @@
+<tr>
+        <td class="centered heading">Deliverable</td>
+        <td class="centered heading">complexity</td>
+        <td class="centered heading">Action</td>
+</tr>
 
-<td><%= @test %></td>
 <% for deliverable in @deliverables_of_phase %>
+<tr>
   <td>
     <%= deliverable.name %>
   </td>
@@ -11,5 +16,30 @@
     <a href="#">Modify</a>
     <a href="#">Delete</a>
   </td>
+</tr>
 <% end %>
-
+<tr>
+        <td>&nbsp;</td>
+</tr>
+<tr>
+        <td>Select Deliverable Type To Add</td>
+        <td>
+                <select name="phase">
+                                <option value="Delvierable1">Deliverable 1</option>
+                                <option value="Delvierable2">Deliverable 2</option>
+                                <option value="Delvierable3">Deliverable 3</option>
+                                <option value="Delvierable4">Deliverable 4</option>
+                                <option value="new_type">New Type</option>
+                </select>
+        </td>
+        <td><%= link_to "Add deliverable type", :controller=>'deliverable_type', :action=>'new' %></td>
+</tr>
+<tr>
+        <td colspan="3"><input type="Submit" value="Submit" name="new_type"></td>
+</tr>
+<tr>
+        <td colspan="3"><a href="#">Next Phase</a></td>
+</tr>
+<tr>
+        <td colspan="3"><a href="#">Over View</a></td>
+</tr>
