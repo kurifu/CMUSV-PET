@@ -20,18 +20,23 @@
       <%= f.label :unit_measurement %>
       <%= f.text_field :unit_measurement %>
       <br/>
-      <%= f.label :estimated_size %>
-      <%= select(:deliverable, :estimated_size, @estimated_sizes,
-      {:prompt   => "Select a size"}) %>
-      <br/>
-      <%= f.label :production_rate %>
-      <%= select(:deliverable, :production_rate, @production_rates,
-      {:prompt   => "Select a production rate"}) %>
-      <br/>
-      <%= f.label :estimated_effort %>
-      <%= select(:deliverable, :estimated_effort, @efforts,
-      {:prompt   => "Select a estimated effort"}) %>
 
+      <div id="pet_calc">
+        <%= f.label :estimated_size %>
+        <%= select(:deliverable, :estimated_size, @estimated_sizes,
+        {:prompt   => "Select a size"}) %>
+        <br/>
+        <%= f.label :production_rate %>
+        <%= select(:deliverable, :production_rate, @production_rates,
+        {:prompt   => "Select a production rate"}) %>
+        <br/>
+        <%= f.label :estimated_effort %>
+        <%= select(:deliverable, :estimated_effort, @efforts,
+        {:prompt   => "Select a estimated effort"}) %>
+        
+        <%= f.submit 'Calculate', :action => "process_calc_inputs" %>
+      </div>
+      
 </div>
 
 <%= link_to "Historical Data", "#" %>

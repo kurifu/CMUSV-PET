@@ -205,3 +205,19 @@ div.content textarea {
     width: 304px;
 }
 
+/* New Deliverable Page */
+div#pet_calc {
+    margin-top: 315px;
+    padding: 10px 0px 10px 20px;
+    border: 1px solid black;
+    overflow: auto;
+    clear: right;
+}
+
+/* TODO: FIX THIS!*/
+div#pet_calc input {
+    border: 1px solid black;
+    width: 75px;
+    clear: both;
+
+}
