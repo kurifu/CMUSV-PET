@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
         session[:project_id] = @project.id
         
         #format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
-        format.html { redirect_to("/deliverables/index") }
+        format.html { redirect_to :controller=> "deliverables" }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         puts "save failed"
