@@ -48,6 +48,7 @@ class ProjectsController < ApplicationController
     
     respond_to do |format|
       if @project.save
+        puts "save successful"
         # TODO:  save project_id if we edit existing project
         #       phase + overview + project home
         session[:project_id] = @project.id
@@ -56,6 +57,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to("/deliverables/index") }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
+        puts "save failed"
         # needed to render new
         @lifecycle_array = Project.get_lifecycle
         format.html { render :action => "new" }

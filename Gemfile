@@ -29,4 +29,5 @@ group :test do
   gem 'rdoc'
   gem 'rspec'
   gem 'factory_girl'
+gem 'mocha'
 end

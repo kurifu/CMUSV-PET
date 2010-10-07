@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe ProjectsController do
 
+  # Not needed it seems... 
+  #before(:each) do
+  #  project_item = Factory.build(:project)
+    # the same as deliverable.valid?.should == true
+  #  project_item.should be_valid
+  #end
+
   #Delete this example and add some real ones
   it "should use ProjectsController" do
     controller.should be_an_instance_of(ProjectsController)
@@ -13,17 +20,32 @@ describe ProjectsController do
     response.should render_template("projects/new")
   end
 
-  it "should stay on New page because fields are empty" do
+  it "should redirect to Project index page after creating a Project" do
+    Project.any_instance.stubs(:valid?).returns(true)
     post 'create'
-    response.should be_success
-    response.should render_template("projects/new")
+
+    # if save succeeds, it should not be a new record
+    assigns[:project].should_not be_new_record
+    response.should redirect_to("deliverables/index")
+    #flash[:notice].should be_nil no way of telling; flash gone when we jump controllers
   end
 
-  it "should redirect to Project index page after creating" do
-
-    # TODO:  figure out how to create a project and post it
+  it "should stay on New page because fields are empty" do
+    Project.any_instance.stubs(:valid?).returns(false)
     post 'create'
-    response.should be_success
+
+    # if save fails, it should be a new record
+    assigns[:project].should be_new_record
     response.should render_template("projects/new")
+    
+    # Book example, doesnt seem to work
+    #temp = double('project')
+    #temp.should_receive(:create).and_return(true)
+    #post 'create'
+  end
+
+  it "should pass params to project" do
+    post 'create', :project => {:name => "BLAH"}
+    assigns[:project].name.should == "BLAH"
   end
 end
