@@ -13,6 +13,6 @@
   <%=h @project.lifecycle %>
 </p>
 
-
+<%= link_to 'Phases', :action=>'integrate_with_delilverables', :id=>@project %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

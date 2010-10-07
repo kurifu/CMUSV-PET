@@ -97,4 +97,10 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  #TODO : delete in future iterations
+  def integrate_with_delilverables
+    session[:project_id] = params[:id]
+    redirect_to :controller=>"deliverables"
+  end
 end

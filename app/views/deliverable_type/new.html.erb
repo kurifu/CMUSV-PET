@@ -4,7 +4,8 @@
       <%= f.error_messages %>
 
       <%= f.label :deliverable_type, "Select Deliverable Type" %>
-      <%= select(:deliverable, :deliverable_type, @deliverable_types) %>
+      <%= select(:deliverable, :deliverable_type, @deliverable_types,
+      {:prompt   => "Select a phase"}) %>
       <br/>
       <%= f.label :name, "Deliverable Name" %>
       <%= f.text_field :name %>
@@ -13,19 +14,23 @@
       <%= f.text_area :description %>
       <br/>
       <%= f.label :complexity %>
-      <%= select(:deliverable, :complexity, @complexities) %>
+      <%= select(:deliverable, :complexity, @complexities,
+      {:prompt   => "Select a complexity"}) %>
       <br/>
       <%= f.label :unit_measurement %>
       <%= f.text_field :unit_measurement %>
       <br/>
       <%= f.label :estimated_size %>
-      <%= select(:deliverable, :estimated_size, @estimated_sizes) %>
+      <%= select(:deliverable, :estimated_size, @estimated_sizes,
+      {:prompt   => "Select a size"}) %>
       <br/>
       <%= f.label :production_rate %>
-      <%= select(:deliverable, :production_rate, @production_rates) %>
+      <%= select(:deliverable, :production_rate, @production_rates,
+      {:prompt   => "Select a production rate"}) %>
       <br/>
       <%= f.label :estimated_effort %>
-      <%= select(:deliverable, :estimated_effort, @efforts) %>
+      <%= select(:deliverable, :estimated_effort, @efforts,
+      {:prompt   => "Select a estimated effort"}) %>
 
 </div>
 
