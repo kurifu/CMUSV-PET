@@ -14,8 +14,8 @@ class DeliverableTypeController < ApplicationController
 
     # TODO: swap these for integration testing
     #@deliverable.project_id = session[:project_id]
-    @deliverable.project_id = 1000
-    @deliverable.phase = "temp"
+    @deliverable.project_id = session[:project_id]
+    @deliverable.phase = session[:phase]
 
     respond_to do |format|
       if @deliverable.save

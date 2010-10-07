@@ -12,7 +12,7 @@ class DeliverablesController < ApplicationController
 
   def update_deliverable_partial
     @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
-    @test = params[:phase]
+    session[:phase] = params[:phase]
     render :update do |page|
       page.replace_html 'phase_partial', :partial => 'deliverable_partial', :object => @deliverables_of_phase
     end
