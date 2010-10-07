@@ -11,6 +11,7 @@ class DeliverablesController < ApplicationController
   end
 
   def update_deliverable_partial
+    @deliverable_types = Project.get_deliverable_type(session[:phase].to_s)
     @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
     session[:phase] = params[:phase]
     render :update do |page|
@@ -23,4 +24,6 @@ class DeliverablesController < ApplicationController
     #TODO
     
   end
+
+  
 end

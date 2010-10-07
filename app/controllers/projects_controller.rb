@@ -52,6 +52,7 @@ class ProjectsController < ApplicationController
         # TODO:  save project_id if we edit existing project
         #       phase + overview + project home
         session[:project_id] = @project.id
+        session[:phase] = "Planning"
         
         #format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.html { redirect_to :controller=> "deliverables" }

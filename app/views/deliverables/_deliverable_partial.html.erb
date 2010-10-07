@@ -24,13 +24,7 @@
 <tr>
         <td>Select Deliverable Type To Add</td>
         <td>
-                <select name="phase">
-                                <option value="Delvierable1">Deliverable 1</option>
-                                <option value="Delvierable2">Deliverable 2</option>
-                                <option value="Delvierable3">Deliverable 3</option>
-                                <option value="Delvierable4">Deliverable 4</option>
-                                <option value="new_type">New Type</option>
-                </select>
+                <%= select params[:devtype], params[:devtype], @deliverable_types %>
         </td>
         <td><%= link_to "Add deliverable type", :controller=>'deliverable_type', :action=>'new' %></td>
 </tr>
