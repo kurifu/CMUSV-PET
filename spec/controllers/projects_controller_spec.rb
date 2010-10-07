@@ -26,7 +26,7 @@ describe ProjectsController do
 
     # if save succeeds, it should not be a new record
     assigns[:project].should_not be_new_record
-    response.should redirect_to("deliverables/index")
+    response.should redirect_to("deliverables")
     #flash[:notice].should be_nil no way of telling; flash gone when we jump controllers
   end
 

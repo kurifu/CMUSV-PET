@@ -9,6 +9,7 @@ describe DeliverableTypeController do
 
   it "should not redirect to Phase page (deliverables/index) after creating a Deliverable" do
     Deliverable.any_instance.stubs(:valid?).returns(true)
+    session[:project_id] = 1
     post 'create'
     assigns[:deliverable].should_not be_new_record
     response.should redirect_to(:controller => "deliverables")
