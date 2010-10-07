@@ -6,7 +6,6 @@ class DeliverableTypeController < ApplicationController
 
     # populate deliverable_type array for DDL
     #@deliverable_types = Project.get_deliverable_type(Project.identify_deliverable_type(session[:phase]))
-    
 
     respond_to do |format|
       format.html
@@ -25,7 +24,8 @@ class DeliverableTypeController < ApplicationController
       if @deliverable.save
         format.html{ redirect_to :controller => "deliverables" }
       else
-        format.html{ render :action => "new"}
+        puts "BAD"
+        format.html{ render :action => "new", :status => :unprocessable_entity}
         #format.xml { render :xml => @deliverable.errors, :status => :unprocessable_entity }
       end
     end
