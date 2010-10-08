@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
 
   def self.identify_deliverable_type(phase)
     id = case phase
-    when "RequirementRequirements Gathering And Analysis" then "1"
+    when "Requirements Gathering And Analysis" then "1"
     when "System Design" then "2"
     when "Implementation" then "3"
     when "Testing" then "4"
