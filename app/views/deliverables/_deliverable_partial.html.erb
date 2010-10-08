@@ -26,7 +26,7 @@
         <td>
                 <%= select params[:devtype], params[:devtype], @deliverable_types %>
         </td>
-        <td><%= link_to "Add deliverable type", :controller=>'deliverable_type', :action=>'new' %></td>
+        <td><%= link_to "Add deliverable type", :action=>'validate_before_adding_new_type' %></td>
 </tr>
 
 <tr>
