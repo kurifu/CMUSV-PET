@@ -8,11 +8,13 @@ class DeliverablesController < ApplicationController
     @phases = Project.get_phase(lifecycle)
     @deliverables_of_phase = []#Project.find(session[:project_id]).deliverables.find_all_by_phase("Requirements Gathering And Analysis")
     @test = "in index"
+    @deliverable_types =[]
   end
 
   def update_deliverable_partial
-    @deliverable_types = Project.get_deliverable_type(session[:phase].to_s)
     @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
+    id = Project.identify_deliverable_type(params[:phase])
+    @deliverable_types = Project.get_deliverable_type(id)
     session[:phase] = params[:phase]
     render :update do |page|
       page.replace_html 'phase_partial', :partial => 'deliverable_partial', :object => @deliverables_of_phase
