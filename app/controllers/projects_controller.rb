@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-    @lifecycle_array = Project.get_lifecycle
+    @lifecycle_array = RailblazersXmlParser.get_lifecycle
     
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
       else
         puts "save failed"
         # needed to render new
-        @lifecycle_array = Project.get_lifecycle
+        @lifecycle_array = RailblazersXmlParser.get_lifecycle
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end

@@ -33,10 +33,10 @@ class DeliverableTypeController < ApplicationController
 
   private
   def initialize_for_selects
-    @deliverable_types = Project.get_deliverable_type(Project.identify_deliverable_type("System Design"))
-    @complexities = Project.get_common_values
-    @estimated_sizes = Project.get_common_values
-    @production_rates = Project.get_common_values
-    @efforts = Project.get_common_values
+    @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type("System Design"))
+    @complexities = RailblazersXmlParser.get_common_values
+    @estimated_sizes = RailblazersXmlParser.get_common_values
+    @production_rates = RailblazersXmlParser.get_common_values
+    @efforts = RailblazersXmlParser.get_common_values
   end
 end
