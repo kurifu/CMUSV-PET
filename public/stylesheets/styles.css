@@ -171,7 +171,7 @@ table.phase td {
 
 div.content {
     width: 500px;
-    
+    border: 1px solid red;
     margin: 0 auto;
     padding: 2px 2px 2px 2px;
     overflow: auto;
@@ -182,11 +182,13 @@ div.content input, div.content textarea, div.content select {
     float: right;
     margin: 2px 2px 2px 2px;
     
+    
 }
 
 /* Create Button on Create a Project Page*/
-input {
+div.mpart input {
     margin-bottom: 5px;
+    border: 1px solid red;
 }
 
 div.content select {
@@ -200,10 +202,10 @@ label {
     clear: both;
 }
 
-/* Figure this otu later */
-div.content textarea {
-    width: 304px;
-}
+
+
+
+
 
 /* New Deliverable Page */
 div#pet_calc {

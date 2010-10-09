@@ -7,6 +7,11 @@ describe DeliverableTypeController do
     controller.should be_an_instance_of(DeliverableTypeController)
   end
 
+  it "should create a new Deliverable" do
+    post 'new'
+    response.should render_template("deliverable_type/new")
+  end
+
   it "should not redirect to Phase page (deliverables/index) after creating a Deliverable" do
     Deliverable.any_instance.stubs(:valid?).returns(true)
     session[:project_id] = 1

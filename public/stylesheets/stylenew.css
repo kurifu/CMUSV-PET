@@ -252,3 +252,159 @@ width : 900px;
 text-decoration : none;
 background : #fff;
 }
+
+
+/* SCAFFOLD ERROR STYLES */
+.fieldWithErrors {
+  padding: 2px;
+}
+
+.fieldWithErrors label, .fieldWithErrors input {
+    background: red;
+}
+
+#errorExplanation {
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 16px;
+  margin: -7px;
+  background-color: #c00;
+  color: #000000;
+
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+/* END SCAFFOLD ERROR STYLES */
+
+/* custom styles */
+/* Create Project page */
+div.content {
+    width: 400px;
+    border: 1px solid black;
+    overflow: auto;
+    padding: 5px 10px 10px 10px;
+}
+
+div.content input, div.content textarea, div.content select {
+    width: 300px;
+    float: right;
+    margin: 2px 2px 2px 2px;
+}
+
+/* Figure this otu later */
+div.content textarea {
+    width: 304px;
+}
+
+div.content select, div.content_phase select {
+    width: 200px;
+    text-align: center;
+    clear: both;
+    margin-right: 50px;
+}
+
+input#project_submit, input#process_calc_inputs {
+    width: 50px;
+    clear: both;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-right: 150px;    /* TODO:  LOOK INTO THIS!*/
+    margin-top: 20px;
+}
+
+/* Phase Page */
+div.content_phase {
+    width: 650px;
+    
+}
+
+table#phase_partial {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    width: inherit;
+    text-align: center;
+}
+
+div#div_phase {
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px 0px 10px 0px;
+}
+div#div_phase select {
+    width: 250px;
+}
+
+th {
+    background: #a7cc44;
+    color: #666666;
+}
+
+div#add_deliverable {
+    width: inherit;
+    
+    text-align: center;
+}
+
+div#add_deliverable select {
+    width: 200px;
+    margin: 0 auto;
+}
+
+/* New Deliverable Page */
+
+input#deliverable_submit {
+    width: 75px;
+    clear: both;
+    border: 1px solid black;
+    margin-right: 110px;
+}
+
+div#new_del {
+    width: 500px;
+    border: 0px;
+}
+
+/* New Deliverable Page */
+div#pet_calc {
+    margin-top: 315px;
+    padding: 10px 0px 10px 20px;
+    border: 1px solid black;
+    overflow: auto;
+    clear: right;
+}
+
+/* TODO: FIX THIS!*/
+div#pet_calc input {
+    border: 1px solid black;
+    width: 75px;
+    clear: both;
+}
+
+div.content label {
+    float: left;
+    clear: left;
+}
+
+label#comp {
+    color: red;
+}

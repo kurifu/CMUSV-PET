@@ -1,7 +1,7 @@
 <tr>
-        <td class="centered heading">Deliverable</td>
-        <td class="centered heading">complexity</td>
-        <td class="centered heading">Action</td>
+        <th>Deliverable</th>
+        <th>Complexity</th>
+        <th>Action</th>
 </tr>
 
 <% for deliverable in @deliverables_of_phase %>
@@ -22,16 +22,14 @@
         <td>&nbsp;</td>
 </tr>
 <tr>
-        <td>Select Deliverable Type To Add</td>
-        <td>
-                <%= select params[:devtype], params[:devtype], @deliverable_types %>
-        </td>
-        <td><%= link_to "Add deliverable type", :action=>'validate_before_adding_new_type' %></td>
-</tr>
-
-<tr>
-        <td colspan="3"><a href="#">Next Phase</a></td>
+        <td>&nbsp;</td>
 </tr>
 <tr>
-        <td colspan="3"><a href="#">Over View</a></td>
+  <td colspan="3">
+    <div id="add_deliverable">
+      Select Deliverable Type To Add: <br/>
+      <%= select params[:devtype], params[:devtype], @deliverable_types %><br/>
+      <%= link_to "Add deliverable type", :action=>'validate_before_adding_new_type' %>
+    </div>
+  </td>
 </tr>

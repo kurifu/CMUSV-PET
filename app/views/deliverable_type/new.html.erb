@@ -1,47 +1,51 @@
-<div class="content">
+<div class="content" id="new_del">
 
   <% form_for @deliverable, :url=>{:action=>"create"} do |f| %>
       <%= f.error_messages %>
 
-      <%= f.label :deliverable_type, "Select Deliverable Type" %>
+      <!-- TODO:  Change to Table -->
       <%= select(:deliverable, :deliverable_type, @deliverable_types,
-      {:prompt   => "Select a phase"}) %>
+          {:prompt   => "Select a phase"}) %>
+      <%= f.label :deliverable_type, "Select Deliverable Type" %>
+      
       <br/>
-      <%= f.label :name, "Deliverable Name" %>
+      
       <%= f.text_field :name %>
-      <br/>
-      <%= f.label :description, "Deliverable Description" %>
+      <%= f.label :name, "Deliverable Name" %>
       <br/>
       <%= f.text_area :description %>
+      
+      <%= f.label :description, "Deliverable Description" %>
       <br/>
-      <%= f.label :complexity %>
+      
+      <%= f.label :complexity, :id => "comp" %>
       <%= select(:deliverable, :complexity, @complexities,
       {:prompt   => "Select a complexity"}) %>
       <br/>
-      <%= f.label :unit_measurement %>
       <%= f.text_field :unit_measurement %>
+      <%= f.label :unit_measurement %>
       <br/>
 
       <div id="pet_calc">
-        <%= f.label :estimated_size %>
         <%= select(:deliverable, :estimated_size, @estimated_sizes,
         {:prompt   => "Select a size"}) %>
+        <%= f.label :estimated_size %>
         <br/>
-        <%= f.label :production_rate %>
         <%= select(:deliverable, :production_rate, @production_rates,
         {:prompt   => "Select a production rate"}) %>
+        <%= f.label :production_rate %>
         <br/>
-        <%= f.label :estimated_effort %>
         <%= select(:deliverable, :estimated_effort, @efforts,
         {:prompt   => "Select a estimated effort"}) %>
+        <%= f.label :estimated_effort %>
         
         <%= f.submit 'Calculate', :action => "process_calc_inputs" %>
       </div>
-      
-</div>
 
-<%= link_to "Historical Data", "#" %>
+      <%= link_to "Historical Data", "#" %>
       <br/>
-      <%= f.submit 'Create' %>
+</div>
+    <%= f.submit 'Create' %>
 
   <% end %>
+

@@ -20,11 +20,12 @@
 
     <%= select(:project, :lifecycle, @lifecycle_array, {:prompt => "Select a Lifecycle"}) %>
 
+    
+    <%= f.submit 'Create' %>
+    
+  <% end %>
 </div>
 
-  <br/>
-    <%= f.submit 'Create' %>
-    <br/>
-  <% end %>
+  
 
   <%= link_to 'Back to Project Home', projects_path %>

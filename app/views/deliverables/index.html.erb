@@ -1,9 +1,16 @@
-Phase:<%= select(:deliverable, :phase, @phases,
-                      {:prompt   => "Select a phase"},
-                      {:onchange => "#{remote_function(:url  => {:action => "update_deliverable_partial"},
-                      :with => "'phase='+value")}"}) %>
-<table id="phase_partial" class="phase">
-        
-   <%= render :partial=>"deliverable_partial", :object=>@deliverables_of_phase %>
+<h1>Setting Up Project Phases</h1>
 
-</table>
+
+<div class="content_phase">
+  <div id="div_phase">
+    <%= select(:deliverable, :phase, @phases,
+      {:prompt   => "Select a phase"},
+      {:onchange => "#{remote_function(:url  => {:action => "update_deliverable_partial"},
+      :with => "'phase='+value")}"}) %>
+  </div>
+  <table id="phase_partial" class="phase">
+     <%= render :partial=>"deliverable_partial", :object=>@deliverables_of_phase %>
+  </table>
+  <a href="#">Over View</a><br/>
+  <a href="#">Next Phase</a>
+</div>
