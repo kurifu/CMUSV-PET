@@ -4,41 +4,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>PET v1.3 Create Project</title>
-    <%= stylesheet_link_tag "styles" %>
+    <%= stylesheet_link_tag "stylenew" %>
     <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <div id="container">
+    <div class="content">
       <div id="top">
-        Currently logged in as: Cliff Chen
-      </div>
-
-      <div id="left">
-        <ul>
-          <li>My Projects
-            <ul>
-              <li>Project MobileTraffic</li>
-              <li>Project AdSense</li>
+          <div id="icons">
+                  <a href="/projects" title="Home page">Home</a> |
+                  <a href="/contact/" title="Contact us">Contact</a>
+          </div>
+          <h1>PET v1.3</h1>
+          <h2>Ease your project management</h2>
+	</div>
+      <div id="menu">
+            <ul>	
+                    <li><a class="current" href="#" title="home">HOME</a></li>
+                    <li><a href="#" title="Projects">PROJECTS</a></li>
+                    <li><a href="#" title="Abous us">ABOUTS US</a></li>
+                    <li><a href="#" title="Contact">CONTACT</a></li>
+                    <li><a href="#" title="Login">LOG IN</a></li>
             </ul>
-          </li>
-
-          <li>My Teams
-            <ul>
-              <li>RailBlazers</li>
-              <li>Hi5 (metrics)</li>
-              <li>Hi5 (failures)</li>
-            </ul>
-          </li>
-        </ul>
       </div>
-
-      
       
       <div id="main">
-        <div id="notice"><%= flash[:notice] %></div>
-        <p style="color: green"><%= notice %></p>
-        <%= yield %>
+        <div id="right_side">
+        <div class="pad">
+          <img src="/images/rails.png"/>
+          <h3>The Process Enactment Tool (PET) is a product of ND System Solutions’ Software Engineering Division. Its target user group consists of managers and software developers.
+            </h3>
+                <h3>My projects</h3>
+                <ul>
+                      <li><a href="#" title="Pet 1.0">Pet 1.0</a></li>
+                      <li><a href="#" title="Pet 1.0">Pet 1.1</a></li>
+                      <li><a href="#" title="Pet 1.0">Pet 1.2</a></li>
+                       
+                </ul>
+
+                <h3>My teams</h3>
+                <ul>
+                      <li><a href="#" title="RailBlazers">RailBlazers</a></li>
+                      <li><a href="#" title="RailBlazers">RailBlazers</a></li>
+                      <li><a href="#" title="RailBlazers">RailBlazers</a></li>
+
+                </ul>
+        </div>
+        </div>
+        <div id="left_side">
+          <div class="intro">
+                  <div class="pad">The Process Enactment Tool (PET) is a product of ND System Solutions’ Software Engineering Division. Its target user group consists of managers and software developers.
+                  <br /><a href="#" title="Pet">Read more...</a>
+
+                  </div>
+          </div>
+          <div class="mpart">
+            <p style="color: green"><%= notice %></p>
+            <%= yield %>
+          </div>
+        </div>
       </div>
+      
+      <div id="footer">
+		<div class="right">&copy; Copyright 2010, PET 1.3 <br />
+			ND System Solutions
+		</div>
+	</div>
     </div>
 
   </body>
