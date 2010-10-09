@@ -25,13 +25,22 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.xml
   def new
+    begin
     @project = Project.new
     @lifecycle_array = RailblazersXmlParser.get_lifecycle
-    
+    @error_msg
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
     end
+    rescue Exception => ex
+    @error_msg = ex.message
+     
+    render "projects/error"
+    end
+  end
+
+  def error
   end
 
   # GET /projects/1/edit
