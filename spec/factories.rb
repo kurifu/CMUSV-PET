@@ -27,7 +27,7 @@ end
 Factory.define :deliverable, :class=>'Deliverable' do |d|
   d.deliverable_type "User Requirement Documnet"
   d.phase 'iteration1'
-  d.project_id 1
+  d.project_id 100
   d.name 'user requirement document'
   d.deliverable_url '/deliverables/'
   d.complexity 'high'
@@ -37,3 +37,9 @@ Factory.define :deliverable, :class=>'Deliverable' do |d|
   d.production_rate 32.3
 end
 
+# deliverable_controller_spec
+Factory.define :del_project, :class => 'Project' do |t|
+  t.name 'Temp'
+  t.id 100
+  t.lifecycle "Simplified WaterFall"
+end

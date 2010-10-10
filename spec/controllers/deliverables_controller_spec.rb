@@ -2,21 +2,70 @@ require 'spec_helper'
 
 describe DeliverablesController do
 
-  #Delete this example and add some real ones
+  before(:each) do
+    # doesn't work for catching errors
+    #controller.use_rails_error_handling!
+    #Deliverable.stub!(:index).and_raise(ActiveRecord::RecordNotFound)
+    #Deliverable.any_instance.stubs(:index).and_raise(ActiveRecord::RecordNotFound)
+    #get "index"
+
+    # mocha example, doesn't work..
+    #object = mock()
+    #object.expects(:index).raises(Exception, 'blah')
+    #object.expected_method # => raises exception of class Exception and with message 'message'
+
+
+    project = Factory.create(:del_project)
+    project.should be_valid
+  end
+
   it "should use DeliverablesController" do
     controller.should be_an_instance_of(DeliverablesController)
   end
 
-=begin
-  it "should display the Phase page (index)" do
-    session[:project_id] = 1
+
+  # NOTE: Fails if we move the Factory.build to the before(:each) section.... wtf??
+  it "should display the Phase page (index) given a project_id" do
+    del = Factory.build(:deliverable)
+    del.should be_valid
+    session[:project_id] = del.project_id
     get "index"
-    response.should render_template("deliverables")
+    response.should render_template("deliverables/index")
+  end
+
+=begin
+  # TODO:  Figure out how to test get "index" fails without a project_id (opposite case as the one above)
+  it "should not display the Phase page (index) without a project_id" do
+    Deliverable.any_instance.stubs(:valid?).returns(false)
+    
+
+    # doesn't work
+    #get "index", :id => nil
+    #response.response_code.should == 404
+
+    #session[:project_id] = nil
+    #get "index"
+    #response.should be_invalid
   end
 =end
 
-  it "it should populate via AJAX the deliverables table when I select a new phase" do
-    
+  it "it should populate del table via AJAX when I select a new phase" do
+    del = Factory.build(:deliverable)
+    del.should_not be_invalid
+    session[:project_id] = del.project_id
+    get :update_deliverable_partial
+
+    # TODO:  this is not right for flash!
+    # missing params[:phase], should display error
+    flash[:notice].should_not be_nil
+
+=begin
+    params[:phase] = "Testing"
+    params[:phase].should_not be_nil
+    xhr get :update_deliverable_partial, params[:phase]
+    flash[:notice].should be_nil
+=end
   end
+
 end
 

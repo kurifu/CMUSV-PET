@@ -12,6 +12,7 @@ class DeliverablesController < ApplicationController
   end
 
   def update_deliverable_partial
+    puts "CHECK:  #{params[:phase]}"
     @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
 
     if params[:phase].blank?

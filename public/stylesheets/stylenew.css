@@ -297,10 +297,16 @@ background : #fff;
 /* END SCAFFOLD ERROR STYLES */
 
 /* custom styles */
+/* Project Homepage */
+table#content_table {
+    border: 1px solid black;
+    text-align: center;
+}
+
 /* Create Project page */
 div.content {
     width: 400px;
-    border: 1px solid black;
+    
     overflow: auto;
     padding: 5px 10px 10px 10px;
 }
@@ -333,9 +339,8 @@ input#project_submit, input#process_calc_inputs {
 }
 
 /* Phase Page */
-div.content_phase {
+div.content_phase, table#content_table {
     width: 650px;
-    
 }
 
 table#phase_partial {
