@@ -100,6 +100,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.xml
   def destroy
     @project = Project.find(params[:id])
+    @project.deliverables.each { |d| d.destroy  }
     @project.destroy
 
     respond_to do |format|
