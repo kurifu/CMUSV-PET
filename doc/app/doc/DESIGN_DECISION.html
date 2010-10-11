@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: DESIGN_DECISION [Rail Blazers PET v1.3 Documentation]</title>
+
+	<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+					<li class="file"><a href="../doc/DESIGN_DECISION.html">DESIGN_DECISION</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="../ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="../Deliverable.html">Deliverable</a></li>
+				
+					<li><a href="../DeliverableTypeController.html">DeliverableTypeController</a></li>
+				
+					<li><a href="../DeliverableTypeHelper.html">DeliverableTypeHelper</a></li>
+				
+					<li><a href="../DeliverablesController.html">DeliverablesController</a></li>
+				
+					<li><a href="../DeliverablesHelper.html">DeliverablesHelper</a></li>
+				
+					<li><a href="../Project.html">Project</a></li>
+				
+					<li><a href="../ProjectsController.html">ProjectsController</a></li>
+				
+					<li><a href="../ProjectsHelper.html">ProjectsHelper</a></li>
+				
+					<li><a href="../RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<p>
+<b>Key design decisions</b>
+</p>
+<p>
+Team Rail Blazers make the decision to use xml to store static data.
+Disadvantages of using DB:
+</p>
+<ul>
+<li><p>
+Accessing DB is a “cost” from a real life project
+</p>
+</li>
+<li><p>
+Consumes a bit of memory each access
+</p>
+</li>
+</ul>
+<p>
+Solution: put static data in XML files
+</p>
+<ul>
+<li><p>
+We will have accessor methods to pull out the data from XML, then store
+these values into the Dyanmic Tables
+</p>
+</li>
+</ul>
+<p>
+Advantages of this Approach:
+</p>
+<ul>
+<li><p>
+Static data does not affect and will not be affected by Dynamic data;
+completely separate
+</p>
+</li>
+<li><p>
+We avoid joining 4 tables when looking up an entry in the Deliverables
+table; the static data will already be there because we already populated
+them
+</p>
+</li>
+</ul>
+<p>
+Static Tables to be Turned into XML Files:
+</p>
+<ul>
+<li><p>
+Lifecycle
+</p>
+</li>
+<li><p>
+Phase
+</p>
+</li>
+<li><p>
+Deliverable_Type
+</p>
+</li>
+<li><p>
+Unit of Measurement
+</p>
+</li>
+</ul>
+<p>
+XML Accessor Methods:
+</p>
+<ul>
+<li><p>
+Will need to parse XML file and return one or more values in one or more
+formats (single value, array, array of specific values, etc)
+</p>
+</li>
+</ul>
+<p>
+<b>Database design</b>
+</p>
+<p>
+Deliverables Tables Project_id  Deliverable_id  lifecycle   phase  
+deliverable_type deliverable_name    deliverable_desc deliverable_url
+complexity  unit_of_measurement estimated_size  production_rate
+estimated_effort        
+</p>
+<p>
+Projects Table project_id  project_name    project_desc    project_status 
+lifecycle
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

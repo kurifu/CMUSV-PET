@@ -1,0 +1,33 @@
+<b>Key design decisions</b>
+
+Team Rail Blazers make the decision to use xml to store static data.
+Disadvantages of using DB:
+- Accessing DB is a “cost” from a real life project
+- Consumes a bit of memory each access
+
+Solution: put static data in XML files
+- We will have accessor methods to pull out the data from XML, then store these values into the Dyanmic Tables
+
+Advantages of this Approach:
+- Static data does not affect and will not be affected by Dynamic data; completely separate
+- We avoid joining 4 tables when looking up an entry in the Deliverables table; the static data will already be there because we already populated them
+
+Static Tables to be Turned into XML Files:
+- Lifecycle
+- Phase
+- Deliverable_Type
+- Unit of Measurement
+
+XML Accessor Methods:
+- Will need to parse XML file and return one or more values in one or more formats (single value, array, array of specific values, etc)
+
+<b>Database design</b>
+
+Deliverables Tables
+Project_id  Deliverable_id  lifecycle   phase   deliverable_type deliverable_name    deliverable_desc deliverable_url complexity  unit_of_measurement estimated_size  production_rate estimated_effort        
+
+
+Projects Table
+project_id  project_name    project_desc    project_status  lifecycle
+
+
