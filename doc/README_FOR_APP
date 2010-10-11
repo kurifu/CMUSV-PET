@@ -1,4 +1,9 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Iteration1:
+Story cards completed:
+- Story Card 3, "As a user, I can create a project and enter name, description and lifecycle"
+- Story Card 8, "As a user, I can add a new deliverable type from the existing list of deliverable types.  As a user, I can enter name, description, complexity, estimated size and production rate to the new deliverable."
 
-9/29/10:	Created iteration1 branch, testing git -Cliff
+Story cards in progress:
+- Story Card 15, "As a user, I can view the project phase page.  As a user, I can see all deliverables associated with each phase."
+	- Missing one or two RSpec tests before complete
+- Story Card 10, "As a user, I can provide deliverable size and production rate to PET and expect PET to calculate effort with the correct equation"

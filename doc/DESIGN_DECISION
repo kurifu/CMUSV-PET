@@ -1,12 +1,12 @@
 <b>Key design decisions</b>
 
-Team Rail Blazers make the decision to use xml to store static data.
+Team Rail Blazers made the decision to use xml to store static data.
 Disadvantages of using DB:
 - Accessing DB is a “cost” from a real life project
 - Consumes a bit of memory each access
 
 Solution: put static data in XML files
-- We will have accessor methods to pull out the data from XML, then store these values into the Dyanmic Tables
+- We will have accessor methods to pull out the data from XML, then store these values into Dyanmic Tables
 
 Advantages of this Approach:
 - Static data does not affect and will not be affected by Dynamic data; completely separate
