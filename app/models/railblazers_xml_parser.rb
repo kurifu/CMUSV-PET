@@ -5,9 +5,6 @@ include REXML
 #and populate the corresponding dropdown lists
 
 class RailblazersXmlParser
-  def initialize
-    
-  end
 
   @doc = Document.new File.new("./public/static_table.xml")
   @root = @doc.root
@@ -88,6 +85,9 @@ class RailblazersXmlParser
     return unit
   end
 
+#This method is used to populate dropdown lists that hold similar values
+#Input: None
+#Output: string array => Low, Medium, High
   def self.get_common_values
     common_values = Array.new
     temp_complexity =
@@ -96,7 +96,11 @@ class RailblazersXmlParser
     return common_values
   end
 
- 
+#This method takes a string value as input and generates decimal value as output
+#This is required since user selects either Low, Medium or High for estimated effort 
+#wherein for computational purpose an integer value is required
+#Input: string 
+#Output: integer
   def self.get_estimated_size(effort)
     estimated_size = case effort
       when "Low" then @LOW
