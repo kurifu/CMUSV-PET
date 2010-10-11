@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: RailblazersXmlParser</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./app/models/railblazers_xml_parser_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/railblazers_xml_parser.rb">app/models/railblazers_xml_parser.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-get_common_values">::get_common_values</a></li>
+					
+					<li><a href="#method-c-get_deliverable_type">::get_deliverable_type</a></li>
+					
+					<li><a href="#method-c-get_estimated_size">::get_estimated_size</a></li>
+					
+					<li><a href="#method-c-get_lifecycle">::get_lifecycle</a></li>
+					
+					<li><a href="#method-c-get_phase">::get_phase</a></li>
+					
+					<li><a href="#method-c-get_unit_of_measurement">::get_unit_of_measurement</a></li>
+					
+					<li><a href="#method-c-identify_deliverable_type">::identify_deliverable_type</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./Deliverable.html">Deliverable</a></li>
+				
+					<li><a href="./DeliverableTypeController.html">DeliverableTypeController</a></li>
+				
+					<li><a href="./DeliverableTypeHelper.html">DeliverableTypeHelper</a></li>
+				
+					<li><a href="./DeliverablesController.html">DeliverablesController</a></li>
+				
+					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
+				
+					<li><a href="./Project.html">Project</a></li>
+				
+					<li><a href="./ProjectsController.html">ProjectsController</a></li>
+				
+					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
+				
+					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">RailblazersXmlParser</h1>
+
+		<div id="description">
+			<p>
+This class contains all the methods to fetch data from the static database 
+and populate the corresponding dropdown lists
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="get-common-values-method" class="method-detail ">
+				<a name="method-c-get_common_values"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_common_values</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method is used to populate dropdown lists that hold similar values
+Input: None Output: string array => Low, Medium, High
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-common-values-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 91</span>
+91:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_common_values</span>
+92:     <span class="ruby-identifier">common_values</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+93:     <span class="ruby-identifier">temp_complexity</span> =
+94:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;complexity&quot;</span>].<span class="ruby-identifier">text</span>
+95:     <span class="ruby-identifier">common_values</span> = <span class="ruby-identifier">temp_complexity</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+96:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">common_values</span>
+97:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-deliverable-type-method" class="method-detail ">
+				<a name="method-c-get_deliverable_type"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_deliverable_type</span><span
+						class="method-args">(id)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method takes the return value of self.<a
+href="RailblazersXmlParser.html#method-c-identify_deliverable_type">identify_deliverable_type</a>
+as input and provides a list of deliverable types as output  Input : string
+=> return value of self.<a
+href="RailblazersXmlParser.html#method-c-identify_deliverable_type">identify_deliverable_type</a>
+Output: string array => deliverable types
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-deliverable-type-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 68</span>
+68:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_deliverable_type</span>(<span class="ruby-identifier">id</span>)
+69:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+70:     <span class="ruby-identifier">temp_deliverable_type</span> =
+71:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;name&quot;</span>].<span class="ruby-identifier">text</span>
+72:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-identifier">temp_deliverable_type</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+73:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">deliverable_type</span>
+74:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-estimated-size-method" class="method-detail ">
+				<a name="method-c-get_estimated_size"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_estimated_size</span><span
+						class="method-args">(effort)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method takes a string value as input and generates decimal value as
+output This is required since user selects either Low, Medium or High for
+estimated effort  wherein for computational purpose an integer value is
+required Input: string  Output: integer
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-estimated-size-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 104</span>
+104:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_estimated_size</span>(<span class="ruby-identifier">effort</span>)
+105:     <span class="ruby-identifier">estimated_size</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">effort</span>
+106:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Low&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-ivar">@LOW</span>
+107:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Medium&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-ivar">@MEDIUM</span>
+108:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;High&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-ivar">@HIGH</span>
+109:     <span class="ruby-keyword kw">end</span>
+110:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">estimated_size</span>
+111:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-lifecycle-method" class="method-detail ">
+				<a name="method-c-get_lifecycle"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_lifecycle</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method provides a list of lifecycle Input : None Output: string array
+=> lifecycle models
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-lifecycle-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 18</span>
+18:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_lifecycle</span>
+19:     <span class="ruby-identifier">lifecycle</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+20:     <span class="ruby-identifier">counter</span> = <span class="ruby-value">0</span>
+21:     <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">&quot;*/lifecycle&quot;</span>){
+22:       <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lifecycle</span>[<span class="ruby-identifier">counter</span>] = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">&quot;model&quot;</span>].<span class="ruby-identifier">to_s</span>
+23:       <span class="ruby-identifier">counter</span> = <span class="ruby-identifier">counter</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+24:     }
+25:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lifecycle</span>
+26:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-phase-method" class="method-detail ">
+				<a name="method-c-get_phase"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_phase</span><span
+						class="method-args">(model)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method provides a list of lifecycle phases Input : string => lifecycle
+model Output: string array => lifecycle phases
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-phase-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 31</span>
+31:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-identifier">model</span>)
+32:     <span class="ruby-identifier">phase</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+33:     <span class="ruby-identifier">temp_phase</span> =
+34:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;lifecycle[@model='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">model</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;phase&quot;</span>].<span class="ruby-identifier">text</span>
+35:     <span class="ruby-identifier">phase</span> = <span class="ruby-identifier">temp_phase</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+36:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">phase</span>
+37:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-unit-of-measurement-method" class="method-detail ">
+				<a name="method-c-get_unit_of_measurement"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_unit_of_measurement</span><span
+						class="method-args">(id)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This method takes the return value of self.<a
+href="RailblazersXmlParser.html#method-c-identify_deliverable_type">identify_deliverable_type</a>
+as input and provides a list of unit of measurements as output  Input :
+string => return value of self.<a
+href="RailblazersXmlParser.html#method-c-identify_deliverable_type">identify_deliverable_type</a>
+Output: string array => unit of measurement
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-unit-of-measurement-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 80</span>
+80:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_unit_of_measurement</span>(<span class="ruby-identifier">id</span>)
+81:     <span class="ruby-identifier">unit</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+82:     <span class="ruby-identifier">temp_unit</span> =
+83:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;unit&quot;</span>].<span class="ruby-identifier">text</span>
+84:     <span class="ruby-identifier">unit</span> = <span class="ruby-identifier">temp_unit</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+85:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">unit</span>
+86:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="identify-deliverable-type-method" class="method-detail ">
+				<a name="method-c-identify_deliverable_type"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">identify_deliverable_type</span><span
+						class="method-args">(phase)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This is an internal method used to populate deliverable types for each
+phase. The method takes in phase as input and outputs an id which can be
+fed into
+</p>
+<pre>
+ #self.get_deliverable_type method to get appropriate deliverable type
+</pre>
+<p>
+Input : string => phase Output: string => id
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="identify-deliverable-type-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">identify_deliverable_type</span>(<span class="ruby-identifier">phase</span>)
+45:     <span class="ruby-identifier">id</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">phase</span>
+46:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements Gathering And Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
+47:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;System Design&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;2&quot;</span>
+48:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
+49:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
+50:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Deployment&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
+51:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Maintenance&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;6&quot;</span>
+52:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Plannig&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;7&quot;</span>
+53:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Risk Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;8&quot;</span>
+54:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Engineering&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;9&quot;</span>
+55:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Evaluation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;10&quot;</span>
+56:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
+57:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation And Unit Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
+58:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Integration And System Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
+59:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Operation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
+60:     <span class="ruby-keyword kw">end</span>
+61:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">id</span>
+62:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

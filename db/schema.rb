@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101006191458) do
+ActiveRecord::Schema.define(:version => 20101011045850) do
 
   create_table "deliverables", :force => true do |t|
     t.integer "project_id",       :default => -1, :null => false
@@ -23,10 +23,6 @@ ActiveRecord::Schema.define(:version => 20101006191458) do
     t.string  "deliverable_type"
     t.string  "phase"
     t.text    "description"
-  end
-
-  create_table "lifecycles", :force => true do |t|
-    t.string "name", :null => false
   end
 
   create_table "projects", :force => true do |t|
