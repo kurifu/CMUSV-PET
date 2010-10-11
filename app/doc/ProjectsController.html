@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="./projects_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="projects_controller.rb">projects_controller.rb</a></li>
+						<li><a href="./controllers/projects_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="controllers/projects_controller.rb">controllers/projects_controller.rb</a></li>
 					
 					</ul>
 				</div>
@@ -116,11 +116,27 @@
 				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
+					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./Deliverable.html">Deliverable</a></li>
+				
 					<li><a href="./DeliverableTypeController.html">DeliverableTypeController</a></li>
+				
+					<li><a href="./DeliverableTypeHelper.html">DeliverableTypeHelper</a></li>
 				
 					<li><a href="./DeliverablesController.html">DeliverablesController</a></li>
 				
+					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
+				
+					<li><a href="./Lifecycle.html">Lifecycle</a></li>
+				
+					<li><a href="./Project.html">Project</a></li>
+				
 					<li><a href="./ProjectsController.html">ProjectsController</a></li>
+				
+					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
+				
+					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -169,7 +185,7 @@
 					<div class="method-source-code"
 						id="create-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 49</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 49</span>
 49:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
 50:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
 51:     
@@ -226,7 +242,7 @@ Deletes a project
 					<div class="method-source-code"
 						id="destroy-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 90</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 90</span>
 90:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
 91:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 92:     <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>  }
@@ -267,7 +283,7 @@ Deletes a project
 					<div class="method-source-code"
 						id="edit-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 45</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 45</span>
 45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
 46:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 47:   <span class="ruby-keyword kw">end</span></pre>
@@ -301,7 +317,7 @@ Deletes a project
 					<div class="method-source-code"
 						id="error-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 41</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 41</span>
 41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>
 42:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
@@ -328,7 +344,8 @@ Deletes a project
 				<div class="method-description">
 					
 					<p>
-Displays all the projects on the Project Index page
+Displays all the projects on the <a href="Project.html">Project</a> Index
+page
 </p>
 					
 
@@ -336,7 +353,7 @@ Displays all the projects on the Project Index page
 					<div class="method-source-code"
 						id="index-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 4</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 4</span>
  4:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
  5:     <span class="ruby-ivar">@projects</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">all</span>
  6: 
@@ -377,7 +394,7 @@ TODO : delete in future iterations
 					<div class="method-source-code"
 						id="integrate-with-delilverables-source">
 <pre>
-     <span class="ruby-comment cmt"># File projects_controller.rb, line 102</span>
+     <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 102</span>
 102:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">integrate_with_delilverables</span>
 103:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
 104:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;deliverables&quot;</span>
@@ -414,7 +431,7 @@ Creates a new project
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 25</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 25</span>
 25:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
 26:     <span class="ruby-keyword kw">begin</span>
 27:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>
@@ -462,7 +479,7 @@ Displays project details for the selected project
 					<div class="method-source-code"
 						id="show-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 14</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 14</span>
 14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
 15:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 16: 
@@ -503,7 +520,7 @@ Updates the selected project with the content as modified by the user
 					<div class="method-source-code"
 						id="update-source">
 <pre>
-    <span class="ruby-comment cmt"># File projects_controller.rb, line 75</span>
+    <span class="ruby-comment cmt"># File controllers/projects_controller.rb, line 75</span>
 75:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
 76:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 77: 
