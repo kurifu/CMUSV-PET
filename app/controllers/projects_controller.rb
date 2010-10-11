@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
-  # GET /projects
-  # GET /projects.xml
 
+#Displays all the projects on the Project Index page
   def index
     @projects = Project.all
 
@@ -11,8 +10,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1
-  # GET /projects/1.xml
+#Displays project details for the selected project
   def show
     @project = Project.find(params[:id])
 
@@ -22,8 +20,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/new
-  # GET /projects/new.xml
+
+#Creates a new project
   def new
     begin
     @project = Project.new
@@ -43,32 +41,25 @@ class ProjectsController < ApplicationController
   def error
   end
 
-  # GET /projects/1/edit
+ 
   def edit
     @project = Project.find(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.xml
-  def create
+   def create
     @project = Project.new(params[:project])
     
-    #@project.lifecycle = Lifecycle.find_by_id(@project.lifecycle_id)
     
     respond_to do |format|
       if @project.save
         puts "save successful"
-        # TODO:  save project_id if we edit existing project
-        #       phase + overview + project home
         session[:project_id] = @project.id
         session[:phase] = "Planning"
         
-        #format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.html { redirect_to :controller=> "deliverables" }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         puts "save failed"
-        # needed to render new
         @lifecycle_array = RailblazersXmlParser.get_lifecycle
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
@@ -80,8 +71,7 @@ class ProjectsController < ApplicationController
       redirect_to :action => 'new'
   end
 
-  # PUT /projects/1
-  # PUT /projects/1.xml
+#Updates the selected project with the content as modified by the user
   def update
     @project = Project.find(params[:id])
 
@@ -96,8 +86,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.xml
+#Deletes a project
   def destroy
     @project = Project.find(params[:id])
     @project.deliverables.each { |d| d.destroy  }

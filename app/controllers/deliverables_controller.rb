@@ -1,6 +1,7 @@
 class DeliverablesController < ApplicationController
 
-  # Phase Page
+#Populates static data and creates a new instance of Deliverable class and 
+#binds the @deliverable variable with the form element of Phase page
   def index
     session[:phase] = nil
     @deliverable = Deliverable.new
@@ -11,6 +12,8 @@ class DeliverablesController < ApplicationController
     @deliverable_types =[]
   end
 
+# This is an AJAX function which updates the Phase table and the Deliverable Type dropdown
+#list based on the phase selected in the Phase dropdown list
   def update_deliverable_partial
     puts "CHECK:  #{params[:phase]}"
     @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
@@ -30,6 +33,7 @@ class DeliverablesController < ApplicationController
     
   end
 
+#Validates the presence of phase in the Phase dropdown list
   def validate_before_adding_new_type
     if session[:phase].blank?
       flash[:notice] = "Please select a phase"

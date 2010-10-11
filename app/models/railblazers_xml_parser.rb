@@ -1,7 +1,8 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
 require 'rexml/document'
 include REXML
+
+#This class contains all the methods to fetch data from the static database 
+#and populate the corresponding dropdown lists
 
 class RailblazersXmlParser
   def initialize
@@ -14,6 +15,9 @@ class RailblazersXmlParser
   @MEDIUM = 20
   @HIGH = 30
 
+#This method provides a list of lifecycle
+#Input : None
+#Output: string array => lifecycle models
   def self.get_lifecycle
     lifecycle = Array.new
     counter = 0
@@ -24,6 +28,9 @@ class RailblazersXmlParser
     return lifecycle
   end
 
+#This method provides a list of lifecycle phases
+#Input : string => lifecycle model
+#Output: string array => lifecycle phases
   def self.get_phase(model)
     phase = Array.new
     temp_phase =
@@ -32,6 +39,11 @@ class RailblazersXmlParser
     return phase
   end
 
+#This is an internal method used to populate deliverable types for each phase.
+#The method takes in phase as input and outputs an id which can be fed into
+# #self.get_deliverable_type method to get appropriate deliverable type
+#Input : string => phase
+#Output: string => id
   def self.identify_deliverable_type(phase)
     id = case phase
     when "Requirements Gathering And Analysis" then "1"
@@ -52,6 +64,10 @@ class RailblazersXmlParser
     return id
   end
 
+#This method takes the return value of #self.identify_deliverable_type
+#as input and provides a list of deliverable types as output 
+#Input : string => return value of #self.identify_deliverable_type
+#Output: string array => deliverable types
   def self.get_deliverable_type(id)
     deliverable_type = Array.new
     temp_deliverable_type =
@@ -60,6 +76,10 @@ class RailblazersXmlParser
     return deliverable_type
   end
 
+#This method takes the return value of #self.identify_deliverable_type
+#as input and provides a list of unit of measurements as output 
+#Input : string => return value of #self.identify_deliverable_type
+#Output: string array => unit of measurement
   def self.get_unit_of_measurement(id)
     unit = Array.new
     temp_unit =
@@ -76,7 +96,7 @@ class RailblazersXmlParser
     return common_values
   end
 
-  # Fine for card 8, need to change this to accept 2 out of 3 values for card 10
+ 
   def self.get_estimated_size(effort)
     estimated_size = case effort
       when "Low" then @LOW
