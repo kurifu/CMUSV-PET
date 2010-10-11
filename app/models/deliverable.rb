@@ -30,5 +30,5 @@ class Deliverable < ActiveRecord::Base
     :unless => Proc.new { |u| u.deliverable_url.blank?}
   validates_numericality_of :project_id, :only_integer => true
 
-  belongs_to project
+  belongs_to :project
 end
