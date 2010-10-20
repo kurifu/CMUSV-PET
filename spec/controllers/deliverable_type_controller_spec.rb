@@ -12,7 +12,7 @@ describe DeliverableTypeController do
     response.should render_template("deliverable_type/new")
   end
 
-  it "should not redirect to Phase page (deliverables/index) after creating a Deliverable" do
+  it "should redirect to Phase page (deliverables/index) after creating a Deliverable" do
     Deliverable.any_instance.stubs(:valid?).returns(true)
     session[:project_id] = 1
     post 'create'
@@ -20,7 +20,7 @@ describe DeliverableTypeController do
     response.should redirect_to(:controller => "deliverables")
   end
 
-  it "should redirect to Phase page (deliverables/index) after creating a Deliverable" do
+  it "should not redirect to Phase page (deliverables/index) after creating a Deliverable" do
     Deliverable.any_instance.stubs(:valid?).returns(false)
     post 'create'
     assigns[:deliverable].should be_new_record

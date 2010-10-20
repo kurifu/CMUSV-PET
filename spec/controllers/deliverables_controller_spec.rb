@@ -36,8 +36,13 @@ describe DeliverablesController do
 =begin
   # TODO:  Figure out how to test get "index" fails without a project_id (opposite case as the one above)
   it "should not display the Phase page (index) without a project_id" do
-    Deliverable.any_instance.stubs(:valid?).returns(false)
+    del = Factory.build(:deliverable)
+    del.should be_valid
+    session[:project_id] = -1
+    get"index"
+    response.should be_invalid
     
+    #Deliverable.any_instance.stubs(:valid?).returns(false)
 
     # doesn't work
     #get "index", :id => nil
@@ -53,18 +58,18 @@ describe DeliverablesController do
     del = Factory.build(:deliverable)
     del.should_not be_invalid
     session[:project_id] = del.project_id
-    get :update_deliverable_partial
+    xhr :get, :update_deliverable_partial, :phase => del.phase
+    response.should render_template("_deliverable_partial")
+    session[:test_dtypes].should_not be_nil
+  end
 
-    # TODO:  this is not right for flash!
-    # missing params[:phase], should display error
-    flash[:notice].should_not be_nil
-
-=begin
-    params[:phase] = "Testing"
-    params[:phase].should_not be_nil
-    xhr get :update_deliverable_partial, params[:phase]
-    flash[:notice].should be_nil
-=end
+  it "it should NOT populate del table via AJAX when I select a new phase" do
+    del = Factory.build(:deliverable)
+    del.should_not be_invalid
+    session[:project_id] = del.project_id
+    xhr :get, :update_deliverable_partial
+    response.should_not render_template("_deliverable_partial")
+    session[:test_dtypes].should be_nil
   end
 
 end

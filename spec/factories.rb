@@ -25,10 +25,10 @@ end
 
 # Deliverable Table Tests
 Factory.define :deliverable, :class=>'Deliverable' do |d|
-  d.deliverable_type "User Requirement Documnet"
-  d.phase 'iteration1'
+  d.deliverable_type 4
+  d.phase 'Testing'
   d.project_id 100
-  d.name 'user requirement document'
+  d.name 'xyz11'
   d.deliverable_url '/deliverables/'
   d.complexity 'high'
   d.unit_measurement 'pages'

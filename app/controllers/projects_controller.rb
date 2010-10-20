@@ -52,14 +52,14 @@ class ProjectsController < ApplicationController
     
     respond_to do |format|
       if @project.save
-        puts "save successful"
+        #puts "save successful"
         session[:project_id] = @project.id
         session[:phase] = "Planning"
         
         format.html { redirect_to :controller=> "deliverables" }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
-        puts "save failed"
+        #puts "save failed"
         @lifecycle_array = RailblazersXmlParser.get_lifecycle
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
