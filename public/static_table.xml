@@ -11,30 +11,56 @@
    </lifecycle>
 
    <deliverable_type id="1">
-        <name>xyz, abc </name>
-        <unit>dummy1, dummy2, dummy3</unit>
+        <name>xyz1,abc1</name>
+        <unit>dummy1, dummy1, dummy1</unit>
    </deliverable_type>
 
    <deliverable_type id="2">
-        <name>name1, name2 </name>
-        <unit>dummy11, dummy22, dummy33</unit>
+        <name>name2,name2 </name>
+        <unit>dummy2,dummy2,dummy2</unit>
    </deliverable_type>
 
    <deliverable_type id="3">
-        <name>xyz1, abc1 </name>
-        <unit>dummy111, dummy222, dummy333</unit>
+        <name>xyz3,abc3</name>
+        <unit>dummy3,dummy3,dummy3</unit>
    </deliverable_type>
 
    <deliverable_type id="4">
-        <name>xyz11, abc22 </name>
-        <unit>dummy1111, dummy2222, dummy3333</unit>
+        <name>xyz4,abc4</name>
+        <unit>dummy4,dummy4,dummy4</unit>
    </deliverable_type>
 
    <deliverable_type id="5">
-        <name>xyz111, abc222 </name>
-        <unit>dummy11111, dummy22222, dummy33333</unit>
+        <name>xyz5,abc5</name>
+        <unit>dummy5,dummy5,dummy5</unit>
+   </deliverable_type>
+    
+   <deliverable_type id="6">
+        <name>xyz1116,abc2226</name>
+        <unit>dummy6,dummy6,dummy6</unit>
    </deliverable_type>
 
+    <deliverable_type id="7">
+        <name>xyz7,abc7</name>
+        <unit>dummy7,dummy7,dummy7</unit>
+    </deliverable_type>
+ 
+    <deliverable_type id="8">
+        <name>xyz8,abc8</name>
+        <unit>dummy8,dummy8,dummy8</unit>
+   </deliverable_type>
+
+    <deliverable_type id="9">
+        <name>xyz9,abc9</name>
+        <unit>dummy9,dummy9,dummy9</unit>
+   </deliverable_type>
+
+    <deliverable_type id="10">
+        <name>xyz10,abc10</name>
+        <unit>dummy10,dummy10,dummy10</unit>
+   </deliverable_type>
+
+    
    <complexity>Low, Medium, High </complexity>
 
 </root>

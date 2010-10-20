@@ -49,7 +49,7 @@ class RailblazersXmlParser
     when "Testing" then "4"
     when "Deployment" then "5"
     when "Maintenance" then "6"
-    when "Plannig" then "7"
+    when "Planning" then "7"
     when "Risk Analysis" then "8"
     when "Engineering" then "9"
     when "Evaluation" then "10"
