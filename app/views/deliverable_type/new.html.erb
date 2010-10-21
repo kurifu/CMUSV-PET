@@ -3,44 +3,47 @@
   <% form_for @deliverable, :url=>{:action=>"create"} do |f| %>
       <%= f.error_messages %>
 
-      <!-- TODO:  Change to Table -->
-      <%= select(:deliverable, :deliverable_type, @deliverable_types,
-          {:prompt   => "Select a phase"}) %>
-      <%= f.label :deliverable_type, "Select Deliverable Type" %>
-      
-      <br/>
-      
-      <%= f.text_field :name %>
-      <%= f.label :name, "Deliverable Name" %>
-      <br/>
-      <%= f.text_area :description %>
-      
-      <%= f.label :description, "Deliverable Description" %>
-      <br/>
-      
-      <%= f.label :complexity %>
-      <%= select(:deliverable, :complexity, @complexities,
-      {:prompt   => "Select a complexity"}) %>
-      <br/>
-      <%= f.text_field :unit_measurement %>
-      <%= f.label :unit_measurement %>
-      <br/>
+      <table id="pet_table">
+        <tr>
+          <td><%= f.label :deliverable_type, "Select Deliverable Type" %></td>
+          <td><%= select(:deliverable, :deliverable_type, @deliverable_types, {:prompt   => "Select a phase"}) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :name, "Deliverable Name" %></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :description, "Deliverable Description" %></td>
+          <td><%= f.text_area :description %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :complexity %></td>
+          <td><%= select(:deliverable, :complexity, @complexities, {:prompt   => "Select a complexity"}) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :unit_measurement %></td>
+          <td><%= f.text_field :unit_measurement %></td>
+        </tr>
+      </table>
 
-      <div id="pet_calc">
-        <%= select(:deliverable, :estimated_size, @estimated_sizes,
-        {:prompt   => "Select a size"}) %>
-        <%= f.label :estimated_size %>
-        <br/>
-        <%= select(:deliverable, :production_rate, @production_rates,
-        {:prompt   => "Select a production rate"}) %>
-        <%= f.label :production_rate %>
-        <br/>
-        <%= select(:deliverable, :estimated_effort, @efforts,
-        {:prompt   => "Select a estimated effort"}) %>
-        <%= f.label :estimated_effort %>
-        
-        <%= f.submit 'Calculate', :action => "process_calc_inputs" %>
-      </div>
+
+      <table id="pet_calc">
+        <tr>
+          <td><%= f.label :estimated_size %></td>
+          <td><%= select(:deliverable, :estimated_size, @estimated_sizes, {:prompt   => "Select a size"}) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :production_rate %></td>
+          <td><%= select(:deliverable, :production_rate, @production_rates, {:prompt   => "Select a production rate"}) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :estimated_effort %></td>
+          <td><%= select(:deliverable, :estimated_effort, @efforts, {:prompt   => "Select a estimated effort"}) %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit 'Calculate', :action => "process_calc_inputs" %></td>
+        </tr>
+      </table>
 
       <%= link_to "Historical Data", "#" %>
       <br/>

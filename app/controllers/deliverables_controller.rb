@@ -43,11 +43,4 @@ class DeliverablesController < ApplicationController
     end
   end
 
-  def submit
-    session[:phase] = params[:phase]
-    #TODO
-    
-  end
-
-  
 end

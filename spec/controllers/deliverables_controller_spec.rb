@@ -72,5 +72,20 @@ describe DeliverablesController do
     session[:test_dtypes].should be_nil
   end
 
+  it "should redirect to Add Deliverable Page given a Phase" do
+    del = Factory.build(:deliverable)
+    del.should be_valid
+    session[:phase] = del.phase
+    xhr :get, :validate_before_adding_new_type
+    flash[:notice].should be_nil
+    response.should redirect_to("deliverable_type/new")
+  end
+
+  it "should NOT redirect to Add Deliverable Page without a Phase" do
+    xhr :get, :validate_before_adding_new_type
+    flash[:notice].should_not be_nil
+    response.should redirect_to("deliverables")
+  end
+
 end
 

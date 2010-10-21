@@ -29,10 +29,6 @@ class DeliverableTypeController < ApplicationController
     end
   end
 
-  def process_calc_inputs
-    puts "HI"
-  end
-
 #This method initializes the static content to be populated in the dropdown lists
   private
   def initialize_for_selects

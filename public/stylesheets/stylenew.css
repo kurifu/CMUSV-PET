@@ -390,24 +390,23 @@ div#new_del {
 }
 
 /* New Deliverable Page */
-div#pet_calc {
-    margin-top: 315px;
-    padding: 10px 0px 10px 20px;
-    border: 1px solid black;
-    overflow: auto;
-    clear: right;
+table#pet_table, table#pet_calc {
+  width: 500px;
+  font-size: 7pt;
+  padding: 10px 10px 10px 20px;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+table#pet_table td:nth-child(2) {
+    padding-left: 15px;
+    
 }
 
 /* TODO: FIX THIS!*/
-div#pet_calc input {
+table#pet_calc input {
     border: 1px solid black;
     width: 75px;
-    clear: both;
-}
-
-div.content label {
-    float: left;
-    clear: left;
 }
 
 label#comp {

@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-deliverable_type_controller_rb.html">app/controllers/deliverable_type_controller.rb</a></td>
-            <td class='right_align'><tt>45</tt></td>
-            <td class='right_align'><tt>32</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>95.56%</tt></div>
+            <td class='right_align'><tt>41</tt></td>
+            <td class='right_align'><tt>29</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:96px"></div>
-            <div class="uncovered" style="width:4px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>93.75%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:94px"></div>
-            <div class="uncovered" style="width:6px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -242,92 +242,68 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line32">32</a> #This method initializes the static content to be populated in the dropdown lists</pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   def process_calc_inputs</pre></td>
+            <td><pre><a name="line33">33</a>   private</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line33">33</a>     puts &quot;HI&quot;</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>   def initialize_for_selects</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line34">34</a>   end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>     @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(&quot;System Design&quot;))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     @complexities = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>     @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>     @production_rates = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     @efforts = RailblazersXmlParser.get_common_values</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
+            <td><pre><a name="line40">40</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a> #This method initializes the static content to be populated in the dropdown lists</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>   def initialize_for_selects</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(&quot;System Design&quot;))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     @complexities = RailblazersXmlParser.get_common_values</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>     @production_rates = RailblazersXmlParser.get_common_values</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>     @efforts = RailblazersXmlParser.get_common_values</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line45">45</a> end</pre></td>
+            <td><pre><a name="line41">41</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Oct 19 18:13:14 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Oct 20 17:18:13 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

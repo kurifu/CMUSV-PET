@@ -3,7 +3,7 @@
         <phase>Requirements Gathering And Analysis, System Design, Implementation, Testing, Deployment, Maintenance</phase>
    </lifecycle>
   <lifecycle model="Spiral">
-	<phase>Plannig, Risk Analysis, Engineering, Evaluation</phase>
+	<phase>Planning, Risk Analysis, Engineering, Evaluation</phase>
   </lifecycle>
 
   <lifecycle model="Incremental">
