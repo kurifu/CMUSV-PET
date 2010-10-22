@@ -32,9 +32,9 @@ Factory.define :deliverable, :class=>'Deliverable' do |d|
   d.deliverable_url '/deliverables/'
   d.complexity 'high'
   d.unit_measurement 'pages'
-  d.estimated_size 23.4
-  d.estimated_effort 43.4
-  d.production_rate 32.3
+  d.estimated_size 3
+  d.estimated_effort 12
+  d.production_rate 4
 end
 
 # deliverable_controller_spec

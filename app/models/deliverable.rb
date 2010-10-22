@@ -30,5 +30,18 @@ class Deliverable < ActiveRecord::Base
     :unless => Proc.new { |u| u.deliverable_url.blank?}
   validates_numericality_of :project_id, :only_integer => true
 
+  #Customized validation
+  validate :valid_calculation_result?
+
   belongs_to :project
+
+  private
+
+  def valid_calculation_result?
+    unless estimated_size.to_f * production_rate.to_f == estimated_effort.to_f
+       errors.add(:estimated_size, "is not the correct result")
+       errors.add(:production_rate, "is not the correct result")
+       errors.add(:estimated_effort, "is not the correct result")
+    end
+  end
 end

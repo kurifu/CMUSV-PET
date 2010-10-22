@@ -31,5 +31,45 @@ describe DeliverableTypeController do
     post 'create', :deliverable => {:name => "FOO"}
     assigns[:deliverable].name.should == "FOO"
   end
+
+  #Test examples for storycard10
+  it "should capture the data in estimated_size field" do
+    xhr :post, :capture_calculation_data, :field=>1, :estimated_size=>"32"
+    session[:estimated_size].should == "32"
+  end
+
+  it "should capture the data in production_rate field" do
+    xhr :post, :capture_calculation_data, :field=>2, :production_rate=>"323"
+    session[:production_rate].should == "323"
+  end
+
+  it "should capture the data in estimated_effort field" do
+    xhr :post, :capture_calculation_data, :field=>3, :estimated_effort=>"2"
+    session[:estimated_effort].should == "2"
+  end
+
+  it "should calculate the estimated_size" do
+    session[:production_rate]=3
+    session[:estimated_effort]=6
+    session[:estimated_size].should be_blank
+    xhr :get, :process_calc_inputs
+    session[:estimated_size].should == 2
+  end
+
+  it "should calculate the production_rate" do
+    session[:estimated_size]=3
+    session[:estimated_effort]=6
+    session[:production_rate].should be_blank
+    xhr :get, :process_calc_inputs
+    session[:production_rate].should == 2
+  end
+
+  it "should calculate the estimated_effort" do
+    session[:estimated_size]=8
+    session[:production_rate]=4
+    session[:estimated_effort].should be_blank
+    xhr :get, :process_calc_inputs
+    session[:estimated_effort].should == 32
+  end
 end
 
