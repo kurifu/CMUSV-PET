@@ -32,9 +32,9 @@ class DeliverableTypeController < ApplicationController
   #This solution probably need to be refactored
   #Capture data from the estimated_size, production_rate and estimated_effort
   def capture_calculation_data
-    #test code
-    puts params[:estimated_size]
-    puts params[:field]
+    puts "Captured size: #{params[:estimated_size]}"
+    puts "Captured rate: #{params[:production_rate]}"
+    puts "Captured effort: #{params[:estimated_effort]}"
 
     field = params[:field]
     if field == '1'
@@ -45,17 +45,41 @@ class DeliverableTypeController < ApplicationController
       session[:estimated_effort]=params[:estimated_effort]
     end
 
-    #test code
-    puts session[:estimated_size]
-    puts session[:production_rate]
-    puts session[:estimated_effort]
+    puts "Current Value: #{session[:estimated_size]}"
+    puts "Current Value: #{session[:production_rate]}"
+    puts "Current Value: #{session[:estimated_effort]}"
   end
 
-  #It only handle one situation now
+  # Calculate our input data given 2 values and 1 blank
+  # TODO:  Catch exception cases, like when we try to calculate
+  # =>     on 1 value or 3 values
   def process_calc_inputs
-    production_rate = session[:production_rate].to_f
-    estimated_size = session[:estimated_size].to_f
-    session[:estimated_effort] = production_rate+estimated_size
+    puts "CHECK Size: #{session[:estimated_size]}"
+    puts "CHECK Rate: #{session[:production_rate]}"
+    puts "CHECK Effort: #{session[:estimated_effort]}"
+
+    rate = session[:production_rate]
+    size = session[:estimated_size]
+    effort = session[:estimated_effort]
+
+    if effort.blank?
+      puts "* effort blank"
+      session[:estimated_effort] = rate.to_f * size.to_f
+    elsif size.blank?
+      puts "* size blank"
+      session[:estimated_size] = effort.to_f / rate.to_f
+    elsif rate.blank?
+      puts "* rate blank"
+      session[:production_rate] = effort.to_f / size.to_f
+    else
+      puts "ERROR!"
+      # TODO:  Raise some kind of exception which we can catch
+    end
+
+    puts "Calc'd Size: #{session[:estimated_size]}"
+    puts "Calc'd Rate: #{session[:production_rate]}"
+    puts "Calc'd Effort: #{session[:estimated_effort]}"
+
     render :partial=>'pet_calc'
   end
 

@@ -5,7 +5,8 @@
     <%= observe_field :deliverable_estimated_size,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
-        :with => "'estimated_size=' + encodeURIComponent(value)+'&field=' + 1"%></td>
+        :with => "'estimated_size=' + encodeURIComponent(value)+'&field=' + 1"%>
+    </td>
   </tr>
   <tr>
     <td>Production_rate:</td>
@@ -13,7 +14,8 @@
     <%= observe_field :deliverable_production_rate,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
-        :with => "'production_rate=' + encodeURIComponent(value)+'&field=' + 2"%></td>
+        :with => "'production_rate=' + encodeURIComponent(value)+'&field=' + 2"%>
+    </td>
   </tr>
   <tr>
     <td>Estimated_effort:</td>
@@ -21,7 +23,8 @@
     <%= observe_field :deliverable_estimated_effort,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
-        :with => "'estimated_effort=' + encodeURIComponent(value)+'&field=' + 3"%></td>
+        :with => "'estimated_effort=' + encodeURIComponent(value)+'&field=' + 3"%>
+    </td>
   </tr>
   <tr>
     <td><%= link_to_remote 'Calculate', :url=>{:action => "process_calc_inputs"}, :update=>'pet_calc_div' %></td>
