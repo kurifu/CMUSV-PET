@@ -71,5 +71,47 @@ describe DeliverableTypeController do
     xhr :get, :process_calc_inputs
     session[:estimated_effort].should == 32
   end
+
+  #Cases for only one field is entered
+  it "should not calculate and show flash message on estimated_size" do
+    session[:estimated_size]=8
+    if (!session[:estimated_size].blank? && session[:production_rate].blank? && session[:estimated_effort].blank?)
+      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered estimated size"
+    end
+  end
+
+  it "should not calculate and show flash message on production_rate" do
+    session[:production_rate]=8
+    if (session[:estimated_size].blank? && !session[:production_rate].blank? && session[:estimated_effort].blank?)
+      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered production rate"
+    end
+  end
+
+  it "should not calculate and show flash message on estimated_effort" do
+    session[:estimated_effort]=8
+    if (session[:estimated_size].blank? && session[:production_rate].blank? && !session[:estimated_effort].blank?)
+      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered estimated effort"
+    end
+  end
+
+  it "should be correct if the result of the 3 fields matches" do
+    session[:estimated_size]=2
+    session[:production_rate]=3
+    session[:estimated_effort]=6
+    if (!session[:estimated_size].blank? && !session[:production_rate].blank? && !session[:estimated_effort].blank?)
+      (session[:estimated_size].to_f * session[:production_rate].to_f).should == session[:estimated_effort].to_f
+    end
+  end
+
+  it "should be failed if the result of the 3 fields does not match" do
+    session[:estimated_size]=2
+    session[:production_rate]=3
+    session[:estimated_effort]=7
+    if (!session[:estimated_size].blank? && !session[:production_rate].blank? && !session[:estimated_effort].blank?)
+      unless (session[:estimated_size].to_f * session[:production_rate].to_f) == session[:estimated_effort].to_f
+        flash[:notice_for_petcalculation].should == "All fields are entered, but the result is incorrect"
+      end
+    end
+  end
 end
 
