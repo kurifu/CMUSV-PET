@@ -7,6 +7,7 @@ describe DeliverableTypeController do
     controller.should be_an_instance_of(DeliverableTypeController)
   end
 
+  # Tests for storycard15
   it "should create a new Deliverable" do
     post 'new'
     response.should render_template("deliverable_type/new")
@@ -32,7 +33,8 @@ describe DeliverableTypeController do
     assigns[:deliverable].name.should == "FOO"
   end
 
-  #Test examples for storycard10
+  # Tests for storycard10
+  # Testing the process_calc_inputs method
   it "should capture the data in estimated_size field" do
     xhr :post, :capture_calculation_data, :field=>1, :estimated_size=>"32"
     session[:estimated_size].should == "32"
@@ -48,6 +50,7 @@ describe DeliverableTypeController do
     session[:estimated_effort].should == "2"
   end
 
+  # Testing the process_calc_inputs method
   it "should calculate the estimated_size" do
     session[:production_rate]=3
     session[:estimated_effort]=6
@@ -72,28 +75,32 @@ describe DeliverableTypeController do
     session[:estimated_effort].should == 32
   end
 
-  #Cases for only one field is entered
-  it "should not calculate and show flash message on estimated_size" do
-    session[:estimated_size]=8
-    if (!session[:estimated_size].blank? && session[:production_rate].blank? && session[:estimated_effort].blank?)
-      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered estimated size"
-    end
+  # Cases for when only one field is entered
+  # NOTE:  Very DRY right now...  is there a better solution?
+  it "should not calculate with only 1 field and show the appropriate flash message" do
+    session[:estimated_size] = 8
+    xhr :get, :process_calc_inputs
+    flash[:notice_calc].should == "Please enter two values"
+
+    session[:estimated_size] = ""
+    session[:production_rate] = 8
+    xhr :get, :process_calc_inputs
+    flash[:notice_calc].should == "Please enter two values"
+
+    session[:production_rate] = ""
+    session[:estimated_effort] = 8
+    xhr :get, :process_calc_inputs
+    flash[:notice_calc].should == "Please enter two values"
+
+    # Verify that the flash notice disappears when we satisfy the method
+    session[:production_rate] = 1
+    xhr :get, :process_calc_inputs
+    flash[:notice_calc].should be_nil
   end
 
-  it "should not calculate and show flash message on production_rate" do
-    session[:production_rate]=8
-    if (session[:estimated_size].blank? && !session[:production_rate].blank? && session[:estimated_effort].blank?)
-      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered production rate"
-    end
-  end
-
-  it "should not calculate and show flash message on estimated_effort" do
-    session[:estimated_effort]=8
-    if (session[:estimated_size].blank? && session[:production_rate].blank? && !session[:estimated_effort].blank?)
-      flash[:notice_for_petcalculation].should == "Please enter 2 fields, you only entered estimated effort"
-    end
-  end
-
+  # NOTE:  We need to discuss this; are we going to let the user supply
+  #        all 3 values?  Or just two?
+  # This is not testing anything; we aren't calling any methods
   it "should be correct if the result of the 3 fields matches" do
     session[:estimated_size]=2
     session[:production_rate]=3
@@ -103,15 +110,19 @@ describe DeliverableTypeController do
     end
   end
 
-  it "should be failed if the result of the 3 fields does not match" do
+  # This is not testing anything either, where do you call the method?
+  # This is testing if Ruby can perform multiplication with *...
+=begin
+  it "should fail if the result of the 3 fields does not match" do
     session[:estimated_size]=2
     session[:production_rate]=3
     session[:estimated_effort]=7
     if (!session[:estimated_size].blank? && !session[:production_rate].blank? && !session[:estimated_effort].blank?)
       unless (session[:estimated_size].to_f * session[:production_rate].to_f) == session[:estimated_effort].to_f
-        flash[:notice_for_petcalculation].should == "All fields are entered, but the result is incorrect"
+        flash[:notice_calc].should == "All fields are entered, but the result is incorrect"
       end
     end
   end
+=end
 end
 
