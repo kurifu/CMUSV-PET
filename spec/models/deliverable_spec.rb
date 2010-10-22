@@ -80,4 +80,6 @@ describe Deliverable do
     deliverable.save
     deliverable.should have(1).error_on(:production_rate)
   end
+
+  it "should calculate the result according to the given 2 values"
 end

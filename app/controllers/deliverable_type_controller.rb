@@ -29,6 +29,36 @@ class DeliverableTypeController < ApplicationController
     end
   end
 
+  #This solution probably need to be refactored
+  #Capture data from the estimated_size, production_rate and estimated_effort
+  def capture_calculation_data
+    #test code
+    puts params[:estimated_size]
+    puts params[:field]
+
+    field = params[:field]
+    if field == '1'
+      session[:estimated_size]=params[:estimated_size]
+    elsif field == '2'
+      session[:production_rate]=params[:production_rate]
+    elsif field == '3'
+      session[:estimated_effort]=params[:estimated_effort]
+    end
+
+    #test code
+    puts session[:estimated_size]
+    puts session[:production_rate]
+    puts session[:estimated_effort]
+  end
+
+  #It only handle one situation now
+  def process_calc_inputs
+    production_rate = session[:production_rate].to_f
+    estimated_size = session[:estimated_size].to_f
+    session[:estimated_effort] = production_rate+estimated_size
+    render :partial=>'pet_calc'
+  end
+
 #This method initializes the static content to be populated in the dropdown lists
   private
   def initialize_for_selects

@@ -26,25 +26,10 @@
         </tr>
       </table>
 
-
-      <table id="pet_calc">
-        <tr>
-          <td><%= f.label :estimated_size %></td>
-          <td><%= select(:deliverable, :estimated_size, @estimated_sizes, {:prompt   => "Select a size"}) %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :production_rate %></td>
-          <td><%= select(:deliverable, :production_rate, @production_rates, {:prompt   => "Select a production rate"}) %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :estimated_effort %></td>
-          <td><%= select(:deliverable, :estimated_effort, @efforts, {:prompt   => "Select a estimated effort"}) %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit 'Calculate', :action => "process_calc_inputs" %></td>
-        </tr>
-      </table>
-
+  <div id="pet_calc_div">
+    <%= render :partial=>'pet_calc' %>
+  </div>
+      
       <%= link_to "Historical Data", "#" %>
       <br/>
 </div>
