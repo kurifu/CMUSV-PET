@@ -1,7 +1,7 @@
 <table id="pet_calc">
   <tr>
     <td>Estimated_size :</td>
-    <td><input id="deliverable_estimated_size" name="deliverable[estimated_size]" size="30" type="text" value=<%= "#{session[:estimated_size]}" %> />
+    <td><input id="deliverable_estimated_size" name="deliverable[estimated_size]" size="30" type="text" value="<%= "#{session[:estimated_size]}" %>" />
     <%= observe_field :deliverable_estimated_size,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td>Production_rate:</td>
-    <td><input id="deliverable_production_rate" name="deliverable[production_rate]" size="30" type="text" value=<%= "#{session[:production_rate]}"%> />
+    <td><input id="deliverable_production_rate" name="deliverable[production_rate]" size="30" type="text" value="<%= "#{session[:production_rate]}"%>" />
     <%= observe_field :deliverable_production_rate,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td>Estimated_effort:</td>
-    <td><input id="deliverable_estimated_effort" name="deliverable[estimated_effort]" size="30" type="text" value=<%= "#{session[:estimated_effort]}"%> />
+    <td><input id="deliverable_estimated_effort" name="deliverable[estimated_effort]" size="30" type="text" value="<%= "#{session[:estimated_effort]}"%>" />
     <%= observe_field :deliverable_estimated_effort,
         :frequency => 1,
         :url => {:action=>'capture_calculation_data', :only_path=>false},
