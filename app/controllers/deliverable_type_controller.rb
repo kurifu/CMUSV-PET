@@ -8,39 +8,12 @@ class DeliverableTypeController < ApplicationController
 #with the form element in the new.html.erb file
 
   def new
-<<<<<<< HEAD
     begin
       @deliverable = Deliverable.new
       respond_to do |format|
         format.html
-=======
-    @deliverable = Deliverable.new
-    respond_to do |format|
-      format.html
-    end
-  end
-
-#Fetches user input from new.html.erb and saves the data on the database
-  def create
-    @deliverable = Deliverable.new(params[:deliverable])
-    @deliverable.project_id = session[:project_id]
-    @deliverable.phase = session[:phase]
-
-    #Experimental code
-    @estimated_size = params[:deliverable][:estimated_size] || ''
-    @production_rate = params[:deliverable][:production_rate] || ''
-    @estimated_effort = params[:deliverable][:estimated_effort] || ''
-
-    respond_to do |format|
-      if @deliverable.save
-        format.html{ redirect_to :controller => "deliverables" }
-      else
-        format.html{ render :action => "new", :status => :unprocessable_entity}
-
->>>>>>> 436450b39b9b81ec693d132a9fbc28588cd38c7f
       end
 
-<<<<<<< HEAD
       rescue Exception => ex
       @error_msg = ex.message
 
@@ -70,9 +43,6 @@ class DeliverableTypeController < ApplicationController
       render "projects/error"
     end
   end
-=======
-  
->>>>>>> 436450b39b9b81ec693d132a9fbc28588cd38c7f
 
 #This method initializes the static content to be populated in the dropdown lists
   private
@@ -84,7 +54,7 @@ class DeliverableTypeController < ApplicationController
       @production_rates = RailblazersXmlParser.get_common_values
       @efforts = RailblazersXmlParser.get_common_values
 
-      rescue Exception => ex
+    rescue Exception => ex
       @error_msg = ex.message
 
       render "projects/error"
