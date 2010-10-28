@@ -126,8 +126,11 @@ class ProjectsController < ApplicationController
       end
     end
 
+    #puts "CHECK: #{calculate_phase_effort(@project.id, phases[1])}"
+    
     respond_to do |format|
       format.html
     end
   end
+
 end

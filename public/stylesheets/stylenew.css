@@ -296,6 +296,8 @@ background : #fff;
 }
 /* END SCAFFOLD ERROR STYLES */
 
+
+
 /* custom styles */
 /* Project Homepage */
 table#content_table, table#content_overview {
@@ -413,6 +415,9 @@ label#comp {
     color: red;
 }
 
-table#content_overview tr:nth-child(4) {
-    text-align: left; 
+/* Overview Page */
+table#content_overview td.phase {
+    
+    
+    font-weight: bold; 
 }
