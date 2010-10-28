@@ -110,11 +110,12 @@ class ProjectsController < ApplicationController
 
     # Make sure this is blank...  might have to call @phase_efforts.clear
     @phase_efforts = {}
+
     phases = RailblazersXmlParser.get_phase(@project.lifecycle)
     deliverables = Deliverable.find_all_by_project_id(@project.id)
 
     # For each phase, create a new Hash if it doesn't exist
-    0.upto(phases.size) do |i|
+    0.upto(phases.size-1) do |i|
       unless @phase_efforts.has_key?(phases[i])
         @phase_efforts[phases[i]] = Hash.new
 
@@ -126,8 +127,6 @@ class ProjectsController < ApplicationController
       end
     end
 
-    #puts "CHECK: #{calculate_phase_effort(@project.id, phases[1])}"
-    
     respond_to do |format|
       format.html
     end
