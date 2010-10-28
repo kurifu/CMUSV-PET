@@ -103,4 +103,31 @@ class ProjectsController < ApplicationController
     session[:project_id] = params[:id]
     redirect_to :controller=>"deliverables"
   end
+
+  def overview
+    # TODO: Error Handling: if we can't find project_id
+    @project = Project.find_by_id(session[:project_id])
+
+    # Make sure this is blank...  might have to call @phase_efforts.clear
+    @phase_efforts = {}
+    phases = RailblazersXmlParser.get_phase(@project.lifecycle)
+    deliverables = Deliverable.find_all_by_project_id(@project.id)
+
+    # For each phase, create a new Hash if it doesn't exist
+    0.upto(phases.size) do |i|
+      unless @phase_efforts.has_key?(phases[i])
+        @phase_efforts[phases[i]] = Hash.new
+
+        # Grab all deliverables in this phase, add it to our small hash
+        del_to_process = deliverables.select {|d| d.phase == phases[i] }
+        del_to_process.each do |target|
+          @phase_efforts[phases[i]][target.name] = target.estimated_effort
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.html
+    end
+  end
 end
