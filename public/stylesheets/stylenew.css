@@ -412,3 +412,8 @@ table#pet_calc input {
 label#comp {
     color: red;
 }
+
+div#img {
+max-width: 0.5px;
+max-height: 0.5px;
+}
