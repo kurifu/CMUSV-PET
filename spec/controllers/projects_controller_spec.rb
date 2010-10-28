@@ -9,9 +9,13 @@ describe ProjectsController do
   #  project_item.should be_valid
   #end
 
-  #Delete this example and add some real ones
   it "should use ProjectsController" do
     controller.should be_an_instance_of(ProjectsController)
+  end
+
+  it "should pass params to project" do
+    post 'create', :project => {:name => "BLAH"}
+    assigns[:project].name.should == "BLAH"
   end
 
   it "should display the New page" do
@@ -44,8 +48,14 @@ describe ProjectsController do
     #post 'create'
   end
 
-  it "should pass params to project" do
-    post 'create', :project => {:name => "BLAH"}
-    assigns[:project].name.should == "BLAH"
+  # Project Overview Testing
+  it "should render the overview screen" do
+    project_item = Factory.build(:del_project)
+    project_item.should be_valid
+    session[:project_id] = project_item.id
+    get :overview
+    response.should render_template("projects/overview")
+    session[:project_id].should_not be_nil
+    
   end
 end

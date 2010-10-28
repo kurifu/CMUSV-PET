@@ -1,0 +1,26 @@
+<h1><%= @project.name  %></h1>
+
+<table id="content_overview">
+  <tr>
+    <th colspan="2"><h3>Lifecycle: <%= @project.lifecycle %></h3></th>
+  </tr>
+  <tr>
+    <th>Phases</th>
+    <th>Estimated Effort (Man-Hours)</th>
+  </tr>
+
+  <% @phase_efforts.each do |phase, deliverables| %>
+  <tr>
+    <td class="phase"><%= phase %> </td>
+    <td><%=  calculate_phase_effort(@project.id, phase)  %></td>
+  </tr>
+
+    <% deliverables.each do |dname, deffort| %>
+    <tr>
+      <td><%= dname %></td>
+      <td><%= deffort %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  
+</table>

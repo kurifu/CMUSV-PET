@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :projects
   
-  map.resources :temps
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
+  map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
+  map.resources :projects
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

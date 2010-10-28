@@ -296,9 +296,11 @@ background : #fff;
 }
 /* END SCAFFOLD ERROR STYLES */
 
+
+
 /* custom styles */
 /* Project Homepage */
-table#content_table {
+table#content_table, table#content_overview {
     border: 1px solid black;
     text-align: center;
 }
@@ -339,7 +341,7 @@ input#project_submit, input#process_calc_inputs {
 }
 
 /* Phase Page */
-div.content_phase, table#content_table {
+div.content_phase, table#content_table, table#content_overview {
     width: 650px;
 }
 
@@ -413,7 +415,15 @@ label#comp {
     color: red;
 }
 
+<<<<<<< HEAD
 div#img {
 max-width: 0.5px;
 max-height: 0.5px;
+=======
+/* Overview Page */
+table#content_overview td.phase {
+    
+    
+    font-weight: bold; 
+>>>>>>> storycard14
 }
