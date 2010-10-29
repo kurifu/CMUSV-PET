@@ -105,6 +105,7 @@ class ProjectsController < ApplicationController
   end
 
   def overview
+
     # TODO: Error Handling: if we can't find project_id
     @project = Project.find_by_id(session[:project_id])
 

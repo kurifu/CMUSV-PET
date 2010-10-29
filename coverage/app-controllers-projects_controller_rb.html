@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-projects_controller_rb.html">app/controllers/projects_controller.rb</a></td>
-            <td class='right_align'><tt>106</tt></td>
-            <td class='right_align'><tt>79</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>43.40%</tt></div>
+            <td class='right_align'><tt>135</tt></td>
+            <td class='right_align'><tt>97</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>40.74%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:43px"></div>
-            <div class="uncovered" style="width:57px"></div>
+            <div class="covered" style="width:41px"></div>
+            <div class="uncovered" style="width:59px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>30.38%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>28.87%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:30px"></div>
-            <div class="uncovered" style="width:70px"></div>
+            <div class="covered" style="width:29px"></div>
+            <div class="uncovered" style="width:71px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -686,14 +686,188 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line106">106</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>   def overview</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line108">108</a>     # TODO: Error Handling: if we can't find project_id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line109">109</a>     @project = Project.find_by_id(session[:project_id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line110">110</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line111">111</a>     # Make sure this is blank...  might have to call @phase_efforts.clear</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line112">112</a>     @phase_efforts = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line113">113</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line114">114</a>     phases = RailblazersXmlParser.get_phase(@project.lifecycle)</pre></td>
+          </tr>
+        
+          
+          
           <tr class="uncovered">
-            <td><pre><a name="line106">106</a> end</pre></td>
+            <td><pre><a name="line115">115</a>     deliverables = Deliverable.find_all_by_project_id(@project.id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line116">116</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line117">117</a>     # For each phase, create a new Hash if it doesn't exist</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line118">118</a>     0.upto(phases.size-1) do |i|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line119">119</a>       unless @phase_efforts.has_key?(phases[i])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line120">120</a>         @phase_efforts[phases[i]] = Hash.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line121">121</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line122">122</a>         # Grab all deliverables in this phase, add it to our small hash</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line123">123</a>         del_to_process = deliverables.select {|d| d.phase == phases[i] }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line124">124</a>         del_to_process.each do |target|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line125">125</a>           @phase_efforts[phases[i]][target.name] = target.estimated_effort</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line126">126</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line127">127</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line128">128</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line129">129</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line130">130</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line131">131</a>       format.html</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line132">132</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line133">133</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line134">134</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line135">135</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Oct 22 15:08:15 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Oct 28 15:44:45 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

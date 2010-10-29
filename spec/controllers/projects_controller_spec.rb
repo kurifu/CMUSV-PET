@@ -52,6 +52,7 @@ describe ProjectsController do
   it "should render the overview screen" do
     project_item = Factory.build(:del_project)
     project_item.should be_valid
+    puts "CHECK: #{project_item.id}"
     session[:project_id] = project_item.id
     get :overview
     response.should render_template("projects/overview")
