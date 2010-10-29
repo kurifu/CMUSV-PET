@@ -50,12 +50,13 @@ describe ProjectsController do
 
   # Project Overview Testing
   it "should render the overview screen" do
-    project_item = Factory.build(:del_project)
-    project_item.should be_valid
-    session[:project_id] = project_item.id
+
+    project_item = mock()
+    project_item.expects(:lifecycle).returns("Simplified WaterFall")
+
+    #To stub class methods, just call stubs on the model class
+    Project.stubs(:find_by_id).returns(project_item)
     get :overview
     response.should render_template("projects/overview")
-    session[:project_id].should_not be_nil
-    
   end
 end

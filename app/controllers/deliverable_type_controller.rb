@@ -19,6 +19,12 @@ class DeliverableTypeController < ApplicationController
     @deliverable.project_id = session[:project_id]
     @deliverable.phase = session[:phase]
 
+    #Code containing entered information when create fails they will be used in the view
+    @estimated_size = params[:deliverable][:estimated_size] || '' unless params[:deliverable].nil?
+    @production_rate = params[:deliverable][:production_rate] || '' unless params[:deliverable].nil?
+    @estimated_effort = params[:deliverable][:estimated_effort] || '' unless params[:deliverable].nil?
+
+
     respond_to do |format|
       if @deliverable.save
         format.html{ redirect_to :controller => "deliverables" }
