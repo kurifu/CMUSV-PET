@@ -8,14 +8,22 @@ class DeliverableTypeController < ApplicationController
 #with the form element in the new.html.erb file
 
   def new
-    @deliverable = Deliverable.new
-    respond_to do |format|
-      format.html
+    begin
+      @deliverable = Deliverable.new
+      respond_to do |format|
+        format.html
+      end
+
+      rescue Exception => ex
+      @error_msg = ex.message
+
+      render "projects/error"
     end
   end
 
 #Fetches user input from new.html.erb and saves the data on the database
   def create
+    begin
     @deliverable = Deliverable.new(params[:deliverable])
     @deliverable.project_id = session[:project_id]
     @deliverable.phase = session[:phase]
@@ -30,20 +38,30 @@ class DeliverableTypeController < ApplicationController
         format.html{ redirect_to :controller => "deliverables" }
       else
         format.html{ render :action => "new", :status => :unprocessable_entity}
-
       end
+      
+      rescue Exception => ex
+      @error_msg = ex.message
+
+      render "projects/error"
+    end
     end
   end
-
-  
 
 #This method initializes the static content to be populated in the dropdown lists
   private
   def initialize_for_selects
-    @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type("System Design"))
-    @complexities = RailblazersXmlParser.get_common_values
-    @estimated_sizes = RailblazersXmlParser.get_common_values
-    @production_rates = RailblazersXmlParser.get_common_values
-    @efforts = RailblazersXmlParser.get_common_values
+    begin
+      @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type("System Design"))
+      @complexities = RailblazersXmlParser.get_common_values
+      @estimated_sizes = RailblazersXmlParser.get_common_values
+      @production_rates = RailblazersXmlParser.get_common_values
+      @efforts = RailblazersXmlParser.get_common_values
+
+    rescue Exception => ex
+      @error_msg = ex.message
+
+      render "projects/error"
+    end
   end
 end
