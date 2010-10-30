@@ -24,27 +24,27 @@ class DeliverableTypeController < ApplicationController
 #Fetches user input from new.html.erb and saves the data on the database
   def create
     begin
-    @deliverable = Deliverable.new(params[:deliverable])
-    @deliverable.project_id = session[:project_id]
-    @deliverable.phase = session[:phase]
+      @deliverable = Deliverable.new(params[:deliverable])
+      @deliverable.project_id = session[:project_id]
+      @deliverable.phase = session[:phase]
 
-    #Code containing entered information when create fails they will be used in the view
-    @estimated_size = params[:deliverable][:estimated_size] || '' unless params[:deliverable].nil?
-    @production_rate = params[:deliverable][:production_rate] || '' unless params[:deliverable].nil?
-    @estimated_effort = params[:deliverable][:estimated_effort] || '' unless params[:deliverable].nil?
+      #Code containing entered information when create fails they will be used in the view
+      @estimated_size = params[:deliverable][:estimated_size] || '' unless params[:deliverable].nil?
+      @production_rate = params[:deliverable][:production_rate] || '' unless params[:deliverable].nil?
+      @estimated_effort = params[:deliverable][:estimated_effort] || '' unless params[:deliverable].nil?
 
-    respond_to do |format|
-      if @deliverable.save
-        format.html{ redirect_to :controller => "deliverables" }
-      else
-        format.html{ render :action => "new", :status => :unprocessable_entity}
+      respond_to do |format|
+        if @deliverable.save
+          format.html{ redirect_to :controller => "deliverables" }
+        else
+          format.html{ render :action => "new", :status => :unprocessable_entity}
+        end
       end
       
       rescue Exception => ex
       @error_msg = ex.message
 
       render "projects/error"
-    end
     end
   end
 
