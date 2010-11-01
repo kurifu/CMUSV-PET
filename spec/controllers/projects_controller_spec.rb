@@ -59,4 +59,10 @@ describe ProjectsController do
     get :overview
     response.should render_template("projects/overview")
   end
+
+  it "should display error page if it cannot find the project" do
+    Project.stubs(:find_by_id).returns(nil)
+    get :overview
+    response.should render_template("projects/error")
+  end
 end
