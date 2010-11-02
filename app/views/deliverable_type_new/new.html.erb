@@ -1,0 +1,38 @@
+<div class="content" id="new_del">
+
+  <% form_for @deliverable, :url => { :action => "create" } do |f| %>
+    <%= f.error_messages %>
+    <table id="pet_table">
+      <tr>
+        <td><%= f.label :deliverable_type, "Enter Deliverable Type" %></td>
+        <td><%= f.text_field :deliverable_type %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :name, "Deliverable Name" %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :description, "Deliverable Description" %></td>
+        <td><%= f.text_area :description %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :complexity %></td>
+        <td><%= f.text_field :complexity %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :unit_measurement %></td>
+        <td><%= f.text_field :unit_measurement %></td>
+      </tr>
+    </table>
+
+    <div id="pet_calc_div">
+      <%= render :partial=>'pet_calc' %>
+    </div>
+
+    <%= link_to "Historical Data", "#" %>
+    <br/>
+ </div>
+
+  <%= f.submit 'Create' %>
+
+<% end %>
