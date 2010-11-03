@@ -60,7 +60,6 @@ describe DeliverablesController do
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial, :phase => del.phase
     response.should render_template("_deliverable_partial")
-    #session[:test_dtypes].should_not be_nil
   end
 
   it "it should NOT populate del table via AJAX when I select a new phase" do
@@ -78,7 +77,7 @@ describe DeliverablesController do
     session[:phase] = del.phase
     xhr :get, :validate_before_adding_new_type
     flash[:notice].should be_nil
-    response.should redirect_to("deliverable_type/new")
+    response.should redirect_to :controller=>"deliverable_type", :action=>"new"
   end
 
   it "should NOT redirect to Add Deliverable Page without a Phase" do

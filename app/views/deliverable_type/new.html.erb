@@ -6,7 +6,11 @@
       <table id="pet_table">
         <tr>
           <td><%= f.label :deliverable_type, "Select Deliverable Type" %></td>
-          <td><%= select(:deliverable, :deliverable_type, @deliverable_types, {:prompt   => "Select a phase"}) %></td>
+          <td><%= select(:deliverable, :deliverable_type, @deliverable_types, {:prompt   => "Select a phase"}) %>
+            <div id="ad_hoc_partial">
+              <%= render :partial=>'ad_hoc' %>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><%= f.label :name, "Deliverable Name" %></td>
