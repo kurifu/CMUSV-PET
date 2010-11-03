@@ -8,17 +8,20 @@ class DeliverableTypeController < ApplicationController
 #with the form element in the new.html.erb file
 
   def new
-    begin
+    #begin
       @deliverable = Deliverable.new
+      @unit_measurements = []
+      
       respond_to do |format|
         format.html
       end
+      
 
-      rescue Exception => ex
-      @error_msg = ex.message
-
-      render "projects/error"
-    end
+#      rescue Exception => ex
+#      @error_msg = ex.message
+#
+#      render "projects/error"
+#    end
   end
 
 #Fetches user input from new.html.erb and saves the data on the database
@@ -33,6 +36,8 @@ class DeliverableTypeController < ApplicationController
       @production_rate = params[:deliverable][:production_rate] || '' unless params[:deliverable].nil?
       @estimated_effort = params[:deliverable][:estimated_effort] || '' unless params[:deliverable].nil?
 
+      @unit_of_measurement = @deliverable.unit_measurement
+
       respond_to do |format|
         if @deliverable.save
           format.html{ redirect_to :controller => "deliverables" }
@@ -43,11 +48,21 @@ class DeliverableTypeController < ApplicationController
       
       rescue Exception => ex
       @error_msg = ex.message
-
       render "projects/error"
     end
   end
 
+  def update_unit_of_measurement_partial
+    deliverable_type_id = session[:deliverable_type_id]
+    @unit_measurements = RailblazersXmlParser.
+      get_unit_of_measurement(deliverable_type_id)
+    puts "Check #{@unit_measurements}"
+      render :update do |page|
+        page.replace_html 'unit_partial',
+          :partial => 'unit_of_measurement',
+          :object => @unit_measurements
+      end
+    end
 #This method initializes the static content to be populated in the dropdown lists
   private
   def initialize_for_selects
