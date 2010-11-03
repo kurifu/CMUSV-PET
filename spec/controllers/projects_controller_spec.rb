@@ -65,4 +65,11 @@ describe ProjectsController do
     get :overview
     response.should render_template("projects/error")
   end
+
+  it "should render the correct page when an exception is raised" do
+    Project.stubs(:find_by_id).raises(Exception, 'A stubed exception')
+    get :overview
+    response.should render_template "projects/error"
+
+  end
 end

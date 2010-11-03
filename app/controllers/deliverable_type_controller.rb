@@ -10,6 +10,7 @@ class DeliverableTypeController < ApplicationController
   def new
     begin
       @deliverable = Deliverable.new
+
       respond_to do |format|
         format.html
       end
@@ -25,8 +26,9 @@ class DeliverableTypeController < ApplicationController
   def create
     begin
       @deliverable = Deliverable.new(params[:deliverable])
-      @deliverable.project_id = session[:project_id]
+      
       @deliverable.phase = session[:phase]
+      @deliverable.project_id = session[:project_id]
 
       #Code containing entered information when create fails they will be used in the view
       @estimated_size = params[:deliverable][:estimated_size] || '' unless params[:deliverable].nil?
@@ -35,7 +37,7 @@ class DeliverableTypeController < ApplicationController
 
       respond_to do |format|
         if @deliverable.save
-          format.html{ redirect_to :controller => "deliverables" }
+          format.html{ redirect_to :controller => "deliverables", :action=>"index", :default_phase=>session[:phase] }
         else
           format.html{ render :action => "new", :status => :unprocessable_entity}
         end
