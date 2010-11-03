@@ -44,6 +44,8 @@ class DeliverablesController < ApplicationController
       #use session[:phase] to store phase for the use in deliverable_type_controller,
       #we need to clean up this session when it is not needed
       session[:phase] = params[:phase]
+      session[:deliverable_type_id] = dtype_id
+      puts "CHECK #{session[:deliverable_type_id]}"
       render :update do |page|
         page.replace_html 'phase_partial', :partial => 'deliverable_partial', :object => @deliverables_of_phase
       end
