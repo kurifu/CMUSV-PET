@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DeliverablesController do
-
+integrate_views
   before(:each) do
     # doesn't work for catching errors
     #controller.use_rails_error_handling!
@@ -87,5 +87,22 @@ describe DeliverablesController do
     response.should redirect_to("deliverables")
   end
 
+  describe "Unit of Measurement" do
+    before(:each) do
+      @deliverable_id ="11"
+    end
+    it "should provide a unit of measurement given the deliverable type" do
+      unit_of_measurement = Array.new
+        unit_of_measurement =
+          RailblazersXmlParser.get_unit_of_measurement(@deliverable_id)
+          for unit in unit_of_measurement do
+            puts "UNIT: #{unit}"
+          end
+        if(@deliverable_id== "11")
+          unit_of_measurement.size.should == 3
+        else
+          unit_of_measurement.size.should == 1
+    end
+  end
 end
-
+end

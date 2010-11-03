@@ -38,6 +38,8 @@ class DeliverablesController < ApplicationController
       dtype_id = RailblazersXmlParser.identify_deliverable_type(params[:phase])
       @deliverable_types = RailblazersXmlParser.get_deliverable_type(dtype_id)
       session[:phase] = params[:phase]
+      session[:deliverable_type_id] = dtype_id
+      puts "CHECK #{session[:deliverable_type_id]}"
       render :update do |page|
         page.replace_html 'phase_partial', :partial => 'deliverable_partial', :object => @deliverables_of_phase
       end
