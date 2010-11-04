@@ -28,6 +28,19 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-deliverables_controller_rb.html">app/controllers/deliverables_controller.rb</a></td>
+<<<<<<< HEAD
+            <td class='right_align'><tt>59</tt></td>
+            <td class='right_align'><tt>41</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>84.75%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:85px"></div>
+            <div class="uncovered" style="width:15px"></div>
+          </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>80.49%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:80px"></div>
+            <div class="uncovered" style="width:20px"></div>
+=======
             <td class='right_align'><tt>61</tt></td>
             <td class='right_align'><tt>36</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.61%</tt></div>
@@ -39,6 +52,7 @@
           <div class="percent_graph">
             <div class="covered" style="width:86px"></div>
             <div class="uncovered" style="width:14px"></div>
+>>>>>>> storycard11
           </div></td>
           </tr>
         </tbody>
@@ -86,32 +100,67 @@
         
           
           
+<<<<<<< HEAD
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     project_id = session[:project_id]</pre></td>
+=======
           <tr class="inferred">
             <td><pre><a name="line6">6</a>     </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @deliverable = Deliverable.new</pre></td>
+            <td><pre><a name="line7">7</a>     lifecycle = Project.find(project_id).lifecycle</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>     #@deliverable is used to bind with the select tag.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a>     #When value assigned to the phases attribute, it become the selected value in select tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     project_id = session[:project_id]</pre></td>
+            <td><pre><a name="line11">11</a>     @deliverable = Deliverable.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     lifecycle = Project.find(project_id).lifecycle</pre></td>
+            <td><pre><a name="line13">13</a>     @phases = RailblazersXmlParser.get_phase(lifecycle)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     @phases = RailblazersXmlParser.get_phase(lifecycle)</pre></td>
+            <td><pre><a name="line15">15</a>     if params[:phase].nil?</pre></td>
           </tr>
         
           
@@ -129,24 +178,39 @@
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line16">16</a>       session[:phase] = nil</pre></td>
+=======
             <td><pre><a name="line13">13</a>     if params[:default_phase].blank?</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line17">17</a>       @deliverables_of_phase = []#Project.find(session[:project_id]).deliverables.find_all_by_phase(&quot;Requirements Gathering And Analysis&quot;)</pre></td>
+=======
             <td><pre><a name="line14">14</a>       session[:phase] = nil</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line18">18</a>       @deliverable_types =[]</pre></td>
+=======
             <td><pre><a name="line15">15</a>       @deliverables_of_phase = []</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
+            <td><pre><a name="line19">19</a>     else</pre></td>
+=======
             <td><pre><a name="line16">16</a>       </pre></td>
           </tr>
         
@@ -202,76 +266,170 @@
           
           <tr class="uncovered">
             <td><pre><a name="line25">25</a>   end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
-          <tr class="inferred">
+<<<<<<< HEAD
+          <tr class="uncovered">
+            <td><pre><a name="line20">20</a>       session[:phase] = params[:phase]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line21">21</a>       @deliverable.phase = params[:phase]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line22">22</a>       @deliverables_of_phase = Project.find(project_id).deliverables.find_all_by_phase(params[:phase])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line23">23</a>       dtype_id = RailblazersXmlParser.identify_deliverable_type(params[:phase])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line24">24</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(dtype_id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line25">25</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
             <td><pre><a name="line26">26</a> </pre></td>
           </tr>
         
           
           
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>   end</pre></td>
+=======
           <tr class="inferred">
+            <td><pre><a name="line26">26</a> </pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line28">28</a> </pre></td>
+=======
             <td><pre><a name="line27">27</a> # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line29">29</a> </pre></td>
+=======
             <td><pre><a name="line28">28</a> #list based on the phase selected in the Phase dropdown list</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown</pre></td>
+=======
           <tr class="marked">
             <td><pre><a name="line29">29</a>   def update_deliverable_partial</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line31">31</a> #list based on the phase selected in the Phase dropdown list</pre></td>
+=======
             <td><pre><a name="line30">30</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line32">32</a>   def update_deliverable_partial</pre></td>
+=======
             <td><pre><a name="line31">31</a>     if params[:phase].blank?</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line33">33</a>     if params[:phase].blank?</pre></td>
+=======
             <td><pre><a name="line32">32</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line34">34</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+=======
             <td><pre><a name="line33">33</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+=======
           <tr class="inferred">
             <td><pre><a name="line34">34</a>     else</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line36">36</a>     else</pre></td>
+=======
             <td><pre><a name="line35">35</a>       </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line37">37</a>       @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])</pre></td>
+=======
             <td><pre><a name="line36">36</a>       @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>       dtype_id = RailblazersXmlParser.identify_deliverable_type(params[:phase])</pre></td>
+=======
           <tr class="inferred">
             <td><pre><a name="line37">37</a>       </pre></td>
           </tr>
@@ -280,11 +438,15 @@
           
           <tr class="inferred">
             <td><pre><a name="line38">38</a>       #Not sure what is this line for</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line39">39</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(dtype_id)</pre></td>
+=======
             <td><pre><a name="line39">39</a>       session[:test_dtypes] = @deliverable_types</pre></td>
           </tr>
         
@@ -304,126 +466,213 @@
           
           <tr class="inferred">
             <td><pre><a name="line42">42</a>       #we need to clean up this session when it is not needed</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line40">40</a>       session[:phase] = params[:phase]</pre></td>
+=======
             <td><pre><a name="line43">43</a>       session[:phase] = params[:phase]</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line41">41</a>       render :update do |page|</pre></td>
+=======
             <td><pre><a name="line44">44</a>       render :update do |page|</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line42">42</a>         page.replace_html 'phase_partial', :partial =&gt; 'deliverable_partial', :object =&gt; @deliverables_of_phase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>       end</pre></td>
+=======
             <td><pre><a name="line45">45</a>         page.replace_html 'phase_partial', :partial =&gt; 'deliverable_partial', :object =&gt; @deliverables_of_phase</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line44">44</a>     end</pre></td>
+=======
             <td><pre><a name="line46">46</a>       end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line45">45</a> </pre></td>
+=======
             <td><pre><a name="line47">47</a>     end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line46">46</a>   end</pre></td>
+=======
             <td><pre><a name="line48">48</a>     </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line47">47</a> </pre></td>
+=======
             <td><pre><a name="line49">49</a>   end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line48">48</a> </pre></td>
+=======
             <td><pre><a name="line50">50</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line49">49</a> #Validates the presence of phase in the Phase dropdown list</pre></td>
+=======
             <td><pre><a name="line51">51</a> #Validates the presence of phase in the Phase drop down list</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line50">50</a>   def validate_before_adding_new_type</pre></td>
+=======
             <td><pre><a name="line52">52</a>   def validate_before_adding_new_type</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line51">51</a>     if session[:phase].blank?</pre></td>
+=======
             <td><pre><a name="line53">53</a>     if session[:phase].blank?</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line52">52</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+=======
             <td><pre><a name="line54">54</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line53">53</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+=======
             <td><pre><a name="line55">55</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line54">54</a>     else</pre></td>
+=======
             <td><pre><a name="line56">56</a>     else</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
+            <td><pre><a name="line55">55</a>       redirect_to :controller =&gt; &quot;deliverable_type&quot;, :action =&gt; &quot;new&quot;</pre></td>
+=======
             <td><pre><a name="line57">57</a>       redirect_to :controller =&gt; &quot;deliverable_type&quot;, :action =&gt; &quot;new&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line56">56</a>     end</pre></td>
+=======
             <td><pre><a name="line58">58</a>     end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line57">57</a>   end</pre></td>
+=======
             <td><pre><a name="line59">59</a>   end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line58">58</a> </pre></td>
+=======
             <td><pre><a name="line60">60</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
+            <td><pre><a name="line59">59</a> end</pre></td>
+=======
             <td><pre><a name="line61">61</a> end</pre></td>
+>>>>>>> storycard11
           </tr>
         
       </tbody>
     </table>
 
+<<<<<<< HEAD
+    <p>Generated on Mon Nov 01 18:50:24 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+=======
     <p>Generated on Wed Nov 03 14:46:43 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+>>>>>>> storycard11
 
   </body>
 </html>

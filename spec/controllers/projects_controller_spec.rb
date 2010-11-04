@@ -20,7 +20,6 @@ describe ProjectsController do
 
   it "should display the New page" do
     get 'projects/new'
-    response.should be_success
     response.should render_template("projects/new")
   end
 
@@ -50,7 +49,6 @@ describe ProjectsController do
 
   # Project Overview Testing
   it "should render the overview screen" do
-
     project_item = mock()
     project_item.expects(:lifecycle).returns("Simplified WaterFall")
 
