@@ -10,7 +10,7 @@ class DeliverableTypeController < ApplicationController
 #with the form element in the new.html.erb file
 
   def new
-    #begin
+    begin
       @deliverable = Deliverable.new
       @unit_measurements = []
       respond_to do |format|
@@ -27,7 +27,7 @@ class DeliverableTypeController < ApplicationController
 #Fetches user input from new.html.erb and saves the data on the database
   def create
     begin
-
+      puts "start of create"
       @deliverable = Deliverable.new(params[:deliverable])
 
       if @deliverable.deliverable_type == @@ADHOC
@@ -35,6 +35,7 @@ class DeliverableTypeController < ApplicationController
       else
         @deliverable.ad_hoc = false
       end
+      puts "after ad-hoc check"
 
       @deliverable.phase = session[:phase]
       @deliverable.project_id = session[:project_id]
@@ -43,19 +44,25 @@ class DeliverableTypeController < ApplicationController
       @estimated_size = @deliverable.estimated_size || '' 
       @production_rate = @deliverable.production_rate || '' 
       @estimated_effort = @deliverable.estimated_effort || '' 
-      
-      @unit_of_measurement = @deliverable.unit_measurement
+
+
+      puts "after variable setup"
 
       respond_to do |format|
         if @deliverable.save
           format.html{ redirect_to :controller => "deliverables", :default_phase=>session[:phase] }
         else
+          #set up @unit_of_measurements for fail cases
+          @unit_measurements = RailblazersXmlParser.
+              get_unit_of_measurement(session[:deliverable_type_id])
           format.html{ render :action => "new", :status => :unprocessable_entity}
         end
       end
       
       rescue Exception => ex
       @error_msg = ex.message
+      #puts @error_msg
+      puts "EX: #{ex}"
       redirect_to "deliverable_type/error"
     end
   end
