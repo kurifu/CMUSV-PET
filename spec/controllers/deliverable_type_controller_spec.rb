@@ -33,7 +33,7 @@ describe DeliverableTypeController do
       with_tag "input[type=text][name='deliverable[name]']"
       with_tag "textarea[name='deliverable[description]']"
       with_tag "select[name='deliverable[complexity]']"
-      with_tag "input[type=text][name='deliverable[unit_measurement]']"
+      with_tag "select[name='deliverable[unit_measurement]']"
       with_tag "input[type=text][name='deliverable[estimated_size]']"
       with_tag "input[type=text][name='deliverable[production_rate]']"
       with_tag "input[type=text][name='deliverable[estimated_effort]']"
@@ -52,8 +52,13 @@ describe DeliverableTypeController do
 
   it "should not redirect to Phase page (deliverables/index) after creating a Deliverable" do
     Deliverable.any_instance.stubs(:valid?).returns(false)
+    #del = mock()
+    #del.expects(:phase).returns("Requirements")
+    #del.expects(:project_id).returns(1)
+    #del.expects(:deliverable_type_id).returns(1)
     session[:project_id] = 1
     session[:phase] = "System Design"
+    session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(session[:phase])
     post 'create'
     assigns[:deliverable].should be_new_record
     response.should render_template("deliverable_type/new")
