@@ -137,7 +137,7 @@ class ProjectsController < ApplicationController
 
 #View the project overview screen with phase/deliverable estimations
   def overview
-    #begin
+    begin
       @project = Project.find_by_id(session[:project_id])
       @phase_efforts = {}
 
@@ -161,11 +161,11 @@ class ProjectsController < ApplicationController
         format.html
       end
 
-     # rescue Exception => ex
-     # @error_msg = ex.message
+      rescue Exception => ex
+      @error_msg = ex.message
 
-    #  render "projects/error"
-    #end
+      render "projects/error"
+    end
   end
 
 end
