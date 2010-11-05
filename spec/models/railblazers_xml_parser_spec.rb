@@ -44,8 +44,8 @@ describe RailblazersXmlParser do
 
   it "should retrieve the correct deliverable types given a id" do
     dtypes = @parser.get_deliverable_type("1")
-    dtypes[0].should == "xyz1"
-    dtypes[1].should == "abc1"
+    dtypes[0].should == "Requirement document"
+    dtypes[1].should == "Requirement Analysis"
 
     dtypes = @parser.get_deliverable_type("10")
     dtypes[0].should == "xyz10"
@@ -55,7 +55,7 @@ describe RailblazersXmlParser do
   it "should retrieve the correct unit of measurement given an id" do
     dtypes = @parser.get_unit_of_measurement("1")
     dtypes.each do |f|
-      f.should == "dummy1"
+      f.should == "pages"
     end
     dtypes = @parser.get_unit_of_measurement("10")
     dtypes.each do |f|

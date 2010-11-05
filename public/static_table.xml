@@ -11,23 +11,23 @@
    </lifecycle>
 
    <deliverable_type id="1">
-        <name>xyz1,abc1</name>
-        <unit>dummy1</unit>
+        <name>Requirement document,Requirement Analysis</name>
+        <unit>pages</unit>
    </deliverable_type>
 
    <deliverable_type id="2">
-        <name>name2,name2 </name>
-        <unit>dummy2</unit>
+        <name>Database design document,UML </name>
+        <unit>pages</unit>
    </deliverable_type>
 
    <deliverable_type id="3">
-        <name>xyz3,abc3</name>
-        <unit>dummy3</unit>
+        <name>Prototype,Module</name>
+        <unit>LOC</unit>
    </deliverable_type>
 
    <deliverable_type id="4">
-        <name>xyz4,abc4</name>
-        <unit>dummy4</unit>
+        <name>Tests cases,Test specification</name>
+        <unit>Tests</unit>
    </deliverable_type>
 
    <deliverable_type id="5">

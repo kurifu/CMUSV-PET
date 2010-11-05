@@ -88,6 +88,17 @@ integrate_views
     response.should redirect_to("deliverables")
   end
 
+  #Testing the case when the default_phase parameter is given
+  it "should get data from params[:default_phase] if it is provided" do
+    session[:project_id]=100
+    get :index, :default_phase=>"Testing"
+    puts params[:default_phase]
+    assigns[:deliverable].phase.should == "Testing"
+
+    response.should render_template :index
+  end
+
+
   describe "Unit of Measurement" do
     before(:each) do
       @deliverable_id ="11"

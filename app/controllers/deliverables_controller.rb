@@ -3,16 +3,14 @@ class DeliverablesController < ApplicationController
 #Populates static data and creates a new instance of Deliverable class and 
 #binds the @deliverable variable with the form element of Phase page
   def index
-    @deliverable = Deliverable.new
-    project_id = session[:project_id]
-    lifecycle = Project.find(project_id).lifecycle
-
     #@deliverable is used to bind with the select tag.
     #When value assigned to the phases attribute, it become the selected value in select tag
     @deliverable = Deliverable.new
     
-    @phases = RailblazersXmlParser.get_phase(lifecycle)
+    project_id = session[:project_id]
+    lifecycle = Project.find(project_id).lifecycle
 
+    @phases = RailblazersXmlParser.get_phase(lifecycle)
     #Handling situation when user come to this page through project overview
     if params[:default_phase].blank?
       session[:phase] = nil

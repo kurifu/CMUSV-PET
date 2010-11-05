@@ -43,6 +43,11 @@ class RailblazersXmlParser
 #Output: string => id
   def self.identify_deliverable_type(phase)
     id = case phase
+
+    when "Implementation And Unit Testing" then "3"
+    when "Integration And System Testing" then "4"
+    when "Operation" then "5"
+
     when "Requirements Gathering And Analysis" then "1"
     when "System Design" then "2"
     when "Implementation" then "3"
@@ -54,9 +59,7 @@ class RailblazersXmlParser
     when "Engineering" then "9"
     when "Evaluation" then "10"
     when "Requirements" then "1"
-    when "Implementation And Unit Testing" then "3"
-    when "Integration And System Testing" then "4"
-    when "Operation" then "5"
+    
     end
     return id
   end
@@ -101,12 +104,12 @@ class RailblazersXmlParser
 #wherein for computational purpose an integer value is required
 #Input: string 
 #Output: integer
-  def self.get_estimated_size(effort)
-    estimated_size = case effort
-      when "Low" then @LOW
-      when "Medium" then @MEDIUM
-      when "High" then @HIGH
-    end
-    return estimated_size
-  end
+#  def self.get_estimated_size(effort)
+#    estimated_size = case effort
+#      when "Low" then @LOW
+#      when "Medium" then @MEDIUM
+#      when "High" then @HIGH
+#    end
+#    return estimated_size
+#  end
 end

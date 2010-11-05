@@ -1,5 +1,6 @@
 # Factory for project
 Factory.define :valid_project, :class=>'Project' do |p|
+  p.id 100
   p.name "PET 1.3"
   p.description  "NDSS project"
   p.lifecycle "Simplified WaterFall"
