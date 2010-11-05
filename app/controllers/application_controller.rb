@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+#code for error handling
+protected
+
+  def rescue_action(exception)
+    case exception
+    when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
+      redirect_to "/error", :status=>301
+    else
+      redirect_to "/500.html"
+    end
+  end
 end

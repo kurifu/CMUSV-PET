@@ -59,7 +59,7 @@ describe ProjectsController do
   end
 
   it "should display error page if it cannot find the project" do
-    Project.stubs(:find_by_id).returns(nil)
+    Project.stubs(:find_by_id).raises(Exception, 'A stubed exception')
     get :overview
     response.should render_template("projects/error")
   end
