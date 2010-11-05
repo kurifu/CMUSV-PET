@@ -25,13 +25,8 @@ integrate_views
 
   # NOTE: Fails if we move the Factory.build to the before(:each) section.... wtf??
   it "should display the Phase page (index) given a project_id" do
-<<<<<<< HEAD
-    del = Factory.build(:valid_deliverable)
-    del.should be_valid
-=======
     del = mock()
     del.expects(:project_id).returns(100)
->>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:project_id] = del.project_id
     get "index"
     response.should render_template("deliverables/index")
@@ -59,19 +54,7 @@ integrate_views
 =end
 
   it "it should populate del table via AJAX when I select a new phase" do
-<<<<<<< HEAD
-    del = Factory.build(:valid_deliverable)
-    del.should_not be_invalid
-    session[:project_id] = del.project_id
-    xhr :get, :update_deliverable_partial, :phase => del.phase
-    response.should render_template("_deliverable_partial")
-    
-  end
 
-  it "it should NOT populate del table via AJAX when I select a new phase" do
-    del = Factory.build(:valid_deliverable)
-    del.should_not be_invalid
-=======
     del = mock()
     del.expects(:project_id).returns(100)
     del.expects(:phase).returns('Testing')
@@ -83,7 +66,6 @@ integrate_views
   it "it should NOT populate del table via AJAX when I select a new phase" do
     del = mock()
     del.expects(:project_id).returns(100)
->>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial
     response.should_not render_template("_deliverable_partial")
@@ -91,13 +73,9 @@ integrate_views
   end
 
   it "should redirect to Add Deliverable Page given a Phase" do
-<<<<<<< HEAD
-    del = Factory.build(:valid_deliverable)
-    del.should be_valid
-=======
+
     del = mock()
     del.expects(:phase).returns('Testing')
->>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:phase] = del.phase
     xhr :get, :validate_before_adding_new_type
     flash[:notice].should be_nil
