@@ -12,7 +12,7 @@
   <% @phase_efforts.each do |phase, deliverables| %>
   <tr>
     <td class="phase"><%= phase %> </td>
-    <td><%=  calculate_phase_effort(@project.id, phase)  %></td>
+    <td><%= calculate_phase_effort(@project.id, phase)  %></td>
   </tr>
 
     <% deliverables.each do |dname, deffort| %>
