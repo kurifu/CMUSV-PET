@@ -26,7 +26,7 @@ describe DeliverablesController do
 
   # NOTE: Fails if we move the Factory.build to the before(:each) section.... wtf??
   it "should display the Phase page (index) given a project_id" do
-    del = Factory.build(:deliverable)
+    del = Factory.build(:valid_deliverable)
     del.should be_valid
     session[:project_id] = del.project_id
     get "index"
@@ -55,16 +55,16 @@ describe DeliverablesController do
 =end
 
   it "it should populate del table via AJAX when I select a new phase" do
-    del = Factory.build(:deliverable)
+    del = Factory.build(:valid_deliverable)
     del.should_not be_invalid
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial, :phase => del.phase
     response.should render_template("_deliverable_partial")
-    session[:test_dtypes].should_not be_nil
+    
   end
 
   it "it should NOT populate del table via AJAX when I select a new phase" do
-    del = Factory.build(:deliverable)
+    del = Factory.build(:valid_deliverable)
     del.should_not be_invalid
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial
@@ -73,7 +73,7 @@ describe DeliverablesController do
   end
 
   it "should redirect to Add Deliverable Page given a Phase" do
-    del = Factory.build(:deliverable)
+    del = Factory.build(:valid_deliverable)
     del.should be_valid
     session[:phase] = del.phase
     xhr :get, :validate_before_adding_new_type

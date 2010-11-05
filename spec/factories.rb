@@ -1,30 +1,12 @@
-# Project Table Tests
-Factory.define :testproject, :class=>'Project' do |t|
-  t.name nil
-  t.description 'NDSS project'
-  t.lifecycle 'XP'
+# Factory for project
+Factory.define :valid_project, :class=>'Project' do |p|
+  p.name "PET 1.3"
+  p.description  "NDSS project"
+  p.lifecycle "Simplified WaterFall"
 end
 
-Factory.define :project do |p|
-  p.name 'PET 1.3'
-  p.description  'NDSS project'
-  p.lifecycle 'XP'
-end
-
-Factory.define :project_existed, :class=>'Project' do |p|
-  p.name 'rails project'
-  p.description 'rails project'
-  p.lifecycle 'XP'
-end
-
-Factory.define :pet_project, :class=>'Project' do |t|
-  t.name 'PET 1.0'
-  t.description 'NDSS project'
-  t.lifecycle nil
-end
-
-# Deliverable Table Tests
-Factory.define :deliverable, :class=>'Deliverable' do |d|
+# Factory for deliverable
+Factory.define :valid_deliverable, :class=>'Deliverable' do |d|
   d.deliverable_type 4
   d.phase 'Testing'
   d.project_id 100

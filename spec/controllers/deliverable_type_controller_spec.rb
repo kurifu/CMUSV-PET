@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DeliverableTypeController do
   before(:each) do
-    del_item = Factory.build(:deliverable)
+    del_item = Factory.build(:valid_deliverable)
     del_item.should be_valid
   end
   
