@@ -20,7 +20,6 @@ describe ProjectsController do
 
   it "should display the New page" do
     get 'projects/new'
-    response.should be_success
     response.should render_template("projects/new")
   end
 
@@ -50,7 +49,6 @@ describe ProjectsController do
 
   # Project Overview Testing
   it "should render the overview screen" do
-
     project_item = mock()
     project_item.expects(:lifecycle).returns("Simplified WaterFall")
 
@@ -64,5 +62,12 @@ describe ProjectsController do
     Project.stubs(:find_by_id).returns(nil)
     get :overview
     response.should render_template("projects/error")
+  end
+
+  it "should render the correct page when an exception is raised" do
+    Project.stubs(:find_by_id).raises(Exception, 'A stubed exception')
+    get :overview
+    response.should render_template "projects/error"
+
   end
 end

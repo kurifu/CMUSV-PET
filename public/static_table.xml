@@ -12,52 +12,56 @@
 
    <deliverable_type id="1">
         <name>xyz1,abc1</name>
-        <unit>dummy1, dummy1, dummy1</unit>
+        <unit>dummy1</unit>
    </deliverable_type>
 
    <deliverable_type id="2">
         <name>name2,name2 </name>
-        <unit>dummy2,dummy2,dummy2</unit>
+        <unit>dummy2</unit>
    </deliverable_type>
 
    <deliverable_type id="3">
         <name>xyz3,abc3</name>
-        <unit>dummy3,dummy3,dummy3</unit>
+        <unit>dummy3</unit>
    </deliverable_type>
 
    <deliverable_type id="4">
         <name>xyz4,abc4</name>
-        <unit>dummy4,dummy4,dummy4</unit>
+        <unit>dummy4</unit>
    </deliverable_type>
 
    <deliverable_type id="5">
         <name>xyz5,abc5</name>
-        <unit>dummy5,dummy5,dummy5</unit>
+        <unit>dummy5</unit>
    </deliverable_type>
     
    <deliverable_type id="6">
         <name>xyz1116,abc2226</name>
-        <unit>dummy6,dummy6,dummy6</unit>
+        <unit>dummy6</unit>
    </deliverable_type>
 
     <deliverable_type id="7">
         <name>xyz7,abc7</name>
-        <unit>dummy7,dummy7,dummy7</unit>
+        <unit>dummy7</unit>
     </deliverable_type>
  
     <deliverable_type id="8">
         <name>xyz8,abc8</name>
-        <unit>dummy8,dummy8,dummy8</unit>
+        <unit>dummy8</unit>
    </deliverable_type>
 
     <deliverable_type id="9">
         <name>xyz9,abc9</name>
-        <unit>dummy9,dummy9,dummy9</unit>
+        <unit>dummy9</unit>
    </deliverable_type>
 
     <deliverable_type id="10">
         <name>xyz10,abc10</name>
-        <unit>dummy10,dummy10,dummy10</unit>
+        <unit>dummy10</unit>
+   </deliverable_type>
+
+   <deliverable_type id="11">
+      <unit>dummy1,dummy2,dummy3</unit>
    </deliverable_type>
 
     

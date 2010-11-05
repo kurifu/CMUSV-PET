@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DeliverablesController do
-
+integrate_views
   before(:each) do
     # doesn't work for catching errors
     #controller.use_rails_error_handling!
@@ -23,11 +23,15 @@ describe DeliverablesController do
     controller.should be_an_instance_of(DeliverablesController)
   end
 
-
   # NOTE: Fails if we move the Factory.build to the before(:each) section.... wtf??
   it "should display the Phase page (index) given a project_id" do
+<<<<<<< HEAD
     del = Factory.build(:valid_deliverable)
     del.should be_valid
+=======
+    del = mock()
+    del.expects(:project_id).returns(100)
+>>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:project_id] = del.project_id
     get "index"
     response.should render_template("deliverables/index")
@@ -55,6 +59,7 @@ describe DeliverablesController do
 =end
 
   it "it should populate del table via AJAX when I select a new phase" do
+<<<<<<< HEAD
     del = Factory.build(:valid_deliverable)
     del.should_not be_invalid
     session[:project_id] = del.project_id
@@ -66,19 +71,37 @@ describe DeliverablesController do
   it "it should NOT populate del table via AJAX when I select a new phase" do
     del = Factory.build(:valid_deliverable)
     del.should_not be_invalid
+=======
+    del = mock()
+    del.expects(:project_id).returns(100)
+    del.expects(:phase).returns('Testing')
+    session[:project_id] = del.project_id
+    xhr :get, :update_deliverable_partial, :phase => del.phase
+    response.should render_template("_deliverable_partial")
+  end
+
+  it "it should NOT populate del table via AJAX when I select a new phase" do
+    del = mock()
+    del.expects(:project_id).returns(100)
+>>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial
     response.should_not render_template("_deliverable_partial")
-    session[:test_dtypes].should be_nil
+    #session[:test_dtypes].should be_nil
   end
 
   it "should redirect to Add Deliverable Page given a Phase" do
+<<<<<<< HEAD
     del = Factory.build(:valid_deliverable)
     del.should be_valid
+=======
+    del = mock()
+    del.expects(:phase).returns('Testing')
+>>>>>>> 3bbaf4a6a1be2d2d178e895c6891802b440adede
     session[:phase] = del.phase
     xhr :get, :validate_before_adding_new_type
     flash[:notice].should be_nil
-    response.should redirect_to("deliverable_type/new")
+    response.should redirect_to :controller=>"deliverable_type", :action=>"new"
   end
 
   it "should NOT redirect to Add Deliverable Page without a Phase" do
@@ -87,5 +110,22 @@ describe DeliverablesController do
     response.should redirect_to("deliverables")
   end
 
+  describe "Unit of Measurement" do
+    before(:each) do
+      @deliverable_id ="11"
+    end
+    it "should provide a unit of measurement given the deliverable type" do
+      unit_of_measurement = Array.new
+        unit_of_measurement =
+          RailblazersXmlParser.get_unit_of_measurement(@deliverable_id)
+          for unit in unit_of_measurement do
+            puts "UNIT: #{unit}"
+          end
+        if(@deliverable_id== "11")
+          unit_of_measurement.size.should == 3
+        else
+          unit_of_measurement.size.should == 1
+    end
+  end
 end
-
+end
