@@ -9,7 +9,21 @@
           <td><%= select(:deliverable, :deliverable_type, @deliverable_types,
             {:prompt   => "Select a phase"},
             {:onchange => "#{remote_function(:url  =>
-            {:action => "update_unit_of_measurement_partial"})}"})%></td>
+              {:action => "update_unit_of_measurement_partial"},
+               :with => "'deliverable_type='+value")}"})%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="ad_hoc_label">
+              <%= render :partial => "blank" %>
+            </div>
+          </td>
+          <td>
+            <div id="ad_hoc_type">
+              <%= render :partial => "blank" %>
+            </div>
+          </td>
         </tr>
         <tr>
           <td><%= f.label :name, "Deliverable Name" %></td>
@@ -29,8 +43,8 @@
           <td>
             <div id="unit_of_measurement">
               <%= render :partial => "unit_of_measurement",
-                  :object=>@unit_measurements %>
-          </div>
+                :object=>@unit_measurements %>
+            </div>
           </td>
         </tr>
       </table>
