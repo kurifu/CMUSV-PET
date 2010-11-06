@@ -28,6 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-deliverable_type_controller_rb.html">app/controllers/deliverable_type_controller.rb</a></td>
+<<<<<<< HEAD
             <td class='right_align'><tt>98</tt></td>
             <td class='right_align'><tt>73</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>65.31%</tt></div>
@@ -39,6 +40,19 @@
           <div class="percent_graph">
             <div class="covered" style="width:62px"></div>
             <div class="uncovered" style="width:38px"></div>
+=======
+            <td class='right_align'><tt>118</tt></td>
+            <td class='right_align'><tt>92</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>61.02%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:61px"></div>
+            <div class="uncovered" style="width:39px"></div>
+          </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>57.61%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:58px"></div>
+            <div class="uncovered" style="width:42px"></div>
+>>>>>>> storycard11
           </div></td>
           </tr>
         </tbody>
@@ -225,83 +239,184 @@
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line29">29</a>     begin</pre></td>
+=======
+            <td><pre><a name="line29">29</a>     puts &quot;create start&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line30">30</a>       puts &quot;start of create&quot;</pre></td>
+=======
+            <td><pre><a name="line30">30</a>     begin</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line31">31</a>       @deliverable = Deliverable.new(params[:deliverable])</pre></td>
+=======
+            <td><pre><a name="line31">31</a>       puts &quot;create start, inside exception begin&quot;</pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+<<<<<<< HEAD
+          <tr class="inferred">
+            <td><pre><a name="line32">32</a> </pre></td>
+=======
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       @deliverable = Deliverable.new(params[:deliverable])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a> </pre></td>
+            <td><pre><a name="line33">33</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
+            <td><pre><a name="line34">34</a>       puts &quot;before adhoc stuff&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       if @deliverable.deliverable_type == @@ADHOC</pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+<<<<<<< HEAD
+          <tr class="marked">
             <td><pre><a name="line33">33</a>       if @deliverable.deliverable_type == @@ADHOC</pre></td>
+=======
+          <tr class="uncovered">
+            <td><pre><a name="line36">36</a>         @deliverable.ad_hoc = true</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line34">34</a>         @deliverable.ad_hoc = true</pre></td>
+=======
+            <td><pre><a name="line37">37</a>         @deliverable.deliverable_type = params[:ad_hoc_type]</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="inferred">
             <td><pre><a name="line35">35</a>       else</pre></td>
+=======
+          <tr class="uncovered">
+            <td><pre><a name="line38">38</a>         @deliverable.unit_measurement = params[:ad_hoc_unit]</pre></td>
           </tr>
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line39">39</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>         @deliverable.ad_hoc = false</pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+<<<<<<< HEAD
           <tr class="marked">
             <td><pre><a name="line36">36</a>         @deliverable.ad_hoc = false</pre></td>
+=======
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a>       end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line37">37</a>       end</pre></td>
+=======
+            <td><pre><a name="line42">42</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line38">38</a>       puts &quot;after ad-hoc check&quot;</pre></td>
+=======
+            <td><pre><a name="line43">43</a>       puts &quot;after adhoc stuff&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="inferred">
             <td><pre><a name="line39">39</a> </pre></td>
+=======
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>       @deliverable.phase = session[:phase]</pre></td>
           </tr>
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>       @deliverable.project_id = session[:project_id]</pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+<<<<<<< HEAD
           <tr class="marked">
             <td><pre><a name="line40">40</a>       @deliverable.phase = session[:phase]</pre></td>
+=======
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>       #Code containing entered information when create fails they will be used in the view</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line41">41</a>       @deliverable.project_id = session[:project_id]</pre></td>
+=======
+            <td><pre><a name="line48">48</a>       @estimated_size = @deliverable.estimated_size || '' </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="inferred">
             <td><pre><a name="line42">42</a> </pre></td>
           </tr>
@@ -310,155 +425,321 @@
           
           <tr class="inferred">
             <td><pre><a name="line43">43</a>       #Code containing entered information when create fails they will be used in the view</pre></td>
+=======
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>       @production_rate = @deliverable.production_rate || '' </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line44">44</a>       @estimated_size = @deliverable.estimated_size || '' </pre></td>
+=======
+            <td><pre><a name="line50">50</a>       @estimated_effort = @deliverable.estimated_effort || '' </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="marked">
             <td><pre><a name="line45">45</a>       @production_rate = @deliverable.production_rate || '' </pre></td>
+=======
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line46">46</a>       @estimated_effort = @deliverable.estimated_effort || '' </pre></td>
+=======
+            <td><pre><a name="line52">52</a>       puts &quot;CHECK: #{@deliverable.ad_hoc}&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="inferred">
             <td><pre><a name="line47">47</a> </pre></td>
+=======
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>       puts &quot;#{@deliverable.complexity}&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="inferred">
             <td><pre><a name="line48">48</a> </pre></td>
+=======
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>       puts &quot;#{@deliverable.deliverable_type}&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line49">49</a>       puts &quot;after variable setup&quot;</pre></td>
+=======
+            <td><pre><a name="line55">55</a>       puts &quot;#{@deliverable.unit_measurement}&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line50">50</a> </pre></td>
+=======
+            <td><pre><a name="line56">56</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line51">51</a>       respond_to do |format|</pre></td>
+=======
+            <td><pre><a name="line57">57</a>       puts &quot;before redirect&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line52">52</a>         if @deliverable.save</pre></td>
+=======
+            <td><pre><a name="line58">58</a>       respond_to do |format|</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line53">53</a>           format.html{ redirect_to :controller =&gt; &quot;deliverables&quot;, :default_phase=&gt;session[:phase] }</pre></td>
+=======
+            <td><pre><a name="line59">59</a>         if @deliverable.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>           puts &quot;good save&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>           format.html{ redirect_to :controller =&gt; &quot;deliverables&quot;, :default_phase=&gt;session[:phase] }</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line54">54</a>         else</pre></td>
+=======
+            <td><pre><a name="line62">62</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>           puts &quot;bad save&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line55">55</a>           #set up @unit_of_measurements for fail cases</pre></td>
+=======
+            <td><pre><a name="line64">64</a>           #set up @unit_of_measurements for fail cases</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line56">56</a>           @unit_measurements = RailblazersXmlParser.</pre></td>
+=======
+            <td><pre><a name="line65">65</a>           @unit_measurements = RailblazersXmlParser.</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line57">57</a>               get_unit_of_measurement(session[:deliverable_type_id])</pre></td>
+=======
+            <td><pre><a name="line66">66</a>               get_unit_of_measurement(session[:deliverable_type_id])</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line58">58</a>           format.html{ render :action =&gt; &quot;new&quot;, :status =&gt; :unprocessable_entity}</pre></td>
+=======
+            <td><pre><a name="line67">67</a>           format.html{ render :action =&gt; &quot;new&quot;, :status =&gt; :unprocessable_entity}</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line59">59</a>         end</pre></td>
+=======
+            <td><pre><a name="line68">68</a>         end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line60">60</a>       end</pre></td>
+=======
+            <td><pre><a name="line69">69</a>       end</pre></td>
           </tr>
         
           
           
+          <tr class="uncovered">
+            <td><pre><a name="line70">70</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line71">71</a>       rescue Exception =&gt; ex</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line72">72</a>       @error_msg = ex.message</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line73">73</a>       redirect_to &quot;deliverable_type/error&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line74">74</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line75">75</a>   end</pre></td>
+>>>>>>> storycard11
+          </tr>
+        
+          
+          
+<<<<<<< HEAD
           <tr class="uncovered">
             <td><pre><a name="line61">61</a>       </pre></td>
+=======
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
+<<<<<<< HEAD
           <tr class="uncovered">
             <td><pre><a name="line62">62</a>       rescue Exception =&gt; ex</pre></td>
+=======
+          <tr class="inferred">
+            <td><pre><a name="line77">77</a> #Update the unit of measurement, depends on what deliverable type is chosen</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>   def update_unit_of_measurement_partial</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line63">63</a>       @error_msg = ex.message</pre></td>
+=======
+            <td><pre><a name="line79">79</a>     if params[:deliverable_type] == &quot;Ad-Hoc Type&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line64">64</a>       #puts @error_msg</pre></td>
+=======
+            <td><pre><a name="line80">80</a>       render :update do |page|</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line65">65</a>       puts &quot;EX: #{ex}&quot;</pre></td>
+=======
+            <td><pre><a name="line81">81</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'ad_hoc_type'</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line66">66</a>       redirect_to &quot;deliverable_type/error&quot;</pre></td>
+=======
+            <td><pre><a name="line82">82</a>         page.replace_html 'ad_hoc_label', :text =&gt; &quot;Ad-Hoc Type Name&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line67">67</a>     end</pre></td>
+=======
+            <td><pre><a name="line83">83</a>         page.replace_html 'unit_of_measurement', :partial =&gt; 'ad_hoc_unit'</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line68">68</a>   end</pre></td>
           </tr>
         
@@ -472,180 +753,335 @@
           
           <tr class="marked">
             <td><pre><a name="line70">70</a>   def update_unit_of_measurement_partial</pre></td>
+=======
+            <td><pre><a name="line84">84</a>       end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line71">71</a>     deliverable_type_id = session[:deliverable_type_id]</pre></td>
+=======
+            <td><pre><a name="line85">85</a>       return</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line72">72</a>     @unit_measurements = RailblazersXmlParser.</pre></td>
+=======
+            <td><pre><a name="line86">86</a>     else</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line73">73</a>       get_unit_of_measurement(deliverable_type_id)</pre></td>
+=======
+            <td><pre><a name="line87">87</a>       </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line74">74</a>     puts &quot;Check #{@unit_measurements}&quot;</pre></td>
+=======
+            <td><pre><a name="line88">88</a>       deliverable_type_id = session[:deliverable_type_id]</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line75">75</a>       render :update do |page|</pre></td>
+=======
+            <td><pre><a name="line89">89</a>       @unit_measurements = RailblazersXmlParser.</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line76">76</a>         page.replace_html 'unit_partial',</pre></td>
+=======
+            <td><pre><a name="line90">90</a>       get_unit_of_measurement(deliverable_type_id)</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line77">77</a>           :partial =&gt; 'unit_of_measurement',</pre></td>
+=======
+            <td><pre><a name="line91">91</a>       #puts &quot;Check #{@unit_measurements}&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line78">78</a>           :object =&gt; @unit_measurements</pre></td>
+=======
+            <td><pre><a name="line92">92</a>       render :update do |page|</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line79">79</a>       end</pre></td>
+=======
+            <td><pre><a name="line93">93</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'blank'</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line80">80</a>     end</pre></td>
+=======
+            <td><pre><a name="line94">94</a>         page.replace_html 'ad_hoc_label', :partial =&gt; 'blank'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line95">95</a>         page.replace_html 'unit_of_measurement',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line96">96</a>           :partial =&gt; 'unit_of_measurement',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line97">97</a>           :object =&gt; @unit_measurements</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line98">98</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line99">99</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line100">100</a>   end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="inferred">
+<<<<<<< HEAD
             <td><pre><a name="line81">81</a> #This method initializes the static content to be populated in the dropdown lists</pre></td>
+=======
+            <td><pre><a name="line101">101</a> #This method initializes the static content to be populated in the dropdown lists</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line82">82</a>   private</pre></td>
+=======
+            <td><pre><a name="line102">102</a>   private</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line83">83</a>   def initialize_for_selects</pre></td>
+=======
+            <td><pre><a name="line103">103</a>   def initialize_for_selects</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line84">84</a>     begin</pre></td>
+=======
+            <td><pre><a name="line104">104</a>     begin</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line85">85</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))</pre></td>
+=======
+            <td><pre><a name="line105">105</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line86">86</a>       @deliverable_types &lt;&lt; @@ADHOC</pre></td>
+=======
+            <td><pre><a name="line106">106</a>       @deliverable_types &lt;&lt; @@ADHOC</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line87">87</a>       @complexities = RailblazersXmlParser.get_common_values</pre></td>
+=======
+            <td><pre><a name="line107">107</a>       @complexities = RailblazersXmlParser.get_common_values</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line88">88</a>       @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
+=======
+            <td><pre><a name="line108">108</a>       @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line89">89</a>       @production_rates = RailblazersXmlParser.get_common_values</pre></td>
+=======
+            <td><pre><a name="line109">109</a>       @production_rates = RailblazersXmlParser.get_common_values</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="marked">
+<<<<<<< HEAD
             <td><pre><a name="line90">90</a>       @efforts = RailblazersXmlParser.get_common_values</pre></td>
+=======
+            <td><pre><a name="line110">110</a>       @efforts = RailblazersXmlParser.get_common_values</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line91">91</a> </pre></td>
+=======
+            <td><pre><a name="line111">111</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line92">92</a>     rescue Exception =&gt; ex</pre></td>
+=======
+            <td><pre><a name="line112">112</a>     rescue Exception =&gt; ex</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line93">93</a>       @error_msg = ex.message</pre></td>
+=======
+            <td><pre><a name="line113">113</a>       @error_msg = ex.message</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line94">94</a> </pre></td>
+=======
+            <td><pre><a name="line114">114</a> </pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line95">95</a>       redirect_to &quot;deliverable_type/error&quot;</pre></td>
+=======
+            <td><pre><a name="line115">115</a>       redirect_to &quot;deliverable_type/error&quot;</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line96">96</a>     end</pre></td>
+=======
+            <td><pre><a name="line116">116</a>     end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line97">97</a>   end</pre></td>
+=======
+            <td><pre><a name="line117">117</a>   end</pre></td>
+>>>>>>> storycard11
           </tr>
         
           
           
           <tr class="uncovered">
+<<<<<<< HEAD
             <td><pre><a name="line98">98</a> end</pre></td>
+=======
+            <td><pre><a name="line118">118</a> end</pre></td>
+>>>>>>> storycard11
           </tr>
         
       </tbody>
     </table>
 
+<<<<<<< HEAD
     <p>Generated on Fri Nov 05 14:11:24 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+=======
+    <p>Generated on Thu Nov 04 18:03:49 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+>>>>>>> storycard11
 
   </body>
 </html>

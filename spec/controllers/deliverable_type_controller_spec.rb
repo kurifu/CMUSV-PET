@@ -3,11 +3,6 @@ require 'spec_helper'
 describe DeliverableTypeController do
 
   integrate_views
-
-  before(:each) do
-    del_item = Factory.build(:valid_deliverable)
-    del_item.should be_valid
-  end
   
   #Delete this example and add some real ones
   it "should use DeliverableTypeController" do
@@ -74,12 +69,26 @@ describe DeliverableTypeController do
     lambda {DeliverableTypeNew.initialize_for_selects}.should raise_error
   end
 
-=begin
-  it "should pass params to deliverable" do
-    post 'create', :deliverable => {:name => "FOO"}
-    assigns[:deliverable].name.should == "FOO"
+  it "should allow me to pass values for Ad-Hoc fields" do
+    puts "LOOK NOW!"
+    #session[:phase] = "System Design"
+    Deliverable.any_instance.stubs(:valid?).returns(true)
+    #params = { :deliverable_type => 'Ad-Hoc Type' }
+
+    puts "in spec, before post create"
+    #post 'create'#, :deliverable => params
+    #response.should redirect_to("deliverables")
+
+    #assigns[:deliverable].should_not be_new_record
+    #assigns[:deliverable].ad_hoc_type.should == params[:ad_hoc_type]
+    #assigns[:deliverable].deliverable_type.should == params[:deliverable_type]
   end
-=end
+
+  # Railscast test, doesn't work anymore
+  #it "should pass params to deliverable" do
+  #  post 'create', :deliverable => {:name => "FOO"}
+  #  params[:deliverable].name.should == "FOO"
+  #end
   
 end
 

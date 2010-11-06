@@ -308,7 +308,7 @@ table#content_table, table#content_overview {
 /* Create Project page */
 div.content {
     width: 400px;
-
+    
     overflow: auto;
     padding: 5px 10px 10px 10px;
 }
@@ -368,7 +368,7 @@ th {
 
 div#add_deliverable {
     width: inherit;
-
+    
     text-align: center;
 }
 
@@ -402,7 +402,7 @@ table#pet_table, table#pet_calc {
 
 table#pet_table td:nth-child(2) {
     padding-left: 15px;
-
+    
 }
 
 /* TODO: FIX THIS!*/
@@ -411,12 +411,12 @@ table#pet_calc input {
     width: 75px;
 }
 
-label#comp {
+label#error_msg {
     color: red;
 }
 
 /* Overview Page */
 table#content_overview td.phase {
-
-    font-weight: bold;
+    
+    font-weight: bold; 
 }
