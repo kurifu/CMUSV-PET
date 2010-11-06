@@ -61,13 +61,19 @@ describe ProjectsController do
   it "should display error page if it cannot find the project" do
     Project.stubs(:find_by_id).raises(Exception, 'A stubed exception')
     get :overview
-    response.should render_template("projects/error")
+    response.should redirect_to "/500.html"
   end
 
   it "should render the correct page when an exception is raised" do
     Project.stubs(:find_by_id).raises(Exception, 'A stubed exception')
     get :overview
-    response.should render_template "projects/error"
+    response.should redirect_to "/500.html"
 
+  end
+
+  it "should go to 500 with weird exception" do
+    Project.stubs(:all).raises(Exception, 'A stubed exception')
+    get :index
+    response.should redirect_to "/500.html"
   end
 end

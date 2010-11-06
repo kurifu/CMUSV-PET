@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def rescue_action(exception)
+    puts exception
     case exception
     when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
       redirect_to "/error", :status=>301

@@ -10,24 +10,24 @@ class DeliverableTypeController < ApplicationController
 #with the form element in the new.html.erb file
 
   def new
-    begin
+  #  begin
       @deliverable = Deliverable.new
       @unit_measurements = []
       respond_to do |format|
         format.html
       end
       
-      rescue Exception => ex
-      @error_msg = ex.message
-
-      redirect_to "deliverable_type/error"
-    end
+#      rescue Exception => ex
+#      @error_msg = ex.message
+#
+#      redirect_to "deliverable_type/error"
+#    end
   end
 
 #Fetches user input from new.html.erb and saves the data on the database
   def create
     puts "create start"
-    begin
+   # begin
       puts "create start, inside exception begin"
       @deliverable = Deliverable.new(params[:deliverable])
 
@@ -68,10 +68,10 @@ class DeliverableTypeController < ApplicationController
         end
       end
       
-      rescue Exception => ex
-      @error_msg = ex.message
-      redirect_to "deliverable_type/error"
-    end
+#      rescue Exception => ex
+#      @error_msg = ex.message
+#      redirect_to "deliverable_type/error"
+#    end
   end
 
 #Update the unit of measurement, depends on what deliverable type is chosen
@@ -101,7 +101,7 @@ class DeliverableTypeController < ApplicationController
 #This method initializes the static content to be populated in the dropdown lists
   private
   def initialize_for_selects
-    begin
+  #  begin
       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))
       @deliverable_types << @@ADHOC
       @complexities = RailblazersXmlParser.get_common_values
@@ -109,10 +109,10 @@ class DeliverableTypeController < ApplicationController
       @production_rates = RailblazersXmlParser.get_common_values
       @efforts = RailblazersXmlParser.get_common_values
 
-    rescue Exception => ex
-      @error_msg = ex.message
-
-      redirect_to "deliverable_type/error"
-    end
+#    rescue Exception => ex
+#      @error_msg = ex.message
+#
+#      redirect_to "deliverable_type/error"
+#    end
   end
 end
