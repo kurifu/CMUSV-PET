@@ -5,7 +5,7 @@ namespace :doc do
     Rake::RDocTask.new do |rdoc|
         rdoc.rdoc_dir = "doc/app"
         rdoc.title    = "Rail Blazers PET v1.3 Documentation"
-        rdoc.options << "--main" << "doc/DESIGN_DECISION"
+        rdoc.options << "--main" << "README" << "doc/DESIGN_DECISION"
         rdoc.options << "--line-numbers" << "--inline-source" <<
         "--accessor" << "--charset" << "utf-8" << "--diagram"
         rdoc.template = "#{ENV["template"]}.rb" if ENV["template"]

@@ -83,6 +83,8 @@
 					
 					<li><a href="#method-i-new">#new</a></li>
 					
+					<li><a href="#method-i-overview">#overview</a></li>
+					
 					<li><a href="#method-i-show">#show</a></li>
 					
 					<li><a href="#method-i-update">#update</a></li>
@@ -187,38 +189,41 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Creates a project
+</p>
+<pre>
+ Note: are we using this format for error handling?</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="create-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 49</span>
-49:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-50:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
-51:     
-52:     
-53:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-54:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">save</span>
-55:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;save successful&quot;</span>
-56:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>] = <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">id</span>
-57:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-value str">&quot;Planning&quot;</span>
-58:         
-59:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;deliverables&quot;</span> }
-60:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>, <span class="ruby-value">:location</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
-61:       <span class="ruby-keyword kw">else</span>
-62:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;save failed&quot;</span>
-63:         <span class="ruby-ivar">@lifecycle_array</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_lifecycle</span>
-64:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span> }
-65:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
-66:       <span class="ruby-keyword kw">end</span>
-67:     <span class="ruby-keyword kw">end</span>
-68:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">StatementInvalid</span>
-69:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-value str">&quot;Inable to reach table, invalid statement&quot;</span>)
-70:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-value str">&quot;Invalid Statement&quot;</span>
-71:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'new'</span>
-72:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+67:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
+68:     
+69:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+70:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">save</span>
+71:         <span class="ruby-comment cmt">#puts &quot;save successful&quot;</span>
+72:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>] = <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">id</span>
+73:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-value str">&quot;Planning&quot;</span>
+74:         
+75:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;deliverables&quot;</span> }
+76:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>, <span class="ruby-value">:location</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
+77:       <span class="ruby-keyword kw">else</span>
+78:         <span class="ruby-comment cmt">#puts &quot;save failed&quot;</span>
+79:         <span class="ruby-ivar">@lifecycle_array</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_lifecycle</span>
+80:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span> }
+81:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
+82:       <span class="ruby-keyword kw">end</span>
+83:     <span class="ruby-keyword kw">end</span>
+84:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">StatementInvalid</span>
+85:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-value str">&quot;Inable to reach table, invalid statement&quot;</span>)
+86:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]= <span class="ruby-value str">&quot;Invalid Statement&quot;</span>
+87:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'new'</span>
+88:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -245,23 +250,31 @@
 					<p>
 Deletes a project
 </p>
+<pre>
+ Note: this is for future story card</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="destroy-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 90</span>
-90:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-91:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-92:     <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>  }
-93:     <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">destroy</span>
-94: 
-95:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-96:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">projects_url</span>) }
-97:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
-98:     <span class="ruby-keyword kw">end</span>
-99:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 115</span>
+115:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+116:     <span class="ruby-keyword kw">begin</span>
+117:       <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+118:       <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>  }
+119:       <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">destroy</span>
+120: 
+121:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+122:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">projects_url</span>) }
+123:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+124:       <span class="ruby-keyword kw">end</span>
+125:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+126:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+127: 
+128:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+129:     <span class="ruby-keyword kw">end</span>
+130:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -285,17 +298,19 @@ Deletes a project
 
 				<div class="method-description">
 					
-					
+					<p>
+Note: this is for future story card
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="edit-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 45</span>
-45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
-46:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-47:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 60</span>
+60:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+61:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+62:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -326,9 +341,9 @@ Deletes a project
 					<div class="method-source-code"
 						id="error-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 41</span>
-41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>
-42:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 56</span>
+56:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>
+57:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -364,13 +379,20 @@ page
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 4</span>
  4:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
- 5:     <span class="ruby-ivar">@projects</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">all</span>
- 6: 
- 7:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
- 8:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># index.html.erb</span>
- 9:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@projects</span> }
-10:     <span class="ruby-keyword kw">end</span>
-11:   <span class="ruby-keyword kw">end</span></pre>
+ 5:     <span class="ruby-keyword kw">begin</span>
+ 6:       <span class="ruby-ivar">@projects</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">all</span>
+ 7: 
+ 8:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 9:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># index.html.erb</span>
+10:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@projects</span> }
+11:       <span class="ruby-keyword kw">end</span>
+12: 
+13:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+14:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-value str">&quot;Cannot locate database, make sure it exists at 'db/development.sqlite3'&quot;</span>
+15: 
+16:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+17:     <span class="ruby-keyword kw">end</span>
+18:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -403,11 +425,11 @@ TODO : delete in future iterations
 					<div class="method-source-code"
 						id="integrate-with-delilverables-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 102</span>
-102:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">integrate_with_delilverables</span>
-103:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
-104:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;deliverables&quot;</span>
-105:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 133</span>
+133:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">integrate_with_delilverables</span>
+134:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+135:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;deliverables&quot;</span>
+136:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -440,22 +462,87 @@ Creates a new project
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 25</span>
-25:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
-26:     <span class="ruby-keyword kw">begin</span>
-27:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>
-28:     <span class="ruby-ivar">@lifecycle_array</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_lifecycle</span>
-29:     <span class="ruby-ivar">@error_msg</span>
-30:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-31:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new.html.erb</span>
-32:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
-33:     <span class="ruby-keyword kw">end</span>
-34:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
-35:     <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
-36:      
-37:     <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
-38:     <span class="ruby-keyword kw">end</span>
-39:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+40:     <span class="ruby-keyword kw">begin</span>
+41:       <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>
+42:       <span class="ruby-ivar">@lifecycle_array</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_lifecycle</span>
+43:       <span class="ruby-ivar">@error_msg</span>
+44:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+45:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new.html.erb</span>
+46:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
+47:       <span class="ruby-keyword kw">end</span>
+48:       
+49:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+50:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+51: 
+52:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+53:     <span class="ruby-keyword kw">end</span>
+54:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="overview-method" class="method-detail ">
+				<a name="method-i-overview"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">overview</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+View the project overview screen with phase/deliverable estimations
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="overview-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 139</span>
+139:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">overview</span>
+140:     <span class="ruby-keyword kw">begin</span>
+141:       <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>])
+142:       <span class="ruby-ivar">@phase_efforts</span> = {}
+143: 
+144:       <span class="ruby-identifier">phases</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-ivar">@project</span>.<span class="ruby-identifier">lifecycle</span>)
+145:       <span class="ruby-identifier">deliverables</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">find_all_by_project_id</span>(<span class="ruby-ivar">@project</span>.<span class="ruby-identifier">id</span>)
+146: 
+147:       <span class="ruby-comment cmt"># For each phase, create a new Hash if it doesn't exist</span>
+148:       <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">phases</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+149:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@phase_efforts</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">phases</span>[<span class="ruby-identifier">i</span>])
+150:           <span class="ruby-ivar">@phase_efforts</span>[<span class="ruby-identifier">phases</span>[<span class="ruby-identifier">i</span>]] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+151: 
+152:           <span class="ruby-comment cmt"># Grab all deliverables in this phase, add it to our small hash</span>
+153:           <span class="ruby-identifier">del_to_process</span> = <span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">phase</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">phases</span>[<span class="ruby-identifier">i</span>] }
+154:           <span class="ruby-identifier">del_to_process</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">target</span><span class="ruby-operator">|</span>
+155:             <span class="ruby-ivar">@phase_efforts</span>[<span class="ruby-identifier">phases</span>[<span class="ruby-identifier">i</span>]][<span class="ruby-identifier">target</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">estimated_effort</span>
+156:           <span class="ruby-keyword kw">end</span>
+157:         <span class="ruby-keyword kw">end</span>
+158:       <span class="ruby-keyword kw">end</span>
+159: 
+160:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+161:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
+162:       <span class="ruby-keyword kw">end</span>
+163: 
+164:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+165:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+166: 
+167:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+168:     <span class="ruby-keyword kw">end</span>
+169:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -488,15 +575,22 @@ Displays project details for the selected project
 					<div class="method-source-code"
 						id="show-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 14</span>
-14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-15:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-16: 
-17:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-18:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># show.html.erb</span>
-19:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
-20:     <span class="ruby-keyword kw">end</span>
-21:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+22:     <span class="ruby-keyword kw">begin</span>
+23:       <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+24: 
+25:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+26:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># show.html.erb</span>
+27:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
+28:       <span class="ruby-keyword kw">end</span>
+29: 
+30:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+31:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+32: 
+33:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+34:     <span class="ruby-keyword kw">end</span>
+35:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -523,26 +617,35 @@ Displays project details for the selected project
 					<p>
 Updates the selected project with the content as modified by the user
 </p>
+<pre>
+ Note: this is for future story card</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="update-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 75</span>
-75:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
-76:     <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-77: 
-78:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-79:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
-80:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-ivar">@project</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Project was successfully updated.'</span>) }
-81:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
-82:       <span class="ruby-keyword kw">else</span>
-83:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
-84:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
-85:       <span class="ruby-keyword kw">end</span>
-86:     <span class="ruby-keyword kw">end</span>
-87:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/controllers/projects_controller.rb, line 92</span>
+ 92:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+ 93:     <span class="ruby-keyword kw">begin</span>
+ 94:       <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+ 95: 
+ 96:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 97:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
+ 98:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-ivar">@project</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Project was successfully updated.'</span>) }
+ 99:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+100:         <span class="ruby-keyword kw">else</span>
+101:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
+102:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
+103:         <span class="ruby-keyword kw">end</span>
+104:       <span class="ruby-keyword kw">end</span>
+105: 
+106:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+107:       <span class="ruby-ivar">@error_msg</span> = <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+108: 
+109:       <span class="ruby-identifier">render</span> <span class="ruby-value str">&quot;projects/error&quot;</span>
+110:     <span class="ruby-keyword kw">end</span>
+111:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
