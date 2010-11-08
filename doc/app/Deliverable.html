@@ -65,6 +65,15 @@
 
 			<!-- Method Quickref -->
 			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-valid_calculation_result%3F">#valid_calculation_result?</a></li>
+					
+				</ul>
+			</div>
+			
 
 			<!-- Included Modules -->
 			
@@ -168,6 +177,50 @@ format of deliverable_url and the numericality of project_id
 
 		<!-- Methods -->
 		
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="valid-calculation-result--method" class="method-detail ">
+				<a name="method-i-valid_calculation_result%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">valid_calculation_result?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="valid-calculation-result--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/deliverable.rb, line 40</span>
+40:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid_calculation_result?</span>
+41:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">estimated_size</span>.<span class="ruby-identifier">to_f</span> * <span class="ruby-identifier">production_rate</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">estimated_effort</span>.<span class="ruby-identifier">to_f</span>
+42:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:estimated_size</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
+43:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:production_rate</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
+44:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:estimated_effort</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
+45:     <span class="ruby-keyword kw">end</span>
+46:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
 
 	</div>
 

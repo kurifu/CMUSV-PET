@@ -31,28 +31,28 @@
    </deliverable_type>
 
    <deliverable_type id="5">
-        <name>xyz5,abc5</name>
-        <unit>dummy5</unit>
+        <name>Deployment manual, Guide</name>
+        <unit>pages</unit>
    </deliverable_type>
     
    <deliverable_type id="6">
-        <name>xyz1116,abc2226</name>
-        <unit>dummy6</unit>
+        <name>Maintenance doc, Maintenance guide</name>
+        <unit>pages</unit>
    </deliverable_type>
 
     <deliverable_type id="7">
-        <name>xyz7,abc7</name>
-        <unit>dummy7</unit>
+        <name>Planning minutes, Planning notes</name>
+        <unit>pages</unit>
     </deliverable_type>
  
     <deliverable_type id="8">
-        <name>xyz8,abc8</name>
-        <unit>dummy8</unit>
+        <name>Risk Analysis, Mitigation plan</name>
+        <unit>pages</unit>
    </deliverable_type>
 
     <deliverable_type id="9">
-        <name>xyz9,abc9</name>
-        <unit>dummy9</unit>
+        <name>Engineering doc, Engineering manual</name>
+        <unit>pages</unit>
    </deliverable_type>
 
     <deliverable_type id="10">

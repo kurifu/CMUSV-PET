@@ -1,15 +1,15 @@
-Sun, 10 Oct 2010 22:56:09 -0700
+Sun, 07 Nov 2010 19:38:07 -0800
 app/helpers/application_helper.rb	Mon, 27 Sep 2010 18:01:13 -0700
-app/models/deliverable.rb	Sun, 10 Oct 2010 21:06:40 -0700
-public/static_table.xml	Thu, 07 Oct 2010 15:48:13 -0700
+app/models/deliverable.rb	Mon, 01 Nov 2010 14:29:34 -0700
+public/static_table.xml	Sat, 06 Nov 2010 02:08:03 -0700
 app/helpers/deliverable_type_helper.rb	Thu, 07 Oct 2010 15:48:13 -0700
-app/controllers/projects_controller.rb	Sun, 10 Oct 2010 18:40:28 -0700
-app/controllers/deliverable_type_controller.rb	Sun, 10 Oct 2010 18:40:28 -0700
-README	Mon, 27 Sep 2010 18:01:13 -0700
-doc/DESIGN_DECISION	Sun, 10 Oct 2010 22:48:36 -0700
-app/controllers/application_controller.rb	Mon, 27 Sep 2010 18:01:13 -0700
-app/controllers/deliverables_controller.rb	Sun, 10 Oct 2010 18:40:28 -0700
-app/models/project.rb	Sun, 10 Oct 2010 21:06:41 -0700
-app/models/railblazers_xml_parser.rb	Sun, 10 Oct 2010 21:06:41 -0700
-app/helpers/projects_helper.rb	Tue, 28 Sep 2010 14:35:56 -0700
+app/controllers/projects_controller.rb	Thu, 04 Nov 2010 19:37:42 -0700
+app/controllers/deliverable_type_controller.rb	Sat, 06 Nov 2010 01:59:07 -0700
+README	Sun, 07 Nov 2010 19:37:56 -0800
+doc/DESIGN_DECISION	Tue, 19 Oct 2010 17:56:35 -0700
+app/controllers/application_controller.rb	Sat, 06 Nov 2010 01:56:34 -0700
+app/controllers/deliverables_controller.rb	Sat, 06 Nov 2010 01:56:34 -0700
+app/models/project.rb	Tue, 19 Oct 2010 17:56:34 -0700
+app/models/railblazers_xml_parser.rb	Sat, 06 Nov 2010 01:56:34 -0700
+app/helpers/projects_helper.rb	Sat, 06 Nov 2010 01:56:34 -0700
 app/helpers/deliverables_helper.rb	Thu, 07 Oct 2010 15:48:13 -0700

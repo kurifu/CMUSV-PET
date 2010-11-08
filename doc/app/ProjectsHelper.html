@@ -58,6 +58,15 @@
 
 			<!-- Method Quickref -->
 			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-calculate_phase_effort">#calculate_phase_effort</a></li>
+					
+				</ul>
+			</div>
+			
 
 			<!-- Included Modules -->
 			
@@ -138,6 +147,62 @@
 
 		<!-- Methods -->
 		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="calculate-phase-effort-method" class="method-detail ">
+				<a name="method-i-calculate_phase_effort"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">calculate_phase_effort</span><span
+						class="method-args">(project_id, phase)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+(@project.id, phase)
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="calculate-phase-effort-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/helpers/projects_helper.rb, line 3</span>
+ 3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_phase_effort</span>(<span class="ruby-identifier">project_id</span>, <span class="ruby-identifier">phase</span>)
+ 4:     <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Input id #{project_id}, Input phase #{phase}&quot;</span>
+ 5: 
+ 6:     <span class="ruby-ivar">@hours</span> = <span class="ruby-value">0</span>
+ 7:     <span class="ruby-ivar">@dataset</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">find_all_by_phase_and_project_id</span>(<span class="ruby-identifier">phase</span>, <span class="ruby-identifier">project_id</span>)
+ 8:     <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@dataset</span>
+ 9:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">nil?</span>
+10:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+11:     <span class="ruby-keyword kw">else</span>
+12:       <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+13:         <span class="ruby-ivar">@hours</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">estimated_effort</span>.<span class="ruby-identifier">to_f</span>
+14:       <span class="ruby-keyword kw">end</span>
+15:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hours</span>
+16:     <span class="ruby-keyword kw">end</span>
+17: 
+18: 
+19:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
 
 	</div>
 

@@ -1,6 +1,6 @@
 <tr>
         <th>Deliverable</th>
-        <th>Complexity</th>
+        <th>Upload deliverable</th>
         <th>Action</th>
 </tr>
 
@@ -10,7 +10,9 @@
     <%= deliverable.name %>
   </td>
     <td>
-    <%= deliverable.complexity %>
+      <%form_for "deliverable" do |f|%>
+          <%= f.file_field :url %>
+      <%end%>
   </td>
   <td>
     <a href="#">Modify</a>

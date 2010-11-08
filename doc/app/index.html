@@ -24,92 +24,76 @@
 	
 	<div id="main">
 		<p>
-<b>Key design decisions</b>
-</p>
-<p>
-Team Rail Blazers make the decision to use xml to store static data.
-Disadvantages of using DB:
+Iteration 2: Story cards completed:
 </p>
 <ul>
 <li><p>
-Accessing DB is a “cost” from a real life project
+Story Card 15, “As a user, I can view the project phase page.  As a user,
+I can see all deliverables associated with each phase.”
 </p>
 </li>
 <li><p>
-Consumes a bit of memory each access
+Story Card 10, “As a user, I can provide deliverable size and production
+rate to PET and expect PET to calculate effort with the correct equation”
+</p>
+</li>
+<li><p>
+Story Card 14, “As a user, I could view the project estimation screen,
+which shows accurate estimates for every phase of the project”
+</p>
+</li>
+<li><p>
+Story Card 11, “As a user, I can add a new deliverable type if it is not
+provided in the list”
+</p>
+</li>
+<li><p>
+Story Card 12, “As a user, I can select a measurement type for a new
+deliverable type from a drop down list.”
+</p>
+</li>
+<li><p>
+Story Card 9, “As a user, I can provide deliverable complexity and type
+to PET and expect PET to provide the unit of measurement”
 </p>
 </li>
 </ul>
 <p>
-Solution: put static data in XML files
+Iteration1: Story cards completed:
 </p>
 <ul>
 <li><p>
-We will have accessor methods to pull out the data from XML, then store
-these values into the Dyanmic Tables
+Story Card 3, &#8220;As a user, I can create a project and enter name,
+description and lifecycle&#8220;
+</p>
+</li>
+<li><p>
+Story Card 8, &#8220;As a user, I can add a new deliverable type from the
+existing list of deliverable types.  As a user, I can enter name,
+description, complexity, estimated size and production rate to the new
+deliverable.&#8220;
 </p>
 </li>
 </ul>
 <p>
-Advantages of this Approach:
+Story cards in progress:
 </p>
 <ul>
 <li><p>
-Static data does not affect and will not be affected by Dynamic data;
-completely separate
+Story Card 15, &#8220;As a user, I can view the project phase page.  As a
+user, I can see all deliverables associated with each phase.&#8220;
 </p>
+<pre>
+      - Missing one or two RSpec tests before complete
+</pre>
 </li>
 <li><p>
-We avoid joining 4 tables when looking up an entry in the Deliverables
-table; the static data will already be there because we already populated
-them
+Story Card 10, &#8220;As a user, I can provide deliverable size and
+production rate to PET and expect PET to calculate effort with the correct
+equation&#8220;
 </p>
 </li>
 </ul>
-<p>
-Static Tables to be Turned into XML Files:
-</p>
-<ul>
-<li><p>
-Lifecycle
-</p>
-</li>
-<li><p>
-Phase
-</p>
-</li>
-<li><p>
-Deliverable_Type
-</p>
-</li>
-<li><p>
-Unit of Measurement
-</p>
-</li>
-</ul>
-<p>
-XML Accessor Methods:
-</p>
-<ul>
-<li><p>
-Will need to parse XML file and return one or more values in one or more
-formats (single value, array, array of specific values, etc)
-</p>
-</li>
-</ul>
-<p>
-<b>Database design</b>
-</p>
-<p>
-Deliverables Tables Project_id  Deliverable_id  lifecycle   phase  
-deliverable_type deliverable_name    deliverable_desc deliverable_url
-complexity  unit_of_measurement estimated_size  production_rate
-estimated_effort        
-</p>
-<p>
-Projects Table project_id  project_name    project_desc    project_status 
-lifecycle
-</p>
 
 	</div>
 	
@@ -160,8 +144,6 @@ lifecycle
 		
 			<li><a href="RailblazersXmlParser.html#method-c-get_deliverable_type">::get_deliverable_type &mdash; RailblazersXmlParser</a></li>
 		
-			<li><a href="RailblazersXmlParser.html#method-c-get_estimated_size">::get_estimated_size &mdash; RailblazersXmlParser</a></li>
-		
 			<li><a href="RailblazersXmlParser.html#method-c-get_lifecycle">::get_lifecycle &mdash; RailblazersXmlParser</a></li>
 		
 			<li><a href="RailblazersXmlParser.html#method-c-get_phase">::get_phase &mdash; RailblazersXmlParser</a></li>
@@ -170,9 +152,11 @@ lifecycle
 		
 			<li><a href="RailblazersXmlParser.html#method-c-identify_deliverable_type">::identify_deliverable_type &mdash; RailblazersXmlParser</a></li>
 		
-			<li><a href="DeliverableTypeController.html#method-i-create">#create &mdash; DeliverableTypeController</a></li>
+			<li><a href="ProjectsHelper.html#method-i-calculate_phase_effort">#calculate_phase_effort &mdash; ProjectsHelper</a></li>
 		
 			<li><a href="ProjectsController.html#method-i-create">#create &mdash; ProjectsController</a></li>
+		
+			<li><a href="DeliverableTypeController.html#method-i-create">#create &mdash; DeliverableTypeController</a></li>
 		
 			<li><a href="ProjectsController.html#method-i-destroy">#destroy &mdash; ProjectsController</a></li>
 		
@@ -180,27 +164,31 @@ lifecycle
 		
 			<li><a href="ProjectsController.html#method-i-error">#error &mdash; ProjectsController</a></li>
 		
-			<li><a href="DeliverablesController.html#method-i-index">#index &mdash; DeliverablesController</a></li>
-		
 			<li><a href="ProjectsController.html#method-i-index">#index &mdash; ProjectsController</a></li>
+		
+			<li><a href="DeliverablesController.html#method-i-index">#index &mdash; DeliverablesController</a></li>
 		
 			<li><a href="DeliverableTypeController.html#method-i-initialize_for_selects">#initialize_for_selects &mdash; DeliverableTypeController</a></li>
 		
 			<li><a href="ProjectsController.html#method-i-integrate_with_delilverables">#integrate_with_delilverables &mdash; ProjectsController</a></li>
 		
-			<li><a href="ProjectsController.html#method-i-new">#new &mdash; ProjectsController</a></li>
-		
 			<li><a href="DeliverableTypeController.html#method-i-new">#new &mdash; DeliverableTypeController</a></li>
 		
-			<li><a href="DeliverableTypeController.html#method-i-process_calc_inputs">#process_calc_inputs &mdash; DeliverableTypeController</a></li>
+			<li><a href="ProjectsController.html#method-i-new">#new &mdash; ProjectsController</a></li>
+		
+			<li><a href="ProjectsController.html#method-i-overview">#overview &mdash; ProjectsController</a></li>
+		
+			<li><a href="ApplicationController.html#method-i-rescue_action">#rescue_action &mdash; ApplicationController</a></li>
 		
 			<li><a href="ProjectsController.html#method-i-show">#show &mdash; ProjectsController</a></li>
-		
-			<li><a href="DeliverablesController.html#method-i-submit">#submit &mdash; DeliverablesController</a></li>
 		
 			<li><a href="ProjectsController.html#method-i-update">#update &mdash; ProjectsController</a></li>
 		
 			<li><a href="DeliverablesController.html#method-i-update_deliverable_partial">#update_deliverable_partial &mdash; DeliverablesController</a></li>
+		
+			<li><a href="DeliverableTypeController.html#method-i-update_unit_of_measurement_partial">#update_unit_of_measurement_partial &mdash; DeliverableTypeController</a></li>
+		
+			<li><a href="Deliverable.html#method-i-valid_calculation_result%3F">#valid_calculation_result? &mdash; Deliverable</a></li>
 		
 			<li><a href="DeliverablesController.html#method-i-validate_before_adding_new_type">#validate_before_adding_new_type &mdash; DeliverablesController</a></li>
 		
