@@ -23,8 +23,10 @@
 
 	
 	<div id="main">
-		<p>
-Iteration 2: Story cards completed:
+		<h2>Progress</h2>
+<h3>Iteration 2:</h3>
+<p>
+Story cards completed:
 </p>
 <ul>
 <li><p>
@@ -58,8 +60,9 @@ to PET and expect PET to provide the unit of measurement”
 </p>
 </li>
 </ul>
+<h3>Iteration1:</h3>
 <p>
-Iteration1: Story cards completed:
+Story cards completed:
 </p>
 <ul>
 <li><p>
@@ -84,7 +87,7 @@ Story Card 15, &#8220;As a user, I can view the project phase page.  As a
 user, I can see all deliverables associated with each phase.&#8220;
 </p>
 <pre>
-      - Missing one or two RSpec tests before complete
+   Missing one or two RSpec tests before complete
 </pre>
 </li>
 <li><p>
@@ -94,6 +97,104 @@ equation&#8220;
 </p>
 </li>
 </ul>
+<h2>Getting Started</h2>
+<p>
+Get the source code on github, using the following command:
+</p>
+<pre>
+     git clone git@github.com:cmusv/Fall-2010-FSE-Rail-Blazers.git
+</pre>
+<p>
+Bundle and DB setup
+</p>
+<pre>
+     bundle install
+     bundle exec rake db:schema:load
+     bundle exec rake db:setup (to load the seeds.rb data)
+</pre>
+<h2>Key design decisions</h2>
+<p>
+Team Rail Blazers made the decision to use xml to store static data.
+Disadvantages of using DB:
+</p>
+<ul>
+<li><p>
+Accessing DB is a “cost” from a real life project
+</p>
+</li>
+<li><p>
+Consumes a bit of memory each access
+</p>
+</li>
+</ul>
+<p>
+Solution: put static data in XML files
+</p>
+<ul>
+<li><p>
+We will have accessor methods to pull out the data from XML, then store
+these values into Dyanmic Tables
+</p>
+</li>
+</ul>
+<p>
+Advantages of this Approach:
+</p>
+<ul>
+<li><p>
+Static data does not affect and will not be affected by Dynamic data;
+completely separate
+</p>
+</li>
+<li><p>
+We avoid joining 4 tables when looking up an entry in the Deliverables
+table; the static data will already be there because we already populated
+them
+</p>
+</li>
+</ul>
+<p>
+Static Tables to be Turned into XML Files:
+</p>
+<ul>
+<li><p>
+Lifecycle
+</p>
+</li>
+<li><p>
+Phase
+</p>
+</li>
+<li><p>
+Deliverable_Type
+</p>
+</li>
+<li><p>
+Unit of Measurement
+</p>
+</li>
+</ul>
+<p>
+XML Accessor Methods:
+</p>
+<ul>
+<li><p>
+Will need to parse XML file and return one or more values in one or more
+formats (single value, array, array of specific values, etc)
+</p>
+</li>
+</ul>
+<h2>Database design</h2>
+<p>
+Deliverables Tables Project_id  Deliverable_id  lifecycle   phase  
+deliverable_type deliverable_name    deliverable_desc deliverable_url
+complexity  unit_of_measurement estimated_size  production_rate
+estimated_effort
+</p>
+<p>
+Projects Table project_id  project_name    project_desc    project_status 
+lifecycle
+</p>
 
 	</div>
 	
@@ -106,6 +207,8 @@ equation&#8220;
 			<li class="file"><a href="README.html">README</a></li>
 		
 			<li class="file"><a href="doc/DESIGN_DECISION.html">DESIGN_DECISION</a></li>
+		
+			<li class="file"><a href="doc/README_FOR_APP.html">README_FOR_APP</a></li>
 		
 	</ul>
 	

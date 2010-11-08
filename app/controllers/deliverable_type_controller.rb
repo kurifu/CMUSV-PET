@@ -1,6 +1,7 @@
 #Deliverables Controller
 class DeliverableTypeController < ApplicationController
 
+  #Constant variable for the option in the select tag
   @@ADHOC = "Ad-Hoc Type"
 
   before_filter :initialize_for_selects
@@ -8,30 +9,21 @@ class DeliverableTypeController < ApplicationController
 
 #The method #new creates a new instance of Deliverable and binds the @deliverable variable 
 #with the form element in the new.html.erb file
-
   def new
-  #  begin
       @deliverable = Deliverable.new
       @unit_measurements = []
       respond_to do |format|
         format.html
       end
-      
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      redirect_to "deliverable_type/error"
-#    end
   end
 
-#Fetches user input from new.html.erb and saves the data on the database
+#Fetches user input from new.html.erb and saves the data on the database.
+#Before it save data into database it will check whether the deliverable_type
+#is ad-hoc type or not. If it is it will get the data and unit of measurement
+#of the ad-hoc type.
   def create
-    puts "create start"
-   # begin
-      puts "create start, inside exception begin"
       @deliverable = Deliverable.new(params[:deliverable])
 
-      puts "before adhoc stuff"
       if @deliverable.deliverable_type == @@ADHOC
         @deliverable.ad_hoc = true
         @deliverable.deliverable_type = params[:ad_hoc_type]
@@ -40,7 +32,6 @@ class DeliverableTypeController < ApplicationController
         @deliverable.ad_hoc = false
       end
 
-      puts "after adhoc stuff"
       @deliverable.phase = session[:phase]
       @deliverable.project_id = session[:project_id]
 
@@ -49,29 +40,18 @@ class DeliverableTypeController < ApplicationController
       @production_rate = @deliverable.production_rate || '' 
       @estimated_effort = @deliverable.estimated_effort || '' 
 
-      puts "CHECK: #{@deliverable.ad_hoc}"
-      puts "#{@deliverable.complexity}"
-      puts "#{@deliverable.deliverable_type}"
-      puts "#{@deliverable.unit_measurement}"
-
-      puts "before redirect"
       respond_to do |format|
         if @deliverable.save
-          puts "good save"
           format.html{ redirect_to :controller => "deliverables", :default_phase=>session[:phase] }
         else
-          puts "bad save"
           #set up @unit_of_measurements for fail cases
           @unit_measurements = RailblazersXmlParser.
               get_unit_of_measurement(session[:deliverable_type_id])
+          #set up ad-hoc type for fail cases
+          @deliverable.deliverable_type = @@ADHOC
           format.html{ render :action => "new", :status => :unprocessable_entity}
         end
       end
-      
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#      redirect_to "deliverable_type/error"
-#    end
   end
 
 #Update the unit of measurement, depends on what deliverable type is chosen
@@ -98,10 +78,10 @@ class DeliverableTypeController < ApplicationController
       end
     end
   end
-#This method initializes the static content to be populated in the dropdown lists
+
   private
+  #This method initializes the static content to be populated in the dropdown lists
   def initialize_for_selects
-  #  begin
       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))
       @deliverable_types << @@ADHOC
       @complexities = RailblazersXmlParser.get_common_values
@@ -109,10 +89,5 @@ class DeliverableTypeController < ApplicationController
       @production_rates = RailblazersXmlParser.get_common_values
       @efforts = RailblazersXmlParser.get_common_values
 
-#    rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      redirect_to "deliverable_type/error"
-#    end
   end
 end

@@ -94,6 +94,8 @@
 				
 					<li class="file"><a href="./doc/DESIGN_DECISION.html">DESIGN_DECISION</a></li>
 				
+					<li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+				
 				</ul>
 			</div>
 			
@@ -178,7 +180,8 @@
 					<p>
 Populates static data and creates a new instance of <a
 href="Deliverable.html">Deliverable</a> class and  binds the @deliverable
-variable with the form element of Phase page
+variable with the form element of Phase page the index page also handling
+with parameters. user can navigate from the project overview screen
 </p>
 					
 
@@ -186,29 +189,29 @@ variable with the form element of Phase page
 					<div class="method-source-code"
 						id="index-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 5</span>
- 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
- 6:     <span class="ruby-comment cmt">#@deliverable is used to bind with the select tag.</span>
- 7:     <span class="ruby-comment cmt">#When value assigned to the phases attribute, it become the selected value in select tag</span>
- 8:     <span class="ruby-ivar">@deliverable</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">new</span>
- 9:     
-10:     <span class="ruby-identifier">project_id</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>]
-11:     <span class="ruby-identifier">lifecycle</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">project_id</span>).<span class="ruby-identifier">lifecycle</span>
-12: 
-13:     <span class="ruby-ivar">@phases</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-identifier">lifecycle</span>)
-14:     <span class="ruby-comment cmt">#Handling situation when user come to this page through project overview</span>
-15:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>].<span class="ruby-identifier">blank?</span>
-16:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-keyword kw">nil</span>
-17:       <span class="ruby-ivar">@deliverables_of_phase</span> = []
-18:       
-19:     <span class="ruby-keyword kw">else</span>
-20:       <span class="ruby-ivar">@deliverable</span>.<span class="ruby-identifier">phase</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>]
-21:       
-22:       <span class="ruby-ivar">@deliverables_of_phase</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">project_id</span>).<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">find_all_by_phase</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>])
+    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+ 8:     <span class="ruby-comment cmt">#@deliverable is used to bind with the select tag.</span>
+ 9:     <span class="ruby-comment cmt">#When value assigned to the phases attribute, it become the selected value in select tag</span>
+10:     <span class="ruby-ivar">@deliverable</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">new</span>
+11:     
+12:     <span class="ruby-identifier">project_id</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>]
+13:     <span class="ruby-identifier">lifecycle</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">project_id</span>).<span class="ruby-identifier">lifecycle</span>
+14: 
+15:     <span class="ruby-ivar">@phases</span> = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-identifier">lifecycle</span>)
+16:     <span class="ruby-comment cmt">#Handling situation when user come to this page through project overview</span>
+17:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>].<span class="ruby-identifier">blank?</span>
+18:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-keyword kw">nil</span>
+19:       <span class="ruby-ivar">@deliverables_of_phase</span> = []
+20:       
+21:     <span class="ruby-keyword kw">else</span>
+22:       <span class="ruby-ivar">@deliverable</span>.<span class="ruby-identifier">phase</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>]
 23:       
-24:     <span class="ruby-keyword kw">end</span>
-25: 
-26:   <span class="ruby-keyword kw">end</span></pre>
+24:       <span class="ruby-ivar">@deliverables_of_phase</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">project_id</span>).<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">find_all_by_phase</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:default_phase</span>])
+25:       
+26:     <span class="ruby-keyword kw">end</span>
+27: 
+28:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -244,29 +247,26 @@ list based on the phase selected in the Phase dropdown list
 					<div class="method-source-code"
 						id="update-deliverable-partial-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 31</span>
-31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_deliverable_partial</span>
-32:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>].<span class="ruby-identifier">blank?</span>
-33:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Please select a phase&quot;</span>
-34:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span>
-35:     <span class="ruby-keyword kw">else</span>
-36:       
-37:       <span class="ruby-ivar">@deliverables_of_phase</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>]).<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">find_all_by_phase</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>])
+    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 33</span>
+33:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_deliverable_partial</span>
+34:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>].<span class="ruby-identifier">blank?</span>
+35:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Please select a phase&quot;</span>
+36:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span>
+37:     <span class="ruby-keyword kw">else</span>
 38:       
-39:       <span class="ruby-comment cmt">#Not sure what is this line for</span>
-40:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:test_dtypes</span>] = <span class="ruby-ivar">@deliverable_types</span>
-41: 
-42:       <span class="ruby-comment cmt">#use session[:phase] to store phase for the use in deliverable_type_controller,</span>
-43:       <span class="ruby-comment cmt">#we need to clean up this session when it is not needed</span>
-44:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>]
-45:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:deliverable_type_id</span>] = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">identify_deliverable_type</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>])
-46:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;CHECK #{session[:deliverable_type_id]}&quot;</span>
-47:       <span class="ruby-identifier">render</span> <span class="ruby-value">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
-48:         <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-value str">'phase_partial'</span>, <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'deliverable_partial'</span>, <span class="ruby-value">:object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@deliverables_of_phase</span>
-49:       <span class="ruby-keyword kw">end</span>
-50:     <span class="ruby-keyword kw">end</span>
-51: 
-52:   <span class="ruby-keyword kw">end</span></pre>
+39:       <span class="ruby-ivar">@deliverables_of_phase</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:project_id</span>]).<span class="ruby-identifier">deliverables</span>.<span class="ruby-identifier">find_all_by_phase</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>])
+40: 
+41:       <span class="ruby-comment cmt">#use session[:phase] to store phase for the use in deliverable_type_controller,</span>
+42:       <span class="ruby-comment cmt">#we need to clean up this session when it is not needed</span>
+43:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>]
+44:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:deliverable_type_id</span>] = <span class="ruby-constant">RailblazersXmlParser</span>.<span class="ruby-identifier">identify_deliverable_type</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:phase</span>])
+45:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;CHECK #{session[:deliverable_type_id]}&quot;</span>
+46:       <span class="ruby-identifier">render</span> <span class="ruby-value">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+47:         <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-value str">'phase_partial'</span>, <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'deliverable_partial'</span>, <span class="ruby-value">:object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@deliverables_of_phase</span>
+48:       <span class="ruby-keyword kw">end</span>
+49:     <span class="ruby-keyword kw">end</span>
+50: 
+51:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -299,15 +299,15 @@ Validates the presence of phase in the Phase dropdown list
 					<div class="method-source-code"
 						id="validate-before-adding-new-type-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 55</span>
-55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_before_adding_new_type</span>
-56:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>].<span class="ruby-identifier">blank?</span>
-57:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Please select a phase&quot;</span>
-58:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span>
-59:     <span class="ruby-keyword kw">else</span>
-60:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;deliverable_type&quot;</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span>
-61:     <span class="ruby-keyword kw">end</span>
-62:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/deliverables_controller.rb, line 54</span>
+54:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_before_adding_new_type</span>
+55:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:phase</span>].<span class="ruby-identifier">blank?</span>
+56:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Please select a phase&quot;</span>
+57:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span>
+58:     <span class="ruby-keyword kw">else</span>
+59:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;deliverable_type&quot;</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span>
+60:     <span class="ruby-keyword kw">end</span>
+61:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

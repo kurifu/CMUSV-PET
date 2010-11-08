@@ -2,6 +2,8 @@ class DeliverablesController < ApplicationController
 
 #Populates static data and creates a new instance of Deliverable class and 
 #binds the @deliverable variable with the form element of Phase page
+#the index page also handling with parameters. user can navigate from the
+#project overview screen
   def index
     #@deliverable is used to bind with the select tag.
     #When value assigned to the phases attribute, it become the selected value in select tag
@@ -35,9 +37,6 @@ class DeliverablesController < ApplicationController
     else
       
       @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
-      
-      #Not sure what is this line for
-      session[:test_dtypes] = @deliverable_types
 
       #use session[:phase] to store phase for the use in deliverable_type_controller,
       #we need to clean up this session when it is not needed

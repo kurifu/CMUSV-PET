@@ -8,9 +8,11 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-#code for error handling
+
 protected
 
+  #Code for error handling. Over the rescue_action method can catch all exception
+  #in one place
   def rescue_action(exception)
     puts exception
     case exception

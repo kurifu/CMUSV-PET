@@ -2,42 +2,27 @@ class ProjectsController < ApplicationController
 
 #Displays all the projects on the Project Index page
   def index
-    #begin
       @projects = Project.all
 
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @projects }
       end
-
-#      rescue Exception => ex
-#      @error_msg = "Cannot locate database, make sure it exists at 'db/development.sqlite3'"
-#
-#      render "projects/error"
-#    end
   end
 
 #Displays project details for the selected project
   def show
-   # begin
       @project = Project.find(params[:id])
 
       respond_to do |format|
         format.html # show.html.erb
         format.xml  { render :xml => @project }
       end
-#
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      render "projects/error"
-#    end
   end
 
 
 #Creates a new project
   def new
-    #begin
       @project = Project.new
       @lifecycle_array = RailblazersXmlParser.get_lifecycle
       @error_msg
@@ -46,11 +31,6 @@ class ProjectsController < ApplicationController
         format.xml  { render :xml => @project }
       end
       
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      render "projects/error"
-#    end
   end
 
   def error
@@ -86,7 +66,6 @@ class ProjectsController < ApplicationController
 #Updates the selected project with the content as modified by the user
 # Note: this is for future story card
   def update
-   # begin
       @project = Project.find(params[:id])
 
       respond_to do |format|
@@ -99,17 +78,11 @@ class ProjectsController < ApplicationController
         end
       end
 
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      render "projects/error"
-#    end
   end
 
 #Deletes a project
 # Note: this is for future story card
   def destroy
-    #begin
       @project = Project.find(params[:id])
       @project.deliverables.each { |d| d.destroy  }
       @project.destroy
@@ -118,11 +91,6 @@ class ProjectsController < ApplicationController
         format.html { redirect_to(projects_url) }
         format.xml  { head :ok }
       end
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      render "projects/error"
-#    end
   end
 
   #TODO : delete in future iterations
@@ -133,7 +101,6 @@ class ProjectsController < ApplicationController
 
 #View the project overview screen with phase/deliverable estimations
   def overview
-    #begin
       @project = Project.find_by_id(session[:project_id])
       @phase_efforts = {}
 
@@ -157,11 +124,6 @@ class ProjectsController < ApplicationController
         format.html
       end
 
-#      rescue Exception => ex
-#      @error_msg = ex.message
-#
-#      render "projects/error"
-#    end
   end
 
 end

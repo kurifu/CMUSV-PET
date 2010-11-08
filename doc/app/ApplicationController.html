@@ -90,6 +90,8 @@
 				
 					<li class="file"><a href="./doc/DESIGN_DECISION.html">DESIGN_DECISION</a></li>
 				
+					<li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+				
 				</ul>
 			</div>
 			
@@ -177,7 +179,9 @@ controllers.
 				<div class="method-description">
 					
 					<p>
-code for error handling
+Code for error handling. Over the <a
+href="ApplicationController.html#method-i-rescue_action">rescue_action</a>
+method can catch all exception in one place
 </p>
 					
 
@@ -185,15 +189,16 @@ code for error handling
 					<div class="method-source-code"
 						id="rescue-action-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 14</span>
-14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action</span>(<span class="ruby-identifier">exception</span>)
-15:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">exception</span>
-16:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">UnknownAction</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>
-17:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/error&quot;</span>, <span class="ruby-value">:status=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">301</span>
-18:     <span class="ruby-keyword kw">else</span>
-19:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/500.html&quot;</span>
-20:     <span class="ruby-keyword kw">end</span>
-21:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 16</span>
+16:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action</span>(<span class="ruby-identifier">exception</span>)
+17:     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">exception</span>
+18:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">exception</span>
+19:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">UnknownAction</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>
+20:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/error&quot;</span>, <span class="ruby-value">:status=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">301</span>
+21:     <span class="ruby-keyword kw">else</span>
+22:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/500.html&quot;</span>
+23:     <span class="ruby-keyword kw">end</span>
+24:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
