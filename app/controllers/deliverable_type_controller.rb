@@ -35,20 +35,27 @@ class DeliverableTypeController < ApplicationController
       @deliverable.phase = session[:phase]
       @deliverable.project_id = session[:project_id]
 
-      #Code containing entered information when create fails they will be used in the view
-      @estimated_size = @deliverable.estimated_size || '' 
-      @production_rate = @deliverable.production_rate || '' 
-      @estimated_effort = @deliverable.estimated_effort || '' 
-
       respond_to do |format|
         if @deliverable.save
           format.html{ redirect_to :controller => "deliverables", :default_phase=>session[:phase] }
         else
+          #set up ad-hoc values for fail cases
+          if true == @deliverable.ad_hoc
+            @ad_hoc_type = @deliverable.deliverable_type
+            @ad_hoc_measurement = @deliverable.unit_measurement
+          end
+          #set up ad-hoc type for fail cases
+          @deliverable.deliverable_type = @@ADHOC
+
+          #Code containing entered information when create fails they will be used in the view
+          @estimated_size = @deliverable.estimated_size || ''
+          @production_rate = @deliverable.production_rate || ''
+          @estimated_effort = @deliverable.estimated_effort || ''
+
           #set up @unit_of_measurements for fail cases
           @unit_measurements = RailblazersXmlParser.
               get_unit_of_measurement(session[:deliverable_type_id])
-          #set up ad-hoc type for fail cases
-          @deliverable.deliverable_type = @@ADHOC
+          
           format.html{ render :action => "new", :status => :unprocessable_entity}
         end
       end

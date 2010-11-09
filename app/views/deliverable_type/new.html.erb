@@ -16,12 +16,21 @@
         <tr>
           <td>
             <div id="ad_hoc_label">
-              <%= render :partial => "blank" %>
+            <%  if @ad_hoc_type.nil? %>
+                <%= render :partial => "blank" %>
+            <% else %>
+                <%= render :text => "Ad-Hoc Type Name" %>
+            <% end %>
             </div>
           </td>
           <td>
             <div id="ad_hoc_type">
-              <%= render :partial => "blank" %>
+            <%  if @ad_hoc_type.nil? %>
+                <%= render :partial => "blank" %>
+            <% else %>
+                <%= render :partial => 'ad_hoc_type',
+                :object=>@ad_hoc_type%>
+            <% end %>
             </div>
           </td>
         </tr>
@@ -41,9 +50,16 @@
         <tr>
           <td><%= f.label :unit_of_measurement %></td>
           <td>
+            
             <div id="unit_of_measurement">
+            <% if @ad_hoc_measurement.nil? %>
               <%= render :partial => "unit_of_measurement",
                 :object=>@unit_measurements %>
+
+            <% else %>
+              <%= render :partial => 'ad_hoc_unit',
+                :object=>@ad_hoc_measurement %>
+            <% end %>
             </div>
           </td>
         </tr>
