@@ -1,13 +1,17 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  setup :activate_authlogic
+  
+  before(:each) do
+    @user_session = UserSession.create Factory.build(:valid_user)
+  end
 
-  # Not needed it seems... 
-  #before(:each) do
-  #  project_item = Factory.build(:project)
-    # the same as deliverable.valid?.should == true
-  #  project_item.should be_valid
-  #end
+  it "should redirect to login page if not logged in" do
+    @user_session.destroy
+    get :new
+    response.should redirect_to root_url
+  end
 
   it "should use ProjectsController" do
     controller.should be_an_instance_of(ProjectsController)
@@ -19,7 +23,7 @@ describe ProjectsController do
   end
 
   it "should display the New page" do
-    get 'projects/new'
+    get :new
     response.should render_template("projects/new")
   end
 

@@ -1,6 +1,6 @@
 #Deliverables Controller
 class DeliverableTypeController < ApplicationController
-
+before_filter :require_user
   #Constant variable for the option in the select tag
   @@ADHOC = "Ad-Hoc Type"
 

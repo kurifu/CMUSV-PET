@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-
-#Displays all the projects on the Project Index page
+before_filter :require_user
+  #Displays all the projects on the Project Index page
   def index
       @projects = Project.all
 

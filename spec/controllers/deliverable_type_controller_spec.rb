@@ -3,10 +3,21 @@ require 'spec_helper'
 describe DeliverableTypeController do
 
   integrate_views
+  setup :activate_authlogic
+
+  before(:each) do
+    @user_session = UserSession.create Factory.build(:valid_user)
+  end
   
   #Delete this example and add some real ones
   it "should use DeliverableTypeController" do
     controller.should be_an_instance_of(DeliverableTypeController)
+  end
+
+  it "should redirect to login page if not logged in" do
+    @user_session.destroy
+    get :new
+    response.should redirect_to root_url
   end
 
   it "should show the new deliverable page" do

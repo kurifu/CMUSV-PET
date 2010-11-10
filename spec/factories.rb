@@ -26,3 +26,10 @@ Factory.define :del_project, :class => 'Project' do |t|
   t.id 100
   t.lifecycle "Simplified WaterFall"
 end
+
+# valid user
+Factory.define :valid_user, :class=> 'User' do |u|
+  u.username 'test'
+  u.email 'test@test.com'
+  u.password 'test'
+end
