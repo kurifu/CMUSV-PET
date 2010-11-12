@@ -10,7 +10,7 @@
     <%= deliverable.name %>
   </td>
     <td>
-      <%form_for "deliverable" do |f|%>
+      <%form_for :deliverable do |f|%>
           <%= f.file_field :url %>
       <%end%>
   </td>

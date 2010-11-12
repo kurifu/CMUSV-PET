@@ -297,15 +297,23 @@ background : #fff;
 /* END SCAFFOLD ERROR STYLES */
 
 
+/*****************/
+/* CUSTOM STYLES */
+/*****************/
 
-/* custom styles */
-/* Project Homepage */
+/********************/
+/* PROJECT HOMEPAGE */
+/********************/
+
 table#content_table, table#content_overview {
     border: 1px solid black;
     text-align: center;
 }
 
-/* Create Project page */
+/***********************/
+/* CREATE PROJECT PAGE */
+/***********************/
+
 div.content {
     width: 400px;
     
@@ -323,6 +331,7 @@ div.content input, div.content textarea, div.content select {
 div.content textarea {
     width: 304px;
 }
+/**/
 
 div.content select, div.content_phase select {
     width: 200px;
@@ -340,7 +349,10 @@ input#project_submit, input#process_calc_inputs {
     margin-top: 20px;
 }
 
-/* Phase Page */
+/**************/
+/* PHASE PAGE */
+/**************/
+
 div.content_phase, table#content_table, table#content_overview {
     width: 650px;
 }
@@ -361,7 +373,7 @@ div#div_phase select {
     width: 250px;
 }
 
-th {
+th, td.td_header {
     background: #a7cc44;
     color: #666666;
 }
@@ -377,7 +389,9 @@ div#add_deliverable select {
     margin: 0 auto;
 }
 
-/* New Deliverable Page */
+/************************/
+/* NEW DELIVERABLE PAGE */
+/************************/
 
 input#deliverable_submit {
     width: 75px;
@@ -391,8 +405,7 @@ div#new_del {
     border: 0px;
 }
 
-/* New Deliverable Page */
-table#pet_table, table#pet_calc {
+table#pet_table, table#pet_calc, table#historical_data {
   width: 500px;
   font-size: 7pt;
   padding: 10px 10px 10px 20px;
@@ -400,9 +413,28 @@ table#pet_table, table#pet_calc {
   margin-top: 10px;
 }
 
+table#pet_calc {
+    text-align: center;
+    width: 200px;
+    float: left;
+}
+
+table#historical_data {
+    text-align: center;
+    border: 1px solid black;
+    float: right;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 0px 10px 0px;
+    width: 240px;
+    clear: none;
+}
+
+table#historical_data th {
+    font-size: 8pt;
+}
+
 table#pet_table td:nth-child(2) {
     padding-left: 15px;
-    
 }
 
 /* TODO: FIX THIS!*/
@@ -411,12 +443,15 @@ table#pet_calc input {
     width: 75px;
 }
 
-label#error_msg {
+label.error_msg {
+    font-weight: bold;
     color: red;
 }
 
-/* Overview Page */
+/*****************/
+/* OVERVIEW PAGE */
+/*****************/
+
 table#content_overview td.phase {
-    
     font-weight: bold; 
 }

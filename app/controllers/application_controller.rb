@@ -13,6 +13,8 @@ protected
 
   #Code for error handling. Over the rescue_action method can catch all exception
   #in one place
+
+#=begin
   def rescue_action(exception)
     puts exception
     case exception
@@ -22,4 +24,6 @@ protected
       redirect_to "/500.html"
     end
   end
+#=end
+
 end

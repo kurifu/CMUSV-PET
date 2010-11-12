@@ -1,0 +1,45 @@
+<table id="historical_data">
+  <tr>
+    <td colspan="4">
+      <label class="error_msg"><%= flash[:warning] %></label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4"><strong>Historical Data</strong></td>
+  </tr>
+  <tr>
+    <th></th>
+    <th id="min">Min</th>
+    <th id="avg">Avg</th>
+    <th id="max">Max</th>
+  </tr>
+  <tr id="size">
+    <td class="td_header">Size</td>
+    <td><%= @historical_data[0] %></td>
+    <td><%= @historical_data[1] %></td>
+    <td><%= @historical_data[2] %></td>
+  </tr>
+  <tr id="rate">
+    <td class="td_header">Rate</td>
+    <td><%= @historical_data[3] %></td>
+    <td><%= @historical_data[4] %></td>
+    <td><%= @historical_data[5] %></td>
+  </tr>
+  <tr id="effort">
+    <td class="td_header">Effort</td>
+    <td><%= @historical_data[6] %></td>
+    <td><%= @historical_data[7] %></td>
+    <td><%= @historical_data[8] %></td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <%=h link_to_remote "Fetch Historical Data",
+          :controller => :deliverable_type,
+          :url => { :action => :update_historical_data },
+          :update => 'pet_historical_div' %>
+    </td>
+    
+    <td></td>
+  </tr>
+</table>
+

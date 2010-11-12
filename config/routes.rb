@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
   map.resources :projects
