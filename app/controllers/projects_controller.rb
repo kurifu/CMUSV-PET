@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 before_filter :require_user
   #Displays all the projects on the Project Index page
   def index
-      @projects = Project.all
+      @projects = current_user.projects.all
 
       respond_to do |format|
         format.html # index.html.erb
@@ -12,7 +12,7 @@ before_filter :require_user
 
 #Displays project details for the selected project
   def show
-      @project = Project.find(params[:id])
+      @project = current_user.projects.find(params[:id])
 
       respond_to do |format|
         format.html # show.html.erb
@@ -38,7 +38,7 @@ before_filter :require_user
 
 # Note: this is for future story card
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
 #Creates a project

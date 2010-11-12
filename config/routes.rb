@@ -1,9 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   
   
-  map.root :controller => "user_sessions", :action => "new"
-  
+  map.root :controller => "users", :action => "home"
+  map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
   map.resources :projects

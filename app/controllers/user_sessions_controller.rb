@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       flash[:notice] = "Successfully logged in."
       puts "CHECK #{current_user}"
-      redirect_to "/projects"
+      redirect_to root_path
     else
       render :action => 'new'
     end

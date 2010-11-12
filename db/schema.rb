@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110114310) do
+ActiveRecord::Schema.define(:version => 20101112010415) do
 
   create_table "deliverables", :force => true do |t|
     t.integer "project_id",       :default => -1, :null => false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20101110114310) do
     t.datetime "updated_at"
     t.string   "status",      :default => "Unknown", :null => false
     t.string   "lifecycle"
+    t.integer  "user_id"
   end
 
   create_table "temps", :force => true do |t|
@@ -45,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20101110114310) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.integer  "user_id"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"

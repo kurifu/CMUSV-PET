@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-#before_filter :require_user
+before_filter :require_user
   # GET /users
   # GET /users.xml
   def index
@@ -79,6 +79,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def home
+    @projects = current_user.projects.find(:all)
+    for project in @projects
+      puts project
     end
   end
 end
