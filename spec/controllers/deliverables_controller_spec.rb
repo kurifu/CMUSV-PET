@@ -92,7 +92,7 @@ integrate_views
   it "should get data from params[:default_phase] if it is provided" do
     session[:project_id]=100
     get :index, :default_phase=>"Testing"
-    puts params[:default_phase]
+    #puts params[:default_phase]
     assigns[:deliverable].phase.should == "Testing"
 
     response.should render_template :index

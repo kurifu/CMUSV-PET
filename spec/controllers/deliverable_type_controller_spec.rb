@@ -97,7 +97,7 @@ describe DeliverableTypeController do
   #  params[:deliverable].name.should == "FOO"
   #end
 
-  describe "GET Historical Data" do
+  describe "GET Historical Data Template" do
     it "should render historical data template" do
       session[:complexity] = "Low"
       session[:deliverable_type] = "UML"
@@ -126,6 +126,28 @@ describe DeliverableTypeController do
       session[:deliverable_type] = nil
       xhr :get, :update_historical_data
       response.flash.now[:warning].should_not be_nil
+    end
+  end
+
+  describe "GET Historical Data" do
+    it "should get minimum values" do
+      d1 = Factory.create(:historical_d1)
+      d2 = Factory.create(:historical_d2)
+      #@test = []
+      #DeliverableType.stub!(:update_historical_data).and_return()
+
+      session[:complexity] = d1.complexity
+      session[:deliverable_type] = d1.deliverable_type
+   
+      xhr :get, :update_historical_data
+      #puts "CHECK: #{@historical_data}"
+      #assigns[:historical_data].should_not be_nil
+      #@controller.instance_variable_get(:historical_data).should_not be_nil
+      #assigns(@historical_data).should_not be_nil
+      #temp = assigns(@historical_data)
+      #puts "CHECK: #{temp}"
+      #controller.class_variable_get(:historical_data).should_not be_nil
+      
     end
   end
 end

@@ -69,21 +69,21 @@ describe Deliverable do
 
   #The second error is cause by the new calculation result validation
   it "should have a numeric estimated size" do
-    deliverable = Factory.build(:valid_deliverable, :estimated_size=>"")
+    deliverable = Factory.build(:valid_deliverable, :estimated_size=>-1)
     deliverable.save
-    deliverable.should have(2).error_on(:estimated_size)
+    deliverable.should have(1).error_on(:estimated_size)
   end
 
   it "should have a numeric estimated effort" do
-    deliverable = Factory.build(:valid_deliverable, :estimated_effort=>"")
+    deliverable = Factory.build(:valid_deliverable, :estimated_effort=>-1)
     deliverable.save
-    deliverable.should have(2).error_on(:estimated_effort)
+    deliverable.should have(1).error_on(:estimated_effort)
   end
 
   it "should have a numeric production rate" do
-    deliverable = Factory.build(:valid_deliverable, :production_rate=>nil)
+    deliverable = Factory.build(:valid_deliverable, :production_rate=>-1)
     deliverable.save
-    deliverable.should have(2).error_on(:production_rate)
+    deliverable.should have(1).error_on(:production_rate)
   end
 
   it "should calculate the result according to the given 2 values" do

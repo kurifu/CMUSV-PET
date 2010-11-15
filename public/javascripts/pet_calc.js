@@ -189,7 +189,7 @@ function reset(){
     document.getElementById("check_size").src="/images/default.png"
     document.getElementById("check_effort").src="/images/default.png"
 
-    document.getElementById("error_msg").innerHTML = ""
+    document.getElementById("calc").innerHTML = ""
 
 }
 

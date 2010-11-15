@@ -10,7 +10,7 @@ module ProjectsHelper
       return 0
     else
       @dataset.each do |d|
-        @hours += d.estimated_effort.to_f
+        @hours += d.estimated_effort
       end
       return @hours
     end

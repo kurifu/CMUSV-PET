@@ -117,35 +117,86 @@ def latch_deliverable_type
 
 #Update the historical data, depends on the deliverable type and complexity
   def update_historical_data
-
+    puts "start of update_historical_data"
     @historical_data = []
 
     # Render stuff
     unless session[:complexity].nil? || session[:deliverable_type].nil? || session[:complexity].blank? || session[:deliverable_type].blank?
       # TODO: Calculate/Gather data
 
-      @historical_data[0] = 1
-      @historical_data[1] = 2
-      @historical_data[2] = 3
+      puts "before calculate_historical_data"
+      @historical_data = calculate_historical_data
 
-      @historical_data[3] = 1
-      @historical_data[4] = 2
-      @historical_data[5] = 3
-
-      @historical_data[6] = 1
-      @historical_data[7] = 2
-      @historical_data[8] = 3
-
+      #session[:test_histdata]
+      puts "before render pet_historical"
       render(:partial => 'pet_historical',
         :layout => false,
         :object => @historical_data)
     else
+      puts "before flash warning and render historical"
       flash.now[:warning] = "Please select a deliverable type and complexity"
       render(:partial => 'pet_historical',
         :layout => false,
         :object => @historical_data)
       #render :nothing => true
     end
+  end
+
+  def calculate_historical_data
+    data = []
+    collector = []
+
+    target_projects = Project.find(:all, :conditions => ['status = ?', 'archived'])
+    #puts "NUMBER OF PROJECTS: #{target_projects.size}"
+    #puts "NUMBER OF DELIVERABLES: #{collector.size}"
+    target_projects.each do |p|
+      #puts "* ID: #{p.id}"
+      d = Deliverable.find(:all, :conditions => ['complexity = ? AND deliverable_type = ? AND project_id = ?', session[:complexity], session[:deliverable_type], p.id])
+      #puts "found '#{d}', size is '#{d.size}'"
+      # Note: do not use <<, as find:all returns an array, we would be appending
+      # the whole array as a single entry
+      collector = collector | d
+    end
+    #puts "NUMBER OF DELIVERABLES: #{collector.size}"
+
+    sizes = []
+    efforts = []
+    rates = []
+
+    #puts "CHECK: '#{collector}'"
+    if collector.empty?
+      puts "collector is empty"
+    end
+
+    if collector.blank?
+      puts "collector is blank"
+    end
+
+    unless collector.empty? || collector.blank?
+      collector.each do |c|
+        puts "c is '#{c}'"
+        sizes << c.estimated_size
+        efforts << c.estimated_effort
+        rates << c.production_rate
+      end
+
+      data[0] = sizes.min
+      data[1] = (sizes.size == 0) ? "-" : sizes.sum / sizes.size
+      data[2] = sizes.max
+
+      data[3] = rates.min
+      data[4] = (rates.size == 0) ? "-" : rates.sum / rates.size
+      data[5] = rates.max
+
+      data[6] = efforts.min
+      data[7] = (efforts.size == 0) ? "-" : efforts.sum / efforts.size
+      data[8] = efforts.max
+
+    else
+      data.fill("-", 0, 9)
+    end
+
+    return data
   end
 
   private
