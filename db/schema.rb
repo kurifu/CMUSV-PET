@@ -9,17 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101103201515) do
+ActiveRecord::Schema.define(:version => 20101112220828) do
 
   create_table "deliverables", :force => true do |t|
-    t.integer "project_id",       :default => -1, :null => false
-    t.string  "name",             :default => "", :null => false
-    t.string  "deliverable_url",  :default => ""
-    t.string  "complexity",       :default => "", :null => false
-    t.string  "unit_measurement", :default => "", :null => false
-    t.string  "estimated_size"
-    t.string  "estimated_effort"
-    t.string  "production_rate"
+    t.integer "project_id",                      :default => -1, :null => false
+    t.string  "name",                            :default => "", :null => false
+    t.string  "deliverable_url",                 :default => ""
+    t.string  "complexity",                      :default => "", :null => false
+    t.string  "unit_measurement",                :default => "", :null => false
+    t.float   "estimated_size",   :limit => 255
+    t.float   "estimated_effort", :limit => 255
+    t.float   "production_rate",  :limit => 255
     t.string  "deliverable_type"
     t.string  "phase"
     t.text    "description"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20101103201515) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",      :default => "Unknown", :null => false
+    t.string   "status",      :default => "active", :null => false
     t.string   "lifecycle"
   end
 

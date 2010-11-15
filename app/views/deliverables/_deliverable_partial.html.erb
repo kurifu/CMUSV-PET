@@ -1,7 +1,7 @@
 <tr>
-        <th>Deliverable</th>
-        <th>Upload deliverable</th>
-        <th>Action</th>
+  <th>Deliverable</th>
+  <th>Upload deliverable</th>
+  <th>Action</th>
 </tr>
 
 <% for deliverable in @deliverables_of_phase %>
@@ -10,7 +10,7 @@
     <%= deliverable.name %>
   </td>
     <td>
-      <%form_for "deliverable" do |f|%>
+      <%form_for :deliverable do |f|%>
           <%= f.file_field :url %>
       <%end%>
   </td>

@@ -1,52 +1,39 @@
-  <%= javascript_include_tag 'pet_calc'%>
+<%= javascript_include_tag 'pet_calc'%>
 
 <table id="pet_calc">
-    <tr>
-      <td>
-        <p>
-          <strong><label id="error_msg"></label></strong>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3"><strong>Project Estimation</strong><br/>
-      <p style="color: green"><%= flash[:notice_calc] %></p></td>
-    </tr>
-    <tr>
-      <td>Estimated_size :</td>
-      <td><input id="deliverable_estimated_size" onblur="validate_size();" onchange="onchange_size();" name="deliverable[estimated_size]" size="30" type="text" value="<%= @estimated_size %>" />
-      <%#= observe_field :deliverable_estimated_size,
-          :frequency => 1,
-          :url => {:action=>'capture_calculation_data', :only_path=>false},
-          :with => "'estimated_size=' + encodeURIComponent(value)+'&field=' + 1"%>
-      </td>
-      <td><img id="check_size" src="/images/default.png" /></td>
-    </tr>
-    <tr>
-      <td>Production_rate:</td>
-      <td><input id="deliverable_production_rate" onblur="validate_rate();" name="deliverable[production_rate]" size="30" type="text" value="<%= @production_rate %>"/>
-      <%#= observe_field :deliverable_production_rate,
-          :frequency => 1,
-          :url => {:action=>'capture_calculation_data', :only_path=>false},
-          :with => "'production_rate=' + encodeURIComponent(value)+'&field=' + 2"%>
-      </td>
-    <td><img id="check_rate" src="/images/default.png" /></td>
-    </tr>
-    <tr>
-      <td>Estimated_effort:</td>
-      <td><input id="deliverable_estimated_effort" onblur="validate_effort();" name="deliverable[estimated_effort]" size="30" type="text" value="<%= @estimated_effort %>" />
-      <%#= observe_field :deliverable_estimated_effort,
-          :frequency => 1,
-          :url => {:action=>'capture_calculation_data', :only_path=>false},
-          :with => "'estimated_effort=' + encodeURIComponent(value)+'&field=' + 3"%>
-      </td>
-        <td><img id="check_effort" src="/images/default.png" /></td>
-    </tr>
-    <tr>
+  <tr>
+    <td colspan="3">
+      <label class="error_msg" id="calc"></label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Project Estimation</strong></td>
+  </tr>
+  <tr>
+    <td>Estimated_size :</td>
+    <td>
+      <input id="deliverable_estimated_size" onblur="validate_size();" onchange="onchange_size();" name="deliverable[estimated_size]" size="30" type="text" value="<%= @estimated_size %>" />
+    </td>
+    <td><img id="check_size" src="/images/default.png" /></td>
+  </tr>
+  <tr>
+    <td>Production_rate:</td>
+    <td>
+      <input id="deliverable_production_rate" onblur="validate_rate();" name="deliverable[production_rate]" size="30" type="text" value="<%= @production_rate %>"/>
+    </td>
+  <td><img id="check_rate" src="/images/default.png" /></td>
+  </tr>
+  <tr>
+    <td>Estimated_effort:</td>
+    <td>
+      <input id="deliverable_estimated_effort" onblur="validate_effort();" name="deliverable[estimated_effort]" size="30" type="text" value="<%= @estimated_effort %>" />
+    </td>
+    <td><img id="check_effort" src="/images/default.png" /></td>
+  </tr>
+  <tr>
 
-      <td><a href="javascript:void(0)" onClick="calculate();">Calculate</a></td>
-      <td><a href ="javascript:void(0)" onClick="reset();">Reset</a></td>
+    <td><a href="javascript:void(0)" onClick="calculate();">Calculate</a></td>
+    <td><a href ="javascript:void(0)" onClick="reset();">Reset</a></td>
 
-
-    </tr>
-  </table>
+  </tr>
+</table>

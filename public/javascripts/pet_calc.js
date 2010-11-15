@@ -44,7 +44,7 @@ function check_all(size,effort,rate){
 
 function validate_size(){
     if(isNaN(document.getElementById("deliverable_estimated_size").value)){
-        document.getElementById("error_msg").
+        document.getElementById("calc").
             innerHTML = "Please enter numeric values"
         document.getElementById("check_size").src = "/images/incorrect.png"
     }
@@ -96,7 +96,7 @@ function validate_size(){
 function validate_rate(){
 
     if(isNaN(document.getElementById("deliverable_production_rate").value)){
-        document.getElementById("error_msg").
+        document.getElementById("calc").
             innerHTML = "Please enter numeric values"
         document.getElementById("check_rate").src = "/images/incorrect.png"
     }
@@ -145,7 +145,7 @@ function validate_rate(){
 function validate_effort(){
 
     if(isNaN(document.getElementById("deliverable_estimated_effort").value)){
-        document.getElementById("error_msg").
+        document.getElementById("calc").
             innerHTML = "Please enter numeric values"
         document.getElementById("check_effort").src = "/images/incorrect.png"
     }
@@ -189,7 +189,7 @@ function reset(){
     document.getElementById("check_size").src="/images/default.png"
     document.getElementById("check_effort").src="/images/default.png"
 
-    document.getElementById("error_msg").innerHTML = ""
+    document.getElementById("calc").innerHTML = ""
 
 }
 
@@ -199,12 +199,12 @@ function calculate(){
     if("" == document.getElementById("deliverable_estimated_size").value &&
        "" == document.getElementById("deliverable_estimated_effort").value &&
        "" == document.getElementById("deliverable_production_rate").value ){
-        document.getElementById("error_msg")
+        document.getElementById("calc")
         .innerHTML = "Please enter two values";
     }
   
     else{
-         document.getElementById("error_msg")
+         document.getElementById("calc")
         .innerHTML = "";
     if(!("" == document.getElementById("deliverable_estimated_size").value) &&
        !("" == document.getElementById("deliverable_estimated_effort").value)){

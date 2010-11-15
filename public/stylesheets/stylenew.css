@@ -392,12 +392,18 @@ div#new_del {
 }
 
 /* New Deliverable Page */
+table#pet_table {
+    width: 500px;
+}
 table#pet_table, table#pet_calc {
-  width: 500px;
   font-size: 7pt;
   padding: 10px 10px 10px 20px;
   border: 1px solid black;
   margin-top: 10px;
+}
+
+table#pet_calc {
+    width: 200px;
 }
 
 table#pet_table td:nth-child(2) {

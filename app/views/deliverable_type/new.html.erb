@@ -9,8 +9,9 @@
           <td><%= select(:deliverable, :deliverable_type, @deliverable_types,
             {:prompt   => "Select a deliverable type"},
             {:onchange => "#{remote_function(:url  =>
-              {:action => "update_unit_of_measurement_partial"},
-               :with => "'deliverable_type='+value")}"})%>
+                {:action => "latch_deliverable_type"},
+                :with => "'deliverable_type='+value")}"}
+            ) %>
           </td>
         </tr>
         <tr>
@@ -45,7 +46,12 @@
         <tr>
           <td><%= f.label :complexity %></td>
           <td><%= select(:deliverable, :complexity, @complexities,
-              {:prompt   => "Select a complexity"}) %></td>
+              {:prompt   => "Select a complexity"},
+              {:onchange => "#{remote_function(
+                :url => { :action => "latch_complexity" },
+                :with => "'complexity='+value")}"}
+              ) %>
+          </td>
         </tr>
         <tr>
           <td><%= f.label :unit_of_measurement %></td>
@@ -66,10 +72,13 @@
       </table>
 
       <div id="pet_calc_div">
-        <%= render :partial=>'pet_calc' %>
+        <%= render :partial => 'pet_calc' %>
+      </div>
+  
+      <div id="pet_historical_div">
+        <%= render :partial => 'pet_historical' %>
       </div>
       
-      <%= link_to "Historical Data", "#" %>
       <br/>
 </div>
     <%= f.submit 'Create' %>

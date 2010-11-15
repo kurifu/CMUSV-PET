@@ -38,7 +38,8 @@ class Deliverable < ActiveRecord::Base
   private
 
   def valid_calculation_result?
-    unless estimated_size.to_f * production_rate.to_f == estimated_effort.to_f
+
+    unless estimated_size * production_rate == estimated_effort
        errors.add(:estimated_size, "is not the correct result")
        errors.add(:production_rate, "is not the correct result")
        errors.add(:estimated_effort, "is not the correct result")
