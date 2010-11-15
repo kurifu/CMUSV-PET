@@ -114,40 +114,69 @@ describe DeliverableTypeController do
       xhr :get, :update_historical_data
       response.flash.now[:warning].should_not be_nil
 
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data].should == []
+
       session[:complexity] = nil
       xhr :get, :update_historical_data
       response.flash.now[:warning].should_not be_nil
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data].should == []
 
       session[:complexity] = "Low"
       session[:deliverable_type] = ""
       xhr :get, :update_historical_data
       response.flash.now[:warning].should_not be_nil
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data].should == []
 
       session[:deliverable_type] = nil
       xhr :get, :update_historical_data
       response.flash.now[:warning].should_not be_nil
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data].should == []
     end
   end
 
   describe "GET Historical Data" do
-    it "should get minimum values" do
+    it "should get min, avg and max values" do
+      p1 = Factory.create(:archived_p1)
+      p2 = Factory.create(:archived_p2)
       d1 = Factory.create(:historical_d1)
       d2 = Factory.create(:historical_d2)
-      #@test = []
-      #DeliverableType.stub!(:update_historical_data).and_return()
 
+      session[:phase] = d1.phase
       session[:complexity] = d1.complexity
       session[:deliverable_type] = d1.deliverable_type
    
       xhr :get, :update_historical_data
-      #puts "CHECK: #{@historical_data}"
-      #assigns[:historical_data].should_not be_nil
-      #@controller.instance_variable_get(:historical_data).should_not be_nil
-      #assigns(@historical_data).should_not be_nil
-      #temp = assigns(@historical_data)
-      #puts "CHECK: #{temp}"
-      #controller.class_variable_get(:historical_data).should_not be_nil
-      
+      response.should render_template("_pet_historical")
+
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data][0].should == 1.0
+      assigns[:historical_data][1].should == 1.5
+      assigns[:historical_data][2].should == 2.0
+      assigns[:historical_data][3].should == 3.0
+      assigns[:historical_data][4].should == 5.5
+      assigns[:historical_data][5].should == 8.0
+      assigns[:historical_data][6].should == 6.0
+      assigns[:historical_data][7].should == 7.0
+      assigns[:historical_data][8].should == 8.0
+    end
+
+    it "should get dummy values if it cannot find data" do
+      d1 = Factory.create(:historical_d1)
+
+      session[:phase] = d1.phase
+      session[:complexity] = "High"#d1.complexity
+      session[:deliverable_type] = d1.deliverable_type
+
+      xhr :get, :update_historical_data
+      response.should render_template("_pet_historical")
+
+      assigns[:historical_data].should_not be_nil
+      assigns[:historical_data][0].should == "-"
+      assigns[:historical_data][-1].should == "-"
     end
   end
 end

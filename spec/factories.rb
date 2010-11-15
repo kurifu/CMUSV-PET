@@ -30,7 +30,7 @@ end
 # Testing Historical Data Gathering
 Factory.define :archived_p1, :class => 'Project' do |p|
   p.id 1
-  p.status 'Archived'
+  p.status 'archived'
   p.lifecycle 'XP'
   p.name 'Archived Project 1'
 end
@@ -44,14 +44,14 @@ Factory.define :historical_d1, :class => 'Deliverable' do |d|
   d.production_rate 3.0
 
   d.project_id 1
-  d.phase "f"
+  d.phase "System Design"
   d.name "f"
   d.unit_measurement "f"
 end
 
 Factory.define :archived_p2, :class => 'Project' do |p|
   p.id 2
-  p.status 'Archived'
+  p.status 'archived'
   p.lifecycle 'XP'
   p.name 'Archived Project 2'
 end
@@ -65,7 +65,7 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
   d.production_rate 8.0
 
   d.project_id 2
-  d.phase "f"
+  d.phase "System Design"
   d.name "f"
   d.unit_measurement "f"
 end

@@ -117,23 +117,23 @@ def latch_deliverable_type
 
 #Update the historical data, depends on the deliverable type and complexity
   def update_historical_data
-    puts "start of update_historical_data"
+    #puts "start of update_historical_data"
     @historical_data = []
 
     # Render stuff
     unless session[:complexity].nil? || session[:deliverable_type].nil? || session[:complexity].blank? || session[:deliverable_type].blank?
       # TODO: Calculate/Gather data
 
-      puts "before calculate_historical_data"
+      #puts "before calculate_historical_data"
       @historical_data = calculate_historical_data
 
       #session[:test_histdata]
-      puts "before render pet_historical"
+      #puts "before render pet_historical"
       render(:partial => 'pet_historical',
         :layout => false,
         :object => @historical_data)
     else
-      puts "before flash warning and render historical"
+      #puts "before flash warning and render historical"
       flash.now[:warning] = "Please select a deliverable type and complexity"
       render(:partial => 'pet_historical',
         :layout => false,
@@ -143,6 +143,7 @@ def latch_deliverable_type
   end
 
   def calculate_historical_data
+
     data = []
     collector = []
 
@@ -151,10 +152,11 @@ def latch_deliverable_type
     #puts "NUMBER OF DELIVERABLES: #{collector.size}"
     target_projects.each do |p|
       #puts "* ID: #{p.id}"
-      d = Deliverable.find(:all, :conditions => ['complexity = ? AND deliverable_type = ? AND project_id = ?', session[:complexity], session[:deliverable_type], p.id])
-      #puts "found '#{d}', size is '#{d.size}'"
+      
       # Note: do not use <<, as find:all returns an array, we would be appending
       # the whole array as a single entry
+      d = Deliverable.find(:all, :conditions => ['complexity = ? AND deliverable_type = ? AND project_id = ?', session[:complexity], session[:deliverable_type], p.id])
+      #puts "found '#{d}', size is '#{d.size}'"
       collector = collector | d
     end
     #puts "NUMBER OF DELIVERABLES: #{collector.size}"
@@ -163,7 +165,8 @@ def latch_deliverable_type
     efforts = []
     rates = []
 
-    #puts "CHECK: '#{collector}'"
+=begin
+    puts "CHECK: '#{collector}'"
     if collector.empty?
       puts "collector is empty"
     end
@@ -171,10 +174,12 @@ def latch_deliverable_type
     if collector.blank?
       puts "collector is blank"
     end
-
+=end
+    
     unless collector.empty? || collector.blank?
+      #puts "found stuff in collector"
       collector.each do |c|
-        puts "c is '#{c}'"
+        #puts "c is '#{c}'"
         sizes << c.estimated_size
         efforts << c.estimated_effort
         rates << c.production_rate
@@ -193,6 +198,7 @@ def latch_deliverable_type
       data[8] = efforts.max
 
     else
+      #puts "didn't find anything"
       data.fill("-", 0, 9)
     end
 
@@ -208,6 +214,5 @@ def latch_deliverable_type
       @estimated_sizes = RailblazersXmlParser.get_common_values
       @production_rates = RailblazersXmlParser.get_common_values
       @efforts = RailblazersXmlParser.get_common_values
-
   end
 end
