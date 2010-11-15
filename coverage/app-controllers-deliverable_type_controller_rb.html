@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-deliverable_type_controller_rb.html">app/controllers/deliverable_type_controller.rb</a></td>
-            <td class='right_align'><tt>100</tt></td>
-            <td class='right_align'><tt>71</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>72.00%</tt></div>
+            <td class='right_align'><tt>218</tt></td>
+            <td class='right_align'><tt>136</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>79.36%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:72px"></div>
-            <div class="uncovered" style="width:28px"></div>
+            <div class="covered" style="width:79px"></div>
+            <div class="uncovered" style="width:21px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>63.38%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>69.85%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:63px"></div>
-            <div class="uncovered" style="width:37px"></div>
+            <div class="covered" style="width:70px"></div>
+            <div class="uncovered" style="width:30px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -87,7 +87,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
           </tr>
         
           
@@ -129,535 +129,1243 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       @deliverable = Deliverable.new</pre></td>
+            <td><pre><a name="line13">13</a>     @deliverable = Deliverable.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       @unit_measurements = []</pre></td>
+            <td><pre><a name="line14">14</a>     @unit_measurements = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a>     # These are needed to render historical data</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       respond_to do |format|</pre></td>
+            <td><pre><a name="line17">17</a>     @historical_data = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>         format.html</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a> #Fetches user input from new.html.erb and saves the data on the database.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a> #Before it save data into database it will check whether the deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a> #is ad-hoc type or not. If it is it will get the data and unit of measurement</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line23">23</a> #of the ad-hoc type.</pre></td>
+            <td><pre><a name="line18">18</a>     session[:deliverable_type] = nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   def create</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       @deliverable = Deliverable.new(params[:deliverable])</pre></td>
+            <td><pre><a name="line19">19</a>     session[:complexity] = nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> </pre></td>
+            <td><pre><a name="line20">20</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>       if @deliverable.deliverable_type == @@ADHOC</pre></td>
+            <td><pre><a name="line21">21</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       format.html</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a> #Fetches user input from new.html.erb and saves the data on the database.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a> #Before it save data into database it will check whether the deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a> #is ad-hoc type or not. If it is it will get the data and unit of measurement</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a> #of the ad-hoc type.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>   def create</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>     @deliverable = Deliverable.new(params[:deliverable])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     @historical_data = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>     if @deliverable.deliverable_type == @@ADHOC</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line28">28</a>         @deliverable.ad_hoc = true</pre></td>
+            <td><pre><a name="line35">35</a>       @deliverable.ad_hoc = true</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line29">29</a>         @deliverable.deliverable_type = params[:ad_hoc_type]</pre></td>
+            <td><pre><a name="line36">36</a>       @deliverable.deliverable_type = params[:ad_hoc_type]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>         @deliverable.unit_measurement = params[:ad_hoc_unit]</pre></td>
+            <td><pre><a name="line37">37</a>       @deliverable.unit_measurement = params[:ad_hoc_unit]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>       else</pre></td>
+            <td><pre><a name="line38">38</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>         @deliverable.ad_hoc = false</pre></td>
+            <td><pre><a name="line39">39</a>       @deliverable.ad_hoc = false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>       end</pre></td>
+            <td><pre><a name="line40">40</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>       @deliverable.phase = session[:phase]</pre></td>
+            <td><pre><a name="line42">42</a>     @deliverable.phase = session[:phase]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>       @deliverable.project_id = session[:project_id]</pre></td>
+            <td><pre><a name="line43">43</a>     @deliverable.project_id = session[:project_id]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line44">44</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>       respond_to do |format|</pre></td>
+            <td><pre><a name="line45">45</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>         if @deliverable.save</pre></td>
+            <td><pre><a name="line46">46</a>       if @deliverable.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>           format.html{ redirect_to :controller =&gt; &quot;deliverables&quot;, :default_phase=&gt;session[:phase] }</pre></td>
+            <td><pre><a name="line47">47</a>         format.html{ redirect_to :controller =&gt; &quot;deliverables&quot;, :default_phase=&gt;session[:phase] }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>         else</pre></td>
+            <td><pre><a name="line48">48</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>           #set up ad-hoc values for fail cases</pre></td>
+            <td><pre><a name="line49">49</a>         #set up ad-hoc values for fail cases</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>           if true == @deliverable.ad_hoc</pre></td>
+            <td><pre><a name="line50">50</a>         if true == @deliverable.ad_hoc</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line44">44</a>             @ad_hoc_type = @deliverable.deliverable_type</pre></td>
+            <td><pre><a name="line51">51</a>           @ad_hoc_type = @deliverable.deliverable_type</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line45">45</a>             @ad_hoc_measurement = @deliverable.unit_measurement</pre></td>
+            <td><pre><a name="line52">52</a>           @ad_hoc_measurement = @deliverable.unit_measurement</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line46">46</a>           end</pre></td>
+            <td><pre><a name="line53">53</a>           #set up ad-hoc type for fail cases</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line54">54</a>           @deliverable.deliverable_type = @@ADHOC</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line55">55</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>           #set up ad-hoc type for fail cases</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>           @deliverable.deliverable_type = @@ADHOC</pre></td>
+            <td><pre><a name="line56">56</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a> </pre></td>
+            <td><pre><a name="line57">57</a>         #Code containing entered information when create fails they will be used in the view</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>         @estimated_size = @deliverable.estimated_size || ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>         @production_rate = @deliverable.production_rate || ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>         @estimated_effort = @deliverable.estimated_effort || ''</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>           #Code containing entered information when create fails they will be used in the view</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>           @estimated_size = @deliverable.estimated_size || ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>           @production_rate = @deliverable.production_rate || ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>           @estimated_effort = @deliverable.estimated_effort || ''</pre></td>
+            <td><pre><a name="line61">61</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line55">55</a>           #set up @unit_of_measurements for fail cases</pre></td>
+            <td><pre><a name="line62">62</a>         #set up @unit_of_measurements for fail cases</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>           @unit_measurements = RailblazersXmlParser.</pre></td>
+            <td><pre><a name="line63">63</a>         @unit_measurements = RailblazersXmlParser.</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>               get_unit_of_measurement(session[:deliverable_type_id])</pre></td>
+            <td><pre><a name="line64">64</a>             get_unit_of_measurement(session[:deliverable_type_id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a>           </pre></td>
+            <td><pre><a name="line65">65</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>           format.html{ render :action =&gt; &quot;new&quot;, :status =&gt; :unprocessable_entity}</pre></td>
+            <td><pre><a name="line66">66</a>         format.html{ render :action =&gt; &quot;new&quot;, :status =&gt; :unprocessable_entity}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>         end</pre></td>
+            <td><pre><a name="line67">67</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>       end</pre></td>
+            <td><pre><a name="line68">68</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a>   end</pre></td>
+            <td><pre><a name="line69">69</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a> </pre></td>
+            <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a> #Update the unit of measurement, depends on what deliverable type is chosen</pre></td>
+            <td><pre><a name="line71">71</a> #Latch onto deliverable type; this is called when deliverable type is changed</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a> #Also renders unit of measurement</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>   def update_unit_of_measurement_partial</pre></td>
+            <td><pre><a name="line73">73</a> def latch_deliverable_type</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line66">66</a>     if params[:deliverable_type] == &quot;Ad-Hoc Type&quot;</pre></td>
+            <td><pre><a name="line74">74</a>     unless params[:deliverable_type] == &quot;Select a deliverable type&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line67">67</a>       render :update do |page|</pre></td>
+            <td><pre><a name="line75">75</a>       puts &quot;\tgot a deliverable type&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line68">68</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'ad_hoc_type'</pre></td>
+            <td><pre><a name="line76">76</a>       session[:deliverable_type] = params[:deliverable_type]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line69">69</a>         page.replace_html 'ad_hoc_label', :text =&gt; &quot;Ad-Hoc Type Name&quot;</pre></td>
+            <td><pre><a name="line77">77</a>       render_measurement</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line70">70</a>         page.replace_html 'unit_of_measurement', :partial =&gt; 'ad_hoc_unit'</pre></td>
+            <td><pre><a name="line78">78</a>       return</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line71">71</a>       end</pre></td>
+            <td><pre><a name="line79">79</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line72">72</a>       return</pre></td>
+            <td><pre><a name="line80">80</a>     render :nothing =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line73">73</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line74">74</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line75">75</a>       deliverable_type_id = session[:deliverable_type_id]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line76">76</a>       @unit_measurements = RailblazersXmlParser.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line77">77</a>       get_unit_of_measurement(deliverable_type_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line78">78</a>       #puts &quot;Check #{@unit_measurements}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line79">79</a>       render :update do |page|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line80">80</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'blank'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line81">81</a>         page.replace_html 'ad_hoc_label', :partial =&gt; 'blank'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line82">82</a>         page.replace_html 'unit_of_measurement',</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line83">83</a>           :partial =&gt; 'unit_of_measurement',</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line84">84</a>           :object =&gt; @unit_measurements</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line85">85</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line86">86</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line87">87</a>   end</pre></td>
+            <td><pre><a name="line81">81</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line89">89</a>   private</pre></td>
+            <td><pre><a name="line82">82</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line90">90</a>   #This method initializes the static content to be populated in the dropdown lists</pre></td>
+            <td><pre><a name="line83">83</a> #Latch onto complexity; this is called when complexity is changed</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>   def initialize_for_selects</pre></td>
+            <td><pre><a name="line84">84</a>   def latch_complexity</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line85">85</a>     unless params[:complexity] == &quot;Select a complexity&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>       @deliverable_types &lt;&lt; @@ADHOC</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line86">86</a>       puts &quot;\tgot a complexity&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>       @complexities = RailblazersXmlParser.get_common_values</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line87">87</a>       session[:complexity] = params[:complexity]</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line95">95</a>       @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line88">88</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>       @production_rates = RailblazersXmlParser.get_common_values</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line89">89</a>     render :nothing =&gt; true</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line97">97</a>       @efforts = RailblazersXmlParser.get_common_values</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a> </pre></td>
+            <td><pre><a name="line91">91</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line99">99</a>   end</pre></td>
+            <td><pre><a name="line92">92</a> #Updates unit of measurement field, only called when deliverable type changes</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line93">93</a>   def render_measurement</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line94">94</a>     # If we have ad-hoc type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line95">95</a>     if session[:deliverable_type] == &quot;Ad-Hoc Type&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line96">96</a>       render :update do |page|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line97">97</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'ad_hoc_type'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line98">98</a>         page.replace_html 'ad_hoc_label', :text =&gt; &quot;Ad-Hoc Type Name&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line99">99</a>         page.replace_html 'unit_of_measurement', :partial =&gt; 'ad_hoc_unit'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line100">100</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line101">101</a>       return</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line102">102</a>     # Not ad-hoc</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line103">103</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line104">104</a>       deliverable_type_id = session[:deliverable_type_id]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line105">105</a>       @unit_measurements = RailblazersXmlParser.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line106">106</a>         get_unit_of_measurement(deliverable_type_id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line107">107</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line108">108</a>       render :update do |page|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line109">109</a>         page.replace_html 'ad_hoc_type', :partial =&gt; 'blank'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line110">110</a>         page.replace_html 'ad_hoc_label', :partial =&gt; 'blank'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line111">111</a>         page.replace_html 'unit_of_measurement',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line112">112</a>           :partial =&gt; 'unit_of_measurement',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line113">113</a>           :object =&gt; @unit_measurements</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line114">114</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line115">115</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line116">116</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a> end</pre></td>
+            <td><pre><a name="line117">117</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line118">118</a> #Update the historical data, depends on the deliverable type and complexity</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line119">119</a>   def update_historical_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line120">120</a>     #puts &quot;start of update_historical_data&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line121">121</a>     @historical_data = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line122">122</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line123">123</a>     # Render stuff</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line124">124</a>     unless session[:complexity].nil? || session[:deliverable_type].nil? || session[:complexity].blank? || session[:deliverable_type].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line125">125</a>       # TODO: Calculate/Gather data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line126">126</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line127">127</a>       #puts &quot;before calculate_historical_data&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line128">128</a>       @historical_data = calculate_historical_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line129">129</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line130">130</a>       #session[:test_histdata]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line131">131</a>       #puts &quot;before render pet_historical&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line132">132</a>       render(:partial =&gt; 'pet_historical',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line133">133</a>         :layout =&gt; false,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line134">134</a>         :object =&gt; @historical_data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line135">135</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line136">136</a>       #puts &quot;before flash warning and render historical&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line137">137</a>       flash.now[:warning] = &quot;Please select a deliverable type and complexity&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line138">138</a>       render(:partial =&gt; 'pet_historical',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line139">139</a>         :layout =&gt; false,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line140">140</a>         :object =&gt; @historical_data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line141">141</a>       #render :nothing =&gt; true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line142">142</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line143">143</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line144">144</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line145">145</a>   def calculate_historical_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line146">146</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line147">147</a>     data = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line148">148</a>     collector = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line149">149</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line150">150</a>     target_projects = Project.find(:all, :conditions =&gt; ['status = ?', 'archived'])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line151">151</a>     #puts &quot;NUMBER OF PROJECTS: #{target_projects.size}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line152">152</a>     #puts &quot;NUMBER OF DELIVERABLES: #{collector.size}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line153">153</a>     target_projects.each do |p|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line154">154</a>       #puts &quot;* ID: #{p.id}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line155">155</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line156">156</a>       # Note: do not use &lt;&lt;, as find:all returns an array, we would be appending</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line157">157</a>       # the whole array as a single entry</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line158">158</a>       d = Deliverable.find(:all, :conditions =&gt; ['complexity = ? AND deliverable_type = ? AND project_id = ?', session[:complexity], session[:deliverable_type], p.id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line159">159</a>       #puts &quot;found '#{d}', size is '#{d.size}'&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line160">160</a>       collector = collector | d</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line161">161</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line162">162</a>     #puts &quot;NUMBER OF DELIVERABLES: #{collector.size}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line163">163</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line164">164</a>     sizes = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line165">165</a>     efforts = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line166">166</a>     rates = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line167">167</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line168">168</a> =begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line169">169</a>     puts &quot;CHECK: '#{collector}'&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line170">170</a>     if collector.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line171">171</a>       puts &quot;collector is empty&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line172">172</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line173">173</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line174">174</a>     if collector.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line175">175</a>       puts &quot;collector is blank&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line176">176</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line177">177</a> =end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line178">178</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line179">179</a>     unless collector.empty? || collector.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line180">180</a>       #puts &quot;found stuff in collector&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line181">181</a>       collector.each do |c|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line182">182</a>         #puts &quot;c is '#{c}'&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line183">183</a>         sizes &lt;&lt; c.estimated_size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line184">184</a>         efforts &lt;&lt; c.estimated_effort</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line185">185</a>         rates &lt;&lt; c.production_rate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line186">186</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line187">187</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line188">188</a>       data[0] = sizes.min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line189">189</a>       data[1] = (sizes.size == 0) ? &quot;-&quot; : sizes.sum / sizes.size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line190">190</a>       data[2] = sizes.max</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line191">191</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line192">192</a>       data[3] = rates.min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line193">193</a>       data[4] = (rates.size == 0) ? &quot;-&quot; : rates.sum / rates.size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line194">194</a>       data[5] = rates.max</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line195">195</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line196">196</a>       data[6] = efforts.min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line197">197</a>       data[7] = (efforts.size == 0) ? &quot;-&quot; : efforts.sum / efforts.size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line198">198</a>       data[8] = efforts.max</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line199">199</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line200">200</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line201">201</a>       #puts &quot;didn't find anything&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line202">202</a>       data.fill(&quot;-&quot;, 0, 9)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line203">203</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line204">204</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line205">205</a>     return data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line206">206</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line207">207</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line208">208</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line209">209</a>   #This method initializes the static content to be populated in the dropdown lists</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line210">210</a>   def initialize_for_selects</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line211">211</a>       @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>       @deliverable_types &lt;&lt; @@ADHOC</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line213">213</a>       @complexities = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line214">214</a>       @estimated_sizes = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line215">215</a>       @production_rates = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line216">216</a>       @efforts = RailblazersXmlParser.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line217">217</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line218">218</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Nov 12 11:04:07 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Nov 15 12:35:47 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

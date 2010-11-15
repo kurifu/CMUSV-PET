@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-deliverable_rb.html">app/models/deliverable.rb</a></td>
-            <td class='right_align'><tt>47</tt></td>
+            <td class='right_align'><tt>48</tt></td>
             <td class='right_align'><tt>19</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -296,50 +296,56 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     unless estimated_size.to_f * production_rate.to_f == estimated_effort.to_f</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>        errors.add(:estimated_size, &quot;is not the correct result&quot;)</pre></td>
+            <td><pre><a name="line42">42</a>     unless estimated_size * production_rate == estimated_effort</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>        errors.add(:production_rate, &quot;is not the correct result&quot;)</pre></td>
+            <td><pre><a name="line43">43</a>        errors.add(:estimated_size, &quot;is not the correct result&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>        errors.add(:estimated_effort, &quot;is not the correct result&quot;)</pre></td>
+            <td><pre><a name="line44">44</a>        errors.add(:production_rate, &quot;is not the correct result&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>        errors.add(:estimated_effort, &quot;is not the correct result&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line46">46</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> end</pre></td>
+            <td><pre><a name="line48">48</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Nov 12 11:04:07 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Nov 15 12:35:47 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
