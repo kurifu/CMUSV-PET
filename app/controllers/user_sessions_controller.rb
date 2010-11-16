@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
 
+
   def index
     
   end
@@ -14,6 +15,7 @@ class UserSessionsController < ApplicationController
       puts "CHECK #{current_user}"
       redirect_to root_path
     else
+      flash[:notice] = "Invalid username/password"
       render :action => 'new'
     end
   end
@@ -23,5 +25,6 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "Logged out"
     redirect_to root_path
   end
+
 
 end
