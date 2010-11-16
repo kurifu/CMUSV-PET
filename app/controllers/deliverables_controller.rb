@@ -1,5 +1,5 @@
 class DeliverablesController < ApplicationController
-
+before_filter :require_user
 #Populates static data and creates a new instance of Deliverable class and 
 #binds the @deliverable variable with the form element of Phase page
 #the index page also handling with parameters. user can navigate from the
@@ -11,7 +11,6 @@ class DeliverablesController < ApplicationController
     
     project_id = session[:project_id]
     lifecycle = Project.find(project_id).lifecycle
-
     @phases = RailblazersXmlParser.get_phase(lifecycle)
     #Handling situation when user come to this page through project overview
     if params[:default_phase].blank?
