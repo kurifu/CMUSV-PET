@@ -9,11 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20101112220828) do
-=======
-ActiveRecord::Schema.define(:version => 20101112010415) do
->>>>>>> storycard1
 
   create_table "deliverables", :force => true do |t|
     t.integer "project_id",                      :default => -1, :null => false

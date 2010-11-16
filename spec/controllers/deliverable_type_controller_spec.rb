@@ -14,7 +14,7 @@ describe DeliverableTypeController do
     controller.should be_an_instance_of(DeliverableTypeController)
   end
 
-<<<<<<< HEAD
+
   describe "GET Add Deliverable Page" do
     it "should show the new deliverable page" do
       session[:phase] = "System Design"
@@ -34,11 +34,11 @@ describe DeliverableTypeController do
       response.should have_tag('table#historical_data tr#effort')
       response.should have_tag('table#historical_data tr#effort td', :count => 4)
       #response.should have_tag('a[href=?]', "#", :text => "Reset")
-=======
+  
   it "should redirect to login page if not logged in" do
     @user_session.destroy
     get :new
-    response.should redirect_to root_url
+    response.should redirect_to login_path
   end
 
   it "should show the new deliverable page" do
@@ -67,7 +67,7 @@ describe DeliverableTypeController do
       with_tag "input[type=submit][name='commit'][id=deliverable_submit]"
     end
   end
->>>>>>> storycard1
+
 
       # Historical Data link
       response.should have_tag('a[href=?]', "#", :text => "Fetch Historical Data")
@@ -219,5 +219,5 @@ describe DeliverableTypeController do
       assigns[:historical_data][-1].should == "-"
     end
   end
-end
 
+end

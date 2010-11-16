@@ -27,7 +27,6 @@ Factory.define :del_project, :class => 'Project' do |t|
   t.lifecycle "Simplified WaterFall"
 end
 
-<<<<<<< HEAD
 # Testing Historical Data Gathering
 Factory.define :archived_p1, :class => 'Project' do |p|
   p.id 1
@@ -69,11 +68,11 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
   d.phase "System Design"
   d.name "f"
   d.unit_measurement "f"
-=======
+
 # valid user
 Factory.define :valid_user, :class=> 'User' do |u|
   u.username 'test'
   u.email 'test@test.com'
   u.password 'test'
->>>>>>> storycard1
+end
 end
