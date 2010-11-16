@@ -13,15 +13,15 @@ protected
 
   #Code for error handling. Over the rescue_action method can catch all exception
   #in one place
-#  def rescue_action(exception)
-#    puts exception
-#    case exception
-#    when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
-#      redirect_to "/error", :status=>301
-#    else
-#      redirect_to "/500.html"
-#    end
-#  end
+  def rescue_action(exception)
+    puts exception
+    case exception
+    when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
+      redirect_to "/error", :status=>301
+    else
+      redirect_to "/500.html"
+    end
+  end
 
     def current_user_session
     return @current_user_session if defined?(@current_user_session)

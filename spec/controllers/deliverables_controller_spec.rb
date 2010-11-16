@@ -17,7 +17,7 @@ describe DeliverablesController do
     @user_session.destroy
     session[:project_id] = 100
     get :index
-    response.should redirect_to root_url
+    response.should redirect_to login_path
   end
 
   it "should display the Phase page (index) given a project_id" do

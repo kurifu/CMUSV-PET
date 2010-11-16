@@ -17,7 +17,7 @@ describe DeliverableTypeController do
   it "should redirect to login page if not logged in" do
     @user_session.destroy
     get :new
-    response.should redirect_to root_url
+    response.should redirect_to login_path
   end
 
   it "should show the new deliverable page" do
