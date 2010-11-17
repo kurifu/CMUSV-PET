@@ -45,7 +45,7 @@ before_filter :require_user
 # Note: are we using this format for error handling?
   def create
     @project = Project.new(params[:project])
-    
+    @project.user_id = current_user.id
     respond_to do |format|
       if @project.save
         #puts "save successful"
@@ -70,6 +70,7 @@ before_filter :require_user
 
       respond_to do |format|
         if @project.update_attributes(params[:project])
+          
           format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
           format.xml  { head :ok }
         else

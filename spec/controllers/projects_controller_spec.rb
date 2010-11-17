@@ -80,4 +80,27 @@ describe ProjectsController do
     get :index
     response.should redirect_to "/500.html"
   end
+
+  describe "EditProject" do
+
+    it "should be able to go to project edit page" do
+      project = Factory.create(:valid_project)
+      get :edit, :id=>100
+      response.should be_success
+    end
+
+    it "should be able to update an existing project with valid attributes" do
+      project = Factory.create(:valid_project)
+      Project.any_instance.stubs(:update_attributes).returns(true)
+      put :update, :id=>project.id
+      response.should redirect_to :action=>'show', :id=>project.id
+    end
+
+    it "should render edit page and show error message with invalid attributes" do
+      project = Factory.create(:valid_project)
+      Project.any_instance.stubs(:update_attributes).returns(false)
+      put :update, :id=>project.id
+      response.should render_template :edit
+    end
+  end
 end
