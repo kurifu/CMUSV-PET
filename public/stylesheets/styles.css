@@ -353,6 +353,10 @@ input#project_submit, input#process_calc_inputs {
 /* PHASE PAGE */
 /**************/
 
+div.content_phase input {
+    width: 50px;
+}
+
 div.content_phase, table#content_table, table#content_overview {
     width: 650px;
 }
