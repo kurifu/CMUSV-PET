@@ -2,35 +2,36 @@ class ProjectsController < ApplicationController
 before_filter :require_user
   #Displays all the projects on the Project Index page
   def index
-      @projects = current_user.projects.all
+    @projects = current_user.projects.all
 
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @projects }
-      end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @projects }
+    end
   end
 
 #Displays project details for the selected project
   def show
-      @project = current_user.projects.find(params[:id])
+    @project = current_user.projects.find(params[:id])
+    @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:id]], :order => "phase")
+#    @shows = Show.find(:all, :order => "attending DESC")
 
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @project }
-      end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @project }
+    end
   end
 
 
 #Creates a new project
   def new
-      @project = Project.new
-      @lifecycle_array = RailblazersXmlParser.get_lifecycle
-      @error_msg
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @project }
-      end
-      
+    @project = Project.new
+    @lifecycle_array = RailblazersXmlParser.get_lifecycle
+    @error_msg
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @project }
+    end
   end
 
   def error
@@ -66,31 +67,30 @@ before_filter :require_user
 #Updates the selected project with the content as modified by the user
 # Note: this is for future story card
   def update
-      @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
 
-      respond_to do |format|
-        if @project.update_attributes(params[:project])
-          format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
-
+    end
   end
 
 #Deletes a project
 # Note: this is for future story card
   def destroy
-      @project = Project.find(params[:id])
-      @project.deliverables.each { |d| d.destroy  }
-      @project.destroy
+    @project = Project.find(params[:id])
+    @project.deliverables.each { |d| d.destroy  }
+    @project.destroy
 
-      respond_to do |format|
-        format.html { redirect_to(projects_url) }
-        format.xml  { head :ok }
-      end
+    respond_to do |format|
+      format.html { redirect_to(projects_url) }
+      format.xml  { head :ok }
+    end
   end
 
   #TODO : delete in future iterations
@@ -101,29 +101,59 @@ before_filter :require_user
 
 #View the project overview screen with phase/deliverable estimations
   def overview
-      @project = Project.find_by_id(session[:project_id])
-      @phase_efforts = {}
+    @project = Project.find_by_id(session[:project_id])
+    @phase_efforts = {}
 
-      phases = RailblazersXmlParser.get_phase(@project.lifecycle)
-      deliverables = Deliverable.find_all_by_project_id(@project.id)
+    phases = RailblazersXmlParser.get_phase(@project.lifecycle)
+    deliverables = Deliverable.find_all_by_project_id(@project.id)
 
-      # For each phase, create a new Hash if it doesn't exist
-      0.upto(phases.size-1) do |i|
-        unless @phase_efforts.has_key?(phases[i])
-          @phase_efforts[phases[i]] = Hash.new
+    # For each phase, create a new Hash if it doesn't exist
+    0.upto(phases.size-1) do |i|
+      unless @phase_efforts.has_key?(phases[i])
+        @phase_efforts[phases[i]] = Hash.new
 
-          # Grab all deliverables in this phase, add it to our small hash
-          del_to_process = deliverables.select {|d| d.phase == phases[i] }
-          del_to_process.each do |target|
-            @phase_efforts[phases[i]][target.name] = target.estimated_effort
-          end
+        # Grab all deliverables in this phase, add it to our small hash
+        del_to_process = deliverables.select {|d| d.phase == phases[i] }
+        del_to_process.each do |target|
+          @phase_efforts[phases[i]][target.name] = target.estimated_effort
         end
       end
+    end
 
-      respond_to do |format|
-        format.html
-      end
-
+    respond_to do |format|
+      format.html
+    end
   end
 
+  def log_hours
+    puts "start log_hours"
+    @project = Project.find(params[:project_id])
+    @target_del = Deliverable.find(params[:deliverable_id])
+    @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:project_id]], :order => "phase")
+
+    puts "checking if hours_logged is blank"
+    puts "params: #{params[:hours_logged]}"
+    unless params[:hours_logged].blank?
+      puts "params: #{params[:hours_logged]}"
+      puts "orig: #{@target_del.hours_logged}"
+      @target_del.hours_logged = params[:hours_logged]
+      if @target_del.save
+        puts "saved"
+        puts "new value: #{@target_del.hours_logged}"
+        respond_to do |format|
+          format.html { render :action => 'show' }
+        end
+      else
+        puts "not saved"
+        flash.now[:notice] = "Please enter a value"
+      end
+    else
+      puts "blank: #{params[:hours_logged]}"
+      flash.now[:notice] = "Please enter a value before submitting"
+    end
+
+    respond_to do |format|
+      format.html { render :action => 'show' }
+    end
+  end
 end

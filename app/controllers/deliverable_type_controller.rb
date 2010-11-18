@@ -70,7 +70,7 @@ before_filter :require_user
 
 #Latch onto deliverable type; this is called when deliverable type is changed
 #Also renders unit of measurement
-def latch_deliverable_type
+  def latch_deliverable_type
     unless params[:deliverable_type] == "Select a deliverable type"
       puts "\tgot a deliverable type"
       session[:deliverable_type] = params[:deliverable_type]

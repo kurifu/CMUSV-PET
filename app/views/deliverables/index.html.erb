@@ -11,5 +11,6 @@
   <table id="phase_partial" class="phase">
      <%= render :partial=>"deliverable_partial", :object=>@deliverables_of_phase %>
     </table>
-  <%= link_to 'Project Overview', "projects/overview" %><br/>
+  <%= link_to '&laquo; Project Homepage', "projects/#{session[:project_id]}" %><br/>
+  <%= link_to 'Project Overview &raquo;', "projects/overview" %><br/>
 </div>
