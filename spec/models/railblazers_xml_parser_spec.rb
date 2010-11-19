@@ -11,7 +11,7 @@ describe RailblazersXmlParser do
 
   it "should retrieve all 3 lifecycles" do
     @lifecycles.size.should == 3
-    @lifecycles[0].should == "Simplified WaterFall"
+    @lifecycles[0].should == "Simplified Waterfall"
     @lifecycles[1].should == "Spiral"
     @lifecycles[2].should == "Incremental"
   end

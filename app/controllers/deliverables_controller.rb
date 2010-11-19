@@ -11,6 +11,8 @@ before_filter :require_user
     
     project_id = session[:project_id]
     lifecycle = Project.find(project_id).lifecycle
+
+    puts "LIFECYCLE: #{lifecycle}"
     @phases = RailblazersXmlParser.get_phase(lifecycle)
     #Handling situation when user come to this page through project overview
     if params[:default_phase].blank?
@@ -30,17 +32,19 @@ before_filter :require_user
 # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown
 #list based on the phase selected in the Phase dropdown list
   def update_deliverable_partial
-    if params[:phase].blank?
+    @phase = params[:phase]
+    if @phase.blank?
       flash[:notice] = "Please select a phase"
       redirect_to :action => "index"
     else
       
-      @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])
+      @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(@phase)
 
       #use session[:phase] to store phase for the use in deliverable_type_controller,
       #we need to clean up this session when it is not needed
-      session[:phase] = params[:phase]
-      session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(params[:phase])
+      puts "PHASE: #{@phase}"
+      session[:phase] = @phase
+      session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(@phase)
       puts "CHECK #{session[:deliverable_type_id]}"
       render :update do |page|
         page.replace_html 'phase_partial', :partial => 'deliverable_partial', :object => @deliverables_of_phase

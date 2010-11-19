@@ -18,11 +18,14 @@ class RailblazersXmlParser
   def self.get_lifecycle
     lifecycle = Array.new
     counter = 0
-    @doc.elements.each("*/lifecycle"){
-      |x| lifecycle[counter] = x.attributes["model"].to_s
-      counter = counter + 1
-    }
-    return lifecycle
+
+    unless @doc.nil? || @doc.elements.nil?
+      @doc.elements.each("*/lifecycle"){
+        |x| lifecycle[counter] = x.attributes["model"].to_s
+        counter = counter + 1
+      }
+      return lifecycle
+    end
   end
 
 #This method provides a list of lifecycle phases
@@ -30,6 +33,8 @@ class RailblazersXmlParser
 #Output: string array => lifecycle phases
   def self.get_phase(model)
     phase = Array.new
+    puts "ROOT: #{@root}"
+    #@doc = Document.new File.new("./public/static_table.xml")
     temp_phase =
       @root.elements["lifecycle[@model='"+model+"']"].elements["phase"].text
     phase = temp_phase.split(%r{,\s*})

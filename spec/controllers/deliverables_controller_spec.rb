@@ -6,7 +6,7 @@ describe DeliverablesController do
   
   before(:each) do
     @user_session = UserSession.create Factory.build(:valid_user)
-    Factory.create(:del_project)
+    @p = Factory.create(:del_project)
   end
 
   it "should use DeliverablesController" do
@@ -15,14 +15,14 @@ describe DeliverablesController do
 
   it "should redirect to login page if not logged in" do
     @user_session.destroy
-    session[:project_id] = 100
+    session[:project_id] = @p.id
     get :index
     response.should redirect_to login_path
   end
 
   it "should display the Phase page (index) given a project_id" do
     project = mock()
-    project.expects(:lifecycle).returns("Simplified WaterFall")
+    project.expects(:lifecycle).returns("Simplified Waterfall")
     Project.stubs(:find).returns(project)
     get "index"
     response.should render_template("deliverables/index")
@@ -30,16 +30,18 @@ describe DeliverablesController do
 
   it "it should populate del table via AJAX when I select a new phase" do
     del = mock()
-    del.expects(:project_id).returns(100)
-    del.expects(:phase).returns("Simplified WaterFall")
+    del.expects(:project_id).returns(@p.id)
+    del.stubs(:phase).returns("Testing")
+    puts "PHASE: #{del.phase}"
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial, :phase => del.phase
+    assigns[:phase].should_not be_blank
     response.should render_template("_deliverable_partial")
   end
 
   it "it should NOT populate del table via AJAX when I select a new phase" do
     del = mock()
-    del.expects(:project_id).returns(100)
+    del.expects(:project_id).returns(@p.id)
     session[:project_id] = del.project_id
     xhr :get, :update_deliverable_partial
     response.should_not render_template("_deliverable_partial")
@@ -64,7 +66,7 @@ describe DeliverablesController do
 
   #Testing the case when the default_phase parameter is given
   it "should get data from params[:default_phase] if it is provided" do
-    session[:project_id]=100
+    session[:project_id] = @p.id
     get :index, :default_phase=>"Testing"
     #puts params[:default_phase]
     assigns[:deliverable].phase.should == "Testing"

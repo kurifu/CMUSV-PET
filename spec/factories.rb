@@ -3,7 +3,7 @@ Factory.define :valid_project, :class=>'Project' do |p|
   p.id 100
   p.name "PET 1.3"
   p.description  "NDSS project"
-  p.lifecycle "Simplified WaterFall"
+  p.lifecycle "Simplified Waterfall"
 end
 
 # Factory for deliverable
@@ -24,7 +24,7 @@ end
 Factory.define :del_project, :class => 'Project' do |t|
   t.name 'Temp'
   t.id 100
-  t.lifecycle "Simplified WaterFall"
+  t.lifecycle "Simplified Waterfall"
 end
 
 # Testing Historical Data Gathering
@@ -48,6 +48,20 @@ Factory.define :historical_d1, :class => 'Deliverable' do |d|
   d.phase "System Design"
   d.name "f"
   d.unit_measurement "f"
+end
+
+Factory.define :historical_d3, :class => 'Deliverable' do |d|
+  d.complexity 'Low'
+  d.deliverable_type 'UML'
+
+  d.estimated_size 4.0
+  d.estimated_effort 12.0
+  d.production_rate 3.0
+
+  d.project_id 1
+  d.phase "System Design"
+  d.name "g"
+  d.unit_measurement "g"
 end
 
 Factory.define :archived_p2, :class => 'Project' do |p|

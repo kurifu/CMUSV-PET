@@ -1,5 +1,5 @@
 <root>
-   <lifecycle model="Simplified WaterFall">
+   <lifecycle model="Simplified Waterfall">
         <phase>Requirements Gathering And Analysis, System Design, Implementation, Testing, Deployment, Maintenance</phase>
    </lifecycle>
   <lifecycle model="Spiral">

@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "users", :action => "home"
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  
+
+  map.connect '/projects/show/:id', :controller => :projects, :action => :show
   map.connect 'projects/log_hours', :controller => 'projects', :action => 'log_hours'
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'

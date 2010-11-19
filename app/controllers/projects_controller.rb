@@ -46,6 +46,7 @@ before_filter :require_user
 # Note: are we using this format for error handling?
   def create
     @project = Project.new(params[:project])
+    @project.user_id = current_user.id
     
     respond_to do |format|
       if @project.save
@@ -104,6 +105,9 @@ before_filter :require_user
     @project = Project.find_by_id(session[:project_id])
     @phase_efforts = {}
 
+    puts "OVERVIEW: project is '#{@project}'"
+    puts "OVERVIEW: lifecycle is '#{@project.lifecycle}'"
+
     phases = RailblazersXmlParser.get_phase(@project.lifecycle)
     deliverables = Deliverable.find_all_by_project_id(@project.id)
 
@@ -126,34 +130,23 @@ before_filter :require_user
   end
 
   def log_hours
-    puts "start log_hours"
+    
     @project = Project.find(params[:project_id])
     @target_del = Deliverable.find(params[:deliverable_id])
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:project_id]], :order => "phase")
 
-    puts "checking if hours_logged is blank"
-    puts "params: #{params[:hours_logged]}"
-    unless params[:hours_logged].blank?
-      puts "params: #{params[:hours_logged]}"
-      puts "orig: #{@target_del.hours_logged}"
-      @target_del.hours_logged = params[:hours_logged]
+    #puts "checking if hours_logged is blank"
+    #puts "params: #{params[:deliverable].hours_logged}"
+    unless params[:deliverable][:hours_logged].blank?
+      @target_del.hours_logged = params[:deliverable][:hours_logged]
       if @target_del.save
-        puts "saved"
-        puts "new value: #{@target_del.hours_logged}"
-        respond_to do |format|
-          format.html { render :action => 'show' }
-        end
+        flash[:notice] = "Effort Updated"
       else
-        puts "not saved"
-        flash.now[:notice] = "Please enter a value"
+        flash[:notice] = "Error Saving! Changes discarded"
       end
     else
-      puts "blank: #{params[:hours_logged]}"
-      flash.now[:notice] = "Please enter a value before submitting"
+      flash[:notice] = "Please enter a value before submitting"
     end
-
-    respond_to do |format|
-      format.html { render :action => 'show' }
-    end
+    redirect_to :controller => :projects, :action => :show, :id => params[:project_id]
   end
 end
