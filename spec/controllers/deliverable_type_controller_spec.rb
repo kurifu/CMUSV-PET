@@ -14,6 +14,11 @@ describe DeliverableTypeController do
     controller.should be_an_instance_of(DeliverableTypeController)
   end
 
+  it "should redirect to login page if not logged in" do
+    @user_session.destroy
+    get :new
+    response.should redirect_to login_path
+  end
 
   it "should redirect to login page if not logged in" do
     @user_session.destroy
@@ -40,9 +45,6 @@ describe DeliverableTypeController do
       response.should have_tag('table#historical_data tr#effort')
       response.should have_tag('table#historical_data tr#effort td', :count => 4)
       #response.should have_tag('a[href=?]', "#", :text => "Reset")
-  
- 
-
 
       # Historical Data link
       response.should have_tag('a[href=?]', "#", :text => "Fetch Historical Data")

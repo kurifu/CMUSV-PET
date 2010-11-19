@@ -4,15 +4,39 @@
 </p>
 
 <p>
-  <b>Description:</b>
-  <%=h @project.description %>
-</p>
-
-<p>
   <b>Lifecycle:</b>
   <%=h @project.lifecycle %>
 </p>
 
-<%= link_to 'Phases', :action=>'integrate_with_delilverables', :id=>@project %> |
+<p>
+  <b>Description:</b>
+  <%=h @project.description %>
+</p>
+
+<table id="content_overview">
+  <tr>
+    <th>Phase</th>
+    <th>Deliverable Name</th>
+    <th>Hours Logged</th>
+    <th>Update</th>
+  </tr>
+
+  <% for @del in @deliverables %>
+  <tr>
+    <td><%= @del.phase %></td>
+    <td><%= @del.name %></td>
+    <td><%= @del.hours_logged %></td>
+    <% form_for @del, :url => {:action => :log_hours, :project_id => @project.id, :deliverable_id => @del.id} do |f| %>
+    <td>
+      <%= f.text_field :hours_logged %>
+      <%= f.submit 'Change' %>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<p/><p/>
+<%= link_to '&laquo; Back', projects_path %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Phases &raquo;', :action=>'integrate_with_delilverables', :id=>@project %>
