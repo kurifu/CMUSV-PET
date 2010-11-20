@@ -94,7 +94,7 @@ describe DeliverableTypeController do
       with_tag "input[type=submit][name='commit'][id=deliverable_submit]"
     end
   end
->>>>>>> storycard4
+  
   end
 
   describe "CREATE a Deliverable Type" do

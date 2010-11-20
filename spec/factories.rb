@@ -34,7 +34,7 @@ Factory.define :archived_p1, :class => 'Project' do |p|
   p.status 'archived'
   p.lifecycle 'Simplified Waterfall'
   p.name 'Archived Project 1'
-  p.user_id 100
+  p.user_id 2
 end
 
 Factory.define :historical_d1, :class => 'Deliverable' do |d|
@@ -84,6 +84,7 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
   d.phase "System Design"
   d.name "f"
   d.unit_measurement "f"
+end
 
 # valid user
 Factory.define :valid_user, :class=> 'User' do |u|
@@ -91,6 +92,4 @@ Factory.define :valid_user, :class=> 'User' do |u|
   u.username 'test'
   u.email 'test@test.com'
   u.password 'test'
-  u.id 100
-end
 end

@@ -146,7 +146,7 @@ describe ProjectsController do
       d1 = Factory.create(:historical_d1)
       d1.hours_logged.should == 0.0
       get :log_hours, :project_id => p1.id, :deliverable_id => d1.id, :deliverable => {:hours_logged => 3.0}
-      response.should redirect_to("projects/show/#{p1.id}")
+      response.should redirect_to("projects/#{p1.id}")
       assigns[:target_del].hours_logged.should == 3.0
       flash[:notice].should == "Effort Updated"
     end
@@ -156,7 +156,7 @@ describe ProjectsController do
       d1 = Factory.create(:historical_d1)
       d1.hours_logged.should == 0.0
       get :log_hours, :project_id => p1.id, :deliverable_id => d1.id, :deliverable => {:hours_logged => ""}
-      response.should redirect_to("projects/show/#{p1.id}")
+      response.should redirect_to("projects/#{p1.id}")
       puts "CHECK: #{assigns[:target_del]}"
       assigns[:target_del].hours_logged.should == 0.0
       flash[:notice].should == "Please enter a value before submitting"
@@ -168,7 +168,7 @@ describe ProjectsController do
       Deliverable.any_instance.stubs(:save).returns(false)
       d1.hours_logged.should == 0.0
       get :log_hours, :project_id => p1.id, :deliverable_id => d1.id, :deliverable => {:hours_logged => 1.0}
-      response.should redirect_to("projects/show/#{p1.id}")
+      response.should redirect_to("projects/#{p1.id}")
       #assigns[:target_del].hours_logged.should == 0.0
       flash[:notice].should == "Error Saving! Changes discarded"
     end
