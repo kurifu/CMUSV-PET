@@ -1,0 +1,5 @@
+<% form_for @deliverable, :url => {:action => :update}, :html => { :multipart => true } do |f|%>
+  <%= f.file_field :attachment %>
+  <%= f.text_field :attachment_file_name %>
+  <%= f.submit 'Submit' %>
+<% end %>

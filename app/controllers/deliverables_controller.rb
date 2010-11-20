@@ -21,9 +21,13 @@ class DeliverablesController < ApplicationController
       
     else
       @deliverable.phase = session[:phase] = params[:default_phase]
-      
       @deliverables_of_phase = Project.find(project_id).deliverables.find_all_by_phase(params[:default_phase])
     end
+  end
+
+  def add_attachment
+    puts "-----------------in add_attachment"
+    @deliverable = Deliverable.find(params[:id])
   end
 
   def update
@@ -40,9 +44,10 @@ class DeliverablesController < ApplicationController
       #format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
       #format.xml  { head :ok }
 
-      update_deliverable_partial
+      #update_deliverable_partial
       #render(:partial => 'deliverable_partial',
       #  :layout => false)
+      redirect_to :controller=>'deliverables', :action=>'index', :default_phase=>@deliverable.phase
     else
       puts "did not update correctly"
       render :nothing => true

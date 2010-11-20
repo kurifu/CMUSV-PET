@@ -4,7 +4,7 @@ gem 'rails', '2.3.8'
 gem 'bundler'
 gem 'rspec'
 gem 'rspec-rails'
-gem 'paperclip'
+gem "paperclip"
 
 group :development do
   gem 'rake'

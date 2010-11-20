@@ -4,22 +4,16 @@
   <th>Action</th>
 </tr>
 
-<% for @deliverable in @deliverables_of_phase %>
+<% for deliverable in @deliverables_of_phase %>
 <tr>
   <td>
-    <%= @deliverable.name %>
+    <%= deliverable.name %>
   </td>
   <td>
-
-    <% if @deliverable.attachment? then %>
-      <%= link_to '#{@deliverable.attachment.url}', @deliverable.attachment.url %>
-    
+    <% if deliverable.attachment? then %>
+      <%= link_to "<span class=\"icon_download\"></span>#{deliverable.attachment_file_name}", deliverable.attachment.url %>
     <% else %>
-      <% form_remote_for @deliverable, :url => {:action => :update, :id => @deliverable.id, :phase => @deliverable.phase}, :html => { :multipart => true } do |f|%>
-        <%= f.file_field :attachment %>
-        <%= f.text_field :attachment_file_name %>
-        <%= f.submit 'Submit' %>
-      <% end %>
+      <%= link_to "<span class=\"icon_upload\"></span>Upload Deliverable", :controller=>'deliverables' ,:action=>'add_attachment', :id=>deliverable.id %>
     <% end %>
 
   </td>

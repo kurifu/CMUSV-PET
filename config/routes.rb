@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
+  map.connect '/deliverables/add_attachment', :controller=>'deliverables', :action=>'add_attachment'
   map.resources :projects
   # The priority is based upon order of creation: first created -> highest priority.
 

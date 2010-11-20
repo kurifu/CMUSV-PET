@@ -368,6 +368,24 @@ table#phase_partial {
     text-align: center;
 }
 
+table#phase_partial th:nth-child(1) {
+    
+}
+
+table#phase_partial th:nth-child(3) {
+    width: 175px;
+}
+
+table#phase_partial tr td {
+    
+}
+
+table#phase_partial tr td:nth-child(2) {
+    min-width: 50px;
+    text-align: left;
+    padding-left: 100px;
+}
+
 div#div_phase {
     width: 250px;
     margin: 0 auto;
@@ -391,6 +409,22 @@ div#add_deliverable {
 div#add_deliverable select {
     width: 200px;
     margin: 0 auto;
+}
+
+span.icon_download {
+    float: left;
+    width: 17px;
+    height: 17px;
+    background: url('/images/icons.png') 0px 0px no-repeat;
+    margin-right: 10px;
+}
+
+span.icon_upload {
+    float: left;
+    width: 17px;
+    height: 17px;
+    background: url('/images/icons.png') -17px 0px no-repeat;
+    margin-right: 10px;
 }
 
 /************************/
