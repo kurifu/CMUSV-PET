@@ -21,7 +21,7 @@
   </p>
   <p>
     <%= f.label :user_class %><br />
-    <%= f.text_field :user_class %>
+    <%= f.select :user_class, %w(Admin Regular) %>
   </p>
   <p>
     <%= f.submit 'Create' %>

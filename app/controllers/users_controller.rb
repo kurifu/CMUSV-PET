@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_filter :require_user
+
   # GET /users
   # GET /users.xml
   def index
@@ -61,10 +62,18 @@ before_filter :require_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        if @user.user_class == "admin"
+          format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        else
+          format.html { redirect_to(root_path, :notice => 'Password was successfully updated.') }
+        end
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        if @user.user_class == "admin"
+          format.html { render :action => "edit" }
+        else
+          format.html { render :action => "change_password" }
+        end
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
@@ -84,8 +93,24 @@ before_filter :require_user
 
   def home
     @projects = current_user.projects.find(:all)
-    for project in @projects
-      puts project
+    puts "Current_user_class #{current_user.user_class}"
+  end
+
+  def change_password
+        @user = User.find(params[:id])
+  end
+
+  def update_password
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+          format.html { redirect_to(root_path, :notice => 'Password was successfully updated.') }
+          format.xml  { head :ok }
+      else
+        format.html { render :action => "change_password" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end
