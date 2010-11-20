@@ -68,7 +68,8 @@ before_filter :require_user
 #Updates the selected project with the content as modified by the user
 # Note: this is for future story card
   def update
-    @project = Project.find(params[:id])
+      @project = current_user.projects.find(params[:id])
+
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
@@ -84,7 +85,7 @@ before_filter :require_user
 #Deletes a project
 # Note: this is for future story card
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.deliverables.each { |d| d.destroy  }
     @project.destroy
 
@@ -102,7 +103,7 @@ before_filter :require_user
 
 #View the project overview screen with phase/deliverable estimations
   def overview
-    @project = Project.find_by_id(session[:project_id])
+    @project = current_user.projects.find_by_id(session[:project_id])
     @phase_efforts = {}
 
     puts "OVERVIEW: project is '#{@project}'"
@@ -131,7 +132,7 @@ before_filter :require_user
 
   def log_hours
     
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @target_del = Deliverable.find(params[:deliverable_id])
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:project_id]], :order => "phase")
 

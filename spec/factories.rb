@@ -4,6 +4,7 @@ Factory.define :valid_project, :class=>'Project' do |p|
   p.name "PET 1.3"
   p.description  "NDSS project"
   p.lifecycle "Simplified Waterfall"
+  p.user_id 2
 end
 
 # Factory for deliverable
@@ -86,6 +87,7 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
 
 # valid user
 Factory.define :valid_user, :class=> 'User' do |u|
+  u.id 2
   u.username 'test'
   u.email 'test@test.com'
   u.password 'test'
