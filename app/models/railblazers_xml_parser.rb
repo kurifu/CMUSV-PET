@@ -36,8 +36,6 @@ class RailblazersXmlParser
     @doc = Document.new File.new("./public/static_table.xml")
     @root = @doc.root
 
-    puts "DOC: #{@doc}"
-    puts "ROOT: #{@root}"
     temp_phase = @root.elements["lifecycle[@model='"+model+"']"].elements["phase"].text
     phase = temp_phase.split(%r{,\s*})
     return phase

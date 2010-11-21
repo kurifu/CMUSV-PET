@@ -1,5 +1,34 @@
-<% form_for @deliverable, :url => {:action => :update}, :html => { :multipart => true } do |f|%>
-  <%= f.file_field :attachment %>
-  <%= f.text_field :attachment_file_name %>
-  <%= f.submit 'Submit' %>
-<% end %>
+<h1>Uploading a Deliverable</h1>
+
+<table class="content_table">
+  <tr>
+    <th>Project Name</th>
+    <th>Project Lifecycle</th>
+    <th>Project Phase</th>
+    <th>Deliverable Name</th>
+  </tr>
+  <tr>
+    <td><%= @project.name %></td>
+    <td><%= @project.lifecycle %></td>
+    <td><%= @deliverable.phase %></td>
+    <td><%= @deliverable.name %></td>
+  </tr>
+  <tr>
+    <th colspan="4">Attach a File</th>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <% form_for @deliverable, :url => {:action => :update, :id => @deliverable.id}, :html => { :multipart => true } do |f|%>
+        <%= f.file_field :attachment %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<p/>
+<%= link_to '&laquo; Back to Phases', :controller => :deliverables, :default_phase => @deliverable.phase %>

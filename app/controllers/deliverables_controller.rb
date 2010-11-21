@@ -26,35 +26,27 @@ class DeliverablesController < ApplicationController
   end
 
   def add_attachment
-    puts "-----------------in add_attachment"
     @deliverable = Deliverable.find(params[:id])
+    @project = Project.find(@deliverable.project_id)
   end
 
   def update
     @deliverable = Deliverable.find(params[:id])
-
-    puts "params is: #{params[:deliverable]}"
-    
-    del = params[:deliverable]
-    
-    puts "del id: #{params[:id]}"
-
     if @deliverable.update_attributes(params[:deliverable])
-      puts "updated correctly, before update_deliverable_partial"
-      #format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
-      #format.xml  { head :ok }
-
-      #update_deliverable_partial
-      #render(:partial => 'deliverable_partial',
-      #  :layout => false)
-      redirect_to :controller=>'deliverables', :action=>'index', :default_phase=>@deliverable.phase
-    else
-      puts "did not update correctly"
-      render :nothing => true
-      #format.html { render :action => "edit" }
-      #format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+      if !@deliverable.attachment_file_name.nil?
+        flash[:notice] = "Deliverable successfully uploaded!"
+        redirect_to :controller => :deliverables,
+          :action => :index,
+          :default_phase => @deliverable.phase
+        return
+      end
+      puts "* file name nil"
     end
-
+    puts "* did not update"
+    flash[:notice] = "Deliverable did not upload correctly!"
+    redirect_to :controller => :deliverables,
+      :action => :add_attachment,
+      :id => @deliverable.id
   end
 
 # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown

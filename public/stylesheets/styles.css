@@ -305,7 +305,7 @@ background : #fff;
 /* PROJECT HOMEPAGE */
 /********************/
 
-table#content_table, table#content_overview {
+table.content_table, table#content_overview {
     border: 1px solid black;
     text-align: center;
 }
@@ -357,7 +357,7 @@ div.content_phase input {
     width: 50px;
 }
 
-div.content_phase, table#content_table, table#content_overview {
+div.content_phase, table.content_table, table#content_overview {
     width: 650px;
 }
 
@@ -382,8 +382,8 @@ table#phase_partial tr td {
 
 table#phase_partial tr td:nth-child(2) {
     min-width: 50px;
-    text-align: left;
-    padding-left: 100px;
+    text-align: center;
+    
 }
 
 div#div_phase {
@@ -417,6 +417,7 @@ span.icon_download {
     height: 17px;
     background: url('/images/icons.png') 0px 0px no-repeat;
     margin-right: 10px;
+    margin-left: 20px;
 }
 
 span.icon_upload {
@@ -425,6 +426,7 @@ span.icon_upload {
     height: 17px;
     background: url('/images/icons.png') -17px 0px no-repeat;
     margin-right: 10px;
+    margin-left: 20px;
 }
 
 /************************/
@@ -435,7 +437,7 @@ input#deliverable_submit {
     width: 75px;
     clear: both;
     border: 1px solid black;
-    margin-right: 110px;
+    
 }
 
 div#new_del {
