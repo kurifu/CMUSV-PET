@@ -117,7 +117,6 @@ integrate_views
       end
     end
 
-=begin
     it "should update a deliverable with an attachment" do
       Deliverable.any_instance.stubs(:update_attributes).returns(true)
       @d2 = Deliverable.new :attachment => File.new(RAILS_ROOT + '/spec/fixtures/test_files/test_file.txt')
@@ -129,7 +128,6 @@ integrate_views
         :action => :index,
         :default_phase => @d2.phase
     end
-=end
 
     it "should not update a deliverable with an attachment" do
       Deliverable.any_instance.stubs(:update_attributes).returns(false)
