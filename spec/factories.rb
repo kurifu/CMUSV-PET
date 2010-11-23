@@ -1,10 +1,12 @@
 # Factory for project
+#modified p.user_id of this factory to 4
+#to get the project_controller_test to pass
 Factory.define :valid_project, :class=>'Project' do |p|
   p.id 100
   p.name "PET 1.3"
   p.description  "NDSS project"
   p.lifecycle "Simplified Waterfall"
-  p.user_id 2
+  p.user_id 4
 end
 
 # Factory for deliverable
@@ -34,7 +36,7 @@ Factory.define :archived_p1, :class => 'Project' do |p|
   p.status 'archived'
   p.lifecycle 'Simplified Waterfall'
   p.name 'Archived Project 1'
-  p.user_id 2
+  p.user_id 4
 end
 
 Factory.define :historical_d1, :class => 'Deliverable' do |d|
@@ -87,10 +89,10 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
 end
 
 # valid user
-
-
+# modified user id of this user to 4
+# to get the project_controller_spec to pass
 Factory.define :valid_user, :class=> 'User' do |u|
-  u.id 2
+  u.id 4
   u.username 'valid'
   u.email 'valid@test.com'
   u.password 'test1234'
@@ -99,7 +101,7 @@ Factory.define :valid_user, :class=> 'User' do |u|
 end
 
 Factory.define :valid_regular_user, :class=> 'User' do |u|
-  u.id 3
+  u.id 5
   u.username 'regularuser'
   u.email 'regular@tested.com'
   u.password 'test1234'
