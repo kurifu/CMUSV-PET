@@ -116,6 +116,27 @@ describe DeliverableTypeController do
       assigns[:deliverable].should be_new_record
       response.should render_template("deliverable_type/new")
     end
+
+    it "should redirect to Phase page (deliverables/index) after creating a Deliverable with an Ad-hoc Type" do
+      Deliverable.any_instance.stubs(:save).returns(true)
+      Deliverable.any_instance.stubs(:deliverable_type).returns("Ad-Hoc Type")
+
+      session[:project_id] = 1
+      session[:phase] = "Requirements"
+      post :create
+      response.should redirect_to(:controller => "deliverables", :default_phase => "Requirements")
+    end
+
+    it "should not redirect to Phase page (deliverables/index) after creating a Deliverable with an Ad-hoc Type" do
+      Deliverable.any_instance.stubs(:save).returns(false)
+      Deliverable.any_instance.stubs(:deliverable_type).returns("Ad-Hoc Type")
+
+      session[:project_id] = 1
+      session[:phase] = "System Design"
+      session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(session[:phase])
+      post :create
+      response.should render_template("deliverable_type/new")
+    end
   end
 
   # Make more specific/refine this later
@@ -228,6 +249,41 @@ describe DeliverableTypeController do
       assigns[:historical_data].should_not be_nil
       assigns[:historical_data][0].should == "-"
       assigns[:historical_data][-1].should == "-"
+    end
+  end
+
+  describe "Ajax tests" do
+    it "should render partial when request latch_deliverable_type" do
+      session[:complexity] = "Low"
+      session[:phase] = "System Design"
+      session[:deliverable_type] = "Ad-Hoc Type"
+      xhr :get, :latch_deliverable_type, :deliverable_type=>"Ad-Hoc Type"
+      response.should render_template "deliverable_type/_ad_hoc_type"
+    end
+
+    it "should render partial when request latch_deliverable_type without an Ad-Hoc Type" do
+      session[:complexity] = "Low"
+      session[:phase] = "System Design"
+      session[:deliverable_type_id] = "3"
+      session[:deliverable_type] = "UML"
+      xhr :get, :latch_deliverable_type, :deliverable_type=>"UML"
+      response.should render_template "deliverable_type/_blank"
+    end
+
+    it "should render nothing with Select a deliverable type" do
+      session[:complexity] = "Low"
+      session[:phase] = "System Design"
+      session[:deliverable_type] = "Ad-Hoc Type"
+      xhr :get, :latch_deliverable_type, :deliverable_type=>"Select a deliverable type"
+      response.body.strip.should be_empty
+    end
+
+    it "should render partial when request latch_complexity" do
+      session[:complexity] = "Low"
+      session[:phase] = "System Design"
+      session[:deliverable_type] = "UML"
+      xhr :get, :latch_complexity, :complexity=>"UML"
+      response.body.strip.should be_empty
     end
   end
 

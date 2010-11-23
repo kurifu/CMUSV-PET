@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 #before_filter :require_user
-#before_filter :require_admin, :only => [:new, :edit, :udpate, :destroy, :index, :create]
+before_filter :require_admin, :except => [:show, :home, :change_password, :update_password]
 
   # GET /users
   # GET /users.xml

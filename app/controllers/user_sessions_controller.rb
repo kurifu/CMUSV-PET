@@ -15,9 +15,9 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Successfully logged in."
       puts "Current user admin #{current_user_admin}"
       if current_user_admin
-      redirect_to admin_home_path
+        redirect_back_or_default admin_home_path
       else
-        redirect_to root_path
+        redirect_back_or_default root_path
       end
     else
       flash[:notice] = "Invalid username/password"

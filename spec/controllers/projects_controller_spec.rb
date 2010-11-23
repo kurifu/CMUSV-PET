@@ -14,6 +14,21 @@ describe ProjectsController do
     response.should redirect_to login_path
   end
 
+  describe "Request index page" do
+    it "should render index page when requested" do
+      get :index
+      response.should render_template :index
+    end
+  end
+
+  describe "Destroy action" do
+    it "should delete project and related deliverables" do
+      Factory.create(:valid_project)
+      delete :destroy, :id=>100
+      response.should redirect_to(projects_url)
+    end
+  end
+
   describe "DUMMY Testing" do
     it "should use ProjectsController" do
       controller.should be_an_instance_of(ProjectsController)

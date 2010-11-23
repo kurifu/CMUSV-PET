@@ -94,12 +94,6 @@ before_filter :require_user
     end
   end
 
-  #TODO : delete in future iterations
-  def integrate_with_delilverables
-    session[:project_id] = params[:id]
-    redirect_to :controller=>"deliverables"
-  end
-
 #View the project overview screen with phase/deliverable estimations
   def overview
     @project = current_user.projects.find_by_id(session[:project_id])

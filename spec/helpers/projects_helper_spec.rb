@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ProjectsHelper do
+  setup :activate_authlogic
 
   #Delete this example and add some real ones or delete this file
   it "should be included in the object returned by #helper" do
@@ -22,5 +23,5 @@ describe ProjectsHelper do
     result = helper.calculate_phase_effort(100, "Testing")
     result.should == 0
   end
-
+  
 end

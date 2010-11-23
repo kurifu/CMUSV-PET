@@ -6,6 +6,13 @@ describe UserSessionsController do
 
   setup :activate_authlogic
 
+  describe "Request login page" do
+    it "should render login page" do
+      get :new
+      response.should render_template :new
+    end
+  end
+
   describe "Invalid User" do
     before(:each) do
       UserSession.any_instance.stubs(:save).returns(false)
