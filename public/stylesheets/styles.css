@@ -305,7 +305,7 @@ background : #fff;
 /* PROJECT HOMEPAGE */
 /********************/
 
-table#content_table, table#content_overview {
+table.content_table, table#content_overview {
     border: 1px solid black;
     text-align: center;
 }
@@ -364,7 +364,11 @@ table#content_overview td {
     
 }
 
-div.content_phase, table#content_table, table#content_overview {
+div.content_phase input {
+    width: 50px;
+}
+
+div.content_phase, table.content_table, table#content_overview {
     width: 650px;
 }
 
@@ -373,6 +377,24 @@ table#phase_partial {
     margin-bottom: 10px;
     width: inherit;
     text-align: center;
+}
+
+table#phase_partial th:nth-child(1) {
+    
+}
+
+table#phase_partial th:nth-child(3) {
+    width: 175px;
+}
+
+table#phase_partial tr td {
+    
+}
+
+table#phase_partial tr td:nth-child(2) {
+    min-width: 50px;
+    text-align: center;
+    
 }
 
 div#div_phase {
@@ -400,6 +422,24 @@ div#add_deliverable select {
     margin: 0 auto;
 }
 
+span.icon_download {
+    float: left;
+    width: 17px;
+    height: 17px;
+    background: url('/images/icons.png') 0px 0px no-repeat;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+span.icon_upload {
+    float: left;
+    width: 17px;
+    height: 17px;
+    background: url('/images/icons.png') -17px 0px no-repeat;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
 /************************/
 /* NEW DELIVERABLE PAGE */
 /************************/
@@ -408,7 +448,7 @@ input#deliverable_submit {
     width: 75px;
     clear: both;
     border: 1px solid black;
-    margin-right: 110px;
+    
 }
 
 div#new_del {

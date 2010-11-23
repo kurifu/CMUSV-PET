@@ -6,11 +6,11 @@ include REXML
 
 class RailblazersXmlParser
 
-  @doc = Document.new File.new("./public/static_table.xml")
-  @root = @doc.root
-  @LOW = 10
-  @MEDIUM = 20
-  @HIGH = 30
+  #def self.initialize
+    @doc = Document.new File.new("./public/static_table.xml")
+    @root = @doc.root
+  #end
+  
 
 #This method provides a list of lifecycle
 #Input : None
@@ -33,8 +33,6 @@ class RailblazersXmlParser
 #Output: string array => lifecycle phases
   def self.get_phase(model)
     phase = Array.new
-    puts "ROOT: #{@root}"
-    #@doc = Document.new File.new("./public/static_table.xml")
     temp_phase =
       @root.elements["lifecycle[@model='"+model+"']"].elements["phase"].text
     phase = temp_phase.split(%r{,\s*})
@@ -75,6 +73,8 @@ class RailblazersXmlParser
 #Output: string array => deliverable types
   def self.get_deliverable_type(id)
     deliverable_type = Array.new
+    @doc = Document.new File.new("./public/static_table.xml")
+    @root = @doc.root
     temp_deliverable_type =
       @root.elements["deliverable_type[@id='"+id+"']"].elements["name"].text
     deliverable_type = temp_deliverable_type.split(%r{,\s*})
@@ -87,6 +87,8 @@ class RailblazersXmlParser
 #Output: string array => unit of measurement
   def self.get_unit_of_measurement(id)
     unit = Array.new
+    @doc = Document.new File.new("./public/static_table.xml")
+    @root = @doc.root
     temp_unit =
       @root.elements["deliverable_type[@id='"+id+"']"].elements["unit"].text
     unit = temp_unit.split(%r{,\s*})
@@ -98,6 +100,8 @@ class RailblazersXmlParser
 #Output: string array => Low, Medium, High
   def self.get_common_values
     common_values = Array.new
+    @doc = Document.new File.new("./public/static_table.xml")
+    @root = @doc.root
     temp_complexity =
       @root.elements["complexity"].text
     common_values = temp_complexity.split(%r{,\s*})

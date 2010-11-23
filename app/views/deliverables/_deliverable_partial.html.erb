@@ -1,6 +1,6 @@
 <tr>
   <th>Deliverable</th>
-  <th>Upload deliverable</th>
+  <th>Upload/Download Deliverable</th>
   <th>Action</th>
 </tr>
 
@@ -9,10 +9,13 @@
   <td>
     <%= deliverable.name %>
   </td>
-    <td>
-      <%form_for :deliverable do |f|%>
-          <%= f.file_field :url %>
-      <%end%>
+  <td>
+    <% if deliverable.attachment? then %>
+      <%= link_to "<span class=\"icon_download\"></span>#{deliverable.attachment_file_name}", deliverable.attachment.url %>
+    <% else %>
+      <%= link_to "<span class=\"icon_upload\"></span>Upload Deliverable", :controller=>'deliverables' ,:action=>'add_attachment', :id=>deliverable.id %>
+    <% end %>
+
   </td>
   <td>
     <a href="#">Modify</a>
@@ -21,10 +24,10 @@
 </tr>
 <% end %>
 <tr>
-        <td>&nbsp;</td>
+  <td>&nbsp;</td>
 </tr>
 <tr>
-        <td>&nbsp;</td>
+  <td>&nbsp;</td>
 </tr>
 <tr>
   <td colspan="3">

@@ -9,22 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118033228) do
+ActiveRecord::Schema.define(:version => 20101115230631) do
 
   create_table "deliverables", :force => true do |t|
-    t.integer "project_id",                      :default => -1,  :null => false
-    t.string  "name",                            :default => "",  :null => false
-    t.string  "deliverable_url",                 :default => ""
-    t.string  "complexity",                      :default => "",  :null => false
-    t.string  "unit_measurement",                :default => "",  :null => false
-    t.float   "estimated_size",   :limit => 255
-    t.float   "estimated_effort", :limit => 255
-    t.float   "production_rate",  :limit => 255
-    t.string  "deliverable_type"
-    t.string  "phase"
-    t.text    "description"
-    t.boolean "ad_hoc"
-    t.float   "hours_logged",                    :default => 0.0
+    t.integer  "project_id",                             :default => -1, :null => false
+    t.string   "name",                                   :default => "", :null => false
+    t.string   "deliverable_url",                        :default => ""
+    t.string   "complexity",                             :default => "", :null => false
+    t.string   "unit_measurement",                       :default => "", :null => false
+    t.float    "estimated_size",          :limit => 255
+    t.float    "estimated_effort",        :limit => 255
+    t.float    "production_rate",         :limit => 255
+    t.string   "deliverable_type"
+    t.string   "phase"
+    t.text     "description"
+    t.boolean  "ad_hoc"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "projects", :force => true do |t|

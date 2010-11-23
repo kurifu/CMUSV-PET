@@ -35,6 +35,12 @@ class Deliverable < ActiveRecord::Base
 
   belongs_to :project
 
+   has_attached_file :attachment
+#    :path => "attachments/:id/:attachment_file_name",
+#    :url => "attachments/:id/:attachment_file_name"
+  #validates_attachment_presence :attachment
+  
+
   private
 
   def valid_calculation_result?
