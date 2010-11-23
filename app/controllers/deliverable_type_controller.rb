@@ -198,8 +198,8 @@ before_filter :require_user
       data[8] = efforts.max
 
     else
-      #puts "didn't find anything"
-      data.fill("-", 0, 9)
+      flash.now[:warning] = "No data available"
+      data.fill("?", 0, 9)
     end
 
     return data
