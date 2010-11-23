@@ -20,7 +20,7 @@ describe UserSessionsController do
     end
   end
 
-  describe "Valid Admin User actions" do
+  describe "Valid Admin User" do
     before(:each) do
       UserSession.stubs(:find).returns(UserSession.new)
       UserSession.any_instance.stubs(:user).returns(User.new)
@@ -35,7 +35,7 @@ describe UserSessionsController do
 
   end
 
-  describe "Valid Regular User actions" do
+  describe "Valid Regular User" do
     before(:each) do
       UserSession.stubs(:find).returns(UserSession.new)
       UserSession.any_instance.stubs(:user).returns(User.new)
@@ -48,7 +48,7 @@ describe UserSessionsController do
       response.should redirect_to(root_path)
     end
 
-    it "should not allow regular user to view admin home screen" do
+    it "should not redirect regular user to admin home screen" do
       response.should_not redirect_to(admin_home_path)
     end
   end  
