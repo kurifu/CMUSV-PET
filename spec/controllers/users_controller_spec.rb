@@ -1,3 +1,5 @@
+# Pushing this comment to sync this branch with master
+
 require 'spec_helper'
 
 describe UsersController do
