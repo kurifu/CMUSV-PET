@@ -27,38 +27,36 @@ describe UserSessionsController do
     end
   end
 
-  describe "Valid User" do
-
-    it "should redirect user to User home screen" do
-      UserSession.stubs(:find).returns(UserSession.new)
-      UserSession.any_instance.stubs(:user).returns(User.new)
-      UserSession.any_instance.stubs(:save).returns(true)
-      User.any_instance.stubs(:user_class).returns("Regular")
-      #ApplicationController.stubs(:current_user_admin).returns(false)
-      post :create
-      response.should redirect_to(root_path)
-    end
-
-    it "should redirect admin to admin home screen" do
+  describe "Valid Admin User" do
+    before(:each) do
       UserSession.stubs(:find).returns(UserSession.new)
       UserSession.any_instance.stubs(:user).returns(User.new)
       UserSession.any_instance.stubs(:save).returns(true)
       User.any_instance.stubs(:user_class).returns("admin")
-      #ApplicationController.stubs(:current_user_admin).returns(false)
       post :create
+    end
+
+    it "should redirect admin to admin home screen" do
       response.should redirect_to(admin_home_path)
     end
 
-    it "logout valid user and show proper message" do
-      attr = {:username=>'invalid', :password=>'invalid'}
-      user_session = UserSession.new(attr)
-      UserSession.stubs(:find).returns(user_session)
-      delete :destroy
-      #flash[:notice].should == "Logged out"
-      response.should redirect_to(login_path)
-
-    end
   end
-  
-  
+
+  describe "Valid Regular User" do
+    before(:each) do
+      UserSession.stubs(:find).returns(UserSession.new)
+      UserSession.any_instance.stubs(:user).returns(User.new)
+      UserSession.any_instance.stubs(:save).returns(true)
+      User.any_instance.stubs(:user_class).returns("Regular")
+      post :create
+    end
+
+    it "should redirect user to User home screen" do
+      response.should redirect_to(root_path)
+    end
+
+    it "should not redirect regular user to admin home screen" do
+      response.should_not redirect_to(admin_home_path)
+    end
+  end  
 end
