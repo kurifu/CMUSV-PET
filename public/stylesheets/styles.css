@@ -7,12 +7,12 @@ background : #fff url(../images/bg.jpg) repeat-x top;
 color : #454545;
 }
 a {
-color : #7a9833;
+/*color : #7a9833;*/
 background : inherit;
 text-decoration : none;
 }
 a:hover {
-color : #7a9833;
+/*color : #7a9833;*/
 background : inherit;
 text-decoration : underline;
 }
@@ -99,7 +99,7 @@ color : #fff;
 }
 #menu li a:hover {
 color : #fff;
-background : #a7cc44;
+background : #616161;
 margin : 0;
 }
 #menu li a.current {
@@ -129,7 +129,7 @@ background : #fff;
 list-style : square;
 padding-left : 0;
 margin-left : 15px;
-color : #b4e04a;
+/*color : #b4e04a;*/
 }
 #right_side a {
 background : inherit;
@@ -155,11 +155,11 @@ overflow : hidden;
 padding : 18px 0 0 0;
 }
 #left_side .intro a {
-color : #b4e04a;
+/*color : #b4e04a;*/
 text-decoration : none;
 }
 #left_side .intro a:hover {
-color : #cdff56;
+/*color : #cdff56;*/
 text-decoration : underline;
 }
 #left_side .mpart {
@@ -198,7 +198,7 @@ padding : 0 10px 5px 0;
 }
 #left_side blockquote {
 padding-left : 10px;
-border-left : 3px solid #a7cc44;
+/*border-left : 3px solid #a7cc44;*/
 margin : 10px 0 10px 25px;
 }
 .date {
@@ -404,11 +404,6 @@ div#div_phase {
 }
 div#div_phase select {
     width: 250px;
-}
-
-th, td.td_header {
-    background: #a7cc44;
-    color: #666666;
 }
 
 div#add_deliverable {
