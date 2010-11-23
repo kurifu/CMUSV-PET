@@ -68,8 +68,7 @@ before_filter :require_user
 #Updates the selected project with the content as modified by the user
 # Note: this is for future story card
   def update
-      @project = current_user.projects.find(params[:id])
-
+    @project = current_user.projects.find(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-railblazers_xml_parser_rb.html">app/models/railblazers_xml_parser.rb</a></td>
-            <td class='right_align'><tt>115</tt></td>
-            <td class='right_align'><tt>65</tt></td>
+            <td class='right_align'><tt>124</tt></td>
+            <td class='right_align'><tt>70</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -104,32 +104,32 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>   @doc = Document.new File.new(&quot;./public/static_table.xml&quot;)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>   #def self.initialize</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   @root = @doc.root</pre></td>
+            <td><pre><a name="line10">10</a>     @doc = Document.new File.new(&quot;./public/static_table.xml&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   @LOW = 10</pre></td>
+            <td><pre><a name="line11">11</a>     @root = @doc.root</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>   @MEDIUM = 20</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>   #end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>   @HIGH = 30</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a>   </pre></td>
           </tr>
         
           
@@ -176,578 +176,632 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>     @doc.elements.each(&quot;*/lifecycle&quot;){</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       |x| lifecycle[counter] = x.attributes[&quot;model&quot;].to_s</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       counter = counter + 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line24">24</a>     }</pre></td>
+            <td><pre><a name="line22">22</a>     unless @doc.nil? || @doc.elements.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>     return lifecycle</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a> #This method provides a list of lifecycle phases</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line29">29</a> #Input : string =&gt; lifecycle model</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a> #Output: string array =&gt; lifecycle phases</pre></td>
+            <td><pre><a name="line23">23</a>       @doc.elements.each(&quot;*/lifecycle&quot;){</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>   def self.get_phase(model)</pre></td>
+            <td><pre><a name="line24">24</a>         |x| lifecycle[counter] = x.attributes[&quot;model&quot;].to_s</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     phase = Array.new</pre></td>
+            <td><pre><a name="line25">25</a>         counter = counter + 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     temp_phase =</pre></td>
+            <td><pre><a name="line27">27</a>       return lifecycle</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> #This method provides a list of lifecycle phases</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line32">32</a> #Input : string =&gt; lifecycle model</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a> #Output: string array =&gt; lifecycle phases</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       @root.elements[&quot;lifecycle[@model='&quot;+model+&quot;']&quot;].elements[&quot;phase&quot;].text</pre></td>
+            <td><pre><a name="line34">34</a>   def self.get_phase(model)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     phase = temp_phase.split(%r{,\s*})</pre></td>
+            <td><pre><a name="line35">35</a>     phase = Array.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     return phase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line37">37</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line38">38</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line39">39</a> #This is an internal method used to populate deliverable types for each phase.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line40">40</a> #The method takes in phase as input and outputs an id which can be fed into</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a> # #self.get_deliverable_type method to get appropriate deliverable type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a> #Input : string =&gt; phase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line43">43</a> #Output: string =&gt; id</pre></td>
+            <td><pre><a name="line36">36</a>     temp_phase =</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>   def self.identify_deliverable_type(phase)</pre></td>
+            <td><pre><a name="line37">37</a>       @root.elements[&quot;lifecycle[@model='&quot;+model+&quot;']&quot;].elements[&quot;phase&quot;].text</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     id = case phase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line46">46</a> </pre></td>
+            <td><pre><a name="line38">38</a>     phase = temp_phase.split(%r{,\s*})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     when &quot;Implementation And Unit Testing&quot; then &quot;3&quot;</pre></td>
+            <td><pre><a name="line39">39</a>     return phase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line40">40</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a> #This is an internal method used to populate deliverable types for each phase.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a> #The method takes in phase as input and outputs an id which can be fed into</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a> # #self.get_deliverable_type method to get appropriate deliverable type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line45">45</a> #Input : string =&gt; phase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> #Output: string =&gt; id</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>     when &quot;Integration And System Testing&quot; then &quot;4&quot;</pre></td>
+            <td><pre><a name="line47">47</a>   def self.identify_deliverable_type(phase)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     when &quot;Operation&quot; then &quot;5&quot;</pre></td>
+            <td><pre><a name="line48">48</a>     id = case phase</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a> </pre></td>
+            <td><pre><a name="line49">49</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     when &quot;Requirements Gathering And Analysis&quot; then &quot;1&quot;</pre></td>
+            <td><pre><a name="line50">50</a>     when &quot;Implementation And Unit Testing&quot; then &quot;3&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>     when &quot;System Design&quot; then &quot;2&quot;</pre></td>
+            <td><pre><a name="line51">51</a>     when &quot;Integration And System Testing&quot; then &quot;4&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     when &quot;Implementation&quot; then &quot;3&quot;</pre></td>
+            <td><pre><a name="line52">52</a>     when &quot;Operation&quot; then &quot;5&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     when &quot;Testing&quot; then &quot;4&quot;</pre></td>
+            <td><pre><a name="line54">54</a>     when &quot;Requirements Gathering And Analysis&quot; then &quot;1&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     when &quot;Deployment&quot; then &quot;5&quot;</pre></td>
+            <td><pre><a name="line55">55</a>     when &quot;System Design&quot; then &quot;2&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     when &quot;Maintenance&quot; then &quot;6&quot;</pre></td>
+            <td><pre><a name="line56">56</a>     when &quot;Implementation&quot; then &quot;3&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>     when &quot;Planning&quot; then &quot;7&quot;</pre></td>
+            <td><pre><a name="line57">57</a>     when &quot;Testing&quot; then &quot;4&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     when &quot;Risk Analysis&quot; then &quot;8&quot;</pre></td>
+            <td><pre><a name="line58">58</a>     when &quot;Deployment&quot; then &quot;5&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     when &quot;Engineering&quot; then &quot;9&quot;</pre></td>
+            <td><pre><a name="line59">59</a>     when &quot;Maintenance&quot; then &quot;6&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>     when &quot;Evaluation&quot; then &quot;10&quot;</pre></td>
+            <td><pre><a name="line60">60</a>     when &quot;Planning&quot; then &quot;7&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line61">61</a>     when &quot;Requirements&quot; then &quot;1&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line62">62</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line63">63</a>     end</pre></td>
+            <td><pre><a name="line61">61</a>     when &quot;Risk Analysis&quot; then &quot;8&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     return id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line65">65</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line67">67</a> #This method takes the return value of #self.identify_deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line68">68</a> #as input and provides a list of deliverable types as output </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line69">69</a> #Input : string =&gt; return value of #self.identify_deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a> #Output: string array =&gt; deliverable types</pre></td>
+            <td><pre><a name="line62">62</a>     when &quot;Engineering&quot; then &quot;9&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>   def self.get_deliverable_type(id)</pre></td>
+            <td><pre><a name="line63">63</a>     when &quot;Evaluation&quot; then &quot;10&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     deliverable_type = Array.new</pre></td>
+            <td><pre><a name="line64">64</a>     when &quot;Requirements&quot; then &quot;1&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     temp_deliverable_type =</pre></td>
+            <td><pre><a name="line67">67</a>     return id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line69">69</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a> #This method takes the return value of #self.identify_deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a> #as input and provides a list of deliverable types as output </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a> #Input : string =&gt; return value of #self.identify_deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line73">73</a> #Output: string array =&gt; deliverable types</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>       @root.elements[&quot;deliverable_type[@id='&quot;+id+&quot;']&quot;].elements[&quot;name&quot;].text</pre></td>
+            <td><pre><a name="line74">74</a>   def self.get_deliverable_type(id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>     deliverable_type = temp_deliverable_type.split(%r{,\s*})</pre></td>
+            <td><pre><a name="line75">75</a>     deliverable_type = Array.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>     return deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line77">77</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line79">79</a> #This method takes the return value of #self.identify_deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line80">80</a> #as input and provides a list of unit of measurements as output </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line81">81</a> #Input : string =&gt; return value of #self.identify_deliverable_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line82">82</a> #Output: string array =&gt; unit of measurement</pre></td>
+            <td><pre><a name="line76">76</a>     @doc = Document.new File.new(&quot;./public/static_table.xml&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>   def self.get_unit_of_measurement(id)</pre></td>
+            <td><pre><a name="line77">77</a>     @root = @doc.root</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     unit = Array.new</pre></td>
+            <td><pre><a name="line78">78</a>     temp_deliverable_type =</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     temp_unit =</pre></td>
+            <td><pre><a name="line79">79</a>       @root.elements[&quot;deliverable_type[@id='&quot;+id+&quot;']&quot;].elements[&quot;name&quot;].text</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>       @root.elements[&quot;deliverable_type[@id='&quot;+id+&quot;']&quot;].elements[&quot;unit&quot;].text</pre></td>
+            <td><pre><a name="line80">80</a>     deliverable_type = temp_deliverable_type.split(%r{,\s*})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>     unit = temp_unit.split(%r{,\s*})</pre></td>
+            <td><pre><a name="line81">81</a>     return deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a> #This method takes the return value of #self.identify_deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line85">85</a> #as input and provides a list of unit of measurements as output </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line86">86</a> #Input : string =&gt; return value of #self.identify_deliverable_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line87">87</a> #Output: string array =&gt; unit of measurement</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>     return unit</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line90">90</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line91">91</a> #This method is used to populate dropdown lists that hold similar values</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line92">92</a> #Input: None</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line93">93</a> #Output: string array =&gt; Low, Medium, High</pre></td>
+            <td><pre><a name="line88">88</a>   def self.get_unit_of_measurement(id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line94">94</a>   def self.get_common_values</pre></td>
+            <td><pre><a name="line89">89</a>     unit = Array.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>     common_values = Array.new</pre></td>
+            <td><pre><a name="line90">90</a>     @doc = Document.new File.new(&quot;./public/static_table.xml&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>     temp_complexity =</pre></td>
+            <td><pre><a name="line91">91</a>     @root = @doc.root</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>       @root.elements[&quot;complexity&quot;].text</pre></td>
+            <td><pre><a name="line92">92</a>     temp_unit =</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line98">98</a>     common_values = temp_complexity.split(%r{,\s*})</pre></td>
+            <td><pre><a name="line93">93</a>       @root.elements[&quot;deliverable_type[@id='&quot;+id+&quot;']&quot;].elements[&quot;unit&quot;].text</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line99">99</a>     return common_values</pre></td>
+            <td><pre><a name="line94">94</a>     unit = temp_unit.split(%r{,\s*})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line95">95</a>     return unit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a>   end</pre></td>
+            <td><pre><a name="line96">96</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line101">101</a> </pre></td>
+            <td><pre><a name="line97">97</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a> #This method takes a string value as input and generates decimal value as output</pre></td>
+            <td><pre><a name="line98">98</a> #This method is used to populate dropdown lists that hold similar values</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a> #This is required since user selects either Low, Medium or High for estimated effort </pre></td>
+            <td><pre><a name="line99">99</a> #Input: None</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a> #wherein for computational purpose an integer value is required</pre></td>
+            <td><pre><a name="line100">100</a> #Output: string array =&gt; Low, Medium, High</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line101">101</a>   def self.get_common_values</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line102">102</a>     common_values = Array.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line103">103</a>     @doc = Document.new File.new(&quot;./public/static_table.xml&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line104">104</a>     @root = @doc.root</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line105">105</a>     temp_complexity =</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line106">106</a>       @root.elements[&quot;complexity&quot;].text</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>     common_values = temp_complexity.split(%r{,\s*})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line108">108</a>     return common_values</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line105">105</a> #Input: string </pre></td>
+            <td><pre><a name="line109">109</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a> #Output: integer</pre></td>
+            <td><pre><a name="line110">110</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a> #  def self.get_estimated_size(effort)</pre></td>
+            <td><pre><a name="line111">111</a> #This method takes a string value as input and generates decimal value as output</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a> #    estimated_size = case effort</pre></td>
+            <td><pre><a name="line112">112</a> #This is required since user selects either Low, Medium or High for estimated effort </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a> #      when &quot;Low&quot; then @LOW</pre></td>
+            <td><pre><a name="line113">113</a> #wherein for computational purpose an integer value is required</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line110">110</a> #      when &quot;Medium&quot; then @MEDIUM</pre></td>
+            <td><pre><a name="line114">114</a> #Input: string </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line111">111</a> #      when &quot;High&quot; then @HIGH</pre></td>
+            <td><pre><a name="line115">115</a> #Output: integer</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line112">112</a> #    end</pre></td>
+            <td><pre><a name="line116">116</a> #  def self.get_estimated_size(effort)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line113">113</a> #    return estimated_size</pre></td>
+            <td><pre><a name="line117">117</a> #    estimated_size = case effort</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a> #  end</pre></td>
+            <td><pre><a name="line118">118</a> #      when &quot;Low&quot; then @LOW</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a> end</pre></td>
+            <td><pre><a name="line119">119</a> #      when &quot;Medium&quot; then @MEDIUM</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line120">120</a> #      when &quot;High&quot; then @HIGH</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line121">121</a> #    end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line122">122</a> #    return estimated_size</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line123">123</a> #  end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line124">124</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Nov 18 14:48:05 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Nov 22 23:34:37 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

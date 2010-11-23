@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-deliverables_controller_rb.html">app/controllers/deliverables_controller.rb</a></td>
-            <td class='right_align'><tt>62</tt></td>
-            <td class='right_align'><tt>38</tt></td>
+            <td class='right_align'><tt>84</tt></td>
+            <td class='right_align'><tt>59</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -134,56 +134,56 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     @phases = RailblazersXmlParser.get_phase(lifecycle)</pre></td>
+            <td><pre><a name="line15">15</a>     @phases = RailblazersXmlParser.get_phase(lifecycle)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>     #Handling situation when user come to this page through project overview</pre></td>
+            <td><pre><a name="line16">16</a>     #Handling situation when user come to this page through project overview</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     if params[:default_phase].blank?</pre></td>
+            <td><pre><a name="line17">17</a>     if params[:default_phase].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       session[:phase] = nil</pre></td>
+            <td><pre><a name="line18">18</a>       session[:phase] = nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       @deliverables_of_phase = []</pre></td>
+            <td><pre><a name="line19">19</a>       @deliverables_of_phase = []</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>       </pre></td>
+            <td><pre><a name="line20">20</a>       </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     else</pre></td>
+            <td><pre><a name="line21">21</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       @deliverable.phase = session[:phase] = params[:default_phase]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a>       </pre></td>
+            <td><pre><a name="line22">22</a>       @deliverable.phase = session[:phase] = params[:default_phase]</pre></td>
           </tr>
         
           
@@ -195,13 +195,13 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>       </pre></td>
+            <td><pre><a name="line24">24</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>     end</pre></td>
+            <td><pre><a name="line25">25</a>   end</pre></td>
           </tr>
         
           
@@ -212,206 +212,206 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line29">29</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a> # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line31">31</a> #list based on the phase selected in the Phase dropdown list</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>   def add_attachment</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   def update_deliverable_partial</pre></td>
+            <td><pre><a name="line28">28</a>     @deliverable = Deliverable.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     if params[:phase].blank?</pre></td>
+            <td><pre><a name="line29">29</a>     @project = Project.find(@deliverable.project_id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+            <td><pre><a name="line32">32</a>   def update</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+            <td><pre><a name="line33">33</a>     @deliverable = Deliverable.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     else</pre></td>
+            <td><pre><a name="line34">34</a>     </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>       </pre></td>
+            <td><pre><a name="line35">35</a>     # Needed incase deliverable is nil from an empty submission</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>       @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(params[:phase])</pre></td>
+            <td><pre><a name="line36">36</a>     @attachment = params[:deliverable]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line40">40</a>       #use session[:phase] to store phase for the use in deliverable_type_controller,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a>       #we need to clean up this session when it is not needed</pre></td>
+            <td><pre><a name="line37">37</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>       session[:phase] = params[:phase]</pre></td>
+            <td><pre><a name="line38">38</a>     unless @attachment.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>       session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(params[:phase])</pre></td>
+            <td><pre><a name="line39">39</a>       if @deliverable.update_attributes(params[:deliverable])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       puts &quot;CHECK #{session[:deliverable_type_id]}&quot;</pre></td>
+            <td><pre><a name="line40">40</a>         flash[:notice] = &quot;Deliverable successfully uploaded!&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a>         redirect_to :controller =&gt; :deliverables,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a>           :action =&gt; :index,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>       render :update do |page|</pre></td>
+            <td><pre><a name="line43">43</a>           :default_phase =&gt; @deliverable.phase</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>         page.replace_html 'phase_partial', :partial =&gt; 'deliverable_partial', :object =&gt; @deliverables_of_phase</pre></td>
+            <td><pre><a name="line44">44</a>         return</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>       end</pre></td>
+            <td><pre><a name="line45">45</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line52">52</a> #Validates the presence of phase in the Phase dropdown list</pre></td>
+            <td><pre><a name="line46">46</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def validate_before_adding_new_type</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>     if session[:phase].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+            <td><pre><a name="line47">47</a>     flash[:notice] = &quot;Deliverable did not upload correctly!&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a>     else</pre></td>
+            <td><pre><a name="line48">48</a>     redirect_to :controller =&gt; :deliverables,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>       :action =&gt; :add_attachment,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>       redirect_to :controller =&gt; &quot;deliverable_type&quot;, :action =&gt; &quot;new&quot;</pre></td>
+            <td><pre><a name="line50">50</a>       :id =&gt; @deliverable.id</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>     end</pre></td>
+            <td><pre><a name="line51">51</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>   end</pre></td>
+            <td><pre><a name="line52">52</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a> # This is an AJAX function which updates the Phase table and the Deliverable Type dropdown</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line54">54</a> #list based on the phase selected in the Phase dropdown list</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def update_deliverable_partial</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     @phase = params[:phase]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     if @phase.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line60">60</a>     else</pre></td>
           </tr>
         
           
@@ -422,14 +422,146 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>       @deliverables_of_phase = Project.find(session[:project_id]).deliverables.find_all_by_phase(@phase)</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line62">62</a> end</pre></td>
+            <td><pre><a name="line63">63</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a>       #use session[:phase] to store phase for the use in deliverable_type_controller,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>       #we need to clean up this session when it is not needed</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>       session[:phase] = params[:phase]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>       session[:deliverable_type_id] = RailblazersXmlParser.identify_deliverable_type(params[:phase])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>       render :update do |page|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>         page.replace_html 'phase_partial', :partial =&gt; 'deliverable_partial', :object =&gt; @deliverables_of_phase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line73">73</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a> #Validates the presence of phase in the Phase dropdown list</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line75">75</a>   def validate_before_adding_new_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>     if session[:phase].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>       flash[:notice] = &quot;Please select a phase&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>       redirect_to :action =&gt; &quot;index&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>       redirect_to :controller =&gt; &quot;deliverable_type&quot;, :action =&gt; &quot;new&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Nov 18 14:48:05 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Nov 22 23:34:37 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

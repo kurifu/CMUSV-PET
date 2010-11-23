@@ -21,6 +21,9 @@
       <td><%= deffort %></td>
     </tr>
     <% end %>
-  <% end %>
-  
+  <% end %>  
 </table>
+
+<p/>
+<%= link_to '&laquo; Project Phases', :controller => :deliverables, :action => :index %><br/>
+<%= link_to '&laquo; Project Homepage', :controller => :projects, :action => :show, :id => @project.id %><br/>
