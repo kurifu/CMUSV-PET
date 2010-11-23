@@ -13,6 +13,7 @@ before_filter :require_user
 #Displays project details for the selected project
   def show
     @project = current_user.projects.find(params[:id])
+    session[:project_id] = params[:id]
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:id]], :order => "phase")
 #    @shows = Show.find(:all, :order => "attending DESC")
 

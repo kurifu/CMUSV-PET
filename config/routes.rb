@@ -22,6 +22,8 @@ ActionController::Routing::Routes.draw do |map|
   map.update_password 'update_password', :controller => 'users',
     :action => 'update_password'
 
+  map.connect '/projects/log_hours', :controller=>:projects, :action=>:log_hours
+
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
   map.connect '/deliverables/add_attachment', :controller=>'deliverables', :action=>'add_attachment'
