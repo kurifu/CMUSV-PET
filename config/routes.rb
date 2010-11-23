@@ -3,9 +3,23 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'users', :action => 'home'
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
-  map.connect '/users/:id/change_password', :controller => 'users',
+
+  map.admin_home 'admin_home', :controller => 'users',
+    :action => 'admin_home'
+  
+  map.transfer_project 'transfer_project', :controller => 'users', 
+    :action => 'transfer_project'
+
+  map.admin_projects 'admin_projects', :controller => 'users',
+    :action => 'admin_projects'
+
+  map.connect '/users/:project_id/:user_id/assign', :controller => 'users',
+    :action => 'assign'
+
+  map.change_password 'change_password', :controller => 'users',
     :action => 'change_password'
-  map.connect 'users/:id/update_password', :controller => 'users',
+
+  map.update_password 'update_password', :controller => 'users',
     :action => 'update_password'
 
   map.connect '/projects/error', :controller=>'projects', :action=>'error'

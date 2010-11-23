@@ -10,10 +10,15 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
+    
     if @user_session.save
       flash[:notice] = "Successfully logged in."
-      puts "CHECK #{current_user}"
-      redirect_to root_path
+      puts "Current user admin #{current_user_admin}"
+      if current_user_admin
+      redirect_to admin_home_path
+      else
+        redirect_to root_path
+      end
     else
       flash[:notice] = "Invalid username/password"
       render :action => 'new'
@@ -23,7 +28,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.find
     @user_session.destroy
     flash[:notice] = "Logged out"
-    redirect_to root_path
+    redirect_to login_path
   end
 
 

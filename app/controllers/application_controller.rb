@@ -67,5 +67,16 @@ protected
       session[:return_to] = nil
     end
 
+    def require_admin
+      unless current_user_admin
+        redirect_to "/access_denied.html"
+        return false
+      end
+    end
     
+    def current_user_admin
+      if current_user.user_class == "admin"
+        return true
+      end
+    end
 end
