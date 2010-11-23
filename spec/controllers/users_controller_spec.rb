@@ -102,7 +102,8 @@ describe UsersController do
     response.should render_template :home
   end
 
-  it "should go to change password" do\
+  it "should go to change password" do
+     @user_session = UserSession.create Factory.build(:valid_user)
     get :change_password
     response.should render_template :change_password
   end
@@ -126,9 +127,9 @@ describe UsersController do
   end
   
   it "should show user profile for either user class" do
-    user = mock()
-    User.stubs(:find).returns(user)
-    get :show, :id=>1
+    @user_session = UserSession.create Factory.build(:valid_user)
+
+    get :show, :id=>4
     response.should render_template :show
   end
 
