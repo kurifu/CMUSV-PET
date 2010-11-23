@@ -80,8 +80,12 @@
       </div>
       
       <br/>
-</div>
-    <%= f.submit 'Create' %>
+      <%= f.submit 'Create' %>
 
   <% end %>
+</div>
 
+<p/>
+<%= link_to '&laquo; Back to Phases', :controller => :deliverables, 
+  :action => :index,
+  :default_phase => @deliverable.phase %>
