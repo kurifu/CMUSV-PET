@@ -1,0 +1,21 @@
+<b>Project Name: </b><%= @project.name %><br />
+<b>Project Description : </b><%= @project.description %> <br />
+<b>Project User: </b><%= @project_user_name %><br />
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Action</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.username %></td>
+    <td><%=h user.email %></td>
+    <td><%= link_to 'Assign', :controller=>'users', :action=>'assign',
+            :project_id=>@project.id,:user_id=>user.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

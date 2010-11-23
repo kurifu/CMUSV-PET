@@ -23,7 +23,10 @@ describe UserSessionsController do
   describe "Valid User" do
 
     it "should redirect user to User home screen" do
+     
       UserSession.any_instance.stubs(:save).returns(true)
+      User.any_instance.stubs(:user_class).returns("admin")
+      ApplicationController.stubs(:current_user_admin).returns(false)
       post :create
       response.should redirect_to(root_path)
 
@@ -34,7 +37,7 @@ describe UserSessionsController do
       UserSession.stubs(:find).returns(user_session)
       delete :destroy
       #flash[:notice].should == "Logged out"
-      response.should redirect_to(root_path)
+      response.should redirect_to(login_path)
 
     end
   end

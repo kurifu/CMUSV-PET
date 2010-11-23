@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-before_filter :require_user
+#before_filter :require_user
+#before_filter :require_admin, :only => [:new, :edit, :udpate, :destroy, :index, :create]
 
   # GET /users
   # GET /users.xml
@@ -62,19 +63,11 @@ before_filter :require_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        if @user.user_class == "admin"
           format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        else
-          format.html { redirect_to(root_path, :notice => 'Password was successfully updated.') }
-        end
-        format.xml  { head :ok }
+          format.xml  { head :ok }
       else
-        if @user.user_class == "admin"
           format.html { render :action => "edit" }
-        else
-          format.html { render :action => "change_password" }
-        end
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -93,24 +86,51 @@ before_filter :require_user
 
   def home
     @projects = current_user.projects.find(:all)
-    puts "Current_user_class #{current_user.user_class}"
   end
 
   def change_password
-        @user = User.find(params[:id])
+      @user = current_user
   end
 
   def update_password
-    @user = User.find(params[:id])
-
-    respond_to do |format|
+    @user = current_user
+      respond_to do |format|
       if @user.update_attributes(params[:user])
-          format.html { redirect_to(root_path, :notice => 'Password was successfully updated.') }
+          format.html { redirect_to(root_path,
+              :notice => 'Password was successfully updated.') }
           format.xml  { head :ok }
       else
         format.html { render :action => "change_password" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @user.errors,
+          :status => :unprocessable_entity }
       end
+    end
+  end
+
+  #admin project
+  def admin_projects
+    @projects = Project.all
+  end
+
+  def transfer_project
+    @project = Project.find(params[:id])
+    @users = User.find(:all, :conditions => "user_class = 'Regular'")
+    @project_user_name = User.find(@project.user_id).username
+  end
+
+  def admin_home
+    
+  end
+
+  def assign
+    project = Project.find(params[:project_id])
+    project.user_id = params[:user_id]
+
+    if project.save
+      flash[:notice] = "Successfully Assigned the project"
+      redirect_to :action=>'admin_projects'
+    else
+      render 'transfer_projects'
     end
   end
 end
