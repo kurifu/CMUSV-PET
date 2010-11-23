@@ -6,6 +6,7 @@ correct_pic = "/images/correct.png"
 incorrect_pic = "/images/incorrect.png"
 default_pic = "/images/default.png"
 
+//ass
 check = "ass"
 function check_all(size,effort,rate){
     if("" == size.value){

@@ -110,9 +110,12 @@ before_filter :require_user
     0.upto(phases.size-1) do |i|
       unless @phase_efforts.has_key?(phases[i])
         @phase_efforts[phases[i]] = Hash.new
+        deliverables.each do |d|
+          puts "#{d.name}"
+        end
 
         # Grab all deliverables in this phase, add it to our small hash
-        del_to_process = deliverables.select {|d| d.phase == phases[i] }
+        del_to_process = deliverables.find_all {|d| d.phase == phases[i] }
         del_to_process.each do |target|
           @phase_efforts[phases[i]][target.name] = target.estimated_effort
         end
