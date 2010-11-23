@@ -87,9 +87,22 @@ Factory.define :historical_d2, :class => 'Deliverable' do |d|
 end
 
 # valid user
+
+
 Factory.define :valid_user, :class=> 'User' do |u|
   u.id 2
-  u.username 'test'
-  u.email 'test@test.com'
-  u.password 'test'
+  u.username 'valid'
+  u.email 'valid@test.com'
+  u.password 'test1234'
+  u.password_confirmation 'test1234'
+  u.user_class 'admin'
+end
+
+Factory.define :valid_regular_user, :class=> 'User' do |u|
+  u.id 3
+  u.username 'regularuser'
+  u.email 'regular@tested.com'
+  u.password 'test1234'
+  u.password_confirmation 'test1234'
+  u.user_class 'Regular'
 end
