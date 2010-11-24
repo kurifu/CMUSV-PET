@@ -22,6 +22,8 @@ ActionController::Routing::Routes.draw do |map|
   map.update_password 'update_password', :controller => 'users',
     :action => 'update_password'
 
+  map.connect '/projects/log_hours', :controller=>:projects, :action=>:log_hours
+
   map.connect '/projects/error', :controller=>'projects', :action=>'error'
   map.connect '/projects/overview', :controller=> 'projects', :action=> 'overview'
   map.connect '/deliverables/add_attachment', :controller=>'deliverables', :action=>'add_attachment'
@@ -29,6 +31,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects
   map.resources :user_sessions
   map.resources :users
+  map.resources :about_us
+  map.resources :contact
+  map.resources :help
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

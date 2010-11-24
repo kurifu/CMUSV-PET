@@ -13,6 +13,7 @@ before_filter :require_user
 #Displays project details for the selected project
   def show
     @project = current_user.projects.find(params[:id])
+    session[:project_id] = params[:id]
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:id]], :order => "phase")
 
     respond_to do |format|
@@ -107,9 +108,9 @@ before_filter :require_user
         @phase_efforts[phases[i]] = Hash.new
 
         # Grab all deliverables in this phase, add it to our small hash
-        del_to_process = deliverables.select {|d| d.phase == phases[i] }
+        del_to_process = deliverables.find_all {|d| d.phase == phases[i] }
         del_to_process.each do |target|
-          @phase_efforts[phases[i]][target.name] = target.estimated_effort
+          @phase_efforts[phases[i]][target.id] = [target.name,target.estimated_effort]
         end
       end
     end

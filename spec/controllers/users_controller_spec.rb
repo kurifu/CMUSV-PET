@@ -1,3 +1,5 @@
+# Pushing this comment to sync this branch with master
+
 require 'spec_helper'
 
 describe UsersController do
@@ -17,11 +19,6 @@ describe UsersController do
     end
 
     it "should render index page for user controller" do
-      UserSession.stubs(:find).returns(UserSession.new)
-      UserSession.any_instance.stubs(:user).returns(User.new)
-      UserSession.any_instance.stubs(:save).returns(true)
-      User.any_instance.stubs(:user_class).returns("admin")
-
       get :index
       response.should render_template :index
     end
@@ -105,7 +102,8 @@ describe UsersController do
     response.should render_template :home
   end
 
-  it "should go to change password" do\
+  it "should go to change password" do
+     @user_session = UserSession.create Factory.build(:valid_user)
     get :change_password
     response.should render_template :change_password
   end
@@ -129,9 +127,9 @@ describe UsersController do
   end
   
   it "should show user profile for either user class" do
-    user = mock()
-    User.stubs(:find).returns(user)
-    get :show, :id=>1
+    @user_session = UserSession.create Factory.build(:valid_user)
+
+    get :show, :id=>4
     response.should render_template :show
   end
 

@@ -11,6 +11,11 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
+
+  <p>
+    <%= f.label :status %> <br />
+    <%= f.select(:status, %w(Active Archived)) %>
+  </p>
   <p>
     <%= f.submit 'Update' %>
   </p>

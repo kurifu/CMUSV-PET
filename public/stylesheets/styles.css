@@ -443,7 +443,7 @@ input#deliverable_submit {
     width: 75px;
     clear: both;
     border: 1px solid black;
-    
+    float: left;
 }
 
 div#new_del {

@@ -15,10 +15,10 @@
     <td><%= calculate_phase_effort(@project.id, phase)  %></td>
   </tr>
 
-    <% deliverables.each do |dname, deffort| %>
+    <% deliverables.each do |id, array| %>
     <tr>
-      <td><%= dname %></td>
-      <td><%= deffort %></td>
+      <td><%= array[0] %></td>
+      <td><%= array[1] %></td>
     </tr>
     <% end %>
   <% end %>  

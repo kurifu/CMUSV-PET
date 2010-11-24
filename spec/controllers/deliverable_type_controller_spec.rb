@@ -247,8 +247,8 @@ describe DeliverableTypeController do
       response.should render_template("_pet_historical")
 
       assigns[:historical_data].should_not be_nil
-      assigns[:historical_data][0].should == "-"
-      assigns[:historical_data][-1].should == "-"
+      assigns[:historical_data][0].should == "?"
+      assigns[:historical_data][-1].should == "?"
     end
   end
 

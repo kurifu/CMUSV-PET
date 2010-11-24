@@ -6,7 +6,6 @@ correct_pic = "/images/correct.png"
 incorrect_pic = "/images/incorrect.png"
 default_pic = "/images/default.png"
 
-check = "ass"
 function check_all(size,effort,rate){
     if("" == size.value){
         check_size = default_pic
@@ -180,11 +179,11 @@ function reset(){
     document.getElementById("deliverable_estimated_effort").value=""
     document.getElementById("deliverable_production_rate").value=""
 
-    
+
     document.getElementById("deliverable_estimated_size").disabled=false
     document.getElementById("deliverable_estimated_effort").disabled=false
     document.getElementById("deliverable_production_rate").disabled=false
-    
+
     document.getElementById("check_rate").src="/images/default.png"
     document.getElementById("check_size").src="/images/default.png"
     document.getElementById("check_effort").src="/images/default.png"
@@ -195,14 +194,14 @@ function reset(){
 
 function calculate(){
 
-    
+
     if("" == document.getElementById("deliverable_estimated_size").value &&
        "" == document.getElementById("deliverable_estimated_effort").value &&
        "" == document.getElementById("deliverable_production_rate").value ){
         document.getElementById("calc")
         .innerHTML = "Please enter two values";
     }
-  
+
     else{
          document.getElementById("calc")
         .innerHTML = "";
