@@ -1,8 +1,6 @@
 module ProjectsHelper
   #(@project.id, phase)
   def calculate_phase_effort(project_id, phase)
-    puts "Input id #{project_id}, Input phase #{phase}"
-
     @hours = 0
     @dataset = Deliverable.find_all_by_phase_and_project_id(phase, project_id)
     puts @dataset

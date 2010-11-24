@@ -4,6 +4,7 @@ class UserSessionsController < ApplicationController
   def index
     
   end
+  
   def new
     @user_session = UserSession.new
   end
@@ -13,7 +14,7 @@ class UserSessionsController < ApplicationController
     
     if @user_session.save
       flash[:notice] = "Successfully logged in."
-      puts "Current user admin #{current_user_admin}"
+      #puts "Current user admin #{current_user_admin}"
       if current_user_admin
         redirect_back_or_default admin_home_path
       else
@@ -24,12 +25,11 @@ class UserSessionsController < ApplicationController
       render :action => 'new'
     end
   end
+  
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
     flash[:notice] = "Logged out"
     redirect_to login_path
   end
-
-
 end

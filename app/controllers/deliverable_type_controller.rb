@@ -72,7 +72,6 @@ before_filter :require_user
 #Also renders unit of measurement
   def latch_deliverable_type
     unless params[:deliverable_type] == "Select a deliverable type"
-      puts "\tgot a deliverable type"
       session[:deliverable_type] = params[:deliverable_type]
       render_measurement
       return
@@ -83,7 +82,6 @@ before_filter :require_user
 #Latch onto complexity; this is called when complexity is changed
   def latch_complexity
     unless params[:complexity] == "Select a complexity"
-      puts "\tgot a complexity"
       session[:complexity] = params[:complexity]
     end
     render :nothing => true
@@ -117,28 +115,20 @@ before_filter :require_user
 
 #Update the historical data, depends on the deliverable type and complexity
   def update_historical_data
-    #puts "start of update_historical_data"
     @historical_data = []
 
     # Render stuff
     unless session[:complexity].nil? || session[:deliverable_type].nil? || session[:complexity].blank? || session[:deliverable_type].blank?
-      # TODO: Calculate/Gather data
 
-      #puts "before calculate_historical_data"
       @historical_data = calculate_historical_data
-
-      #session[:test_histdata]
-      #puts "before render pet_historical"
       render(:partial => 'pet_historical',
         :layout => false,
         :object => @historical_data)
     else
-      #puts "before flash warning and render historical"
       flash.now[:warning] = "Please select a deliverable type and complexity"
       render(:partial => 'pet_historical',
         :layout => false,
         :object => @historical_data)
-      #render :nothing => true
     end
   end
 
@@ -148,38 +138,20 @@ before_filter :require_user
     collector = []
 
     target_projects = Project.find(:all, :conditions => ['status = ?', 'archived'])
-    #puts "NUMBER OF PROJECTS: #{target_projects.size}"
-    #puts "NUMBER OF DELIVERABLES: #{collector.size}"
     target_projects.each do |p|
-      #puts "* ID: #{p.id}"
       
       # Note: do not use <<, as find:all returns an array, we would be appending
       # the whole array as a single entry
       d = Deliverable.find(:all, :conditions => ['complexity = ? AND deliverable_type = ? AND project_id = ?', session[:complexity], session[:deliverable_type], p.id])
-      #puts "found '#{d}', size is '#{d.size}'"
       collector = collector | d
     end
-    #puts "NUMBER OF DELIVERABLES: #{collector.size}"
 
     sizes = []
     efforts = []
     rates = []
-
-=begin
-    puts "CHECK: '#{collector}'"
-    if collector.empty?
-      puts "collector is empty"
-    end
-
-    if collector.blank?
-      puts "collector is blank"
-    end
-=end
     
     unless collector.empty? || collector.blank?
-      #puts "found stuff in collector"
       collector.each do |c|
-        #puts "c is '#{c}'"
         sizes << c.estimated_size
         efforts << c.estimated_effort
         rates << c.production_rate
@@ -208,11 +180,11 @@ before_filter :require_user
   private
   #This method initializes the static content to be populated in the dropdown lists
   def initialize_for_selects
-      @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))
-      @deliverable_types << @@ADHOC
-      @complexities = RailblazersXmlParser.get_common_values
-      @estimated_sizes = RailblazersXmlParser.get_common_values
-      @production_rates = RailblazersXmlParser.get_common_values
-      @efforts = RailblazersXmlParser.get_common_values
+    @deliverable_types = RailblazersXmlParser.get_deliverable_type(RailblazersXmlParser.identify_deliverable_type(session[:phase]))
+    @deliverable_types << @@ADHOC
+    @complexities = RailblazersXmlParser.get_common_values
+    @estimated_sizes = RailblazersXmlParser.get_common_values
+    @production_rates = RailblazersXmlParser.get_common_values
+    @efforts = RailblazersXmlParser.get_common_values
   end
 end
