@@ -1,0 +1,39 @@
+/*
+    Document   : green
+    Created on : Nov 23, 2010, 10:33:43 AM
+    Author     : kurifuc4
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+a, a:hover {
+    color: #AA2C2D;
+}
+
+th, td.td_header {
+    background: #E39292;
+    color: #000000;
+}
+
+#left_side .intro a {
+    color: #E39292;
+}
+
+#left_side .intro a:hover {
+    color: #F0B7B7;
+}
+
+/* Unused
+#right_side li {
+    color: #b4e04a;
+}
+
+#left_side blockquote {
+    border-left : 3px solid #a7cc44;
+}
+*/
