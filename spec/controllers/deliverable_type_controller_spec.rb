@@ -31,9 +31,9 @@ describe DeliverableTypeController do
       session[:phase] = "System Design"
       get 'new'
       response.should render_template("deliverable_type/new")
-      response.should have_tag('div.content')
-      response.should have_tag('table#pet_table')
-      response.should have_tag('div#pet_calc_div')
+#      response.should have_tag('div.content')
+#      response.should have_tag('table#pet_table')
+#      response.should have_tag('div#pet_calc_div')
       response.should have_tag('table#historical_data')
       response.should have_tag('table#historical_data th#min')
       response.should have_tag('table#historical_data th#avg')
@@ -73,9 +73,9 @@ describe DeliverableTypeController do
     session[:phase] = "System Design"
     get 'new'
     response.should render_template("deliverable_type/new")
-    response.should have_tag('div.content')
-    response.should have_tag('table#pet_table')
-    response.should have_tag('div#pet_calc_div')
+#    response.should have_tag('div.content')
+#    response.should have_tag('table#pet_table')
+#    response.should have_tag('div#pet_calc_div')
     #response.should have_tag('a[href=?]', "#", :text => "Calculate")
     #response.should have_tag('a[href=?]', "#", :text => "Reset")
 

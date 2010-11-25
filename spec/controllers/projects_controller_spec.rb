@@ -54,7 +54,7 @@ describe ProjectsController do
 
       # if save succeeds, it should not be a new record
       assigns[:project].should_not be_new_record
-      response.should redirect_to("deliverables")
+      response.should redirect_to :controller=>:deliverables, :project_id=>1
       #flash[:notice].should be_nil no way of telling; flash gone when we jump controllers
     end
 
@@ -201,7 +201,7 @@ describe ProjectsController do
       project = Factory.create(:valid_project)
       Project.any_instance.stubs(:update_attributes).returns(true)
       put :update, :id=>project.id
-      response.should redirect_to :action=>'show', :id=>project.id
+      response.should redirect_to "/projects?notice=Project+was+successfully+updated."
     end
 
     it "should render edit page and show error message with invalid attributes" do

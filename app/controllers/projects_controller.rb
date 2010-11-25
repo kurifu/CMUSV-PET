@@ -58,7 +58,7 @@ before_filter :require_user
         session[:project_id] = @project.id
         session[:phase] = "Planning"
         
-        format.html { redirect_to :controller=> "deliverables" }
+        format.html { redirect_to :controller=> "deliverables", :project_id=>@project.id }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         #puts "save failed"
@@ -76,7 +76,7 @@ before_filter :require_user
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+        format.html { redirect_to(:controller=>"projects", :notice => 'Project was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
