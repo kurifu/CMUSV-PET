@@ -16,15 +16,15 @@ class ApplicationController < ActionController::Base
 
 
 #=begin
-  def rescue_action(exception)
-    puts exception
-    case exception
-    when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
-      redirect_to "/error", :status=>301
-    else
-      redirect_to "/500.html"
-    end
-  end
+#  def rescue_action(exception)
+#    puts exception
+#    case exception
+#    when ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionController::RoutingError
+#      redirect_to "/error", :status=>301
+#    else
+#      redirect_to "/500.html"
+#    end
+#  end
 #=end
 
   def current_user_session

@@ -1,26 +1,31 @@
-<h1>Create a Project</h1>
 
+<div class="box">
+  <div class="box-head">
+    Create a Project
+  </div>
+  <div class="form">
 
   <% form_for(@project) do |f| %>
     <%= f.error_messages %>
 
     <%= f.label :name %>
     <br/>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class=>"fieldclass" %>
     <br/>
     <%= f.label :description %>
     <br/>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class=>"fieldclass" %>
     <br/>
     <%= f.label :lifecycle %>
     <br/>
     <%= select(:project, :lifecycle, @lifecycle_array, {:prompt => "Select a Lifecycle"}) %>
     <br/>
     
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Create', :class=>"button" %>
     
   <% end %>
-
+  </div>
+</div>
   
 
   <%= link_to 'Back to Project Home', projects_path %>

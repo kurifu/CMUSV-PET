@@ -1,6 +1,10 @@
 <h1>Uploading a Deliverable</h1>
-
-<table class="content_table">
+<div class="box">
+  <div class="tablebox-head">
+     Uploading a Deliverable
+  </div>
+  <div class="table">
+<table>
   <tr>
     <th>Project Name</th>
     <th>Project Lifecycle</th>
@@ -24,11 +28,11 @@
   </tr>
   <tr>
     <td colspan="4">
-        <%= f.submit 'Submit' %>
+        <%= f.submit 'Submit', :class=>"button" %>
       <% end %>
     </td>
   </tr>
 </table>
-
-<p/>
+  </div>
+</div>
 <%= link_to '&laquo; Back to Phases', :controller => :deliverables, :default_phase => @deliverable.phase %>

@@ -7,8 +7,13 @@ before_filter :require_user
   def index
     #@deliverable is used to bind with the select tag.
     #When value assigned to the phases attribute, it become the selected value in select tag
+    session[:project_id] = params[:project_id]
     @deliverable = Deliverable.new
-    
+    if current_user_admin
+      @project = Project.find(session[:project_id])
+    else
+      @project = current_user.projects.find(session[:project_id])
+    end
     project_id = session[:project_id]
     lifecycle = Project.find(project_id).lifecycle
 
@@ -17,7 +22,6 @@ before_filter :require_user
     if params[:default_phase].blank?
       session[:phase] = nil
       @deliverables_of_phase = []
-      
     else
       @deliverable.phase = session[:phase] = params[:default_phase]
       @deliverables_of_phase = Project.find(project_id).deliverables.find_all_by_phase(params[:default_phase])

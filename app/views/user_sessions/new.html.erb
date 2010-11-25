@@ -1,19 +1,26 @@
-<h1>Log In</h1>
-
+<div class="loginbox">
+  <div class="box-head">
+    Log In
+  </div>
+  <div class="form">
 <% form_for(@user_session) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :class=>"loginfieldclass" %>
   </p>
   
   <p>
     <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :class=>"loginfieldclass"%>
   </p>
   
   <p>
-    <%= f.submit 'Login' %>
+    <div class="buttons">
+    <%= f.submit 'Login', :class=>"button" %>
+    </div>
   </p>
 <% end %>
+  </div>
+</div>

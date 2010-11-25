@@ -1,24 +1,15 @@
-<p>
-  <b>Name:</b>
-  <%=h @project.name %>
-</p>
-
-<p>
-  <b>Lifecycle:</b>
-  <%=h @project.lifecycle %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @project.description %>
-</p>
-
+<div class="box">
+  <div class="tablebox-head">
+     Effort Log for <%= @project.name %>
+  </div>
+  <div class="table">
 <table id="content_overview">
   <tr>
     <th>Phase</th>
     <th>Deliverable Name</th>
     <th>Hours Logged</th>
-    <th>Update</th>
+    <th>Effort</th>
+    <th>Action</th>
   </tr>
 
   <% for @del in @deliverables %>
@@ -29,14 +20,14 @@
     <% form_for @del, :url => {:action => :log_hours, :project_id => @project.id, :deliverable_id => @del.id} do |f| %>
     <td>
       <%= f.text_field :hours_logged %>
-      <%= f.submit 'Change' %>
+    </td><td>
+      <%= f.submit 'Log' %>
     </td>
     <% end %>
   </tr>
   <% end %>
 </table>
+    </div>
+</div>
 
-<p/><p/>
-<%= link_to '&laquo; Back', projects_path %> |
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Phases &raquo;', :controller=>"deliverables" %>
+<%= link_to '&laquo; Back', projects_path %> 

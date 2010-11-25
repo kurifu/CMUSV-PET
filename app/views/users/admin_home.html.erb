@@ -1,46 +1,30 @@
 <b><%=  link_to "Create User", new_user_path%> |
 <%=  link_to "Projects", admin_projects_path%> |
 <%=  link_to "Change Passowrd", change_password_path%> </b>
-<div id="user_img">
-  <img src="/images/rails.png"/>
-</div>
 
-<table id="content_overview" border="1">
-  <tr>
-    <td  colspan="2">
-      Profile
-    </td>
-  </tr>
-   <tr>
-    <td>
-      Id
-    </td>
-    <td>
-      <%=current_user.id%>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      name
-    </td>
-    <td>
-      <%=current_user.username%>
-    </td>
-  </tr>
-    <tr>
-    <td>
-      Email
-    </td>
-    <td>
-      <%=current_user.email%>
-    </td>
-  </tr>
-    <tr>
-    <td>
-      User class
-    </td>
-    <td>
-      <%=current_user.user_class%>
-    </td>
-  </tr>
-</table>
+<div id="profile" class="col col1">
+  <h2 class="border">Admin profile</h2>
+  <div class="entry">
+      <div class="profile-title-generic">
+        <%=current_user.user_class%>
+      </div>
+      <p>
+        <img src="/images/user-icon.png" class="alignright" alt="" />
+          ID:<%=current_user.id%>
+        <br />
+          name:<%=current_user.username%>
+        <br />
+          Email:<%=current_user.email%>
+        <br />
+          User class:<%=current_user.user_class%>
+        <br />
+        <br />
+          <%= link_to "Edit", edit_user_path(current_user)%>
+
+        <br />
+
+      </p>
+
+  </div>
+  
+</div>

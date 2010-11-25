@@ -25,10 +25,7 @@ padding : 8px 0 4px 0;
 margin : 0;
 letter-spacing : -1px;
 }
-h2 {
-font : bold 1.6em Arial, Sans-Serif;
-letter-spacing : -1px;
-}
+
 h3 {
 padding : 4px 0;
 margin : 0;
@@ -163,7 +160,7 @@ color : #cdff56;
 text-decoration : underline;
 }
 #left_side .mpart {
-padding : 40px 0 0 0;
+padding : 30px 0 0 0;
 }
 #left_side h3 {
 background : inherit;
@@ -172,11 +169,7 @@ margin : 0;
 font : bold 1.4em Arial, Sans-Serif;
 }
 #left_side .mpart h2 {
-background : url(../images/lrline.gif) no-repeat bottom left;
-height : 20px;
-padding : 0;
-margin : 0 0 15px 0;
-font : 0.9em verdana, Arial, Sans-Serif;
+    
 }
 
 #left_side .mpart p {
@@ -260,7 +253,7 @@ background : #fff;
 }
 
 .fieldWithErrors label, .fieldWithErrors input {
-    background: red;
+    background: #f1edba;
 }
 
 #errorExplanation {
@@ -270,7 +263,7 @@ background : #fff;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: #f1edba;
 }
 
 #errorExplanation h2 {
@@ -279,7 +272,7 @@ background : #fff;
   padding: 5px 5px 5px 15px;
   font-size: 16px;
   margin: -7px;
-  background-color: #c00;
+  background-color:#BA4C32;
   color: #000000;
 
 }
@@ -301,13 +294,19 @@ background : #fff;
 /* CUSTOM STYLES */
 /*****************/
 
+.table {}
+.table th{ background:#fffdfa url(images/th.gif) repeat-x 0 0; color:#818181; text-align: left; padding:7px 10px; border-bottom:solid 1px #d2d1cb;}
+.table td{ background:#fbfcfc;  border-bottom:solid 1px #e0e0e0; padding:8px 10px; }
+.table tr.odd td{ background:#f8f8f8; }
+.table tr:hover td{ background:#fff9e1; }
+.table a.ico{ }
+
 /********************/
 /* PROJECT HOMEPAGE */
 /********************/
 
 table.content_table, table#content_overview {
-    border: 1px solid black;
-    text-align: center;
+    text-align: left;
 }
 
 /***********************/
@@ -316,7 +315,7 @@ table.content_table, table#content_overview {
 
 div.content {
     width: 400px;
-    
+
     overflow: auto;
     padding: 5px 10px 10px 10px;
 }
@@ -340,7 +339,7 @@ div.content select, div.content_phase select {
     margin-right: 50px;
 }
 
-input#project_submit, input#process_calc_inputs {
+input#process_calc_inputs {
     width: 50px;
     clear: both;
     margin: 0 auto;
@@ -361,7 +360,7 @@ table#content_overview input {
 }
 
 table#content_overview td {
-    
+
 }
 
 div.content_phase input {
@@ -369,18 +368,17 @@ div.content_phase input {
 }
 
 div.content_phase, table.content_table, table#content_overview {
-    width: 650px;
+    width: 100%;
 }
 
 table#phase_partial {
-    border: 1px solid black;
     margin-bottom: 10px;
-    width: inherit;
-    text-align: center;
+    text-align: left;
+    width: 100%;
 }
 
 table#phase_partial th:nth-child(1) {
-    
+
 }
 
 table#phase_partial th:nth-child(3) {
@@ -388,22 +386,22 @@ table#phase_partial th:nth-child(3) {
 }
 
 table#phase_partial tr td {
-    
+
 }
 
 table#phase_partial tr td:nth-child(2) {
     min-width: 50px;
     text-align: center;
-    
+
 }
 
 div#div_phase {
-    width: 250px;
     margin: 0 auto;
-    padding: 20px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
 }
 div#div_phase select {
-    width: 250px;
+    width: 350px;
+    font-size: 53px;
 }
 
 th, td.td_header {
@@ -413,7 +411,7 @@ th, td.td_header {
 
 div#add_deliverable {
     width: inherit;
-    
+
     text-align: center;
 }
 
@@ -456,11 +454,10 @@ div#new_del {
     border: 0px;
 }
 
-table#pet_table, table#pet_calc, table#historical_data {
+table#pet_table, table#pet_calc {
   width: 500px;
   font-size: 7pt;
   padding: 10px 10px 10px 20px;
-  border: 1px solid black;
   margin-top: 10px;
 }
 
@@ -472,8 +469,6 @@ table#pet_calc {
 
 table#historical_data {
     text-align: center;
-    border: 1px solid black;
-    float: right;
     padding: 10px 10px 10px 10px;
     margin: 10px 0px 10px 0px;
     width: 240px;
@@ -504,5 +499,114 @@ label.error_msg {
 /*****************/
 
 table#content_overview td.phase {
-    font-weight: bold; 
+    font-weight: bold;
 }
+
+
+.cols {}
+.col { float:left; display:inline; }
+.col-right { float:right; display:inline; }
+
+.col1 { width:640px; }
+.col2 { width:300px; }
+.col3 { width:215px; }
+
+.cols .col { margin-right:40px; }
+
+.border { border-bottom:dashed 1px #cdcdcd; padding-bottom:9px; margin-bottom:10px; }
+
+h1, h2, h3, h4, h5{ font-weight: normal; color:#000; }
+
+h1 { font-size:22px; line-height:24px; }
+h2 { font-size:20px; line-height:22px; }
+h3 { font-size:18px; line-height:20px; }
+h4 { font-size:16px; line-height:18px; }
+h5 { font-size:14px; line-height:16px; }
+h6 { font-size:12px; line-height:14px; color:#00aeef; }
+
+h3, h5{ color:#4a4a4a; }
+h3 a, h5 a { color:#4a4a4a; text-decoration: none;}
+h2 a, h4 a { color:#000; text-decoration: none;}
+
+h2 a:hover, h4 a:hover, h3 a:hover, h5 a:hover, h6 a:hover{ color:#00aeef; }
+
+h2 .right { white-space:nowrap; padding-top:4px;}
+
+.entry { -moz-border-radius:6px; -webkit-border-radius:6px; }
+.entry { padding:9px 10px 9px 10px; font-size:15px; background-repeat:no-repeat; background-position:10px 5px;}
+.entry { background-color:#ffffff; border:solid 1px #dbd6a2; color:#5e5c40;}
+
+.profile-title-generic
+{
+    float: right;
+    background-color: #90b557;
+    padding: 3px 5px 3px 5px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.box { background:#ffffff; height:100%; padding:1px; margin-bottom:20px; }
+.loginbox { background:#fbfcfc; height:100%;width: 450px; padding:1px; margin-bottom:20px;
+-moz-border-radius:5px; -webkit-border-radius:5px; -moz-box-shadow: 0 0 6px #978f6c; -webkit-box-shadow: 0 0 6px #978f6c;}
+.box-head { font-size: 23px;background:#5E5E5E; height:32px; color:#fff; padding: 0 10px; line-height:32px; white-space:nowrap; border-bottom:solid 1px #fff; }
+.box-head .right{ padding-top:5px; line-height:13px;}
+.box-head .right label,
+.box-head .right input { float:left; }
+.box-head .right label { padding:4px 0 0 0;}
+.box-head .right input { margin-left:5px;}
+
+.form { padding:15px 10px 5px 10px; }
+.form label{ display:block; font-weight: bold; font-size:13px; padding-bottom:1px; }
+.form label span{ color:#999; font-weight: normal;}
+.form .field { display:block; }
+.form .inline-field .field { display:inline;}
+.form .req { font-size:13px; float:right; white-space:nowrap; color:#999;  }
+.form p {
+    color: #666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.loginfieldclass {
+    border: 1px solid #C8C8C8;
+    color: #333;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 8px;
+    width: 360px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+}
+
+.fieldclass {
+    border: 1px solid #C8C8C8;
+    color: #333;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 8px;
+    width: 600px;
+}
+
+/*** CSS3 ***/
+.box { -moz-border-radius:5px; -webkit-border-radius:5px; -moz-box-shadow: 0 0 6px #978f6c; -webkit-box-shadow: 0 0 6px #978f6c;}
+.box-head { -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px; }
+
+.fieldclass, .button { -moz-border-radius:4px; -webkit-border-radius:4px; }
+input, textarea, select { font-family: Verdana, sans-serif; font-size:13px; }
+
+.button { background:#eee; border:solid 1px #b1a874; color:#7f7f7f; font-size:13px; padding:6px 6px 6px 6px; cursor:pointer; line-height:14px !important; }
+.button:hover { color:#333; border-color:#857b42; }
+
+.buttons .button{ margin-left:3px;}
+
+.tablebox-head { font-size: 23px;background:#BA4C32; height:32px; color:#fff; padding: 0 10px; line-height:32px; white-space:nowrap; border-bottom:solid 1px #fff;
+-moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px;}
+.tablebox-head .right{ padding-top:5px; line-height:13px;}
+.tablebox-head .right label,
+.tablebox-head .right input { float:left; }
+.tablebox-head .right label { padding:4px 0 0 0;}
+.tablebox-head .right input { margin-left:5px;}
