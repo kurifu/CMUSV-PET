@@ -19,7 +19,6 @@ before_filter :require_user
     end
     session[:project_id] = params[:id]
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:id]], :order => "phase")
-#    @shows = Show.find(:all, :order => "attending DESC")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -104,9 +103,6 @@ before_filter :require_user
     @project = current_user.projects.find_by_id(session[:project_id])
     @phase_efforts = {}
 
-    puts "OVERVIEW: project is '#{@project}'"
-    puts "OVERVIEW: lifecycle is '#{@project.lifecycle}'"
-
     phases = RailblazersXmlParser.get_phase(@project.lifecycle)
     deliverables = Deliverable.find_all_by_project_id(@project.id)
 
@@ -129,23 +125,32 @@ before_filter :require_user
   end
 
   def log_hours
-    
     @project = current_user.projects.find(params[:project_id])
     @target_del = Deliverable.find(params[:deliverable_id])
     @deliverables = Deliverable.find(:all, :conditions => ["project_id = ?", params[:project_id]], :order => "phase")
+    @hours = params[:deliverable][:hours_logged]
 
-    #puts "checking if hours_logged is blank"
-    #puts "params: #{params[:deliverable].hours_logged}"
-    unless params[:deliverable][:hours_logged].blank?
-      @target_del.hours_logged = params[:deliverable][:hours_logged]
-      if @target_del.save
-        flash[:notice] = "Effort Updated"
+    unless @hours.blank?
+      @target_del.hours_logged = @hours
+      puts "type of: '#{@hours.class}'"
+      if (@hours.is_a? Float) || (@hours.is_a? Integer)
+        puts "Number"
       else
-        flash[:notice] = "Error Saving! Changes discarded"
+        puts "Not number"
       end
+      
+        if @target_del.save
+          flash[:notice] = "Effort Updated"
+        else
+          flash[:notice] = "Error Saving! Changes discarded"
+        end
     else
       flash[:notice] = "Please enter a value before submitting"
     end
     redirect_to :controller => :projects, :action => :show, :id => params[:project_id]
+  end
+
+  def is_num?(s)
+    s.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
   end
 end
