@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   #in one place
 
 
-#=begin
+=begin
   def rescue_action(exception)
     puts exception
     case exception
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       redirect_to "/500.html"
     end
   end
-#=end
+=end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

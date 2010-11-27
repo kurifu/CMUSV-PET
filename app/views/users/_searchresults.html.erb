@@ -1,15 +1,8 @@
+<% if searchresults.length == 0 %>
 
-<%=form_tag({}, {:id => "search"}) %>
-<b>Search Project:</b>
-  <%= text_field_tag("query", params[:query], :autocomplete => "off" )%>
-  <a href ="/admin_projects">Clear Search</a>
-    <%= observe_field 'query',  :frequency => 2,
-    :update => "search_results",
-    :url => {:controller => "users", :action => "search"},
-    :with => "query" %>
+	<p>Sorry! No projects found...</p>
 
-<div id="search_results">
-<h1>Listing projects</h1>
+<% else %>
 <table id="content_table">
   <tr>
     <th>Name</th>
@@ -18,7 +11,7 @@
     <th>Action</th>
   </tr>
 
-<% @projects.each do |project| %>
+<% searchresults.each do |project| %>
   <tr>
     <td><%=h project.name %></td>
     <td><%=h project.status %></td>
@@ -31,8 +24,4 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<br />
-</div>
+<% end %>
