@@ -55,7 +55,7 @@ before_filter :require_user
       if @deliverable.update_attributes(params[:deliverable])
         flash[:notice] = "Deliverable successfully uploaded!"
         redirect_to :controller => :deliverables,
-          :action => :index,
+          :action => :index, :project_id=> @deliverable.project_id,
           :default_phase => @deliverable.phase
         return
       end
@@ -91,7 +91,7 @@ before_filter :require_user
   def validate_before_adding_new_type
     if session[:phase].blank?
       flash[:notice] = "Please select a phase"
-      redirect_to :action => "index"
+      redirect_to :action => "index", :project_id=>session[:project_id]
     else
       redirect_to :controller => "deliverable_type", :action => "new"
     end

@@ -35,4 +35,4 @@
 </table>
   </div>
 </div>
-<%= link_to '&laquo; Back to Phases', :controller => :deliverables, :default_phase => @deliverable.phase %>
+<%= link_to '&laquo; Back to Phases', :controller => :deliverables, :project_id=>@project.id, :default_phase => @deliverable.phase %>
