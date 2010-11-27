@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-before_filter :require_user
-before_filter :require_admin, :except => [:show, :home, :change_password, :update_password]
+#before_filter :require_user
+#before_filter :require_admin, :except => [:show, :home, :change_password, :update_password]
 
   # GET /users
   # GET /users.xml
@@ -133,4 +133,17 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
       render 'transfer_projects'
     end
   end
+
+  def search
+    session[:query] = params[:query].strip if params[:query]
+
+    if session[:query] and request.xhr?
+      @users = Project.find(:all, :conditions => ['name LIKE ? or lifecycle LIKE?', "%#{session[:query]}%", "%#{session[:query]}%"])
+    end
+    if params[:query] == ""
+      @users = Project.find(:all)
+    end
+     render :partial => "searchresults", :layout => false, :locals => {:searchresults => @users, :projects => @projects}
+  end
+
 end
