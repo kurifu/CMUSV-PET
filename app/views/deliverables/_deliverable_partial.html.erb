@@ -19,7 +19,7 @@
   </td>
   <td>
     <a href="#">Modify</a>
-    <a href="#">Delete</a>
+    <%= link_to "Delete", :action=>"destroy", :id=>deliverable.id %>
   </td>
 </tr>
 <% end %>

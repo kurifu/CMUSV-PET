@@ -28,6 +28,10 @@ th, td.td_header {
     color: #F0B7B7;
 }
 
+body {
+background : #fff url(../images/bg-red.jpg) repeat-x top;
+}
+
 /* Unused
 #right_side li {
     color: #b4e04a;

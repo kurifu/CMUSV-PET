@@ -33,6 +33,18 @@ before_filter :require_user
     @project = Project.find(@deliverable.project_id)
   end
 
+  #delete a deliverable
+  def destroy
+    @deliverable = Deliverable.find(params[:id])
+    project_id = @deliverable.project_id
+    @deliverable.destroy
+
+    respond_to do |format|
+      format.html { redirect_to :controller => "deliverables", :project_id=>project_id, :default_phase=>session[:phase] }
+      format.xml  { head :ok }
+    end
+  end
+
   def update
     @deliverable = Deliverable.find(params[:id])
     

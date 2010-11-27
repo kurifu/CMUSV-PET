@@ -44,7 +44,7 @@ before_filter :require_user
 
     respond_to do |format|
       if @deliverable.save
-        format.html{ redirect_to :controller => "deliverables", :default_phase=>session[:phase] }
+        format.html{ redirect_to :controller => "deliverables", :project_id=>@deliverable.project_id, :default_phase=>session[:phase] }
       else
         #set up ad-hoc values for fail cases
         if true == @deliverable.ad_hoc
@@ -137,7 +137,7 @@ before_filter :require_user
     data = []
     collector = []
 
-    target_projects = Project.find(:all, :conditions => ['status = ?', 'archived'])
+    target_projects = Project.find(:all, :conditions => ['status = ?', 'Archived'])
     target_projects.each do |p|
       
       # Note: do not use <<, as find:all returns an array, we would be appending

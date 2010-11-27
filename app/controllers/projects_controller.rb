@@ -88,7 +88,11 @@ before_filter :require_user
 #Deletes a project
 # Note: this is for future story card
   def destroy
-    @project = current_user.projects.find(params[:id])
+    if current_user_admin
+      @project = Project.find(params[:id])
+    else
+      @project = current_user.projects.find(params[:id])
+    end
     @project.deliverables.each { |d| d.destroy  }
     @project.destroy
 
