@@ -27,4 +27,8 @@
 </div>
 
 <%= link_to 'Details', :controller=>"deliverables", :project_id=>@project.id %> |
+<% if current_user.user_class.casecmp("admin") %>
+<%= link_to 'Back', admin_projects_path %>
+<% else %>
 <%= link_to 'Back', projects_path %>
+<%end%>

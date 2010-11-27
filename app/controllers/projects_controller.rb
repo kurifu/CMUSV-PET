@@ -43,7 +43,11 @@ before_filter :require_user
 
 # Note: this is for future story card
   def edit
-    @project = current_user.projects.find(params[:id])
+    if current_user_admin
+      @project = Project.find(params[:id])
+    else
+      @project = current_user.projects.find(params[:id])
+    end
   end
 
 #Creates a project
@@ -72,11 +76,19 @@ before_filter :require_user
 #Updates the selected project with the content as modified by the user
 # Note: this is for future story card
   def update
-    @project = current_user.projects.find(params[:id])
+    if current_user_admin
+      @project = Project.find(params[:id])
+    else
+      @project = current_user.projects.find(params[:id])
+    end
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(:controller=>"projects", :notice => 'Project was successfully updated.') }
+        if current_user_admin
+          format.html { redirect_to(admin_projects_path, :notice => 'Project was successfully updated.') }
+        else
+          format.html { redirect_to(:controller=>"projects", :notice => 'Project was successfully updated.') }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
