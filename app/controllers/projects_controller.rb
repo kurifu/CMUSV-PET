@@ -43,7 +43,11 @@ before_filter :require_user
 
 # Note: this is for future story card
   def edit
+    if current_user_admin
+      @project = Project.find(params[:id])
+    else
     @project = current_user.projects.find(params[:id])
+    end
   end
 
 #Creates a project

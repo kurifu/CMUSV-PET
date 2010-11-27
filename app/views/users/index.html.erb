@@ -1,3 +1,19 @@
+<% content_for :menu do %>
+<ul>
+  <li>
+    <a href="/admin_home " title="Admin Home">ADMIN HOME</a>
+  </li>
+  <li>
+    <a href="/admin_projects " title="Manage Projects">MANAGE PROJECTS</a>
+  </li>
+  <li>
+    <a class="current" href="/users" title="Manage Users">MANAGE USERS</a>
+  </li>
+  <li>
+    <a href="<%= root_url %>" title="Regular User Mode">REGULAR USER MODE</a>
+  </li>
+</ul>
+<% end %>
 <h1>Listing users</h1>
 
 <table>

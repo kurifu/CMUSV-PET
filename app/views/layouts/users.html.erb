@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>PET v1.3 Create Project</title>
+    <%= stylesheet_link_tag "styles" %>
+    <%= stylesheet_link_tag "blue" %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    <div class="content-main">
+      <div id="top">
+        <div id="icons">
+          <% if current_user %>
+            <%=link_to "Logout", logout_path%>
+            <%#=link_to "Edit Profile", edit_user_path%> |
+            <a href="/admin_home" title="Home page">Admin Home</a> |
+            <a href="/contact/" title="Contact us">Contact</a> <br />
+            Logged in as : <%=current_user.username%>
+           <%else%>
+             <a href="/contact/" title="Contact us">Contact</a>
+          <%end%>
+        </div>
+        <h1>PET v1.3</h1>
+        <h2>Ease your project management</h2>
+      </div>
+      <div id="menu">
+        <%= yield :menu %>
+      </div>
+
+      <div id="main">
+        <div id="right_side">
+          <div class="pad">
+            <img src="/images/rails.png"/>
+            <h3>The Process Enactment Tool (PET) is a product of ND System Solutions’ Software Engineering Division. Its target user group consists of managers and software developers.
+            </h3>
+            
+          </div>
+           <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </div>
+        <div id="left_side">
+          <div class="intro">
+            <div class="pad">The Process Enactment Tool (PET) is a product of ND System Solutions’ Software Engineering Division. Its target user group consists of managers and software developers.
+              <br /><a href="#" title="Pet">Read more...</a>
+              
+            </div>
+          </div>
+          <div class="mpart">
+            <p style="color: green"><%= notice %></p>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        <div class="right">
+          &copy; Copyright 2010, PET 1.3 <br />
+          ND System Solutions
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

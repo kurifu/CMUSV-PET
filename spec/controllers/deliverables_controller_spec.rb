@@ -130,7 +130,7 @@ describe DeliverablesController do
       get :update, :id => @d2.id, :deliverable => @d2
       flash[:notice].should == "Deliverable successfully uploaded!"
       response.should redirect_to :controller => :deliverables, 
-        :action => :index,
+        :action => :index, :project_id=>1,
         :default_phase => @d2.phase
     end
 
