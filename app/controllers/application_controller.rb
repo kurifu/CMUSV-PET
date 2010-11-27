@@ -75,7 +75,8 @@ class ApplicationController < ActionController::Base
     end
     
     def current_user_admin
-      if "admin".casecmp(current_user.user_class)
+      #if "admin".casecmp(current_user.user_class)
+      if current_user.user_class == "admin"
         return true
       end
     end

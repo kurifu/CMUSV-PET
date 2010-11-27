@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
       if current_user_admin
         redirect_back_or_default admin_home_path
       else
-        redirect_back_or_default root_path
+        redirect_to :controller => 'users', :action => 'home'
       end
     else
       flash[:notice] = "Invalid username/password"
