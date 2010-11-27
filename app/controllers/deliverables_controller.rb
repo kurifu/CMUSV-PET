@@ -1,5 +1,6 @@
 class DeliverablesController < ApplicationController
 before_filter :require_user
+layout 'projects'
 #Populates static data and creates a new instance of Deliverable class and 
 #binds the @deliverable variable with the form element of Phase page
 #the index page also handling with parameters. user can navigate from the

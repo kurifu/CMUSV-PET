@@ -14,9 +14,6 @@
   </li>
 </ul>
 <% end %>
-<b><%=  link_to "Create User", new_user_path%> |
-<%=  link_to "Projects", admin_projects_path%> |
-<%=  link_to "Change Passowrd", change_password_path%> </b>
 
 <div id="profile" class="col col1">
   <h2 class="border">Admin profile</h2>
@@ -35,6 +32,7 @@
           User class:<%=current_user.user_class%>
         <br />
         <br />
+          <%=  link_to "Change Passowrd", change_password_path%> |
           <%= link_to "Edit", edit_user_path(current_user)%>
 
         <br />
