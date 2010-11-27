@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   #in one place
 
 
-#=begin
+=begin
   def rescue_action(exception)
     puts exception
     case exception
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       redirect_to "/500.html"
     end
   end
-#=end
+=end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
     end
     
     def current_user_admin
-      if current_user.user_class == "admin"
+      if "admin".casecmp(current_user.user_class)
         return true
       end
     end
