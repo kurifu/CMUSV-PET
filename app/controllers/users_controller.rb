@@ -138,7 +138,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
     session[:query] = params[:query].strip if params[:query]
 
     if session[:query] and request.xhr?
-      @users = Project.find(:all, :conditions => ['name LIKE ? or lifecycle LIKE?', "%#{session[:query]}%", "%#{session[:query]}%"])
+      @users = Project.find(:all, :conditions => ['name LIKE ? or lifecycle LIKE ?', "%#{session[:query]}%", "%#{session[:query]}%"])
     end
     if params[:query] == ""
       @users = Project.find(:all)

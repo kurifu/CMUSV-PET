@@ -583,6 +583,15 @@ h2 .right { white-space:nowrap; padding-top:4px;}
     font-size: 13px;
     line-height: 13px;
     padding: 8px;
+    width: 300px;
+}
+
+.areaclass {
+    border: 1px solid #C8C8C8;
+    color: #333;
+    font-size: 13px;
+    line-height: 13px;
+    padding: 8px;
     width: 600px;
 }
 

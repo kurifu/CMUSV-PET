@@ -8,6 +8,7 @@
     <th>Name</th>
     <th>Status</th>
     <th>Lifecycle</th>
+    <th>Owner</th>
     <th>Action</th>
   </tr>
 
@@ -16,9 +17,10 @@
     <td><%=h project.name %></td>
     <td><%=h project.status %></td>
     <td><%=h project.lifecycle %></td>
-    <td><%= link_to 'Show', project %>
-        <%= link_to 'Edit', edit_project_path(project) %>
-        <%= link_to 'Transfer project', :controller=>'users', :action=>'transfer_project', :id=>project.id %>
+    <td><%=h project.user.username %></td>
+    <td><%= link_to 'Show', project %> |
+        <%= link_to 'Edit', edit_project_path(project) %> |
+        <%= link_to 'Transfer project', :controller=>'users', :action=>'transfer_project', :id=>project.id %> |
         <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
 
   </tr>

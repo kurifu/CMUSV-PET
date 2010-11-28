@@ -33,7 +33,7 @@
           <%= f.text_field :name, :class=>"fieldclass" %>
         
           <%= f.label :description, "Deliverable Description" %>
-          <%= f.text_area :description, :class=>"fieldclass" %>
+          <%= f.text_area :description, :class=>"areaclass" %>
           <%= f.label :complexity %>
           <%= select(:deliverable, :complexity, @complexities,
               {:prompt   => "Select a complexity"},

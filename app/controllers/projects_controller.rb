@@ -130,7 +130,7 @@ before_filter :require_user
         # Grab all deliverables in this phase, add it to our small hash
         del_to_process = deliverables.find_all {|d| d.phase == phases[i] }
         del_to_process.each do |target|
-          @phase_efforts[phases[i]][target.id] = [target.name,target.estimated_effort]
+          @phase_efforts[phases[i]][target.id] = [target.name,target.estimated_effort,target.hours_logged]
         end
       end
     end
