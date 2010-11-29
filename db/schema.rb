@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20101118033228) do
     t.string   "deliverable_url",                        :default => ""
     t.string   "complexity",                             :default => "",  :null => false
     t.string   "unit_measurement",                       :default => "",  :null => false
-    t.float    "estimated_size",          :limit => 255
-    t.float    "estimated_effort",        :limit => 255
-    t.float    "production_rate",         :limit => 255
+    t.float    "estimated_size"          
+    t.float    "estimated_effort"        
+    t.float    "production_rate"         
     t.string   "deliverable_type"
     t.string   "phase"
     t.text     "description"
