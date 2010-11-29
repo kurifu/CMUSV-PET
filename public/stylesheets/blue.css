@@ -15,7 +15,7 @@ a, a:hover {
     color: #388AC2;
 }
 
-th, td.td_header {
+th, td.td_header, .tablebox-head {
     background: #71B9EA;
     color: #000000;
 }

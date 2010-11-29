@@ -3,26 +3,26 @@
     Listing projects
   </div>
   <div class="table">
-<table class="content_table">
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-    <th>Lifecycle</th>
-    <th>Action</th>
-  </tr>
+    <table class="content_table">
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Lifecycle</th>
+        <th>Action</th>
+      </tr>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%=h project.name %></td>
-    <td><%=h project.status %></td>
-    <td><%=h project.lifecycle %></td>
-    <td><%= link_to 'Details', :controller=>"deliverables", :project_id=>project.id %> |
-        <%= link_to 'Edit', edit_project_path(project) %> |
-        <%= link_to 'Effort Log', project %>
-    </td>
-  </tr>
-<% end %>
-</table>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%=h project.name %></td>
+        <td><%=h project.status %></td>
+        <td><%=h project.lifecycle %></td>
+        <td><%= link_to 'Details', :controller=>"deliverables", :project_id=>project.id %> |
+            <%= link_to 'Edit', edit_project_path(project) %> |
+            <%= link_to 'Effort Log', project %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
   </div>
 </div>
 <br />

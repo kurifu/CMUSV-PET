@@ -16,11 +16,12 @@
 <% end %>
 <h1>Listing users</h1>
 
-<table>
+<table class="content_table">
   <tr>
     <th>Username</th>
     <th>Email</th>
     <th>Password</th>
+    <th>Action</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -28,9 +29,11 @@
     <td><%=h user.username %></td>
     <td><%=h user.email %></td>
     <td><%=h user.password %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'Show', user %>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
