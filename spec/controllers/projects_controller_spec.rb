@@ -201,7 +201,7 @@ describe ProjectsController do
       project = Factory.create(:valid_project)
       Project.any_instance.stubs(:update_attributes).returns(true)
       put :update, :id=>project.id
-      response.should redirect_to "/projects?notice=Project+was+successfully+updated."
+      response.should redirect_to "/admin_projects"
     end
 
     it "should render edit page and show error message with invalid attributes" do
