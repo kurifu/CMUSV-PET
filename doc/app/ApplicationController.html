@@ -69,7 +69,21 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
+					<li><a href="#method-i-current_user">#current_user</a></li>
+					
+					<li><a href="#method-i-current_user_admin">#current_user_admin</a></li>
+					
+					<li><a href="#method-i-current_user_session">#current_user_session</a></li>
+					
+					<li><a href="#method-i-redirect_back_or_default">#redirect_back_or_default</a></li>
+					
+					<li><a href="#method-i-require_admin">#require_admin</a></li>
+					
+					<li><a href="#method-i-require_user">#require_user</a></li>
+					
 					<li><a href="#method-i-rescue_action">#rescue_action</a></li>
+					
+					<li><a href="#method-i-store_location">#store_location</a></li>
 					
 				</ul>
 			</div>
@@ -111,9 +125,13 @@
 
 				<ul class="link-list">
 				
+					<li><a href="./AboutUsController.html">AboutUsController</a></li>
+				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ContactController.html">ContactController</a></li>
 				
 					<li><a href="./Deliverable.html">Deliverable</a></li>
 				
@@ -125,6 +143,8 @@
 				
 					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
 				
+					<li><a href="./HelpController.html">HelpController</a></li>
+				
 					<li><a href="./Project.html">Project</a></li>
 				
 					<li><a href="./ProjectsController.html">ProjectsController</a></li>
@@ -132,6 +152,20 @@
 					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
 				
 					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserSession.html">UserSession</a></li>
+				
+					<li><a href="./UserSessionHelper.html">UserSessionHelper</a></li>
+				
+					<li><a href="./UserSessionsController.html">UserSessionsController</a></li>
+				
+					<li><a href="./UserSessionsHelper.html">UserSessionsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -165,6 +199,247 @@ controllers.
 			<h3 class="section-header">Protected Instance Methods</h3>
 
 		
+			<div id="current-user-method" class="method-detail ">
+				<a name="method-i-current_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Return the current user object. It contains all the data for a particular
+user. The user object is stored in the related user session object.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 33</span>
+33:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user</span>
+34:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@current_user</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@current_user</span>)
+35:     <span class="ruby-ivar">@current_user</span> = <span class="ruby-identifier">current_user_session</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">current_user_session</span>.<span class="ruby-identifier">user</span>
+36:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="current-user-admin-method" class="method-detail ">
+				<a name="method-i-current_user_admin"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user_admin</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Method to check whether current is admin or not
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user-admin-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 77</span>
+77:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user_admin</span>
+78:     <span class="ruby-comment cmt">#if &quot;admin&quot;.casecmp(current_user.user_class)</span>
+79:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">user_class</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span>
+80:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+81:     <span class="ruby-keyword kw">end</span>
+82:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="current-user-session-method" class="method-detail ">
+				<a name="method-i-current_user_session"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user_session</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Return the current user session. Called from the <a
+href="ApplicationController.html#method-i-current_user">current_user</a>
+method
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user-session-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 26</span>
+26:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user_session</span>
+27:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@current_user_session</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@current_user_session</span>)
+28:     <span class="ruby-ivar">@current_user_session</span> = <span class="ruby-constant">UserSession</span>.<span class="ruby-identifier">find</span>
+29:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="redirect-back-or-default-method" class="method-detail ">
+				<a name="method-i-redirect_back_or_default"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">redirect_back_or_default</span><span
+						class="method-args">(default)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Redirect back to the stored location. If there is no stored location, it
+will redirected to the default url.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="redirect-back-or-default-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 61</span>
+61:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">redirect_back_or_default</span>(<span class="ruby-identifier">default</span>)
+62:     <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>)
+63:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] = <span class="ruby-keyword kw">nil</span>
+64:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="require-admin-method" class="method-detail ">
+				<a name="method-i-require_admin"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">require_admin</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Method specific to PET1.3. Used to prevent non admin user to access certain
+pages with admin functionalities. Usage before_filter :<a
+href="ApplicationController.html#method-i-require_admin">require_admin</a>
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="require-admin-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 69</span>
+69:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_admin</span>
+70:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">current_user_admin</span>
+71:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/access_denied.html&quot;</span>
+72:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+73:     <span class="ruby-keyword kw">end</span>
+74:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="require-user-method" class="method-detail ">
+				<a name="method-i-require_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">require_user</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Filter method to prevent user access unauthorized pages. Defined in the
+application controller so that all the controller can access this method.
+Usage: before_filter :requie_user If the user doesn&#8217;t log in it will
+be redirected to the login page
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="require-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 42</span>
+42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_user</span>
+43:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">current_user</span>
+44:       <span class="ruby-identifier">store_location</span>
+45:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;You must be logged in to access this page&quot;</span>
+46: 
+47: <span class="ruby-comment cmt">#        redirect_to new_user_session_url</span>
+48:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">login_path</span>
+49:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+50:     <span class="ruby-keyword kw">end</span>
+51:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
 			<div id="rescue-action-method" class="method-detail ">
 				<a name="method-i-rescue_action"></a>
 
@@ -189,16 +464,53 @@ method can catch all exception in one place
 					<div class="method-source-code"
 						id="rescue-action-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 16</span>
-16:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action</span>(<span class="ruby-identifier">exception</span>)
-17:     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">exception</span>
-18:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">exception</span>
-19:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">UnknownAction</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>
-20:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/error&quot;</span>, <span class="ruby-value">:status=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">301</span>
-21:     <span class="ruby-keyword kw">else</span>
-22:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/500.html&quot;</span>
-23:     <span class="ruby-keyword kw">end</span>
-24:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 15</span>
+15:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action</span>(<span class="ruby-identifier">exception</span>)
+16:     <span class="ruby-identifier">puts</span> <span class="ruby-identifier">exception</span>
+17:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">exception</span>
+18:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotFound</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">UnknownAction</span>, <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>
+19:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/error&quot;</span>, <span class="ruby-value">:status=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">301</span>
+20:     <span class="ruby-keyword kw">else</span>
+21:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-value str">&quot;/500.html&quot;</span>
+22:     <span class="ruby-keyword kw">end</span>
+23:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="store-location-method" class="method-detail ">
+				<a name="method-i-store_location"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">store_location</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Store the current location of the current request. For the use in future
+redirect.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="store-location-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 55</span>
+55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_location</span>
+56:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_uri</span>
+57:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

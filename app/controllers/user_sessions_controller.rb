@@ -1,14 +1,11 @@
 class UserSessionsController < ApplicationController
 
-
-  def index
-    
-  end
-  
+  #Render the login page
   def new
     @user_session = UserSession.new
   end
 
+  #Login a particular user
   def create
     @user_session = UserSession.new(params[:user_session])
     
@@ -25,7 +22,8 @@ class UserSessionsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
+  #Action for logging out
   def destroy
     @user_session = UserSession.find
     @user_session.destroy

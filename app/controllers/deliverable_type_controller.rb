@@ -1,7 +1,12 @@
 #Deliverables Controller
 class DeliverableTypeController < ApplicationController
-before_filter :require_user
-layout 'projects'
+
+  #Require user log in to see this page
+  before_filter :require_user
+
+  #using the project layout
+  layout 'projects'
+
   #Constant variable for the option in the select tag
   @@ADHOC = "Ad-Hoc Type"
   
@@ -133,6 +138,7 @@ layout 'projects'
     end
   end
 
+  #calculate historical data for a given pair of complexity and deliverable type
   def calculate_historical_data
 
     data = []

@@ -4,6 +4,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
 
   # GET /users
   # GET /users.xml
+  # List all the users for admin user management
   def index
     @users = User.all
 
@@ -15,6 +16,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
 
   # GET /users/1
   # GET /users/1.xml
+  # show detailed information of a particular user
   def show
     @user = User.find(params[:id])
 
@@ -26,6 +28,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
 
   # GET /users/new
   # GET /users/new.xml
+  # Render new page for admin to add new user to PET
   def new
     @user = User.new
 
@@ -36,12 +39,14 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
   end
 
   # GET /users/1/edit
+  # Admin can edit user's information
   def edit
     @user = User.find(params[:id])
   end
 
   # POST /users
   # POST /users.xml
+  # Action to create an entry in database
   def create
     @user = User.new(params[:user])
 
@@ -58,6 +63,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
 
   # PUT /users/1
   # PUT /users/1.xml
+  # Update an existing entry in a database
   def update
     @user = User.find(params[:id])
 
@@ -74,6 +80,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
 
   # DELETE /users/1
   # DELETE /users/1.xml
+  # Delete an existing user
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -84,14 +91,17 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
     end
   end
 
+  # Home page for regular user. Showing information of the user profile
   def home
     @projects = current_user.projects.find(:all)
   end
 
+  # For current user to change password
   def change_password
       @user = current_user
   end
 
+  # Change the password column in the databse
   def update_password
     @user = current_user
       respond_to do |format|
@@ -107,21 +117,25 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
     end
   end
 
-  #admin project
+  # Listing all the projects for a admin to manage
+  # admin can edit delete or transfer an existing project
   def admin_projects
     @projects = Project.all
   end
 
+  # Transfer project from one user to the other
   def transfer_project
     @project = Project.find(params[:id])
     @users = User.find(:all, :conditions => "user_class = 'Regular'")
     @project_user_name = User.find(@project.user_id).username
   end
 
+  # Render home page for admin, displaying profile information
   def admin_home
     
   end
 
+  # Assign action to transfer an project
   def assign
     project = Project.find(params[:project_id])
     project.user_id = params[:user_id]
@@ -134,6 +148,7 @@ before_filter :require_admin, :except => [:show, :home, :change_password, :updat
     end
   end
 
+  # Action for instant search
   def search
     session[:query] = params[:query].strip if params[:query]
 

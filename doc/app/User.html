@@ -5,7 +5,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Module: DeliverablesHelper</title>
+	<title>Class: User</title>
 
 	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -19,7 +19,7 @@
 		charset="utf-8"></script>
 
 </head>
-<body class="module">
+<body class="class">
 
 	<div id="metadata">
 		<div id="home-metadata">
@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="./app/helpers/deliverables_helper_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="app/helpers/deliverables_helper.rb">app/helpers/deliverables_helper.rb</a></li>
+						<li><a href="./app/models/user_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/user.rb">app/models/user.rb</a></li>
 					
 					</ul>
 				</div>
@@ -51,6 +51,13 @@
 		<div id="class-metadata">
 
 			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">ActiveRecord::Base</p>
+				
+			</div>
 			
 
 			<!-- Namespace Contents -->
@@ -146,10 +153,28 @@
 	</div>
 
 	<div id="documentation">
-		<h1 class="module">DeliverablesHelper</h1>
+		<h1 class="class">User</h1>
 
 		<div id="description">
-			
+			<p>
+The users table contains the following column
+</p>
+<pre>
+  id                integer
+  username          varchar(255)
+  email             varchar(255)
+  crypted_password  varchar(255)
+  password_salt     varchar(255)
+  persistence_token varchar(255)
+  user_class        varchar(255)
+  created_at        datetime
+  updated_at        datetime
+</pre>
+<p>
+In the user model class, it will validate the presence of username and the
+format email password and confirmation of password.
+</p>
+
 		</div>
 
 		<!-- Constants -->

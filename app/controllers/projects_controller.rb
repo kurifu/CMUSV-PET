@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
 before_filter :require_user
   #Displays all the projects on the Project Index page
+  #it will only display projects belongs to the current user
+  #This prevents the user from guessing the url
   def index
     @projects = current_user.projects.all
 
@@ -11,6 +13,8 @@ before_filter :require_user
   end
 
 #Displays project details for the selected project
+#The show page now shows a list of deliverable and displays the effort for the
+#deliverables
   def show
     if current_user_admin
       @project = Project.find(params[:id])
@@ -41,7 +45,9 @@ before_filter :require_user
   def error
   end
 
-# Note: this is for future story card
+#Edit an existing project. If the current user is admin. He can edit all the
+#projects in the system. If it is regular user, PET will only allow this type
+#of user to access the project belongs to the user
   def edit
     if current_user_admin
       @project = Project.find(params[:id])
@@ -51,7 +57,6 @@ before_filter :require_user
   end
 
 #Creates a project
-# Note: are we using this format for error handling?
   def create
     @project = Project.new(params[:project])
     @project.user_id = current_user.id
@@ -74,7 +79,6 @@ before_filter :require_user
   end
 
 #Updates the selected project with the content as modified by the user
-# Note: this is for future story card
   def update
     if current_user_admin
       @project = Project.find(params[:id])
@@ -98,7 +102,8 @@ before_filter :require_user
   end
 
 #Deletes a project
-# Note: this is for future story card
+#When deleting a project all the deliverables related to the project will be
+#deleted too
   def destroy
     if current_user_admin
       @project = Project.find(params[:id])
@@ -140,6 +145,7 @@ before_filter :require_user
     end
   end
 
+  #Action to log hours for a particular deliverable.
   def log_hours
     @project = current_user.projects.find(params[:project_id])
     @target_del = Deliverable.find(params[:deliverable_id])

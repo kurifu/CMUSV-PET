@@ -64,9 +64,13 @@
 
 				<ul class="link-list">
 				
+					<li><a href="./AboutUsController.html">AboutUsController</a></li>
+				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ContactController.html">ContactController</a></li>
 				
 					<li><a href="./Deliverable.html">Deliverable</a></li>
 				
@@ -78,6 +82,8 @@
 				
 					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
 				
+					<li><a href="./HelpController.html">HelpController</a></li>
+				
 					<li><a href="./Project.html">Project</a></li>
 				
 					<li><a href="./ProjectsController.html">ProjectsController</a></li>
@@ -85,6 +91,20 @@
 					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
 				
 					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserSession.html">UserSession</a></li>
+				
+					<li><a href="./UserSessionHelper.html">UserSessionHelper</a></li>
+				
+					<li><a href="./UserSessionsController.html">UserSessionsController</a></li>
+				
+					<li><a href="./UserSessionsHelper.html">UserSessionsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -95,7 +115,112 @@
 	</div>
 
 	<div id="documentation">
-		<h2>Progress</h2>
+		<h2>Assumptions</h2>
+<ul>
+<li><p>
+A project is owned by a single user and only the owner and admins can view
+the project
+</p>
+</li>
+<li><p>
+The lifecycle of a project is not changeable
+</p>
+</li>
+<li><p>
+Only admin can create a user
+</p>
+</li>
+<li><p>
+Only admin can delete a project
+</p>
+</li>
+<li><p>
+A project can not be deleted with an owner, it needs to be reassigned to
+another user
+</p>
+</li>
+</ul>
+<h2>Database design</h2>
+<h3>Users Table</h3>
+<pre>
+    User_id:integer  username:string  email:string  crypted_password:string  password_salt:string  user_class:string
+</pre>
+<h3>Deliverables Table</h3>
+<pre>
+    Project_id:integer  Deliverable_id:integer  lifecycle:string   phase:string   deliverable_type:string  deliverable_name:string    deliverable_desc:text  deliverable_url:string  complexity:string  unit_of_measurement:string  estimated_size:float  production_rate:float  estimated_effort:float
+</pre>
+<h3>Projects Table</h3>
+<pre>
+    project_id:integer  project_name:string  project_desc:text  project_status:string  lifecycle:string
+</pre>
+<h2>Progress</h2>
+<h3>Iteration 3:</h3>
+<p>
+Story cards completed:
+</p>
+<ul>
+<li><p>
+Story Card 8, &#8220;As a user, I can upload a deliverable&#8220;
+</p>
+</li>
+<li><p>
+Story Card 17, &#8220;As an admin, I can create a user As an admin, I can
+delete a user As an admin, I can reassign projects As an admin, I can see
+all projects As an admin, I can delete projects.&#8220;
+</p>
+</li>
+<li><p>
+Story Card 13, &#8220;As a user, I can view historical data in each phase
+of the project for each deliverable type&#8220;
+</p>
+</li>
+<li><p>
+Story Card 1, &#8220;As a user, I can login PET.&#8220;
+</p>
+</li>
+<li><p>
+Story Card 2, &#8220;As a user, I can navigate from the project homepage to
+the project creation page&#8220;
+</p>
+</li>
+<li><p>
+Story Card 4, &#8220;As a user, I can edit an existing project from the
+project homepage&#8220;
+</p>
+</li>
+<li><p>
+Story Card 5, &#8220;As a user, I can review an existing project from the
+project homepage&#8220;
+</p>
+</li>
+<li><p>
+Story Card 6, &#8220;As a user, I can jump from the create a project page
+to the project phase page(s)&#8220;
+</p>
+</li>
+<li><p>
+Story Card 7, &#8220;As a user, I can jump from the project phase page to
+the add deliverable page&#8220;
+</p>
+</li>
+</ul>
+<p>
+Some story cards have been re-estimated
+</p>
+<ul>
+<li><p>
+Story Card 1: 2 points up to 8 points
+</p>
+</li>
+<li><p>
+Story Card 2: 2 points down to 1 point
+</p>
+</li>
+<li><p>
+Story Card 5: 2 points down to 1 point
+</p>
+</li>
+</ul>
 <h3>Iteration 2:</h3>
 <p>
 Story cards completed:
@@ -149,18 +274,10 @@ description, complexity, estimated size and production rate to the new
 deliverable.&#8220;
 </p>
 </li>
-</ul>
-<p>
-Story cards in progress:
-</p>
-<ul>
 <li><p>
 Story Card 15, &#8220;As a user, I can view the project phase page.  As a
 user, I can see all deliverables associated with each phase.&#8220;
 </p>
-<pre>
-       Missing one or two RSpec tests before complete
-</pre>
 </li>
 <li><p>
 Story Card 10, &#8220;As a user, I can provide deliverable size and
@@ -226,7 +343,7 @@ them
 </li>
 </ul>
 <p>
-Static Tables to be Turned into XML Files:
+Static Tables Turned into XML Files:
 </p>
 <ul>
 <li><p>
@@ -256,17 +373,33 @@ formats (single value, array, array of specific values, etc)
 </p>
 </li>
 </ul>
-<h2>Database design</h2>
-<p>
-Deliverables Tables Project_id  Deliverable_id  lifecycle   phase  
-deliverable_type deliverable_name    deliverable_desc deliverable_url
-complexity  unit_of_measurement estimated_size  production_rate
-estimated_effort
+<h2>Future works</h2>
+<ul>
+<li><p>
+Extend PET on mobile platforms (Android/ iPhone/ WP7)
 </p>
-<p>
-Projects Table project_id  project_name    project_desc    project_status 
-lifecycle
+</li>
+<li><p>
+Email notifications
 </p>
+</li>
+<li><p>
+Graphical progress tracking
+</p>
+</li>
+<li><p>
+More detailed effort logging system
+</p>
+</li>
+<li><p>
+Multiple user collaboration
+</p>
+</li>
+<li><p>
+Automated documentation ( creating a pdf with info stored in application)
+</p>
+</li>
+</ul>
 
 	</div>
 

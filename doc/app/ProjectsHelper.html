@@ -62,6 +62,8 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
+					<li><a href="#method-i-calculate_phase_actual_effort">#calculate_phase_actual_effort</a></li>
+					
 					<li><a href="#method-i-calculate_phase_effort">#calculate_phase_effort</a></li>
 					
 				</ul>
@@ -104,9 +106,13 @@
 
 				<ul class="link-list">
 				
+					<li><a href="./AboutUsController.html">AboutUsController</a></li>
+				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ContactController.html">ContactController</a></li>
 				
 					<li><a href="./Deliverable.html">Deliverable</a></li>
 				
@@ -118,6 +124,8 @@
 				
 					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
 				
+					<li><a href="./HelpController.html">HelpController</a></li>
+				
 					<li><a href="./Project.html">Project</a></li>
 				
 					<li><a href="./ProjectsController.html">ProjectsController</a></li>
@@ -125,6 +133,20 @@
 					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
 				
 					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserSession.html">UserSession</a></li>
+				
+					<li><a href="./UserSessionHelper.html">UserSessionHelper</a></li>
+				
+					<li><a href="./UserSessionsController.html">UserSessionsController</a></li>
+				
+					<li><a href="./UserSessionsHelper.html">UserSessionsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -153,6 +175,52 @@
 			<h3 class="section-header">Public Instance Methods</h3>
 
 		
+			<div id="calculate-phase-actual-effort-method" class="method-detail ">
+				<a name="method-i-calculate_phase_actual_effort"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">calculate_phase_actual_effort</span><span
+						class="method-args">(project_id, phase)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This helper method calculates the actual effort for a certain phase
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="calculate-phase-actual-effort-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/helpers/projects_helper.rb, line 19</span>
+19:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_phase_actual_effort</span>(<span class="ruby-identifier">project_id</span>, <span class="ruby-identifier">phase</span>)
+20:     <span class="ruby-ivar">@hours</span> = <span class="ruby-value">0</span>
+21:     <span class="ruby-ivar">@dataset</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">find_all_by_phase_and_project_id</span>(<span class="ruby-identifier">phase</span>, <span class="ruby-identifier">project_id</span>)
+22:     <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@dataset</span>
+23:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">nil?</span>
+24:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+25:     <span class="ruby-keyword kw">else</span>
+26:       <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+27:         <span class="ruby-ivar">@hours</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">hours_logged</span>
+28:       <span class="ruby-keyword kw">end</span>
+29:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hours</span>
+30:     <span class="ruby-keyword kw">end</span>
+31:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
 			<div id="calculate-phase-effort-method" class="method-detail ">
 				<a name="method-i-calculate_phase_effort"></a>
 
@@ -167,7 +235,8 @@
 				<div class="method-description">
 					
 					<p>
-(@project.id, phase)
+This helper method is used to calculate the estimated effort of a certain
+phase
 </p>
 					
 
@@ -175,24 +244,20 @@
 					<div class="method-source-code"
 						id="calculate-phase-effort-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/projects_helper.rb, line 3</span>
- 3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_phase_effort</span>(<span class="ruby-identifier">project_id</span>, <span class="ruby-identifier">phase</span>)
- 4:     <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Input id #{project_id}, Input phase #{phase}&quot;</span>
- 5: 
- 6:     <span class="ruby-ivar">@hours</span> = <span class="ruby-value">0</span>
- 7:     <span class="ruby-ivar">@dataset</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">find_all_by_phase_and_project_id</span>(<span class="ruby-identifier">phase</span>, <span class="ruby-identifier">project_id</span>)
- 8:     <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@dataset</span>
- 9:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">nil?</span>
-10:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
-11:     <span class="ruby-keyword kw">else</span>
-12:       <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
-13:         <span class="ruby-ivar">@hours</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">estimated_effort</span>.<span class="ruby-identifier">to_f</span>
-14:       <span class="ruby-keyword kw">end</span>
-15:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hours</span>
-16:     <span class="ruby-keyword kw">end</span>
-17: 
-18: 
-19:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/helpers/projects_helper.rb, line 4</span>
+ 4:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_phase_effort</span>(<span class="ruby-identifier">project_id</span>, <span class="ruby-identifier">phase</span>)
+ 5:     <span class="ruby-ivar">@hours</span> = <span class="ruby-value">0</span>
+ 6:     <span class="ruby-ivar">@dataset</span> = <span class="ruby-constant">Deliverable</span>.<span class="ruby-identifier">find_all_by_phase_and_project_id</span>(<span class="ruby-identifier">phase</span>, <span class="ruby-identifier">project_id</span>)
+ 7:     <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@dataset</span>
+ 8:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">nil?</span>
+ 9:       <span class="ruby-keyword kw">return</span> <span class="ruby-value">0</span>
+10:     <span class="ruby-keyword kw">else</span>
+11:       <span class="ruby-ivar">@dataset</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+12:         <span class="ruby-ivar">@hours</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">estimated_effort</span>
+13:       <span class="ruby-keyword kw">end</span>
+14:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@hours</span>
+15:     <span class="ruby-keyword kw">end</span>
+16:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

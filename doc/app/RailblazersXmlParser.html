@@ -121,9 +121,13 @@
 
 				<ul class="link-list">
 				
+					<li><a href="./AboutUsController.html">AboutUsController</a></li>
+				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ContactController.html">ContactController</a></li>
 				
 					<li><a href="./Deliverable.html">Deliverable</a></li>
 				
@@ -135,6 +139,8 @@
 				
 					<li><a href="./DeliverablesHelper.html">DeliverablesHelper</a></li>
 				
+					<li><a href="./HelpController.html">HelpController</a></li>
+				
 					<li><a href="./Project.html">Project</a></li>
 				
 					<li><a href="./ProjectsController.html">ProjectsController</a></li>
@@ -142,6 +148,20 @@
 					<li><a href="./ProjectsHelper.html">ProjectsHelper</a></li>
 				
 					<li><a href="./RailblazersXmlParser.html">RailblazersXmlParser</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserSession.html">UserSession</a></li>
+				
+					<li><a href="./UserSessionHelper.html">UserSessionHelper</a></li>
+				
+					<li><a href="./UserSessionsController.html">UserSessionsController</a></li>
+				
+					<li><a href="./UserSessionsHelper.html">UserSessionsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -197,14 +217,16 @@ Input: None Output: string array => Low, Medium, High
 					<div class="method-source-code"
 						id="get-common-values-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 94</span>
- 94:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_common_values</span>
- 95:     <span class="ruby-identifier">common_values</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
- 96:     <span class="ruby-identifier">temp_complexity</span> =
- 97:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;complexity&quot;</span>].<span class="ruby-identifier">text</span>
- 98:     <span class="ruby-identifier">common_values</span> = <span class="ruby-identifier">temp_complexity</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
- 99:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">common_values</span>
-100:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 101</span>
+101:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_common_values</span>
+102:     <span class="ruby-identifier">common_values</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+103:     <span class="ruby-ivar">@doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;./public/static_table.xml&quot;</span>)
+104:     <span class="ruby-ivar">@root</span> = <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">root</span>
+105:     <span class="ruby-identifier">temp_complexity</span> =
+106:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;complexity&quot;</span>].<span class="ruby-identifier">text</span>
+107:     <span class="ruby-identifier">common_values</span> = <span class="ruby-identifier">temp_complexity</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+108:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">common_values</span>
+109:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -242,14 +264,16 @@ Output: string array => deliverable types
 					<div class="method-source-code"
 						id="get-deliverable-type-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 71</span>
-71:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_deliverable_type</span>(<span class="ruby-identifier">id</span>)
-72:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
-73:     <span class="ruby-identifier">temp_deliverable_type</span> =
-74:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;name&quot;</span>].<span class="ruby-identifier">text</span>
-75:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-identifier">temp_deliverable_type</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
-76:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">deliverable_type</span>
-77:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 74</span>
+74:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_deliverable_type</span>(<span class="ruby-identifier">id</span>)
+75:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+76:     <span class="ruby-ivar">@doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;./public/static_table.xml&quot;</span>)
+77:     <span class="ruby-ivar">@root</span> = <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">root</span>
+78:     <span class="ruby-identifier">temp_deliverable_type</span> =
+79:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;name&quot;</span>].<span class="ruby-identifier">text</span>
+80:     <span class="ruby-identifier">deliverable_type</span> = <span class="ruby-identifier">temp_deliverable_type</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+81:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">deliverable_type</span>
+82:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -287,12 +311,15 @@ This method provides a list of lifecycle Input : None Output: string array
 18:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_lifecycle</span>
 19:     <span class="ruby-identifier">lifecycle</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
 20:     <span class="ruby-identifier">counter</span> = <span class="ruby-value">0</span>
-21:     <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">&quot;*/lifecycle&quot;</span>){
-22:       <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lifecycle</span>[<span class="ruby-identifier">counter</span>] = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">&quot;model&quot;</span>].<span class="ruby-identifier">to_s</span>
-23:       <span class="ruby-identifier">counter</span> = <span class="ruby-identifier">counter</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-24:     }
-25:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lifecycle</span>
-26:   <span class="ruby-keyword kw">end</span></pre>
+21: 
+22:     <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">nil?</span>
+23:       <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">&quot;*/lifecycle&quot;</span>){
+24:         <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lifecycle</span>[<span class="ruby-identifier">counter</span>] = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">&quot;model&quot;</span>].<span class="ruby-identifier">to_s</span>
+25:         <span class="ruby-identifier">counter</span> = <span class="ruby-identifier">counter</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+26:       }
+27:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lifecycle</span>
+28:     <span class="ruby-keyword kw">end</span>
+29:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -326,14 +353,14 @@ model Output: string array => lifecycle phases
 					<div class="method-source-code"
 						id="get-phase-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 31</span>
-31:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-identifier">model</span>)
-32:     <span class="ruby-identifier">phase</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
-33:     <span class="ruby-identifier">temp_phase</span> =
-34:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;lifecycle[@model='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">model</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;phase&quot;</span>].<span class="ruby-identifier">text</span>
-35:     <span class="ruby-identifier">phase</span> = <span class="ruby-identifier">temp_phase</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
-36:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">phase</span>
-37:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 34</span>
+34:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_phase</span>(<span class="ruby-identifier">model</span>)
+35:     <span class="ruby-identifier">phase</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+36:     <span class="ruby-identifier">temp_phase</span> =
+37:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;lifecycle[@model='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">model</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;phase&quot;</span>].<span class="ruby-identifier">text</span>
+38:     <span class="ruby-identifier">phase</span> = <span class="ruby-identifier">temp_phase</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+39:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">phase</span>
+40:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -371,14 +398,16 @@ Output: string array => unit of measurement
 					<div class="method-source-code"
 						id="get-unit-of-measurement-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 83</span>
-83:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_unit_of_measurement</span>(<span class="ruby-identifier">id</span>)
-84:     <span class="ruby-identifier">unit</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
-85:     <span class="ruby-identifier">temp_unit</span> =
-86:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;unit&quot;</span>].<span class="ruby-identifier">text</span>
-87:     <span class="ruby-identifier">unit</span> = <span class="ruby-identifier">temp_unit</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
-88:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">unit</span>
-89:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 88</span>
+88:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_unit_of_measurement</span>(<span class="ruby-identifier">id</span>)
+89:     <span class="ruby-identifier">unit</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+90:     <span class="ruby-ivar">@doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;./public/static_table.xml&quot;</span>)
+91:     <span class="ruby-ivar">@root</span> = <span class="ruby-ivar">@doc</span>.<span class="ruby-identifier">root</span>
+92:     <span class="ruby-identifier">temp_unit</span> =
+93:       <span class="ruby-ivar">@root</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;deliverable_type[@id='&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">id</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;']&quot;</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value str">&quot;unit&quot;</span>].<span class="ruby-identifier">text</span>
+94:     <span class="ruby-identifier">unit</span> = <span class="ruby-identifier">temp_unit</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%{,\s*}</span>)
+95:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">unit</span>
+96:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -419,29 +448,29 @@ Input : string => phase Output: string => id
 					<div class="method-source-code"
 						id="identify-deliverable-type-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 44</span>
-44:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">identify_deliverable_type</span>(<span class="ruby-identifier">phase</span>)
-45:     <span class="ruby-identifier">id</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">phase</span>
-46: 
-47:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation And Unit Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
-48:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Integration And System Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
-49:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Operation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
-50: 
-51:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements Gathering And Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
-52:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;System Design&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;2&quot;</span>
-53:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
-54:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
-55:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Deployment&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
-56:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Maintenance&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;6&quot;</span>
-57:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Planning&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;7&quot;</span>
-58:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Risk Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;8&quot;</span>
-59:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Engineering&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;9&quot;</span>
-60:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Evaluation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;10&quot;</span>
-61:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
-62:     
-63:     <span class="ruby-keyword kw">end</span>
-64:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">id</span>
-65:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/railblazers_xml_parser.rb, line 47</span>
+47:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">identify_deliverable_type</span>(<span class="ruby-identifier">phase</span>)
+48:     <span class="ruby-identifier">id</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">phase</span>
+49: 
+50:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation And Unit Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
+51:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Integration And System Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
+52:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Operation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
+53: 
+54:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements Gathering And Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
+55:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;System Design&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;2&quot;</span>
+56:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Implementation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;3&quot;</span>
+57:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Testing&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;4&quot;</span>
+58:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Deployment&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;5&quot;</span>
+59:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Maintenance&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;6&quot;</span>
+60:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Planning&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;7&quot;</span>
+61:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Risk Analysis&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;8&quot;</span>
+62:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Engineering&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;9&quot;</span>
+63:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Evaluation&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;10&quot;</span>
+64:     <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;Requirements&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;1&quot;</span>
+65:     
+66:     <span class="ruby-keyword kw">end</span>
+67:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">id</span>
+68:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

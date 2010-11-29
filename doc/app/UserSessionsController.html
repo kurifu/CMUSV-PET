@@ -5,7 +5,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Class: Deliverable</title>
+	<title>Class: UserSessionsController</title>
 
 	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="./app/models/deliverable_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="app/models/deliverable.rb">app/models/deliverable.rb</a></li>
+						<li><a href="./app/controllers/user_sessions_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/controllers/user_sessions_controller.rb">app/controllers/user_sessions_controller.rb</a></li>
 					
 					</ul>
 				</div>
@@ -55,7 +55,7 @@
 			<div id="parent-class-section" class="section">
 				<h3 class="section-header">Parent</h3>
 				
-				<p class="link">ActiveRecord::Base</p>
+				<p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
 				
 			</div>
 			
@@ -69,7 +69,11 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
-					<li><a href="#method-i-valid_calculation_result%3F">#valid_calculation_result?</a></li>
+					<li><a href="#method-i-create">#create</a></li>
+					
+					<li><a href="#method-i-destroy">#destroy</a></li>
+					
+					<li><a href="#method-i-new">#new</a></li>
 					
 				</ul>
 			</div>
@@ -162,33 +166,10 @@
 	</div>
 
 	<div id="documentation">
-		<h1 class="class">Deliverable</h1>
+		<h1 class="class">UserSessionsController</h1>
 
 		<div id="description">
-			<p>
-The deliverables table contains the following column
-</p>
-<pre>
-  id                integer
-  project_id        integer
-  name              varchar(255)
-  deliverable_url   varchar(255)
-  complexity        varchar(255)
-  unit_measurement  varchar(255)
-  estimated_size    varchar(255)
-  estimated_effort  varchar(255)
-  production_rate   varchar(255)
-  deliverable_type  varchar(255)
-  phase             varchar(255)
-  description       text
-</pre>
-<p>
-In the deliverable model class, it will validate the presence of
-deliverable_type, phase, project_id, name, complexity, unit_measurement,
-estimated_size, estimated_effort, production_rate. It will also check the
-format of deliverable_url and the numericality of project_id
-</p>
-
+			
 		</div>
 
 		<!-- Constants -->
@@ -199,16 +180,16 @@ format of deliverable_url and the numericality of project_id
 
 		<!-- Methods -->
 		
-		<div id="private-instance-method-details" class="method-section section">
-			<h3 class="section-header">Private Instance Methods</h3>
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
 
 		
-			<div id="valid-calculation-result--method" class="method-detail ">
-				<a name="method-i-valid_calculation_result%3F"></a>
+			<div id="create-method" class="method-detail ">
+				<a name="method-i-create"></a>
 
 				<div class="method-heading">
 				
-					<span class="method-name">valid_calculation_result?</span><span
+					<span class="method-name">create</span><span
 						class="method-args">()</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
@@ -216,30 +197,107 @@ format of deliverable_url and the numericality of project_id
 
 				<div class="method-description">
 					
-					<pre>
-    :path =&gt; &quot;attachments/:id/:attachment_file_name&quot;,
-    :url =&gt; &quot;attachments/:id/:attachment_file_name&quot;
-</pre>
-<p>
-validates_attachment_presence :attachment
+					<p>
+Login a particular user
 </p>
 					
 
 					
 					<div class="method-source-code"
-						id="valid-calculation-result--source">
+						id="create-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/deliverable.rb, line 46</span>
-46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid_calculation_result?</span>
-47:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">estimated_size</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">production_rate</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">estimated_effort</span>.<span class="ruby-identifier">nil?</span>
-48:       <span class="ruby-keyword kw">return</span>
-49:     <span class="ruby-keyword kw">end</span>
-50:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">estimated_size</span> * <span class="ruby-identifier">production_rate</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">estimated_effort</span>
-51:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:estimated_size</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
-52:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:production_rate</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
-53:        <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:estimated_effort</span>, <span class="ruby-value str">&quot;is not the correct result&quot;</span>)
-54:     <span class="ruby-keyword kw">end</span>
-55:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/user_sessions_controller.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+10:     <span class="ruby-ivar">@user_session</span> = <span class="ruby-constant">UserSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_session</span>])
+11:     
+12:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user_session</span>.<span class="ruby-identifier">save</span>
+13:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Successfully logged in.&quot;</span>
+14:       <span class="ruby-comment cmt">#puts &quot;Current user admin #{current_user_admin}&quot;</span>
+15:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user_admin</span>
+16:         <span class="ruby-identifier">redirect_back_or_default</span> <span class="ruby-identifier">admin_home_path</span>
+17:       <span class="ruby-keyword kw">else</span>
+18:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'users'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'home'</span>
+19:       <span class="ruby-keyword kw">end</span>
+20:     <span class="ruby-keyword kw">else</span>
+21:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Invalid username/password&quot;</span>
+22:       <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'new'</span>
+23:     <span class="ruby-keyword kw">end</span>
+24:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="destroy-method" class="method-detail ">
+				<a name="method-i-destroy"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">destroy</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Action for logging out
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="destroy-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/user_sessions_controller.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+28:     <span class="ruby-ivar">@user_session</span> = <span class="ruby-constant">UserSession</span>.<span class="ruby-identifier">find</span>
+29:     <span class="ruby-ivar">@user_session</span>.<span class="ruby-identifier">destroy</span>
+30:     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Logged out&quot;</span>
+31:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">login_path</span>
+32:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-i-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Render the login page
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+   <span class="ruby-comment cmt"># File app/controllers/user_sessions_controller.rb, line 4</span>
+4:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+5:     <span class="ruby-ivar">@user_session</span> = <span class="ruby-constant">UserSession</span>.<span class="ruby-identifier">new</span>
+6:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
