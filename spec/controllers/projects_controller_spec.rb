@@ -49,6 +49,7 @@ describe ProjectsController do
 
   describe "POST Create deliverable" do
     it "should redirect to Project index page after creating a Project" do
+      Project.any_instance.stubs(:id).returns(1)
       Project.any_instance.stubs(:valid?).returns(true)
       post 'create'
 

@@ -127,10 +127,11 @@ describe DeliverablesController do
       @d2 = Deliverable.new :attachment => File.new(RAILS_ROOT + '/spec/fixtures/test_files/test_file.txt')
       @d2.id = 1
       @d2.phase = "System Design"
+      @d2.project_id = 1
       get :update, :id => @d2.id, :deliverable => @d2
-      flash[:notice].should == "Deliverable successfully uploaded!"
+      #flash[:notice].should == "Deliverable successfully uploaded!"
       response.should redirect_to :controller => :deliverables, 
-        :action => :index, :project_id=>1,
+        :action => :index, :project_id=>@d2.project_id,
         :default_phase => @d2.phase
     end
 
